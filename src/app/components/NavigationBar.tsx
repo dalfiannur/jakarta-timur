@@ -7,7 +7,7 @@ import { Icon } from "../icons";
 
 export const NavigationBar = () => {
   return (
-    <div className="absolute w-full top-8">
+    <div className="z-20 absolute w-full top-8">
       <div className="container mx-auto bg-white drop-shadow-lg rounded-full px-8 py-4 flex gap-8 items-center">
         <div>
           <Image src="/img/logo.png" alt="Logo" width={175} height={62} />
