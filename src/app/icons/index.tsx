@@ -1,5 +1,6 @@
 import { ArticleLine } from "./ArticleLine";
 import { ArtTrack } from "./ArtTrack";
+import { BriefcaseColored } from "./BriefcaseColored";
 import { BusSign } from "./BusSign";
 import { BusSignColored } from "./BusSignColored";
 import { ChevronDown } from "./ChevronDown";
@@ -9,19 +10,25 @@ import { CustomerService } from "./CustomerService";
 import { CustomerServiceColored } from "./CustomerServiceColored";
 import { District } from "./District";
 import { DocumentChecklistColored } from "./DocumentChecklistColored";
+import { EcoFactoryColored } from "./EcoFactoryColored";
 import { Employee } from "./Employee";
 import { Employees } from "./Employees";
 import { FolderVideo } from "./FolderVideo";
 import { GalleryWideBold } from "./GalleryWideBold";
 import { GoalsFill } from "./GoalsFill";
 import { GreenEnergy } from "./GreenEnergy";
+import { GreenEnergyColored } from "./GreenEnergyColored";
+import { GrowthColored } from "./GrowthColored";
 import { Hospital } from "./Hospital";
+import { HospitalColored } from "./HospitalColored";
 import { ImproveRelevance } from "./ImproveRelevance";
 import { MapMarkerAlt } from "./MapMarkerAlt";
 import { News } from "./News";
 import { Office } from "./Office";
 import { Park } from "./Park";
+import { ParkColored } from "./ParkColored";
 import { School } from "./School";
+import { SchoolColored } from "./SchoolColored";
 import { Search } from "./Search";
 import { ServiceLine } from "./ServiceLine";
 import { SmartCity } from "./SmartCity";
@@ -31,6 +38,7 @@ import { StatisticUpSolid } from "./StatisticUpSolid";
 import { Tax } from "./Tax";
 import { Trophy } from "./Trophy";
 import { User } from "./User";
+import { UserFolderColored } from "./UserFolderColored";
 import { Users } from "./Users";
 import { Vacation } from "./Vacation";
 
@@ -70,6 +78,14 @@ const icons = {
   DocumentChecklistColored,
   SmartCityColored,
   BusSignColored,
+  SchoolColored,
+  BriefcaseColored,
+  HospitalColored,
+  UserFolderColored,
+  GrowthColored,
+  ParkColored,
+  EcoFactoryColored,
+  GreenEnergyColored,
 };
 
 interface IconProps {
