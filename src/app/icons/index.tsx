@@ -1,10 +1,14 @@
 import { ArticleLine } from "./ArticleLine";
 import { ArtTrack } from "./ArtTrack";
 import { BusSign } from "./BusSign";
+import { BusSignColored } from "./BusSignColored";
 import { ChevronDown } from "./ChevronDown";
+import { ChevronRight } from "./ChevronRight";
 import { ClarityOrganizationSolid } from "./ClarityOrganizationSolid";
 import { CustomerService } from "./CustomerService";
+import { CustomerServiceColored } from "./CustomerServiceColored";
 import { District } from "./District";
+import { DocumentChecklistColored } from "./DocumentChecklistColored";
 import { Employee } from "./Employee";
 import { Employees } from "./Employees";
 import { FolderVideo } from "./FolderVideo";
@@ -21,6 +25,7 @@ import { School } from "./School";
 import { Search } from "./Search";
 import { ServiceLine } from "./ServiceLine";
 import { SmartCity } from "./SmartCity";
+import { SmartCityColored } from "./SmartCityColored";
 import { StatisticUp } from "./StatisticUp";
 import { StatisticUpSolid } from "./StatisticUpSolid";
 import { Tax } from "./Tax";
@@ -60,6 +65,11 @@ const icons = {
   GalleryWideBold,
   FolderVideo,
   ArticleLine,
+  CustomerServiceColored,
+  ChevronRight,
+  DocumentChecklistColored,
+  SmartCityColored,
+  BusSignColored,
 };
 
 interface IconProps {
