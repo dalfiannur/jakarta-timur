@@ -25,6 +25,7 @@ interface SectionBoxProps {
   subtitle: string;
   align?: "left" | "center";
   children: ReactNode;
+  rightSection?: ReactNode;
 }
 
 export const SectionBox = ({
@@ -32,12 +33,18 @@ export const SectionBox = ({
   subtitle,
   align = "left",
   children,
+  rightSection,
 }: SectionBoxProps) => {
   const x = SectionBoxStyle({ align });
   return (
     <div className={x.root()}>
-      <h2 className={x.title()}>{title}</h2>
-      <h5 className={x.subtitle()}>{subtitle}</h5>
+      <div className="flex justify-between">
+        <div className="flex-1">
+          <h2 className={x.title()}>{title}</h2>
+          <h5 className={x.subtitle()}>{subtitle}</h5>
+        </div>
+        {rightSection}
+      </div>
       <div className="mt-8">{children}</div>
     </div>
   );
