@@ -4,6 +4,7 @@ import { BriefcaseColored } from "./BriefcaseColored";
 import { BusSign } from "./BusSign";
 import { BusSignColored } from "./BusSignColored";
 import { ChevronDown } from "./ChevronDown";
+import { ChevronLeft } from "./ChevronLeft";
 import { ChevronRight } from "./ChevronRight";
 import { ClarityOrganizationSolid } from "./ClarityOrganizationSolid";
 import { CustomerService } from "./CustomerService";
@@ -27,6 +28,7 @@ import { News } from "./News";
 import { Office } from "./Office";
 import { Park } from "./Park";
 import { ParkColored } from "./ParkColored";
+import { ScheduleColored } from "./ScheduleColored";
 import { School } from "./School";
 import { SchoolColored } from "./SchoolColored";
 import { Search } from "./Search";
@@ -86,6 +88,8 @@ const icons = {
   ParkColored,
   EcoFactoryColored,
   GreenEnergyColored,
+  ChevronLeft,
+  ScheduleColored,
 };
 
 interface IconProps {
