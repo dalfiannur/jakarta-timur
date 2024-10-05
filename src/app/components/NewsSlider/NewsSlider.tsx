@@ -1,5 +1,5 @@
 "use client";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { SliderItem } from "./SliderItem";
 import { useEffect, useMemo, useRef, useState } from "react";
 
@@ -95,7 +95,7 @@ export const NewsSlider = () => {
             key={index}
             onClick={() => setStep(index)}
             data-selected={index === step ? true : undefined}
-            className="bg-gray-300 rounded-full w-2 h-2 data-[selected]:bg-pink-500"
+            className="bg-gray-300 rounded-full w-2 h-2 data-[selected]:w-6 data-[selected]:bg-pink-500 transition-all"
           />
         ))}
       </div>
