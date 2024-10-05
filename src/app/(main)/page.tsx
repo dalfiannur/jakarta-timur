@@ -6,6 +6,7 @@ import { Hero } from "./Hero";
 import { SectionBox } from "../components/SectionBox";
 import { Event } from "../components/Event";
 import { NewsSlider } from "../components/NewsSlider/NewsSlider";
+import { VideoSlider } from "../components/VideoSlider/VideoSlider";
 
 const publicServices = [
   {
@@ -173,6 +174,20 @@ export default function Home() {
         }
       >
         <NewsSlider />
+      </SectionBox>
+      <SectionBox
+        title="Video Informasi dan Edukasi"
+        subtitle="Temukan informasi penting melalui video untuk tetap terinformasi dan teredukasi"
+        rightSection={
+          <a
+            href="#"
+            className="inline-flex items-center gap-2 text-pink-500 font-semibold text-xl"
+          >
+            Lihat Video Lainnya <Icon name="ChevronRight" size={24} />
+          </a>
+        }
+      >
+        <VideoSlider items={[1, 2, 3]} />
       </SectionBox>
     </div>
   );
