@@ -3,8 +3,9 @@ import { Icon } from "../icons";
 import { Agenda } from "../components/Agenda";
 import { CardLink } from "./CardLink";
 import { Hero } from "./Hero";
-import { SectionBox } from "./SectionBox";
+import { SectionBox } from "../components/SectionBox";
 import { Event } from "../components/Event";
+import { NewsSlider } from "../components/NewsSlider/NewsSlider";
 
 const publicServices = [
   {
@@ -158,6 +159,20 @@ export default function Home() {
             />
           </div>
         </div>
+      </SectionBox>
+      <SectionBox
+        title="Berita Pemerintah Terkini"
+        subtitle="Baca Berita Terkini Program dan Kegiatan Pemerintah"
+        rightSection={
+          <a
+            href="#"
+            className="inline-flex items-center gap-2 text-pink-500 font-semibold text-xl"
+          >
+            Lihat Berita Lainnya <Icon name="ChevronRight" size={24} />
+          </a>
+        }
+      >
+        <NewsSlider />
       </SectionBox>
     </div>
   );
