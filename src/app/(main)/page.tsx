@@ -7,6 +7,7 @@ import { SectionBox } from "../components/SectionBox";
 import { Event } from "../components/Event";
 import { NewsSlider } from "../components/NewsSlider/NewsSlider";
 import { VideoSlider } from "../components/VideoSlider/VideoSlider";
+import { NewsStory } from "../components/NewsStory/NewsStories";
 
 const publicServices = [
   {
@@ -188,6 +189,21 @@ export default function Home() {
         }
       >
         <VideoSlider items={[1, 2, 3]} />
+      </SectionBox>
+
+      <SectionBox
+        title="Cerita Melalui Citra"
+        subtitle="Menampilkan Wajah Jakarta Timur dalam Citra: Transparansi, Progres, dan Aspirasi Bersama Pemerintah untuk Kemajuan Kota"
+        rightSection={
+          <a
+            href="#"
+            className="inline-flex items-center gap-2 text-pink-500 font-semibold text-xl"
+          >
+            Lihat Foto Lainnya <Icon name="ChevronRight" size={24} />
+          </a>
+        }
+      >
+        <NewsStory />
       </SectionBox>
     </div>
   );
