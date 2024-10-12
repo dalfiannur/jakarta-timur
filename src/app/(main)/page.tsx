@@ -8,6 +8,8 @@ import { Event } from "../components/Event";
 import { NewsSlider } from "../components/NewsSlider/NewsSlider";
 import { VideoSlider } from "../components/VideoSlider/VideoSlider";
 import { NewsStory } from "../components/NewsStory/NewsStories";
+import { BuletinSlider } from "../components/BuletinSlider/BuletinSlider";
+import { SponsorSection } from "./SponsorSection";
 
 const publicServices = [
   {
@@ -205,6 +207,23 @@ export default function Home() {
       >
         <NewsStory />
       </SectionBox>
+
+      <SectionBox
+        title="Buletin Info Jaktim"
+        subtitle="Informasi terkini dan pembaruan penting bagi warga Jakarta Timur"
+        rightSection={
+          <a
+            href="#"
+            className="inline-flex items-center gap-2 text-pink-500 font-semibold text-xl"
+          >
+            Lihat Foto Lainnya <Icon name="ChevronRight" size={24} />
+          </a>
+        }
+      >
+        <BuletinSlider />
+      </SectionBox>
+
+      <SponsorSection />
     </div>
   );
 }
