@@ -10,6 +10,8 @@ import { VideoSlider } from "../components/VideoSlider/VideoSlider";
 import { NewsStory } from "../components/NewsStory/NewsStories";
 import { BuletinSlider } from "../components/BuletinSlider/BuletinSlider";
 import { SponsorSection } from "./SponsorSection";
+import { Footer } from "../components/Footer";
+import { getNews } from "./actions";
 
 const publicServices = [
   {
@@ -106,7 +108,9 @@ const listAgenda = [
   },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const news = await getNews();
+
   return (
     <div className="h-screen">
       <Hero />
@@ -176,7 +180,7 @@ export default function Home() {
           </a>
         }
       >
-        <NewsSlider />
+        <NewsSlider data={news.data.data} />
       </SectionBox>
       <SectionBox
         title="Video Informasi dan Edukasi"
@@ -224,6 +228,8 @@ export default function Home() {
       </SectionBox>
 
       <SponsorSection />
+
+      <Footer />
     </div>
   );
 }

@@ -32,12 +32,14 @@ export const SliderItem = ({
   category,
   date,
   image,
+  author,
 }: {
   primary?: boolean;
   title: string;
   category: string;
   date: string;
   image: string;
+  author: string;
 }) => {
   const x = createStyles({ primary });
   return (
@@ -63,7 +65,7 @@ export const SliderItem = ({
             <div className="text-pink-500">
               <Icon name="GoalsFill" size={16} />
             </div>
-            <div className="text-white text-sm">Sudin Komunikasi</div>
+            <div className="text-white text-sm">{author}</div>
           </div>
           <div className="flex items-center gap-2">
             <div className="text-pink-500">

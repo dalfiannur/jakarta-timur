@@ -2,10 +2,14 @@
 import { motion } from "framer-motion";
 import { SliderItem } from "./SliderItem";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { News } from "@/app/(main)/actions";
+import _ from "lodash";
 
-const items = [1, 2, 3];
+interface NewsSliderProps {
+  data: News[];
+}
 
-export const NewsSlider = () => {
+export const NewsSlider = ({ data }: NewsSliderProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const itemRef = useRef<HTMLDivElement[]>([]);
   const [step, setStep] = useState(0);
@@ -13,6 +17,8 @@ export const NewsSlider = () => {
     const to = step * (containerRef.current?.clientWidth ?? 0);
     return -to;
   }, [containerRef, step]);
+
+  const sections = _.chunk(data, 5);
 
   useEffect(() => {
     if (containerRef.current && itemRef.current.length > 0) {
@@ -25,16 +31,16 @@ export const NewsSlider = () => {
     }
 
     const autoplay = setInterval(() => {
-      setStep((prev) => (prev < items.length - 1 ? prev + 1 : 0));
+      setStep((prev) => (prev < sections.length - 1 ? prev + 1 : 0));
     }, 5000);
 
     return () => clearInterval(autoplay);
-  }, [containerRef, itemRef]);
+  }, [containerRef, itemRef, sections]);
 
   return (
     <div>
       <div ref={containerRef} className="flex overflow-hidden">
-        {items.map((_, index) => (
+        {sections.map((items, index) => (
           <motion.div
             ref={(ref) => {
               if (ref) {
@@ -54,43 +60,23 @@ export const NewsSlider = () => {
               },
             }}
           >
-            <SliderItem
-              primary
-              image="/img/event-1.png"
-              title="Walikota Buka FORST 2024, Diikuti 714 Tim Senam Tradisional di Jakarta Timur"
-              category="Kesejahteraan"
-              date="18 Agustus 2024"
-            />
-            <SliderItem
-              image="/img/event-1.png"
-              title="Walikota Buka FORST 2024, Diikuti 714 Tim Senam Tradisional di Jakarta Timur"
-              category="Kesejahteraan"
-              date="18 Agustus 2024"
-            />
-            <SliderItem
-              image="/img/event-1.png"
-              title="Walikota Buka FORST 2024, Diikuti 714 Tim Senam Tradisional di Jakarta Timur"
-              category="Kesejahteraan"
-              date="18 Agustus 2024"
-            />
-            <SliderItem
-              image="/img/event-1.png"
-              title="Walikota Buka FORST 2024, Diikuti 714 Tim Senam Tradisional di Jakarta Timur"
-              category="Kesejahteraan"
-              date="18 Agustus 2024"
-            />
-            <SliderItem
-              image="/img/event-1.png"
-              title="Walikota Buka FORST 2024, Diikuti 714 Tim Senam Tradisional di Jakarta Timur"
-              category="Kesejahteraan"
-              date="18 Agustus 2024"
-            />
+            {items.map((item, index) => (
+              <SliderItem
+                key={item.id}
+                primary={index === 0}
+                image={`https://timur.jakarta.go.id/storage/news/${item.img}`}
+                title={item.title}
+                category="Kesejahteraan"
+                date={item.time}
+                author={item.writer}
+              />
+            ))}
           </motion.div>
         ))}
       </div>
 
       <div className="mt-8 flex justify-center gap-2">
-        {items.map((_, index) => (
+        {sections.map((_, index) => (
           <button
             key={index}
             onClick={() => setStep(index)}

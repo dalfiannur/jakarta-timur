@@ -14,6 +14,7 @@ import { DocumentChecklistColored } from "./DocumentChecklistColored";
 import { EcoFactoryColored } from "./EcoFactoryColored";
 import { Employee } from "./Employee";
 import { Employees } from "./Employees";
+import { FacebookColored } from "./FacebookColored";
 import { FolderVideo } from "./FolderVideo";
 import { GalleryWideBold } from "./GalleryWideBold";
 import { GoalsFill } from "./GoalsFill";
@@ -23,6 +24,10 @@ import { GrowthColored } from "./GrowthColored";
 import { Hospital } from "./Hospital";
 import { HospitalColored } from "./HospitalColored";
 import { ImproveRelevance } from "./ImproveRelevance";
+import { InstagramColored } from "./InstagramColored";
+import { LinkedInColored } from "./LinkedInColored";
+import { Mail } from "./Mail";
+import { MapHomeWork } from "./MapHomeWork";
 import { MapMarkerAlt } from "./MapMarkerAlt";
 import { News } from "./News";
 import { Office } from "./Office";
@@ -43,6 +48,8 @@ import { User } from "./User";
 import { UserFolderColored } from "./UserFolderColored";
 import { Users } from "./Users";
 import { Vacation } from "./Vacation";
+import { XColored } from "./XColored";
+import { YoutubeColored } from "./YoutubeColored";
 
 const icons = {
   ChevronDown,
@@ -90,6 +97,13 @@ const icons = {
   GreenEnergyColored,
   ChevronLeft,
   ScheduleColored,
+  MapHomeWork,
+  Mail,
+  FacebookColored,
+  XColored,
+  YoutubeColored,
+  LinkedInColored,
+  InstagramColored,
 };
 
 interface IconProps {
