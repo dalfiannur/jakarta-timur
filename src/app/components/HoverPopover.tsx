@@ -8,14 +8,18 @@ interface HoverPopoverProps {
 }
 
 export const HoverPopover = ({ children, label }: HoverPopoverProps) => {
-  const triggerRef = useRef<any>();
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
   const handleEnter = (isOpen: boolean) => {
-    !isOpen && triggerRef.current?.click();
+    if (!isOpen && triggerRef.current) {
+      triggerRef.current?.click();
+    }
   };
 
   const handleLeave = (isOpen: boolean) => {
-    isOpen && triggerRef.current?.click();
+    if (isOpen && triggerRef.current) {
+      triggerRef.current.click();
+    }
   };
 
   return (
