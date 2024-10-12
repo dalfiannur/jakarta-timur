@@ -21,10 +21,7 @@ export const HoverPopover = ({ children, label }: HoverPopoverProps) => {
   return (
     <Popover>
       {({ open }) => (
-        <div
-          onMouseEnter={() => handleEnter(open)}
-          onMouseLeave={() => handleLeave(open)}
-        >
+        <div onMouseEnter={() => handleEnter(open)}>
           <PopoverButton
             ref={triggerRef}
             className="text-sm/6 font-semibold text-gray-500 focus:outline-none data-[active]:text-pink-500 data-[hover]:text-pink-500 flex gap-2"
@@ -39,6 +36,7 @@ export const HoverPopover = ({ children, label }: HoverPopoverProps) => {
               to: "bottom",
             }}
             className="pt-10"
+            onMouseLeave={() => handleLeave(open)}
           >
             <div className="divide-y divide-white/5 text-sm/6 transition duration-200 ease-in-out [--anchor-gap:var(--spacing-5)] data-[closed]:-translate-y-1 data-[closed]:opacity-0 relative">
               {children}
