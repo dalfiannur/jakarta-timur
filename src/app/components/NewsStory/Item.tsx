@@ -1,9 +1,7 @@
 import Image from "next/image";
-import { ReactNode } from "react";
 import { tv } from "tailwind-variants";
 
 interface ItemProps {
-  children: ReactNode;
   isPrimary?: boolean;
   title: string;
   image: string;
@@ -37,10 +35,11 @@ const createStyles = tv({
 
 export const Item = ({ title, image, isPrimary }: ItemProps) => {
   const x = createStyles({ isPrimary });
+  const src = `https://timur.jakarta.go.id/storage/newsphoto/${image}`;
   return (
     <a href="#" className={x.root()}>
       <div className={x.imgContainer()}>
-        <Image src={image} fill alt={title} className={x.image()} />
+        <Image src={src} fill alt={title} className={x.image()} />
       </div>
       <div className={x.description()}>
         <h6 className={x.title()}>{title}</h6>

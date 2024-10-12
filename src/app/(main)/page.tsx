@@ -11,7 +11,7 @@ import { NewsStory } from "../components/NewsStory/NewsStories";
 import { BuletinSlider } from "../components/BuletinSlider/BuletinSlider";
 import { SponsorSection } from "./SponsorSection";
 import { Footer } from "../components/Footer";
-import { getNews } from "./actions";
+import { getNews, getNewsStory } from "./actions";
 
 const publicServices = [
   {
@@ -110,6 +110,7 @@ const listAgenda = [
 
 export default async function Home() {
   const news = await getNews();
+  const newsStory = await getNewsStory();
 
   return (
     <div className="h-screen">
@@ -209,7 +210,7 @@ export default async function Home() {
           </a>
         }
       >
-        <NewsStory />
+        <NewsStory data={newsStory.data.data} />
       </SectionBox>
 
       <SectionBox

@@ -3,55 +3,7 @@ import _ from "lodash";
 import { Item } from "./Item";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-
-const items = [
-  {
-    title:
-      "Sambut HUT Jakarta Ke-497, Pemkot Jakarta Timur Siapkan Berbagai Kegiatan",
-    image: "/img/event-1.png",
-  },
-  {
-    title: "Wakil Wali Kota Ikuti Senam Bersama Tiga Pilar di Kodim 0505/JT",
-    image: "/img/event-1.png",
-  },
-  {
-    title:
-      "Tekan Stunting, PKK Jakarta Timur Bersama Indofood Gelar Talkshow Nutrisi pada Balita",
-    image: "/img/event-1.png",
-  },
-  {
-    title: "HUT Kota Jakarta Ke-497, Pemkot Gelar Lomba Masak Nasi Goreng",
-    image: "/img/event-1.png",
-  },
-  {
-    title:
-      "65 Pelaku UMKM di Jakarta Timur Ikuti Kurasi Dekranasda Provinsi DKI Jakarta",
-    image: "/img/event-1.png",
-  },
-  {
-    title:
-      "Sambut HUT Jakarta Ke-497, Pemkot Jakarta Timur Siapkan Berbagai Kegiatan",
-    image: "/img/event-1.png",
-  },
-  {
-    title: "Wakil Wali Kota Ikuti Senam Bersama Tiga Pilar di Kodim 0505/JT",
-    image: "/img/event-1.png",
-  },
-  {
-    title:
-      "Tekan Stunting, PKK Jakarta Timur Bersama Indofood Gelar Talkshow Nutrisi pada Balita",
-    image: "/img/event-1.png",
-  },
-  {
-    title: "HUT Kota Jakarta Ke-497, Pemkot Gelar Lomba Masak Nasi Goreng",
-    image: "/img/event-1.png",
-  },
-  {
-    title:
-      "65 Pelaku UMKM di Jakarta Timur Ikuti Kurasi Dekranasda Provinsi DKI Jakarta",
-    image: "/img/event-1.png",
-  },
-];
+import { NewsPhoto } from "@/app/(main)/actions";
 
 const variants = {
   enter: (direction: number) => ({
@@ -70,11 +22,14 @@ const variants = {
   }),
 };
 
-export const NewsStory = () => {
+interface NewsStoryProps {
+  data: NewsPhoto[];
+}
+export const NewsStory = ({ data }: NewsStoryProps) => {
   const [[active, direction], setActive] = useState([0, 0]);
   const refItem = useRef<HTMLDivElement>(null);
   const refContainer = useRef<HTMLDivElement>(null);
-  const sections = _.chunk(items, 5);
+  const sections = _.chunk(data, 5);
   const [height, setHeight] = useState<string | "auto">("auto");
 
   useEffect(() => {
@@ -109,10 +64,13 @@ export const NewsStory = () => {
             dragElastic={1}
             className="absolute grid grid-cols-4 gap-4"
           >
-            {sections[active].map((item, index) => (
-              <Item key={index} isPrimary={index === 0} {...item}>
-                D
-              </Item>
+            {sections[active]?.map((item, index) => (
+              <Item
+                key={index}
+                isPrimary={index === 0}
+                title={item.title}
+                image={item.img}
+              />
             ))}
           </motion.div>
         </AnimatePresence>
