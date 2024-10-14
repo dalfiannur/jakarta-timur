@@ -1,12 +1,12 @@
 import { ReactNode, useMemo, useState } from "react";
 import { ListItem } from "./ListItem";
 import _ from "lodash";
-import { motion } from "framer-motion";
 
 interface Item {
   icon: ReactNode;
   title: string;
   description: string;
+  link?: string;
 }
 
 interface Tab {
@@ -27,14 +27,14 @@ export const MenuTabs = ({ tabs, defaultTab }: MenuTabsProps) => {
     const current = tabs.find((tab) => tab.key === activeTab);
     if (!current) return null;
 
-    return _.chunk(current.items, 2).map((section) => (
-      <div className="flex flex-col gap-4">
+    return _.chunk(current.items, 2).map((section, index) => (
+      <div key={index} className="flex flex-col gap-4">
         {section.map((item) => (
           <ListItem key={item.title} {...item} />
         ))}
       </div>
     ));
-  }, [activeTab]);
+  }, [activeTab, tabs]);
 
   return (
     <div className="flex bg-white border-4 border-gray-300/30 rounded-xl transition-all duration-500 overflow-hidden">

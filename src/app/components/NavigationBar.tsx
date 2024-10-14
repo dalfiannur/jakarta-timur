@@ -29,6 +29,7 @@ export const NavigationBar = () => {
                       {
                         icon: <Icon name="GoalsFill" size={16} />,
                         title: "Visi Misi & Kegiatan Strategies",
+                        link: "/visi-misi",
                         description:
                           "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
                       },

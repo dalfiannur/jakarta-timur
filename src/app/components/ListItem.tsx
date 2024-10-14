@@ -1,17 +1,22 @@
+"use client";
 import { ReactNode, useState } from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 interface ListItemProps {
   icon: ReactNode;
   title: string;
   description?: string;
+  link?: string;
 }
 
-export const ListItem = ({ icon, title, description }: ListItemProps) => {
+export const ListItem = ({ icon, title, description, link }: ListItemProps) => {
+  const router = useRouter();
   const [opened, setOpened] = useState(false);
 
   return (
     <motion.button
+      onClick={() => link && router.push(link)}
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0, transition: { duration: 1 } }}
       exit={{ opacity: 0, y: 10 }}
