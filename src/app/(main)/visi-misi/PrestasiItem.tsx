@@ -38,7 +38,7 @@ export const PrestasiItem = () => {
           transition: { duration: 0.5 },
         }}
       >
-        <Icon name="Search" />
+        <Icon name="MageTrophyColored" size={40} />
       </motion.div>
       <div>
         <div className={x.year()}>Tahun 2022</div>

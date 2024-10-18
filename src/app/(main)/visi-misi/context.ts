@@ -1,7 +1,14 @@
 import { createContext } from "react";
 
+export type SelectedTabKey =
+  | "visi-misi"
+  | "peta"
+  | "demografi"
+  | "prestasi"
+  | "";
+
 interface IContext {
-  selectedTab: string;
+  selectedTab: SelectedTabKey;
   setSelectedTab: (tab: string) => void;
 }
 

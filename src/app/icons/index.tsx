@@ -26,6 +26,7 @@ import { HospitalColored } from "./HospitalColored";
 import { ImproveRelevance } from "./ImproveRelevance";
 import { InstagramColored } from "./InstagramColored";
 import { LinkedInColored } from "./LinkedInColored";
+import { MageTrophyColored } from "./MageTrhopyColored";
 import { Mail } from "./Mail";
 import { MapHomeWork } from "./MapHomeWork";
 import { MapMarkerAlt } from "./MapMarkerAlt";
@@ -104,6 +105,7 @@ const icons = {
   YoutubeColored,
   LinkedInColored,
   InstagramColored,
+  MageTrophyColored,
 };
 
 interface IconProps {
