@@ -10,7 +10,6 @@ import { VideoSlider } from "../components/VideoSlider/VideoSlider";
 import { NewsStory } from "../components/NewsStory/NewsStories";
 import { BuletinSlider } from "../components/BuletinSlider/BuletinSlider";
 import { SponsorSection } from "./SponsorSection";
-import { Footer } from "../components/Footer";
 import { getNews, getNewsStory } from "./actions";
 
 const publicServices = [
@@ -229,8 +228,6 @@ export default async function Home() {
       </SectionBox>
 
       <SponsorSection />
-
-      <Footer />
     </div>
   );
 }

@@ -11,9 +11,13 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        "soft-white": "rgba(251, 251, 251, 1)",
       },
       borderRadius: {
         "4xl": "2rem",
+      },
+      boxShadow: {
+        light: "2px 2px 20px 1px rgba(0, 69, 105, 0.06)",
       },
     },
   },
