@@ -15,8 +15,10 @@ import { EcoFactoryColored } from "./EcoFactoryColored";
 import { Employee } from "./Employee";
 import { Employees } from "./Employees";
 import { FacebookColored } from "./FacebookColored";
+import { FloodWarningColored } from "./FloodWarningColored";
 import { FolderVideo } from "./FolderVideo";
 import { GalleryWideBold } from "./GalleryWideBold";
+import { GlobalIncreaseColored } from "./GlobalIncreaseColored";
 import { GoalsFill } from "./GoalsFill";
 import { GreenEnergy } from "./GreenEnergy";
 import { GreenEnergyColored } from "./GreenEnergyColored";
@@ -30,10 +32,12 @@ import { MageTrophyColored } from "./MageTrhopyColored";
 import { Mail } from "./Mail";
 import { MapHomeWork } from "./MapHomeWork";
 import { MapMarkerAlt } from "./MapMarkerAlt";
+import { NetworkSettingLineColored } from "./NetworkSettingLineColored";
 import { News } from "./News";
 import { Office } from "./Office";
 import { Park } from "./Park";
 import { ParkColored } from "./ParkColored";
+import { PcCovidColored } from "./PcCovidColored";
 import { ScheduleColored } from "./ScheduleColored";
 import { School } from "./School";
 import { SchoolColored } from "./SchoolColored";
@@ -106,6 +110,10 @@ const icons = {
   LinkedInColored,
   InstagramColored,
   MageTrophyColored,
+  GlobalIncreaseColored,
+  FloodWarningColored,
+  NetworkSettingLineColored,
+  PcCovidColored,
 };
 
 interface IconProps {

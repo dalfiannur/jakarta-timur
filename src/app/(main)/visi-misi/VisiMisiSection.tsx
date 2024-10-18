@@ -3,6 +3,8 @@ import { SectionTitle } from "./SectionTitle";
 import { animations } from "./animations";
 import { NumberList } from "@/app/components/NumberList";
 import { ReactNode } from "react";
+import { MisiArt } from "./MisiArt";
+import { Icon } from "@/app/icons";
 
 export const VisiMisiSection = () => {
   return (
@@ -20,8 +22,10 @@ export const VisiMisiSection = () => {
           <div className="bg-blue-600 aspect-video rounded-xl h-52"></div>
         </div>
 
-        <div className="mt-8 flex gap-8">
-          <div className="w-80">Gambar</div>
+        <div className="mt-8 flex items-center gap-12">
+          <div className="w-80">
+            <MisiArt />
+          </div>
           <div className="flex-1">
             <h4 className="text-3xl font-bold text-pink-500 mb-8">Misi</h4>
             <NumberList
@@ -47,19 +51,23 @@ export const VisiMisiSection = () => {
           </div>
 
           <div className="flex items-center gap-5">
-            <VisiMisiCard icon={"Icon"}>
+            <VisiMisiCard icon={<Icon name="FloodWarningColored" size={40} />}>
               Pengendalian dan Penanganan Banjir
             </VisiMisiCard>
             <div className="grid gap-5">
-              <VisiMisiCard icon={"Icon"}>
-                Pengendalian dan Penanganan Banjir
+              <VisiMisiCard
+                icon={<Icon name="GlobalIncreaseColored" size={40} />}
+              >
+                Peningkatan Ekonomi Kreatif
               </VisiMisiCard>
-              <VisiMisiCard icon={"Icon"}>
-                Pengendalian dan Penanganan Banjir
+              <VisiMisiCard icon={<Icon name="PcCovidColored" size={40} />}>
+                Penanganan Pasca Covid
               </VisiMisiCard>
             </div>
-            <VisiMisiCard icon={"Icon"}>
-              Pengendalian dan Penanganan Banjir
+            <VisiMisiCard
+              icon={<Icon name="NetworkSettingLineColored" size={40} />}
+            >
+              Penataan Kawasan
             </VisiMisiCard>
           </div>
         </div>
@@ -77,7 +85,9 @@ const VisiMisiCard = ({
 }) => {
   return (
     <div className="w-48 h-48 rounded-xl shadow-light flex flex-col gap-6 justify-center items-center p-2">
-      <div className="w-14 h-14 rounded bg-gray-500">{icon}</div>
+      <div className="w-16 h-16 rounded-xl bg-blue-300/20 flex items-center justify-center">
+        {icon}
+      </div>
       <div className="text-center text-lg font-medium text-gray-800">
         {children}
       </div>
