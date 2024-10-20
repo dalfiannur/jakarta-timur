@@ -20,37 +20,37 @@ export const NavigationBar = () => {
             </li>
             <HoverPopover label="Pemerintah Kota">
               <MenuTabs
-                defaultTab="about"
+                defaultTab="tentang-jakarta-timur"
                 tabs={[
                   {
-                    key: "about",
+                    key: "tentang-jakarta-timur",
                     label: "Tentang Jakarta Timur",
                     items: [
                       {
                         icon: <Icon name="GoalsFill" size={16} />,
                         title: "Visi Misi & Kegiatan Strategies",
-                        link: "/about?s=visi-misi",
+                        link: "/tentang-jakarta-timur?s=visi-misi-kegiatan-strategis",
                         description:
                           "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
                       },
                       {
                         icon: <Icon name="MapMarkerAlt" size={16} />,
                         title: "Peta & Batas Wilayah",
-                        link: "/about?s=peta",
+                        link: "/tentang-jakarta-timur?s=peta",
                         description:
                           "Temukan data dan informasi  berbagai aspek demografis kota.",
                       },
                       {
                         icon: <Icon name="StatisticUpSolid" size={16} />,
                         title: "Demografi",
-                        link: "/about?s=demografi",
+                        link: "/tentang-jakarta-timur?s=demografi",
                         description:
                           "Panduan yang jelas untuk  memahami struktur geografis dan tata ruang kota.",
                       },
                       {
                         icon: <Icon name="Trophy" size={16} />,
                         title: "Prestasi",
-                        link: "/about?s=prestasi",
+                        link: "/tentang-jakarta-timur?s=prestasi",
                         description:
                           "Lihat berbagai prestasi yang telah diraih oleh Kota Administrasi Jakarta Timur.",
                       },
@@ -152,42 +152,49 @@ export const NavigationBar = () => {
                   {
                     icon: <Icon name="School" size={16} />,
                     title: "Pendidikan",
+                    link: "/publikasi/berita-pemerintah-terkini",
                     description:
                       "Layanan dan Program Pendidikan untuk Masa Depan yang Lebih Cerah",
                   },
                   {
                     icon: <Icon name="Hospital" size={16} />,
                     title: "Kesehatan",
+                    link: "/publikasi/berita-terkini",
                     description:
                       "Informasi pelayanan kesehatan di Jakarta Timur",
                   },
                   {
                     icon: <Icon name="BusSign" size={16} />,
                     title: "Transportasi",
+                    link: "/publikasi/berita-terkini",
                     description:
                       "Temukan Informasi Lengkap tentang Transportasi Publik dan Rute Terbaik.",
                   },
                   {
                     icon: <Icon name="SmartCity" size={16} />,
                     title: "Internet Jak Wifi",
+                    link: "/publikasi/berita-terkini",
                     description:
                       "Informasi Lengkap tentang Layanan Internet di Area Anda",
                   },
                   {
                     icon: <Icon name="ServiceLine" size={16} />,
                     title: "PTSP",
+                    link: "/publikasi/berita-terkini",
                     description:
                       "Sumber Daya dan Informasi untuk Karir yang Sukses dan Berkelanjutan",
                   },
                   {
                     icon: <Icon name="Tax" size={16} />,
                     title: "Pajak",
+                    link: "/publikasi/berita-terkini",
                     description:
                       "Sumber Daya dan Informasi untuk Karir yang Sukses dan Berkelanjutan",
                   },
                   {
                     icon: <Icon name="CustomerService" size={16} />,
                     title: "Kanal Aduan",
+                    link: "/publikasi/berita-terkini",
                     description:
                       "Sampaikan Aduan dan Keluhan Anda untuk Mendapatkan Respon Cepat dan Efektif",
                   },
@@ -211,30 +218,36 @@ export const NavigationBar = () => {
                   {
                     icon: <Icon name="Vacation" size={16} />,
                     title: "Pariwisata",
+                    link: "/publikasi/berita-terkini",
                     description:
                       "Layanan dan Program Pendidikan untuk Masa Depan yang Lebih Cerah",
                   },
                   {
                     icon: <Icon name="ArtTrack" size={16} />,
                     title: "Kebudayaan",
+                    link: "/publikasi/berita-terkini",
                     description:
                       "Akses Informasi institusi pelayanan kesehatan profesional yang terdapat di Jakarta Timur",
                   },
                   {
                     icon: <Icon name="Park" size={16} />,
                     title: "RPTRA",
+                    link: "/publikasi/berita-terkini",
                   },
                   {
                     icon: <Icon name="GreenEnergy" size={16} />,
+                    link: "/publikasi/berita-terkini",
                     title: "Urban Farming",
                   },
                   {
                     icon: <Icon name="ImproveRelevance" size={16} />,
                     title: "Inovasi",
+                    link: "/publikasi/berita-terkini",
                   },
                   {
                     icon: <Icon name="StatisticUp" size={16} />,
                     title: "Statistik",
+                    link: "/publikasi/berita-terkini",
                   },
                 ]}
               />
@@ -251,24 +264,28 @@ export const NavigationBar = () => {
                   {
                     icon: <Icon name="News" size={16} />,
                     title: "Berita",
+                    link: "/publikasi/berita-pemerintah-terkini",
                     description:
                       "Baca Berita Terkini Kegiatan dan Program Pemerintah",
                   },
                   {
                     icon: <Icon name="GalleryWideBold" size={16} />,
                     title: "Galeri",
+                    link: "/publikasi/galeri",
                     description:
                       "Foto-foto ini memberikan gambaran yang jelas dan informatif",
                   },
                   {
                     icon: <Icon name="FolderVideo" size={16} />,
                     title: "Video",
+                    link: "/publikasi/video",
                     description:
                       "Temukan informasi penting melalui video-video kami",
                   },
                   {
                     icon: <Icon name="ArticleLine" size={16} />,
                     title: "Buletin",
+                    link: "/publikasi/buletin",
                     description:
                       "Buletin ini berisi berita dan pembaruan penting ",
                   },

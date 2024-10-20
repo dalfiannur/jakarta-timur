@@ -5,6 +5,7 @@ import { ReactNode } from "react";
 interface Item {
   icon: ReactNode;
   title: string;
+  link: string;
   description?: string;
 }
 

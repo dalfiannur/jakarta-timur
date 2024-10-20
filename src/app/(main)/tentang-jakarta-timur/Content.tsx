@@ -1,30 +1,26 @@
 "use client";
 
-import { ReactNode, useContext, useMemo } from "react";
+import { ReactNode } from "react";
 import { AnimatePresence } from "framer-motion";
 import { PrestasiSection } from "./PrestasiSection";
 import { DemografiSection } from "./DemografiSection";
 import { MapSection } from "./MapSection";
 import { VisiMisiSection } from "./VisiMisiSection";
-import { SidebarContext } from "@/app/contexts/SidebarContext";
+import { useSearchParams } from "next/navigation";
+
+const section: { [key: string]: ReactNode } = {
+  "visi-misi-kegiatan-strategis": <VisiMisiSection />,
+  "peta-batas-wilayah": <MapSection />,
+  demografi: <DemografiSection />,
+  prestasi: <PrestasiSection />,
+};
 
 export const Content = () => {
-  const { selectedTab } = useContext(SidebarContext);
-
-  const content = useMemo(() => {
-    const section: { [key: string]: ReactNode } = {
-      "visi-misi": <VisiMisiSection />,
-      peta: <MapSection />,
-      demografi: <DemografiSection />,
-      prestasi: <PrestasiSection />,
-    };
-
-    return section[selectedTab];
-  }, [selectedTab]);
+  const params = useSearchParams();
 
   return (
     <div className="flex-1">
-      <AnimatePresence>{content}</AnimatePresence>
+      <AnimatePresence>{section[params.get("s") as string]!}</AnimatePresence>
     </div>
   );
 };

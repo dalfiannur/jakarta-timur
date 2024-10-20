@@ -3,6 +3,8 @@ import { ArtTrack } from "./ArtTrack";
 import { BriefcaseColored } from "./BriefcaseColored";
 import { BusSign } from "./BusSign";
 import { BusSignColored } from "./BusSignColored";
+import { Calendar } from "./Calendar";
+import { Camera } from "./Camera";
 import { ChevronDown } from "./ChevronDown";
 import { ChevronLeft } from "./ChevronLeft";
 import { ChevronRight } from "./ChevronRight";
@@ -38,6 +40,7 @@ import { Office } from "./Office";
 import { Park } from "./Park";
 import { ParkColored } from "./ParkColored";
 import { PcCovidColored } from "./PcCovidColored";
+import { QuillWrite } from "./QuillWrite";
 import { ScheduleColored } from "./ScheduleColored";
 import { School } from "./School";
 import { SchoolColored } from "./SchoolColored";
@@ -114,6 +117,9 @@ const icons = {
   FloodWarningColored,
   NetworkSettingLineColored,
   PcCovidColored,
+  Calendar,
+  QuillWrite,
+  Camera,
 };
 
 interface IconProps {

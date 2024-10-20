@@ -1,5 +1,6 @@
 "use client";
-import { ReactNode } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { ReactNode, useCallback } from "react";
 import { tv } from "tailwind-variants";
 
 const createStyles = tv({
@@ -14,21 +15,28 @@ const createStyles = tv({
 
 interface SidebarItemProps {
   children?: ReactNode;
-  active?: boolean;
-  onClick?: () => void;
+  value: string;
 }
 
-export const SidebarItem = ({
-  children,
-  active,
-  onClick,
-}: SidebarItemProps) => {
+export const SidebarItem = ({ children, value }: SidebarItemProps) => {
+  const params = useSearchParams();
+  const router = useRouter();
+
   const styles = createStyles({
-    active,
+    active: params.get("s") === value,
   });
 
+  const onClick = useCallback(
+    (param: string) => {
+      router.push("/tentang-jakarta-timur?s=" + param, {
+        scroll: false,
+      });
+    },
+    [params]
+  );
+
   return (
-    <button className={styles} onClick={onClick}>
+    <button className={styles} onClick={() => onClick(value)}>
       {children}
     </button>
   );
