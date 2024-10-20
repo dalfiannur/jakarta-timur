@@ -29,25 +29,28 @@ export const NavigationBar = () => {
                       {
                         icon: <Icon name="GoalsFill" size={16} />,
                         title: "Visi Misi & Kegiatan Strategies",
-                        link: "/visi-misi",
+                        link: "/about?s=visi-misi",
                         description:
                           "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
                       },
                       {
                         icon: <Icon name="MapMarkerAlt" size={16} />,
                         title: "Peta & Batas Wilayah",
+                        link: "/about?s=peta",
                         description:
                           "Temukan data dan informasi  berbagai aspek demografis kota.",
                       },
                       {
                         icon: <Icon name="StatisticUpSolid" size={16} />,
                         title: "Demografi",
+                        link: "/about?s=demografi",
                         description:
                           "Panduan yang jelas untuk  memahami struktur geografis dan tata ruang kota.",
                       },
                       {
                         icon: <Icon name="Trophy" size={16} />,
                         title: "Prestasi",
+                        link: "/about?s=prestasi",
                         description:
                           "Lihat berbagai prestasi yang telah diraih oleh Kota Administrasi Jakarta Timur.",
                       },
@@ -62,42 +65,49 @@ export const NavigationBar = () => {
                           <Icon name="ClarityOrganizationSolid" size={16} />
                         ),
                         title: "Struktur Organisasi",
+                        link: "/satuan-unit-kerja?s=struktur-organisasi",
                         description:
                           "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
                       },
                       {
                         icon: <Icon name="User" size={16} />,
                         title: "Wali Kota",
+                        link: "/satuan-unit-kerja?s=walikota",
                         description:
                           "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
                       },
                       {
                         icon: <Icon name="Users" size={16} />,
                         title: "Sekretariat Kota",
+                        link: "/satuan-unit-kerja?s=sekretariat-kota",
                         description:
                           "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
                       },
                       {
                         icon: <Icon name="Employees" size={16} />,
                         title: "Bagian Kota",
+                        link: "/satuan-unit-kerja?s=bagian-kota",
                         description:
                           "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
                       },
                       {
                         icon: <Icon name="Employee" size={16} />,
                         title: "UKPD",
+                        link: "/satuan-unit-kerja?s=ukpd",
                         description:
                           "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
                       },
                       {
                         icon: <Icon name="District" size={16} />,
                         title: "Kecamatan",
+                        link: "/satuan-unit-kerja?s=kecamatan",
                         description:
                           "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
                       },
                       {
                         icon: <Icon name="Office" size={16} />,
                         title: "Kelurahan",
+                        link: "/satuan-unit-kerja?s=kelurahan",
                         description:
                           "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
                       },

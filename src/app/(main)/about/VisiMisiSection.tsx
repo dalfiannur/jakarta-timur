@@ -5,6 +5,7 @@ import { NumberList } from "@/app/components/NumberList";
 import { ReactNode } from "react";
 import { MisiArt } from "./MisiArt";
 import { Icon } from "@/app/icons";
+import Image from "next/image";
 
 export const VisiMisiSection = () => {
   return (
@@ -19,7 +20,14 @@ export const VisiMisiSection = () => {
               pelayanan publik menuju kota berekonomi modern.
             </p>
           </div>
-          <div className="bg-blue-600 aspect-video rounded-xl h-52"></div>
+          <div className="aspect-video h-52 relative">
+            <Image
+              src="/img/kantor-walikota-jaktim.png"
+              alt="Kantor Walikota Administrasi Jakarta Timur"
+              fill
+              className="rounded-xl"
+            />
+          </div>
         </div>
 
         <div className="mt-8 flex items-center gap-12">
