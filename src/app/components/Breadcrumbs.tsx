@@ -6,14 +6,12 @@ interface BreadcrumbsProps {
     label: string;
     link?: string;
   }[];
-  selectedTab: string;
 }
 
-export const Breadcrumbs = ({ data, selectedTab }: BreadcrumbsProps) => {
-  const items = [...data, { label: selectedTab }];
+export const Breadcrumbs = ({ data }: BreadcrumbsProps) => {
   return (
     <div className="flex gap-2">
-      {items.map((item, index) => (
+      {data.map((item, index) => (
         <div key={index} className="flex items-center gap-2">
           {index !== 0 && (
             <div className="text-gray-500">

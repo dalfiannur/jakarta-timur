@@ -45,6 +45,7 @@ const sidebarItems = [
 ];
 
 export default function Page() {
+
   return (
     <div className="pb-16">
       <PageTitle
@@ -57,8 +58,8 @@ export default function Page() {
           <SidebarContext.Consumer>
             {({ selectedTab }) => (
               <Breadcrumbs
-                data={breadcrumbs}
-                selectedTab={selectableBreadcrumbs[selectedTab]}
+                data={[...breadcrumbs, selectableBreadcrumbs[selectedTab]]}
+                selectedTab={}
               />
             )}
           </SidebarContext.Consumer>
