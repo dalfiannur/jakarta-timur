@@ -273,7 +273,7 @@ export const NavigationBar = () => {
                   {
                     icon: <Icon name="GalleryWideBold" size={16} />,
                     title: "Galeri",
-                    link: "/publikasi/galeri",
+                    link: "/publikasi/cerita-melalui-citra",
                     description:
                       "Foto-foto ini memberikan gambaran yang jelas dan informatif",
                   },
