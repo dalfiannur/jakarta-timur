@@ -280,7 +280,7 @@ export const NavigationBar = () => {
                   {
                     icon: <Icon name="FolderVideo" size={16} />,
                     title: "Video",
-                    link: "/publikasi/video",
+                    link: "/publikasi/video-informasi-edukasi",
                     description:
                       "Temukan informasi penting melalui video-video kami",
                   },
