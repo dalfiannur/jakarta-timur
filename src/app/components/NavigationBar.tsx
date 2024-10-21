@@ -5,8 +5,12 @@ import { HoverPopover } from "./HoverPopover";
 import Image from "next/image";
 import { Icon } from "../icons";
 import { PopoverGroup } from "@headlessui/react";
+import { usePathname } from "next/navigation";
+import { NavigationBarSingleItem } from "./NavigationBarSingleItem";
 
 export const NavigationBar = () => {
+  const pathname = usePathname();
+
   return (
     <PopoverGroup>
       <div className="z-20 absolute w-full top-8">
@@ -15,10 +19,8 @@ export const NavigationBar = () => {
             <Image src="/img/logo.png" alt="Logo" width={175} height={62} />
           </div>
           <ul className="flex gap-8">
-            <li className="text-pink-500 font-semibold text-sm/6 border-b-2 border-pink-500">
-              <a href="#">Beranda</a>
-            </li>
-            <HoverPopover label="Pemerintah Kota">
+            <NavigationBarSingleItem label="Beranda" href="/" index="/" />
+            <HoverPopover label="Pemerintah Kota" index="/pemerintah-kota">
               <MenuTabs
                 defaultTab="tentang-jakarta-timur"
                 tabs={[
@@ -146,7 +148,7 @@ export const NavigationBar = () => {
                 ]}
               />
             </HoverPopover>
-            <HoverPopover label="Layanan">
+            <HoverPopover label="Layanan" index="/layanan">
               <MenuList
                 items={[
                   {
@@ -212,7 +214,7 @@ export const NavigationBar = () => {
             />
           </div>
           <ul className="flex gap-8">
-            <HoverPopover label="Informasi">
+            <HoverPopover label="Informasi" index="/informasi">
               <MenuList
                 items={[
                   {
@@ -252,13 +254,13 @@ export const NavigationBar = () => {
                 ]}
               />
             </HoverPopover>
-            <li className="text-gray-500 hover:text-pink-500 font-semibold text-sm/6">
-              <a href="#">PPID</a>
-            </li>
-            <li className="text-gray-500 hover:text-pink-500 font-semibold text-sm/6">
-              <a href="#">Dashboard</a>
-            </li>
-            <HoverPopover label="Publikasi">
+            <NavigationBarSingleItem label="PPID" href="#" index="/ppid" />
+            <NavigationBarSingleItem
+              label="Dashboard"
+              href="#"
+              index="/dashboard"
+            />
+            <HoverPopover label="Publikasi" index="/publikasi">
               <MenuList
                 items={[
                   {
