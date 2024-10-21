@@ -5,12 +5,9 @@ import { HoverPopover } from "./HoverPopover";
 import Image from "next/image";
 import { Icon } from "../icons";
 import { PopoverGroup } from "@headlessui/react";
-import { usePathname } from "next/navigation";
 import { NavigationBarSingleItem } from "./NavigationBarSingleItem";
 
 export const NavigationBar = () => {
-  const pathname = usePathname();
-
   return (
     <PopoverGroup>
       <div className="z-20 absolute w-full top-8">
@@ -287,7 +284,7 @@ export const NavigationBar = () => {
                   {
                     icon: <Icon name="ArticleLine" size={16} />,
                     title: "Buletin",
-                    link: "/publikasi/buletin",
+                    link: "/publikasi/buletin-info-jaktim",
                     description:
                       "Buletin ini berisi berita dan pembaruan penting ",
                   },
