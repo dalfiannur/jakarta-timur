@@ -9,15 +9,16 @@ export default function Page() {
         image="/img/kantor-walikota-jaktim.png"
         subtitle="Ketahui inovasi yang telah dilakukan pemerintah Jakarta Timur"
         rounded={false}
+        topSpacer
       />
       <div className="container mx-auto py-10">
         <div className="grid grid-cols-4 gap-x-6 gap-y-12">
-            <CardItem />
-            <CardItem />
-            <CardItem />
-            <CardItem />
-            <CardItem />
-            <CardItem />
+          <CardItem />
+          <CardItem />
+          <CardItem />
+          <CardItem />
+          <CardItem />
+          <CardItem />
         </div>
       </div>
     </div>

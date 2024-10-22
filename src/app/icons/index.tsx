@@ -28,6 +28,7 @@ import { GrowthColored } from "./GrowthColored";
 import { Hospital } from "./Hospital";
 import { HospitalColored } from "./HospitalColored";
 import { ImproveRelevance } from "./ImproveRelevance";
+import { Info } from "./Info";
 import { InstagramColored } from "./InstagramColored";
 import { LinkedInColored } from "./LinkedInColored";
 import { MageTrophyColored } from "./MageTrhopyColored";
@@ -120,6 +121,7 @@ const icons = {
   Calendar,
   QuillWrite,
   Camera,
+  Info,
 };
 
 interface IconProps {

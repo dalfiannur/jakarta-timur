@@ -6,16 +6,17 @@ interface PageTitleProps {
   title: string;
   subtitle: string;
   rounded?: boolean;
+  topSpacer?: boolean;
 }
 
 const createStyles = tv({
   slots: {
     root: "relative overflow-hidden",
     imageContainer: "relative aspect-[4/1]",
-    image: "-z-10",
+    image: "-z-10 object-cover",
     imageOverlay: "absolute inset-0 bg-black/40 rounded-b-4xl",
     textContainer:
-      "absolute inset-0 flex flex-col justify-center items-center z-0 text-center text-white",
+      "absolute flex flex-col justify-center items-center z-0 text-center text-white",
     title: "text-6xl font-bold uppercase",
     subtitle: "text-2xl font-semibold",
   },
@@ -23,6 +24,14 @@ const createStyles = tv({
     rounded: {
       true: {
         image: "rounded-b-4xl",
+      },
+    },
+    topSpacer: {
+      true: {
+        textContainer: "left-0 right-0 bottom-0 top-20",
+      },
+      false: {
+        textContainer: "inset-0",
       },
     },
   },
@@ -33,8 +42,9 @@ export const PageTitle = ({
   title,
   subtitle,
   rounded = true,
+  topSpacer,
 }: PageTitleProps) => {
-  const x = createStyles({ rounded });
+  const x = createStyles({ rounded, topSpacer });
   return (
     <div className={x.root()}>
       <div className={x.imageContainer()}>
