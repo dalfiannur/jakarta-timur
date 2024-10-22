@@ -2,10 +2,10 @@ import { Icon } from "@/app/icons";
 import Image from "next/image";
 import Link from "next/link";
 
-export const VideoItem = () => {
+export const PhotoItem = () => {
   return (
     <div>
-      <Link href="/publikasi/video-informasi-edukasi/1">
+      <Link href="/publikasi/galeri/1">
         <div className="relative aspect-[6/5]">
           <Image
             src={"/img/kantor-walikota-jaktim.png"}
@@ -16,8 +16,7 @@ export const VideoItem = () => {
         </div>
       </Link>
       <div className="mt-6 grid gap-4">
-        <div className="text-sm uppercase">Pemerintahan</div>
-        <Link href="/publikasi/video-informasi-edukasi/1">
+        <Link href="/publikasi/galeri/1">
           <h2 className="text-2xl font-bold">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste aut
             quisquam expedita cum asperiores itaque maxime
@@ -35,14 +34,7 @@ export const VideoItem = () => {
             <div className="text-pink-500">
               <Icon name="QuillWrite" size={16} />
             </div>
-            <div>Sudin Komunikasi</div>
-          </div>
-          <div className="border-l" />
-          <div className="flex gap-2 items-center">
-            <div className="text-pink-500">
-              <Icon name="Camera" size={16} />
-            </div>
-            <div>KIP</div>
+            <div>Pasar Jatinegara</div>
           </div>
         </div>
       </div>

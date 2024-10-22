@@ -4,7 +4,7 @@ import Link from "next/link";
 export const PhotoItem = () => {
   return (
     <div>
-      <Link href="/publikasi/buletin-info-jaktim/1">
+      <Link href="/publikasi/buletin/1">
         <div className="relative aspect-[5/7]">
           <Image
             src={"/img/kantor-walikota-jaktim.png"}
@@ -14,7 +14,7 @@ export const PhotoItem = () => {
           />
         </div>
       </Link>
-      <Link href="/publikasi/buletin-info-jaktim/1">
+      <Link href="/publikasi/buletin/1">
         <h2 className="font-semibold mt-4">Buletin Info Jaktim Edisi ke-125</h2>
       </Link>
     </div>

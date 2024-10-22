@@ -7,6 +7,72 @@ import { Icon } from "../icons";
 import { PopoverGroup } from "@headlessui/react";
 import { NavigationBarSingleItem } from "./NavigationBarSingleItem";
 
+const links = {
+  publikasi: [
+    {
+      icon: <Icon name="News" size={16} />,
+      title: "Berita",
+      link: "/publikasi/berita",
+      description: "Baca Berita Terkini Kegiatan dan Program Pemerintah",
+    },
+    {
+      icon: <Icon name="GalleryWideBold" size={16} />,
+      title: "Galeri",
+      link: "/publikasi/galeri",
+      description:
+        "Foto-foto ini memberikan gambaran yang jelas dan informatif",
+    },
+    {
+      icon: <Icon name="FolderVideo" size={16} />,
+      title: "Video",
+      link: "/publikasi/video",
+      description: "Temukan informasi penting melalui video-video kami",
+    },
+    {
+      icon: <Icon name="ArticleLine" size={16} />,
+      title: "Buletin",
+      link: "/publikasi/buletin",
+      description: "Buletin ini berisi berita dan pembaruan penting ",
+    },
+  ],
+  informasi: [
+    {
+      icon: <Icon name="Vacation" size={16} />,
+      title: "Pariwisata",
+      link: "/informasi/parawisata",
+      description:
+        "Layanan dan Program Pendidikan untuk Masa Depan yang Lebih Cerah",
+    },
+    {
+      icon: <Icon name="ArtTrack" size={16} />,
+      title: "Kebudayaan",
+      link: "/informasi/kebudayaan",
+      description:
+        "Akses Informasi institusi pelayanan kesehatan profesional yang terdapat di Jakarta Timur",
+    },
+    {
+      icon: <Icon name="Park" size={16} />,
+      title: "RPTRA",
+      link: "/informasi/rptra",
+    },
+    {
+      icon: <Icon name="GreenEnergy" size={16} />,
+      link: "/informasi/urban-farming",
+      title: "Urban Farming",
+    },
+    {
+      icon: <Icon name="ImproveRelevance" size={16} />,
+      title: "Inovasi",
+      link: "/informasi/inovasi",
+    },
+    {
+      icon: <Icon name="StatisticUp" size={16} />,
+      title: "Statistik",
+      link: "/informasi/statistik",
+    },
+  ],
+};
+
 export const NavigationBar = () => {
   return (
     <PopoverGroup>
@@ -212,44 +278,7 @@ export const NavigationBar = () => {
           </div>
           <ul className="flex gap-8">
             <HoverPopover label="Informasi" index="/informasi">
-              <MenuList
-                items={[
-                  {
-                    icon: <Icon name="Vacation" size={16} />,
-                    title: "Pariwisata",
-                    link: "/publikasi/berita-terkini",
-                    description:
-                      "Layanan dan Program Pendidikan untuk Masa Depan yang Lebih Cerah",
-                  },
-                  {
-                    icon: <Icon name="ArtTrack" size={16} />,
-                    title: "Kebudayaan",
-                    link: "/publikasi/berita-terkini",
-                    description:
-                      "Akses Informasi institusi pelayanan kesehatan profesional yang terdapat di Jakarta Timur",
-                  },
-                  {
-                    icon: <Icon name="Park" size={16} />,
-                    title: "RPTRA",
-                    link: "/publikasi/berita-terkini",
-                  },
-                  {
-                    icon: <Icon name="GreenEnergy" size={16} />,
-                    link: "/publikasi/berita-terkini",
-                    title: "Urban Farming",
-                  },
-                  {
-                    icon: <Icon name="ImproveRelevance" size={16} />,
-                    title: "Inovasi",
-                    link: "/publikasi/berita-terkini",
-                  },
-                  {
-                    icon: <Icon name="StatisticUp" size={16} />,
-                    title: "Statistik",
-                    link: "/publikasi/berita-terkini",
-                  },
-                ]}
-              />
+              <MenuList items={links.informasi} />
             </HoverPopover>
             <NavigationBarSingleItem label="PPID" href="#" index="/ppid" />
             <NavigationBarSingleItem
@@ -258,38 +287,7 @@ export const NavigationBar = () => {
               index="/dashboard"
             />
             <HoverPopover label="Publikasi" index="/publikasi">
-              <MenuList
-                items={[
-                  {
-                    icon: <Icon name="News" size={16} />,
-                    title: "Berita",
-                    link: "/publikasi/berita-pemerintah-terkini",
-                    description:
-                      "Baca Berita Terkini Kegiatan dan Program Pemerintah",
-                  },
-                  {
-                    icon: <Icon name="GalleryWideBold" size={16} />,
-                    title: "Galeri",
-                    link: "/publikasi/cerita-melalui-citra",
-                    description:
-                      "Foto-foto ini memberikan gambaran yang jelas dan informatif",
-                  },
-                  {
-                    icon: <Icon name="FolderVideo" size={16} />,
-                    title: "Video",
-                    link: "/publikasi/video-informasi-edukasi",
-                    description:
-                      "Temukan informasi penting melalui video-video kami",
-                  },
-                  {
-                    icon: <Icon name="ArticleLine" size={16} />,
-                    title: "Buletin",
-                    link: "/publikasi/buletin-info-jaktim",
-                    description:
-                      "Buletin ini berisi berita dan pembaruan penting ",
-                  },
-                ]}
-              />
+              <MenuList items={links.publikasi} />
             </HoverPopover>
           </ul>
         </div>
