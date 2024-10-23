@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function Page() {
   return (
     <div>
@@ -10,14 +8,11 @@ export default function Page() {
           </h2>
 
           <div className="mt-12 flex justify-center">
-            <div className="relative aspect-[10/8] w-[900px]">
-              <Image
-                src="/img/kantor-walikota-jaktim.png"
-                alt="#"
-                fill
-                className="rounded-xl"
-              />
-            </div>
+            <iframe
+              src="https://online.fliphtml5.com/vnefl/pwjz/"
+              width={1024}
+              height={900}
+            ></iframe>
           </div>
         </div>
       </div>
