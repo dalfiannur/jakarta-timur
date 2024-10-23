@@ -93,12 +93,13 @@ const PaginationArrow = ({
     ? Number(searchParams.get("page"))
     : 1;
   const step = position === "left" ? -1 : 1;
-  const url = new URL(window.location.href);
-  url.searchParams.set("page", (active + step).toString());
+
+  const params = new URLSearchParams(searchParams);
+  params.set("page", (active + step).toString());
 
   return (
     <Link
-      href={`?${url.searchParams.toString()}`}
+      href={`?${params.toString()}`}
       aria-disabled={disabled}
       scroll={!disabled}
       className={tv({
@@ -123,11 +124,12 @@ const PaginationNumber = ({
   active?: boolean;
   label: string;
 }) => {
-  const url = new URL(window.location.href);
-  url.searchParams.set("page", label);
+  const searchParams = useSearchParams();
+  const params = new URLSearchParams(searchParams);
+  params.set("page", label);
   return (
     <Link
-      href={`?${url.searchParams.toString()}`}
+      href={`?${params.toString()}`}
       className={tv({
         base: "w-8 h-8 rounded-full font-semibold flex items-center justify-center",
         variants: {
