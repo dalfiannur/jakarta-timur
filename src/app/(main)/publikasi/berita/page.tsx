@@ -1,4 +1,6 @@
+import { BulletinWidget } from "../BulletinWidget";
 import { NewsItem } from "./NewsItem";
+import { VideoWidget } from "../VideoWidget";
 
 export default function Page() {
   return (
@@ -15,7 +17,10 @@ export default function Page() {
           <NewsItem />
           <NewsItem />
         </div>
-        <div className="w-[437px]">s</div>
+        <div className="w-[437px] flex flex-col gap-12">
+          <VideoWidget />
+          <BulletinWidget />
+        </div>
       </div>
     </div>
   );

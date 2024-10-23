@@ -1,3 +1,5 @@
+import { BulletinWidget } from "../BulletinWidget";
+import { LatestNewsWidget } from "../LatestNewsWidget";
 import { VideoItem } from "./VideoItem";
 
 export default function Page() {
@@ -16,7 +18,10 @@ export default function Page() {
           <VideoItem />
           <VideoItem />
         </div>
-        <div className="w-[437px]">s</div>
+        <div className="w-[437px] flex flex-col gap-12">
+          <LatestNewsWidget />
+          <BulletinWidget />
+        </div>
       </div>
     </div>
   );

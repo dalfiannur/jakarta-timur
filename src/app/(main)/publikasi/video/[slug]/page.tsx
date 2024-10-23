@@ -1,5 +1,6 @@
 import { Icon } from "@/app/icons";
 import Image from "next/image";
+import { LatestNewsWidget } from "../../LatestNewsWidget";
 
 const content =
   "<p>Jakarta Timur, (21/12/2023) - Pemerintah Kota Administrasi Jakarta Timur menerima gelar penganugerahan Keterbukaan Informasi Publik dalam kategori Pemerintah Kota dan Kabupaten Kota dengan predikat Informatif.</p><p>Penghargaan Anugeran Keterbukaan Informasi Publik yang diserahkan Ketua Komisi Informasi DKI Jakarta, Harry Ara Hutabarat, diterima langsung Walikota Administrasi Jakarta Timur, M. Anwar, di Balai Agung, Balaikota, Jakarta Pusat, Kamis (21/12/2023).</p>";
@@ -53,7 +54,9 @@ export default function Page() {
             dangerouslySetInnerHTML={{ __html: content }}
           />
         </div>
-        <div className="w-[437px]">s</div>
+        <div className="w-[437px] flex flex-col gap-12">
+          <LatestNewsWidget />
+        </div>
       </div>
     </div>
   );
