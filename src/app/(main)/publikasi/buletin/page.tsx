@@ -1,3 +1,4 @@
+import { Pagination } from "@/app/components/Pagination";
 import { PhotoItem } from "./PhotoItem";
 
 export default function Page() {
@@ -10,12 +11,17 @@ export default function Page() {
         </p>
       </div>
 
-      <div className="mt-12 grid grid-cols-4 gap-12">
-        <PhotoItem />
-        <PhotoItem />
-        <PhotoItem />
-        <PhotoItem />
-        <PhotoItem />
+      <div className="mt-12">
+        <div className="grid grid-cols-4 gap-12">
+          <PhotoItem />
+          <PhotoItem />
+          <PhotoItem />
+          <PhotoItem />
+          <PhotoItem />
+        </div>
+        <div className="flex justify-center mt-12">
+          <Pagination total={100} />
+        </div>
       </div>
     </div>
   );

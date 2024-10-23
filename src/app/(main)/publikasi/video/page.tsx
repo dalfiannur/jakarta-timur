@@ -1,3 +1,4 @@
+import { Pagination } from "@/app/components/Pagination";
 import { BulletinWidget } from "../BulletinWidget";
 import { LatestNewsWidget } from "../LatestNewsWidget";
 import { VideoItem } from "./VideoItem";
@@ -13,10 +14,15 @@ export default function Page() {
         </p>
       </div>
       <div className="mt-12 flex gap-16">
-        <div className="flex-1 grid grid-cols-2 gap-12">
-          <VideoItem />
-          <VideoItem />
-          <VideoItem />
+        <div className="flex-1">
+          <div className="grid grid-cols-2 gap-12">
+            <VideoItem />
+            <VideoItem />
+            <VideoItem />
+          </div>
+          <div className="flex justify-center">
+            <Pagination total={100} />
+          </div>
         </div>
         <div className="w-[437px] flex flex-col gap-12">
           <LatestNewsWidget />
