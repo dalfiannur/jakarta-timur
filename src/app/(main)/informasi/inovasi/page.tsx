@@ -1,5 +1,6 @@
 import { PageTitle } from "@/app/components/PageTitle";
 import { CardItem } from "./CardItem";
+import { Pagination } from "@/app/components/Pagination";
 
 export default function Page() {
   return (
@@ -19,6 +20,9 @@ export default function Page() {
           <CardItem />
           <CardItem />
           <CardItem />
+        </div>
+        <div className="flex justify-center mt-12">
+          <Pagination total={10} color="blue" />
         </div>
       </div>
     </div>

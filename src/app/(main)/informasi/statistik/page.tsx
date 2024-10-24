@@ -1,6 +1,7 @@
 import { PageTitle } from "@/app/components/PageTitle";
 import { CardItem } from "./CardItem";
 import { Icon } from "@/app/icons";
+import { Pagination } from "@/app/components/Pagination";
 
 export default function Page() {
   return (
@@ -31,13 +32,18 @@ export default function Page() {
             Sumber: https://jaktimkota.bps.go.id/
           </a>
         </div>
-        <div className="mt-6 grid grid-cols-5 gap-x-4 gap-y-12">
-          <CardItem />
-          <CardItem />
-          <CardItem />
-          <CardItem />
-          <CardItem />
-          <CardItem />
+        <div className="mt-6">
+          <div className="grid grid-cols-5 gap-x-4 gap-y-12">
+            <CardItem />
+            <CardItem />
+            <CardItem />
+            <CardItem />
+            <CardItem />
+            <CardItem />
+          </div>
+          <div className="mt-12 flex justify-center">
+            <Pagination total={100} color="blue" />
+          </div>
         </div>
       </div>
     </div>
