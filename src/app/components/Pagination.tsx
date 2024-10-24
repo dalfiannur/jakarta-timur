@@ -55,7 +55,13 @@ const getPagination = (current: number, total: number) => {
   return range;
 };
 
-export const Pagination = ({ total }: { total: number }) => {
+export const Pagination = ({
+  total,
+  color = "pink",
+}: {
+  total: number;
+  color?: "blue" | "pink";
+}) => {
   const searchParams = useSearchParams();
   const active = searchParams.has("page")
     ? Number(searchParams.get("page"))
@@ -64,7 +70,7 @@ export const Pagination = ({ total }: { total: number }) => {
 
   return (
     <div className="flex items-center gap-4">
-      <PaginationArrow position="left" disabled={active === 1} />
+      <PaginationArrow position="left" color={color} disabled={active === 1} />
       {pagination.map((item, index) =>
         typeof item === "string" ? (
           <PaginationNumber key={index} label="..." />
@@ -72,21 +78,51 @@ export const Pagination = ({ total }: { total: number }) => {
           <PaginationNumber
             key={index}
             active={active === item}
+            color={color}
             label={item.toString()}
           />
         )
       )}
-      <PaginationArrow position="right" disabled={active === total} />
+      <PaginationArrow
+        position="right"
+        color={color}
+        disabled={active === total}
+      />
     </div>
   );
 };
 
+const paginationArrowCss = tv({
+  base: "",
+  variants: {
+    color: {
+      blue: "",
+      pink: "",
+    },
+    disabled: { true: "text-gray-400", false: "" },
+  },
+  compoundVariants: [
+    {
+      color: "pink",
+      disabled: false,
+      class: "text-pink-500",
+    },
+    {
+      color: "blue",
+      disabled: false,
+      class: "text-blue-500",
+    },
+  ],
+});
+
 const PaginationArrow = ({
   position,
   disabled,
+  color = "pink",
 }: {
   position: "left" | "right";
   disabled?: boolean;
+  color?: "blue" | "pink";
 }) => {
   const searchParams = useSearchParams();
   const active = searchParams.has("page")
@@ -102,12 +138,7 @@ const PaginationArrow = ({
       href={`?${params.toString()}`}
       aria-disabled={disabled}
       scroll={!disabled}
-      className={tv({
-        base: "",
-        variants: {
-          disabled: { true: "text-gray-400", false: "text-pink-500" },
-        },
-      })({ disabled })}
+      className={paginationArrowCss({ disabled, color })}
     >
       <Icon
         name={position === "left" ? "ChevronLeft" : "ChevronRight"}
@@ -117,12 +148,50 @@ const PaginationArrow = ({
   );
 };
 
+const paginationNumberCss = tv({
+  base: "w-8 h-8 rounded-full font-semibold flex items-center justify-center",
+  variants: {
+    active: {
+      true: "",
+      false: "",
+    },
+    color: {
+      pink: "",
+      blue: "",
+    },
+  },
+  compoundVariants: [
+    {
+      active: false,
+      color: "pink",
+      class: "text-pink-500",
+    },
+    {
+      active: false,
+      color: "blue",
+      class: "text-blue-500",
+    },
+    {
+      active: true,
+      color: "pink",
+      class: "bg-pink-500 text-white",
+    },
+    {
+      active: true,
+      color: "blue",
+      class: "bg-blue-500 text-white",
+    },
+  ],
+});
+
 const PaginationNumber = ({
   active,
   label,
+  color = "pink",
 }: {
   active?: boolean;
   label: string;
+  color?: "blue" | "pink";
 }) => {
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams);
@@ -130,15 +199,7 @@ const PaginationNumber = ({
   return (
     <Link
       href={`?${params.toString()}`}
-      className={tv({
-        base: "w-8 h-8 rounded-full font-semibold flex items-center justify-center",
-        variants: {
-          active: {
-            true: "bg-pink-500 text-white",
-            false: "text-pink-500",
-          },
-        },
-      })({ active })}
+      className={paginationNumberCss({ active, color })}
     >
       {label}
     </Link>
