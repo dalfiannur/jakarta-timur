@@ -16,7 +16,7 @@ export default async function Page() {
         topSpacer
       />
       <div className="py-12 container mx-auto">
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-2 gap-10">
           {hospitals.map((item, index) => (
             <div key={index} className="border rounded-xl p-6 flex gap-10">
               <div className="p-1">
