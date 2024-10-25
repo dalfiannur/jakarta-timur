@@ -3,10 +3,12 @@
 import { ReactNode } from "react";
 import { AnimatePresence } from "framer-motion";
 import { useSearchParams } from "next/navigation";
-import { OrganizationStructure } from "./OrganizationStructure";
+import { OrganizationStructureSection } from "./OrganizationStructureSection";
+import { WalikotaSection } from "./WalikotaSection";
 
 const section: { [key: string]: ReactNode } = {
-  "struktur-organisasi": <OrganizationStructure />,
+  "struktur-organisasi": <OrganizationStructureSection />,
+  walikota: <WalikotaSection />,
 };
 
 export const Content = () => {

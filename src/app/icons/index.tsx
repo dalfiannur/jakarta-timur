@@ -1,3 +1,4 @@
+import { ArrowRight } from "./ArrowRight";
 import { ArticleLine } from "./ArticleLine";
 import { ArtTrack } from "./ArtTrack";
 import { BriefcaseColored } from "./BriefcaseColored";
@@ -132,6 +133,7 @@ const icons = {
   ParkMultiColored,
   Phone,
   CheckOne,
+  ArrowRight,
 };
 
 interface IconProps {

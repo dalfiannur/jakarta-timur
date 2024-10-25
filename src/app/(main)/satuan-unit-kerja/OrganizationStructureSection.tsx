@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { SectionTitle } from "./SectionTitle";
 
-export const OrganizationStructure = () => {
+export const OrganizationStructureSection = () => {
   return (
     <div>
       <SectionTitle>Struktur Organisasi</SectionTitle>
