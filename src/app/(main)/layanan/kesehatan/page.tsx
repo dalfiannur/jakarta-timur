@@ -2,6 +2,7 @@ import { PageTitle } from "@/app/components/PageTitle";
 import { getHospitals } from "./actions";
 import { Icon } from "@/app/icons";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function Page() {
   const hospitals = await getHospitals();
@@ -17,7 +18,7 @@ export default async function Page() {
       <div className="py-12 container mx-auto">
         <div className="grid grid-cols-2 gap-6">
           {hospitals.map((item, index) => (
-            <div key={index} className="border rounded-xl p-4 flex gap-10">
+            <div key={index} className="border rounded-xl p-6 flex gap-10">
               <div className="p-1">
                 <Image
                   src={item.logo}
@@ -50,6 +51,12 @@ export default async function Page() {
                     ))}
                   </ul>
                 </div>
+                <Link
+                  href={item.link}
+                  className="mt-6 border border-pink-500 rounded-xl text-pink-500 p-4 text-semibold inline-block w-full text-center"
+                >
+                  Akses Website Resmi
+                </Link>
               </div>
             </div>
           ))}
