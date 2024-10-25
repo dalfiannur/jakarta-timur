@@ -28,11 +28,13 @@ export const SidebarItem = ({ children, value }: SidebarItemProps) => {
 
   const onClick = useCallback(
     (param: string) => {
-      router.push("/tentang-jakarta-timur?s=" + param, {
+      const p = new URLSearchParams(params);
+      p.set("s", param);
+      router.push(`?${p.toString()}`, {
         scroll: false,
       });
     },
-    [params]
+    [params, router]
   );
 
   return (
