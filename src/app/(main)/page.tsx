@@ -112,7 +112,7 @@ export default async function Home() {
   const newsStory = await getNewsStory();
 
   return (
-    <div className="h-screen">
+    <div className="min-h-screen">
       <Hero />
       <SectionBox
         title="Layanan Publik Terintegrasi"
