@@ -5,6 +5,7 @@ import { BusSign } from "./BusSign";
 import { BusSignColored } from "./BusSignColored";
 import { Calendar } from "./Calendar";
 import { Camera } from "./Camera";
+import { CheckOne } from "./CheckOne";
 import { ChevronDown } from "./ChevronDown";
 import { ChevronLeft } from "./ChevronLeft";
 import { ChevronRight } from "./ChevronRight";
@@ -44,6 +45,7 @@ import { Park } from "./Park";
 import { ParkColored } from "./ParkColored";
 import { ParkMultiColored } from "./ParkMultiColored";
 import { PcCovidColored } from "./PcCovidColored";
+import { Phone } from "./Phone";
 import { QuillWrite } from "./QuillWrite";
 import { ScheduleColored } from "./ScheduleColored";
 import { School } from "./School";
@@ -128,6 +130,8 @@ const icons = {
   CirclePlus,
   GoogleMapColored,
   ParkMultiColored,
+  Phone,
+  CheckOne,
 };
 
 interface IconProps {

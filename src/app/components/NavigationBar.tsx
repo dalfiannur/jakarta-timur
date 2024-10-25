@@ -71,6 +71,55 @@ const links = {
       link: "/informasi/statistik",
     },
   ],
+  layanan: [
+    {
+      icon: <Icon name="School" size={16} />,
+      title: "Pendidikan",
+      link: "/layanan/pendidikan",
+      description:
+        "Layanan dan Program PEndidikan untuk Masa Depan yang Lebih Cerah",
+    },
+    {
+      icon: <Icon name="Hospital" size={16} />,
+      title: "Kesehatan",
+      link: "/layanan/kesehatan",
+      description: "Informasi pelayanan kesehatan di Jakarta Timur",
+    },
+    {
+      icon: <Icon name="BusSign" size={16} />,
+      title: "Transportasi",
+      link: "/layanan/transportasi",
+      description:
+        "Temukan Informasi Lengkap tentang Transportasi Publik dan Rute Terbaik.",
+    },
+    {
+      icon: <Icon name="SmartCity" size={16} />,
+      title: "Internet Jak Wifi",
+      link: "/layanan/internet-jak-wifi",
+      description: "Informasi Lengkap tentang Layanan Internet di Area Anda",
+    },
+    {
+      icon: <Icon name="ServiceLine" size={16} />,
+      title: "PTSP",
+      link: "/layanan/ptsp",
+      description:
+        "Sumber Daya dan Informasi untuk Karir yang Sukses dan Berkelanjutan",
+    },
+    {
+      icon: <Icon name="Tax" size={16} />,
+      title: "Pajak",
+      link: "/layanan/pajak",
+      description:
+        "Sumber Daya dan Informasi untuk Karir yang Sukses dan Berkelanjutan",
+    },
+    {
+      icon: <Icon name="CustomerService" size={16} />,
+      title: "Kanal Aduan",
+      link: "/layanan/kanal-aduan",
+      description:
+        "Sampaikan Aduan dan Keluhan Anda untuk Mendapatkan Respon Cepat dan Efektif",
+    },
+  ],
 };
 
 export const NavigationBar = () => {
@@ -212,59 +261,7 @@ export const NavigationBar = () => {
               />
             </HoverPopover>
             <HoverPopover label="Layanan" index="/layanan">
-              <MenuList
-                items={[
-                  {
-                    icon: <Icon name="School" size={16} />,
-                    title: "Pendidikan",
-                    link: "/publikasi/berita-pemerintah-terkini",
-                    description:
-                      "Layanan dan Program Pendidikan untuk Masa Depan yang Lebih Cerah",
-                  },
-                  {
-                    icon: <Icon name="Hospital" size={16} />,
-                    title: "Kesehatan",
-                    link: "/publikasi/berita-terkini",
-                    description:
-                      "Informasi pelayanan kesehatan di Jakarta Timur",
-                  },
-                  {
-                    icon: <Icon name="BusSign" size={16} />,
-                    title: "Transportasi",
-                    link: "/publikasi/berita-terkini",
-                    description:
-                      "Temukan Informasi Lengkap tentang Transportasi Publik dan Rute Terbaik.",
-                  },
-                  {
-                    icon: <Icon name="SmartCity" size={16} />,
-                    title: "Internet Jak Wifi",
-                    link: "/publikasi/berita-terkini",
-                    description:
-                      "Informasi Lengkap tentang Layanan Internet di Area Anda",
-                  },
-                  {
-                    icon: <Icon name="ServiceLine" size={16} />,
-                    title: "PTSP",
-                    link: "/publikasi/berita-terkini",
-                    description:
-                      "Sumber Daya dan Informasi untuk Karir yang Sukses dan Berkelanjutan",
-                  },
-                  {
-                    icon: <Icon name="Tax" size={16} />,
-                    title: "Pajak",
-                    link: "/publikasi/berita-terkini",
-                    description:
-                      "Sumber Daya dan Informasi untuk Karir yang Sukses dan Berkelanjutan",
-                  },
-                  {
-                    icon: <Icon name="CustomerService" size={16} />,
-                    title: "Kanal Aduan",
-                    link: "/publikasi/berita-terkini",
-                    description:
-                      "Sampaikan Aduan dan Keluhan Anda untuk Mendapatkan Respon Cepat dan Efektif",
-                  },
-                ]}
-              />
+              <MenuList items={links.layanan} />
             </HoverPopover>
           </ul>
           <div className="group flex-1 bg-gray-100 rounded-lg relative flex items-center border border-gray-100 text-gray-400 focus-within:border-pink-500/40">
