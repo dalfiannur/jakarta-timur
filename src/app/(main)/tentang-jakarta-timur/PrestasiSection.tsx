@@ -1,12 +1,10 @@
-import { motion } from "framer-motion";
 import { SectionTitle } from "./SectionTitle";
 import { Icon } from "@/app/icons";
-import { animations } from "./animations";
 import { PrestasiItem } from "./PrestasiItem";
 
 export const PrestasiSection = () => {
   return (
-    <motion.div {...animations}>
+    <div>
       <SectionTitle>Prestasi</SectionTitle>
       <div className="mt-8">
         <div className="border rounded-xl overflow-hidden flex pl-4 items-center focus-within:border-pink-400">
@@ -32,6 +30,6 @@ export const PrestasiSection = () => {
           <PrestasiItem />
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };

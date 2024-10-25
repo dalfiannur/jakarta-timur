@@ -1,7 +1,5 @@
-import { motion } from "framer-motion";
 import { SectionTitle } from "./SectionTitle";
 import { MapArea } from "@/app/components/MapArea";
-import { animations } from "./animations";
 
 const StatisticItem = ({ title, value }: { title: string; value: number }) => {
   return (
@@ -14,7 +12,7 @@ const StatisticItem = ({ title, value }: { title: string; value: number }) => {
 
 export const MapSection = () => {
   return (
-    <motion.div {...animations}>
+    <div>
       <SectionTitle>Visi Misi &amp; Kegiatan Strategis</SectionTitle>
       <div className="mt-16 flex items-center justify-center gap-24">
         <MapArea />
@@ -84,6 +82,6 @@ export const MapSection = () => {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };

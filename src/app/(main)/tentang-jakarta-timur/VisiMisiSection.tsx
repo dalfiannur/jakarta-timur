@@ -1,6 +1,4 @@
-import { motion } from "framer-motion";
 import { SectionTitle } from "./SectionTitle";
-import { animations } from "./animations";
 import { NumberList } from "@/app/components/NumberList";
 import { ReactNode } from "react";
 import { MisiArt } from "./MisiArt";
@@ -9,7 +7,7 @@ import Image from "next/image";
 
 export const VisiMisiSection = () => {
   return (
-    <motion.div {...animations} className="border-l pl-6 flex-1">
+    <div className="border-l pl-6 flex-1">
       <SectionTitle>Visi Misi &amp; Kegiatan Strategis</SectionTitle>
       <div className="mt-8">
         <div className="flex gap-8 bg-blue-500 rounded-3xl text-white px-8 py-6">
@@ -80,7 +78,7 @@ export const VisiMisiSection = () => {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
