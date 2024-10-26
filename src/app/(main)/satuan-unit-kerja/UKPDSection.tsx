@@ -4,36 +4,40 @@ import {Pagination} from "@/app/components/Pagination";
 
 const items = [
     {
-        title: "Kepala Bagian Tata Pemerintahan",
-        name: "Eka Darmawan"
+        title: "Inspektur Pembantu Kota Administrasi Jakarta Timur",
+        name: "A Dasuki"
     },
     {
-        title: "Kepala Bagian Hukum",
-        name: "Eka Darmawan"
+        title: "Suku Badan Perencanaan Pembangunan Daerah Kota Administrasi Jakarta Timur",
+        name: "Tulus Ludiyo Setiawan"
     },
     {
-        title: "Kepala Bagian Kesejahteraan Rakyat",
-        name: "Eka Darmawan"
+        title: "Satuan Polisi Pamong Praja Kota Administrasi Jakarta Timur",
+        name: "Budhy Novian"
     },
     {
-        title: "Kepala Bagian Kepegawaian, Tatalaksana dan Pelayanan",
-        name: "Eka Darmawan"
+        title: "Suku Dinas Tenaga Kerja, Transmigrasi dan Energi",
+        name: "Galuh Prasiwi W SH MM"
     },
     {
-        title: "Kepala Bagian Penataan Kota & Lingkungan Hidup",
-        name: "Eka Darmawan"
+        title: "Suku Dinas Pemberdayaan Perlindungan Anak dan Pengendalian Penduduk",
+        name: "Hary Sutanto"
     },
     {
-        title: "Kepala Bagian Perekonomian",
-        name: "Eka Darmawan"
+        title: "Suku Dinas Bina Marga",
+        name: "Benhard Hutajulu"
     },
     {
-        title: "Kepala Bagian Keuangan",
-        name: "Eka Darmawan"
+        title: "Suku Dinas Ketahanan Pangan, Kelautan dan Pertanian",
+        name: "Iwan Indriyanto"
     },
     {
-        title: "Kepala Bagian Umum dan Protokol",
-        name: "Eka Darmawan"
+        title: "Suku Dinas Komunikasi, Informatika dan Statistik",
+        name: "Nuruning Septarida"
+    },
+    {
+        title: "Unit Pengelola Gelanggang Remaja Kota Administrasi Jakarta Timur",
+        name: "Wisnu Dewanto, MM"
     }
 ]
 export const UKPDSection = () => {
@@ -53,7 +57,7 @@ export const UKPDSection = () => {
                 ))}
             </div>
             <div className="mt-2 flex justify-center">
-                <Pagination total={2} color="blue" />
+                <Pagination total={2} color="blue"/>
             </div>
         </div>
     )
