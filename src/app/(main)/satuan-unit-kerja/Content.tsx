@@ -9,6 +9,7 @@ import {SekretariatKotaSection} from "./SekretariatKotaSection";
 import {BagianKotaSection} from "./BagianKotaSection";
 import {UKPDSection} from "./UKPDSection";
 import {KecamatanSection} from "./KecamatanSection";
+import {KelurahanSection} from "./KelurahanSection";
 
 const section: { [key: string]: ReactNode } = {
   "struktur-organisasi": <OrganizationStructureSection/>,
@@ -16,7 +17,8 @@ const section: { [key: string]: ReactNode } = {
   "sekretariat-kota": <SekretariatKotaSection/>,
   "bagian-kota": <BagianKotaSection/>,
   ukpd: <UKPDSection/>,
-  kecamatan: <KecamatanSection/>
+  kecamatan: <KecamatanSection/>,
+  kelurahan: <KelurahanSection/>
 };
 
 export const Content = () => {
