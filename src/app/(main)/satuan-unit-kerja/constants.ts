@@ -11,5 +11,5 @@ export const SIDEBAR_ITEMS: {
 };
 
 export const sidebarItems = Object.entries(SIDEBAR_ITEMS).map(
-  ([key, label]) => ({ key, label })
+  ([key, label]) => ({ key, label: key === "ukpd" ? "UKPD" : label })
 );
