@@ -42,6 +42,7 @@ import {MapMarkerAlt} from "./MapMarkerAlt";
 import {NetworkSettingLineColored} from "./NetworkSettingLineColored";
 import {News} from "./News";
 import {Office} from "./Office";
+import {OutlineShare} from "./OutlineShare";
 import {Park} from "./Park";
 import {ParkColored} from "./ParkColored";
 import {ParkMultiColored} from "./ParkMultiColored";
@@ -135,7 +136,8 @@ const icons = {
   Phone,
   CheckOne,
   ArrowRight,
-  UserRoundedBoldDuotone
+  UserRoundedBoldDuotone,
+  OutlineShare
 };
 
 interface IconProps {
