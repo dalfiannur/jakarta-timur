@@ -66,7 +66,9 @@ import {UserRoundedBoldDuotone} from "./UserRoundedBoldDuotone";
 import {Users} from "./Users";
 import {Vacation} from "./Vacation";
 import {XColored} from "./XColored";
+import {XGrey} from "./XGrey";
 import {YoutubeColored} from "./YoutubeColored";
+import {WhatsappColored} from "@/app/icons/WhatsappColored";
 
 const icons = {
   ChevronDown,
@@ -137,7 +139,9 @@ const icons = {
   CheckOne,
   ArrowRight,
   UserRoundedBoldDuotone,
-  OutlineShare
+  OutlineShare,
+  XGrey,
+  WhatsappColored,
 };
 
 interface IconProps {
