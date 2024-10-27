@@ -277,7 +277,7 @@ export const NavigationBar = () => {
             <HoverPopover label="Informasi" index="/informasi">
               <MenuList items={links.informasi} />
             </HoverPopover>
-            <NavigationBarSingleItem label="PPID" href="#" index="/ppid" />
+            <NavigationBarSingleItem label="PPID" href="/ppid" index="/ppid" />
             <NavigationBarSingleItem
               label="Dashboard"
               href="#"
