@@ -21,6 +21,7 @@ import { EcoFactoryColored } from "./EcoFactoryColored";
 import { Employee } from "./Employee";
 import { Employees } from "./Employees";
 import { FacebookColored } from "./FacebookColored";
+import { FacebookFill } from "./FacebookFill";
 import { FloodWarningColored } from "./FloodWarningColored";
 import { FolderVideo } from "./FolderVideo";
 import { GalleryWideBold } from "./GalleryWideBold";
@@ -35,6 +36,7 @@ import { HospitalColored } from "./HospitalColored";
 import { ImproveRelevance } from "./ImproveRelevance";
 import { Info } from "./Info";
 import { InstagramColored } from "./InstagramColored";
+import { Link } from "./Link";
 import { LinkedInColored } from "./LinkedInColored";
 import { MageTrophyColored } from "./MageTrhopyColored";
 import { Mail } from "./Mail";
@@ -146,6 +148,8 @@ const icons = {
   WhatsappColored,
   Pdf,
   Download,
+  Link,
+  FacebookFill,
 };
 
 interface IconProps {
