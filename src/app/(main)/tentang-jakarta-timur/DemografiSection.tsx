@@ -6,6 +6,8 @@ import { CitizenCountStatistic } from "./CitizenCountStatistic";
 import { CitizenOverview } from "./CitizenOverview";
 import { BirthRegistrationStatistic } from "./BirthRegistrationStatistic";
 import { CitizenBirthRegistrationTable } from "./CitizenBirthRegistrationTable";
+import { CitizenCountStatusStatistic } from "./CitizenCountStatusStatistic";
+import { CitizenEducationTable } from "./CitizenEducationTable";
 
 const citizenGrowthStatisticData = [
   {
@@ -214,6 +216,119 @@ export const DemografiSection = () => {
 
       <BirthRegistrationStatistic />
       <CitizenBirthRegistrationTable />
+      <div className="grid grid-cols-2 gap-6">
+        <CitizenCountStatusStatistic
+          marginLeft={130}
+          legend
+          title="Jumlah Penduduk Berumur 15 Tahun Keatas Menurut Jenis Kegiatan Selama Seminggu yang Lalu dan Jenis Kelamin di Kota Jakarta Timur, 2020"
+          sourceInfo="Sumber/Source: BPS, Survei Angkatan Kerja Nasional (Sakernas) Agustus/BPS-Statistics Indonesia, August National Labor Force Survey"
+          total={[
+            {
+              label: "Total Keseluruhan",
+              value: 2_236_887,
+            },
+            {
+              label: "Jenis Kelamin Laki-Laki",
+              value: 1_127_899,
+            },
+            {
+              label: "Jenis Kelamin Perempuan",
+              value: 1_108_988,
+            },
+          ]}
+          data={[
+            {
+              id: 1,
+              label: "Angkatan Kerja",
+              value: [11, 10],
+            },
+            {
+              id: 2,
+              label: "Bekerja",
+              value: [12, 11],
+            },
+            {
+              id: 3,
+              label: "Pengangguran Terbuka",
+              value: [13, 12],
+            },
+            {
+              id: 4,
+              label: "Bukan Angkatan Kerja",
+              value: [14, 13],
+            },
+            {
+              id: 5,
+              label: "Sekolah",
+              value: [15, 14],
+            },
+            {
+              id: 6,
+              label: "Mengurus Rumah Tangga",
+              value: [16, 15],
+            },
+            {
+              id: 7,
+              label: "Lainnya",
+              value: [17, 16],
+            },
+          ]}
+        />
+        <CitizenCountStatusStatistic
+          legend
+          marginLeft={130}
+          title="Penduduk Berumur 15 Tahun Ke Atas yang Bekerja Selama Seminggu yang Lalu Menurut Status Pekerjaan Utama dan Jenis Kelamin di Kota Jakarta Timur, 2020"
+          sourceInfo="Sumber: BPS, Survei Angkatan Kerja Nasional (Sakernas) Agustus"
+          total={[
+            {
+              label: "Total Keseluruhan",
+              value: 1_257_752,
+            },
+            {
+              label: "Jenis Kelamin Laki-Laki",
+              value: 796_511,
+            },
+            {
+              label: "Jenis Kelamin Perempuan",
+              value: 461_241,
+            },
+          ]}
+          data={[
+            {
+              id: 1,
+              label: "Berusaha Sendiri",
+              value: [11, 10],
+            },
+            {
+              id: 2,
+              label: "Berusaha dibantu buruh tidak tetap/buruh tidak dibayar",
+              value: [12, 11],
+            },
+            {
+              id: 3,
+              label: "Berusaha dibantu buruh tetap/buruh dibayar",
+              value: [13, 12],
+            },
+            {
+              id: 4,
+              label: "Buruh/Karyawan/Pegawai",
+              value: [14, 13],
+            },
+            {
+              id: 5,
+              label: "Pekerja Bebas",
+              value: [15, 14],
+            },
+            {
+              id: 6,
+              label: "Pekerja keluarga/tak dibawar",
+              value: [16, 15],
+            },
+          ]}
+        />
+      </div>
+
+      <CitizenEducationTable />
     </div>
   );
 };
