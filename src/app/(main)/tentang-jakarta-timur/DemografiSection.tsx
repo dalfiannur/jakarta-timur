@@ -3,6 +3,9 @@ import { SectionTitle } from "./SectionTitle";
 import { CitizenGrowthStatistic } from "./CitizenGrowthStatistic";
 import { CitizenGrowthTable } from "./CitizenGrowthTable";
 import { CitizenCountStatistic } from "./CitizenCountStatistic";
+import { CitizenOverview } from "./CitizenOverview";
+import { BirthRegistrationStatistic } from "./BirthRegistrationStatistic";
+import { CitizenBirthRegistrationTable } from "./CitizenBirthRegistrationTable";
 
 const citizenGrowthStatisticData = [
   {
@@ -51,7 +54,7 @@ export const DemografiSection = () => {
   return (
     <div className="flex flex-col gap-6">
       <SectionTitle>Demografi</SectionTitle>
-      <OverviewKependudukan />
+      <CitizenOverview />
       <CitizenGrowthStatistic data={citizenGrowthStatisticData} />
       <CitizenGrowthTable />
       <div className="grid grid-cols-2 gap-6">
@@ -208,10 +211,9 @@ export const DemografiSection = () => {
           ]}
         />
       </div>
+
+      <BirthRegistrationStatistic />
+      <CitizenBirthRegistrationTable />
     </div>
   );
-};
-
-const OverviewKependudukan = () => {
-  return <div></div>;
 };

@@ -79,7 +79,7 @@ export const CitizenCountStatistic = ({
 
     ref.current?.append(plot);
     return () => plot.remove();
-  }, [ref, data]);
+  }, [ref, data, height, rows]);
 
   return (
     <div className="border rounded-xl p-10 flex flex-col gap-6">
@@ -92,7 +92,7 @@ export const CitizenCountStatistic = ({
           </div>
         ))}
       </div>
-      <div ref={ref} className="h-[1000px]" />
+      <div ref={ref} />
     </div>
   );
 };
