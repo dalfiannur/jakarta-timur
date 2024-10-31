@@ -80,5 +80,137 @@
       "depth": 35283,
       "genderRatio": 99.7
     }
+  ],
+  "citizenBirthRegistrations": [
+    {
+      "district": "Pasar Rebo",
+      "domestic": {
+        "male": 116990,
+        "female": 114929,
+        "total": 231919
+      },
+      "foreigner": {
+        "male": 10,
+        "female": 2,
+        "total": 12
+      }
+    },
+    {
+      "district": "Ciracas",
+      "domestic": {
+        "male": 156790,
+        "female": 154698,
+        "total": 311488
+      },
+      "foreigner": {
+        "male": 12,
+        "female": 1,
+        "total": 13
+      }
+    },
+    {
+      "district": "Cipayung",
+      "domestic": {
+        "male": 144326,
+        "female": 141919,
+        "total": 286245
+      },
+      "foreigner": {
+        "male": 10,
+        "female": 2,
+        "total": 12
+      }
+    },
+    {
+      "district": "Makasar",
+      "domestic": {
+        "male": 111978,
+        "female": 110480,
+        "total": 222458
+      },
+      "foreigner": {
+        "male": 7,
+        "female": 0,
+        "total": 7
+      }
+    },
+    {
+      "district": "Kramat Jati",
+      "domestic": {
+        "male": 158220,
+        "female": 156098,
+        "total": 314318
+      },
+      "foreigner": {
+        "male": 15,
+        "female": 5,
+        "total": 20
+      }
+    },
+    {
+      "district": "Jatinegara",
+      "domestic": {
+        "male": 164225,
+        "female": 164225,
+        "total": 326084
+      },
+      "foreigner": {
+        "male": 32,
+        "female": 15,
+        "total": 47
+      }
+    },
+    {
+      "district": "Duren Sawit",
+      "domestic": {
+        "male": 220045,
+        "female": 221033,
+        "total": 441078
+      },
+      "foreigner": {
+        "male": 19,
+        "female": 18,
+        "total": 37
+      }
+    },
+    {
+      "district": "Cakung",
+      "domestic": {
+        "male": 285879,
+        "female": 276835,
+        "total": 562714
+      },
+      "foreigner": {
+        "male": 15,
+        "female": 10,
+        "total": 25
+      }
+    },
+    {
+      "district": "Pulo Gadung",
+      "domestic": {
+        "male": 153671,
+        "female": 154164,
+        "total": 307835
+      },
+      "foreigner": {
+        "male": 44,
+        "female": 32,
+        "total": 76
+      }
+    },
+    {
+      "district": "Matraman",
+      "domestic": {
+        "male": 95135,
+        "female": 95258,
+        "total": 95258
+      },
+      "foreigner": {
+        "male": 7,
+        "female": 4,
+        "total": 11
+      }
+    }
   ]
 }

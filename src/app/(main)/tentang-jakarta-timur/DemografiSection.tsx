@@ -1,11 +1,9 @@
 "use client";
 import { SectionTitle } from "./SectionTitle";
 import { CitizenGrowthStatistic } from "./CitizenGrowthStatistic";
-import { CitizenGrowthTable } from "./CitizenGrowthTable";
 import { CitizenCountStatistic } from "./CitizenCountStatistic";
 import { CitizenOverview } from "./CitizenOverview";
 import { BirthRegistrationStatistic } from "./BirthRegistrationStatistic";
-import { CitizenBirthRegistrationTable } from "./CitizenBirthRegistrationTable";
 import { CitizenCountStatusStatistic } from "./CitizenCountStatusStatistic";
 import { CitizenEducationTable } from "./CitizenEducationTable";
 import { Column, Footer, Table } from "./Table";
@@ -74,11 +72,14 @@ const footerCounter = <T,>(
   return formattedNumber(value, type === "sum" ? 0 : 2);
 };
 
-const citizenGrowthOptions: {
+type TableOptions<T> = {
   title: string;
   columns: Column[][];
-  footers: Footer<(typeof data.citizenGrowth)["0"]>[];
-} = {
+  footers: Footer<T>[];
+  sourceInfo?: string;
+};
+
+const citizenGrowthOptions: TableOptions<(typeof data.citizenGrowth)["0"]> = {
   title:
     "Penduduk, Laju Pertumbuhan Penduduk per Tahun, Distribusi Persentase Penduduk, Kepadatan Penduduk, Rasio Jenis Kelamin Penduduk Menurut Kecamatan Kota Jakarta Timur, 2020",
   columns: [
@@ -137,14 +138,103 @@ const citizenGrowthOptions: {
   ],
 };
 
+const citizenRegistrationOptions: TableOptions<
+  (typeof data.citizenBirthRegistrations)["0"]
+> = {
+  title:
+    "Registrasi Penduduk Menurut Jenis Kelamin dan Kecamatan di Kota Jakarta Timur, 2020",
+  columns: [
+    [
+      {
+        key: "district",
+        header: "Kecamatan",
+        rowSpan: 2,
+      },
+      {
+        key: null,
+        header: "WNI",
+        colSpan: 3,
+        compact: true,
+      },
+      {
+        key: null,
+        header: "WNA",
+        colSpan: 3,
+        compact: true,
+      },
+    ],
+    [
+      {
+        key: "domestic.male",
+        header: "Laki-Laki",
+        compact: true,
+        render: (v) => formattedNumber(v),
+      },
+      {
+        key: "domestic.female",
+        header: "Laki-Laki",
+        compact: true,
+        render: (v) => formattedNumber(v),
+      },
+      {
+        key: "domestic.total",
+        header: "Jumlah",
+        compact: true,
+        render: (v) => formattedNumber(v),
+      },
+      {
+        key: "foreigner.male",
+        header: "Laki-Laki",
+        compact: true,
+        render: (v) => formattedNumber(v),
+      },
+      {
+        key: "foreigner.female",
+        header: "Perempuan",
+        compact: true,
+        render: (v) => formattedNumber(v),
+      },
+      {
+        key: "foreigner.total",
+        header: "Jumlah",
+        compact: true,
+        render: (v) => formattedNumber(v),
+      },
+    ],
+  ],
+  footers: [
+    {
+      render: () => "Kota Jakarta Timur",
+      nowrap: true,
+    },
+    {
+      render: (items) => footerCounter(items, (d) => d.domestic.male),
+    },
+    {
+      render: (items) => footerCounter(items, (d) => d.domestic.female),
+    },
+    {
+      render: (items) => footerCounter(items, (d) => d.domestic.total),
+    },
+    {
+      render: (items) => footerCounter(items, (d) => d.foreigner.male),
+    },
+    {
+      render: (items) => footerCounter(items, (d) => d.foreigner.female),
+    },
+    {
+      render: (items) => footerCounter(items, (d) => d.foreigner.total),
+    },
+  ],
+  sourceInfo: "Sumber: Hasil Sensus Penduduk 2020 (September)",
+};
+
 export const DemografiSection = () => {
   return (
     <div className="flex flex-col gap-6">
       <SectionTitle>Demografi</SectionTitle>
       <CitizenOverview />
       <CitizenGrowthStatistic data={citizenGrowthStatisticData} />
-
-      <CitizenGrowthTable />
 
       <Table {...citizenGrowthOptions} data={data.citizenGrowth} />
       <div className="grid grid-cols-2 gap-6">
@@ -303,7 +393,11 @@ export const DemografiSection = () => {
       </div>
 
       <BirthRegistrationStatistic />
-      <CitizenBirthRegistrationTable />
+
+      <Table
+        {...citizenRegistrationOptions}
+        data={data.citizenBirthRegistrations}
+      />
 
       <div className="grid grid-cols-2 gap-6">
         <CitizenCountStatusStatistic
