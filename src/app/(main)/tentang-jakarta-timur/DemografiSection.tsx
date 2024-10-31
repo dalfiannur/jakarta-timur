@@ -10,6 +10,7 @@ import { Column, Footer, Table } from "./Table";
 import { formattedNumber } from "@/utils/format-number";
 import data from "./data.json";
 import _ from "lodash";
+import { ReactNode } from "react";
 
 const citizenGrowthStatisticData = [
   {
@@ -74,46 +75,45 @@ const footerCounter = <T,>(
 
 type TableOptions<T> = {
   title: string;
-  columns: Column[][];
+  columns: Column[];
   footers: Footer<T>[];
   sourceInfo?: string;
+  noteSection?: ReactNode;
 };
 
 const citizenGrowthOptions: TableOptions<(typeof data.citizenGrowth)["0"]> = {
   title:
     "Penduduk, Laju Pertumbuhan Penduduk per Tahun, Distribusi Persentase Penduduk, Kepadatan Penduduk, Rasio Jenis Kelamin Penduduk Menurut Kecamatan Kota Jakarta Timur, 2020",
   columns: [
-    [
-      {
-        header: "Kecamatan",
-        key: "district",
-      },
-      {
-        header: "Penduduk(Jiwa)",
-        key: "citizen",
-        render: (v) => formattedNumber(v),
-      },
-      {
-        header: "Laju Pertumbuhan Penduduk 2010-2020 (%)",
-        key: "growth",
-        render: (v) => formattedNumber(v, 2),
-      },
-      {
-        header: "Persentase Penduduk",
-        key: "percentage",
-        render: (v) => formattedNumber(v, 2),
-      },
-      {
-        header: "Kepadatan Penduduk per km2",
-        key: "depth",
-        render: (v) => formattedNumber(v),
-      },
-      {
-        header: "Rasio Jenis Kelamin Penduduk",
-        key: "genderRatio",
-        render: (v) => formattedNumber(v, 2),
-      },
-    ],
+    {
+      header: "Kecamatan",
+      key: "district",
+    },
+    {
+      header: "Penduduk(Jiwa)",
+      key: "citizen",
+      render: (v) => formattedNumber(v),
+    },
+    {
+      header: "Laju Pertumbuhan Penduduk 2010-2020 (%)",
+      key: "growth",
+      render: (v) => formattedNumber(v, 2),
+    },
+    {
+      header: "Persentase Penduduk",
+      key: "percentage",
+      render: (v) => formattedNumber(v, 2),
+    },
+    {
+      header: "Kepadatan Penduduk per km2",
+      key: "depth",
+      render: (v) => formattedNumber(v),
+    },
+    {
+      header: "Rasio Jenis Kelamin Penduduk",
+      key: "genderRatio",
+      render: (v) => formattedNumber(v, 2),
+    },
   ],
   footers: [
     {
@@ -144,63 +144,63 @@ const citizenRegistrationOptions: TableOptions<
   title:
     "Registrasi Penduduk Menurut Jenis Kelamin dan Kecamatan di Kota Jakarta Timur, 2020",
   columns: [
-    [
-      {
-        key: "district",
-        header: "Kecamatan",
-        rowSpan: 2,
-      },
-      {
-        key: null,
-        header: "WNI",
-        colSpan: 3,
-        compact: true,
-      },
-      {
-        key: null,
-        header: "WNA",
-        colSpan: 3,
-        compact: true,
-      },
-    ],
-    [
-      {
-        key: "domestic.male",
-        header: "Laki-Laki",
-        compact: true,
-        render: (v) => formattedNumber(v),
-      },
-      {
-        key: "domestic.female",
-        header: "Laki-Laki",
-        compact: true,
-        render: (v) => formattedNumber(v),
-      },
-      {
-        key: "domestic.total",
-        header: "Jumlah",
-        compact: true,
-        render: (v) => formattedNumber(v),
-      },
-      {
-        key: "foreigner.male",
-        header: "Laki-Laki",
-        compact: true,
-        render: (v) => formattedNumber(v),
-      },
-      {
-        key: "foreigner.female",
-        header: "Perempuan",
-        compact: true,
-        render: (v) => formattedNumber(v),
-      },
-      {
-        key: "foreigner.total",
-        header: "Jumlah",
-        compact: true,
-        render: (v) => formattedNumber(v),
-      },
-    ],
+    {
+      key: "district",
+      header: "Kecamatan",
+      rowSpan: 2,
+    },
+    {
+      key: null,
+      header: "WNI",
+      colSpan: 3,
+      compact: true,
+      children: [
+        {
+          key: "domestic.male",
+          header: "Laki-Laki",
+          compact: true,
+          render: (v) => formattedNumber(v),
+        },
+        {
+          key: "domestic.female",
+          header: "Laki-Laki",
+          compact: true,
+          render: (v) => formattedNumber(v),
+        },
+        {
+          key: "domestic.total",
+          header: "Jumlah",
+          compact: true,
+          render: (v) => formattedNumber(v),
+        },
+      ],
+    },
+    {
+      key: null,
+      header: "WNA",
+      colSpan: 3,
+      compact: true,
+      children: [
+        {
+          key: "foreigner.male",
+          header: "Laki-Laki",
+          compact: true,
+          render: (v) => formattedNumber(v),
+        },
+        {
+          key: "foreigner.female",
+          header: "Perempuan",
+          compact: true,
+          render: (v) => formattedNumber(v),
+        },
+        {
+          key: "foreigner.total",
+          header: "Jumlah",
+          compact: true,
+          render: (v) => formattedNumber(v),
+        },
+      ],
+    },
   ],
   footers: [
     {
@@ -229,6 +229,264 @@ const citizenRegistrationOptions: TableOptions<
   sourceInfo: "Sumber: Hasil Sensus Penduduk 2020 (September)",
 };
 
+const citizenEducationOptions: TableOptions<
+  (typeof data.citizenEducations)["0"]
+> = {
+  title:
+    "Penduduk Berumur 15 Tahun ke Atas Menurut Pendidikan Tertinggi yang Ditamatkan dan Jenis Kegiatan Selama Seminggu yang Lalu di Kota Jakarta Timur, 2020",
+  columns: [
+    {
+      key: "id",
+      header: "Pendidikan Tertinggi yang Ditamatkan",
+      rowSpan: 2,
+    },
+    {
+      key: null,
+      header: "Angkatan Kerja",
+      colSpan: 3,
+      compact: true,
+      children: [
+        {
+          key: "employers",
+          header: "Bekerja",
+          compact: true,
+          render: (v) => formattedNumber(v),
+        },
+        {
+          key: "unemployers",
+          header: "Pengangguran",
+          compact: true,
+          render: (v) => formattedNumber(v),
+        },
+        {
+          key: "totalEmployers",
+          header: "Jumlah Angkatan Kerja",
+          compact: true,
+          render: (v) => formattedNumber(v),
+        },
+      ],
+    },
+    {
+      key: "percentage",
+      header: "Persentase Bekerja Terhadap Angkatan Kerja",
+      rowSpan: 2,
+      render: (v) => formattedNumber(v, 2),
+    },
+    {
+      key: "notWorkforce",
+      header: "Bukan Angkatan Kerja",
+      rowSpan: 2,
+      render: (v) => formattedNumber(v),
+    },
+    {
+      key: "total",
+      header: "Jumlah",
+      rowSpan: 2,
+      render: (v) => formattedNumber(v),
+    },
+    {
+      key: "workforcePercentage",
+      header: "Persentase Angkatan Kerja terhadap Penduduk Usia Kerja",
+      rowSpan: 2,
+      render: (v) => formattedNumber(v, 2),
+    },
+  ],
+  footers: [
+    {
+      render: () => "Total",
+    },
+    {
+      render: (items) => footerCounter(items, (d) => d.employers),
+    },
+    {
+      render: (items) => footerCounter(items, (d) => d.unemployers),
+    },
+    {
+      render: (items) => footerCounter(items, (d) => d.totalEmployers),
+    },
+    {
+      render: (items) => footerCounter(items, (d) => d.percentage, "avg"),
+    },
+    {
+      render: (items) => footerCounter(items, (d) => d.notWorkforce),
+    },
+    {
+      render: (items) => footerCounter(items, (d) => d.total),
+    },
+    {
+      render: (items) =>
+        footerCounter(items, (d) => d.workforcePercentage, "avg"),
+    },
+  ],
+  sourceInfo:
+    "Sumber/Source: BPS, Survei Angkatan Kerja Nasional (Sakernas) Agustus/BPS-Statistics Indonesia, August National Labor Force Survey",
+  noteSection: (
+    <div className="mt-8 flex gap-8 text-xs text-[#23272E] font-medium">
+      <div>Catatan:</div>
+      <div className="flex-1">
+        <ul className="flex gap-8">
+          <li>0 ≤ Sekolah Dasar (SD)</li>
+          <li>1. Sekolah Menengah Pertama</li>
+          <li>2. Sekolah Menengah Atas</li>
+          <li>3. Perguruan Tinggi</li>
+        </ul>
+        <ul className="mt-2 flex gap-8">
+          <li>1. Mencari pekerjaan</li>
+          <li>2. Mempersiapkan usaha</li>
+          <li>3. Merasa tidak mungkin mendapat pekerjaan</li>
+          <li>4. Sudah punya pekerjaan tetapi belum mulai bekerja</li>
+        </ul>
+      </div>
+    </div>
+  ),
+};
+
+const jobseekerOptions: TableOptions<(typeof data.jobseekers)["0"]> = {
+  title:
+    "Jumlah Pencari Kerja Lowongan dan Penempatan yang Terdaftar Menurut Pendidikan di Kota Jakarta Timur, 2020",
+  columns: [
+    {
+      key: "qualification",
+      header: "Pendidikan",
+      rowSpan: 2,
+    },
+    {
+      key: null,
+      header: "Pencari Kerja",
+      colSpan: 3,
+      compact: true,
+      children: [
+        {
+          key: "data.0.male",
+          header: "Laki-Laki",
+          compact: true,
+          nowrap: true,
+          render: (v) => formattedNumber(v),
+        },
+        {
+          key: "data.0.female",
+          header: "Perempuan",
+          compact: true,
+          render: (v) => formattedNumber(v),
+        },
+        {
+          key: "data.0.total",
+          header: "Jumlah",
+          compact: true,
+          render: (v) => formattedNumber(v),
+        },
+      ],
+    },
+    {
+      key: null,
+      header: "Pencari Kerja",
+      colSpan: 3,
+      compact: true,
+      children: [
+        {
+          key: "data.1.male",
+          header: "Laki-Laki",
+          compact: true,
+          nowrap: true,
+          render: (v) => formattedNumber(v),
+        },
+        {
+          key: "data.1.female",
+          header: "Perempuan",
+          compact: true,
+          render: (v) => formattedNumber(v),
+        },
+        {
+          key: "data.1.total",
+          header: "Jumlah",
+          compact: true,
+          render: (v) => formattedNumber(v),
+        },
+      ],
+    },
+    {
+      key: null,
+      header: "Pencari Kerja",
+      colSpan: 3,
+      compact: true,
+      children: [
+        {
+          key: "data.2.male",
+          header: "Laki-Laki",
+          compact: true,
+          nowrap: true,
+          render: (v) => formattedNumber(v),
+        },
+        {
+          key: "data.2.female",
+          header: "Perempuan",
+          compact: true,
+          render: (v) => formattedNumber(v),
+        },
+        {
+          key: "data.2.total",
+          header: "Jumlah",
+          compact: true,
+          render: (v) => formattedNumber(v),
+        },
+      ],
+    },
+  ],
+  footers: [
+    {
+      render: () => "Total",
+    },
+    {
+      render: (items) => footerCounter(items, (d) => d.data[0].male),
+    },
+    {
+      render: (items) => footerCounter(items, (d) => d.data[0].female),
+    },
+    {
+      render: (items) => footerCounter(items, (d) => d.data[0].total),
+    },
+    {
+      render: (items) => footerCounter(items, (d) => d.data[1].male),
+    },
+    {
+      render: (items) => footerCounter(items, (d) => d.data[1].female),
+    },
+    {
+      render: (items) => footerCounter(items, (d) => d.data[1].total),
+    },
+    {
+      render: (items) => footerCounter(items, (d) => d.data[2].male),
+    },
+    {
+      render: (items) => footerCounter(items, (d) => d.data[2].female),
+    },
+    {
+      render: (items) => footerCounter(items, (d) => d.data[2].total),
+    },
+  ],
+  sourceInfo:
+    "Sumber/Source: Dinas Tenaga Kerja dan Transmigrasi Provinsi DKI Jakarta/Manpower and Transmigration Office of DKI Jakarta Province",
+  noteSection: (
+    <div className="mt-8 flex gap-8 text-xs text-[#23272E] font-medium">
+      <div>Note:</div>
+      <div className="flex-1">
+        <ul className="flex gap-8">
+          <li>0 ≤ Sekolah Dasar (SD)</li>
+          <li>1. Sekolah Menengah Pertama</li>
+          <li>2. Sekolah Menengah Atas</li>
+          <li>3. Perguruan Tinggi</li>
+        </ul>
+        <ul className="flex gap-8">
+          <li>1. Mencari pekerjaan</li>
+          <li>2. Mempersiapkan usaha</li>
+          <li>3. Merasa tidak mungkin mendapat pekerjaan</li>
+          <li>4. Sudah punya pekerjaan tetapi belum mulai bekerja</li>
+        </ul>
+      </div>
+    </div>
+  ),
+};
+
 export const DemografiSection = () => {
   return (
     <div className="flex flex-col gap-6">
@@ -237,6 +495,7 @@ export const DemografiSection = () => {
       <CitizenGrowthStatistic data={citizenGrowthStatisticData} />
 
       <Table {...citizenGrowthOptions} data={data.citizenGrowth} />
+
       <div className="grid grid-cols-2 gap-6">
         <CitizenCountStatistic
           title="Penduduk Menurut Jenis Kelamin dan Usia Kota Jakarta Timur, 2020"
@@ -513,271 +772,9 @@ export const DemografiSection = () => {
         />
       </div>
 
-      <CitizenEducationTable />
+      <Table {...citizenEducationOptions} data={data.citizenEducations} />
 
-      <Table
-        title="Jumlah Pencari Kerja Lowongan dan Penempatan yang Terdaftar Menurut Pendidikan di Kota Jakarta Timur, 2020"
-        columns={[
-          [
-            {
-              key: "qualification",
-              header: "Pendidikan",
-              rowSpan: 2,
-            },
-            {
-              key: null,
-              header: "Pencari Kerja",
-              colSpan: 3,
-              compact: true,
-            },
-            {
-              key: null,
-              header: "Pencari Kerja",
-              colSpan: 3,
-              compact: true,
-            },
-            {
-              key: null,
-              header: "Pencari Kerja",
-              colSpan: 3,
-              compact: true,
-            },
-          ],
-          [
-            {
-              key: "data.0.male",
-              header: "Laki-Laki",
-              compact: true,
-              nowrap: true,
-              render: (v) => formattedNumber(v),
-            },
-            {
-              key: "data.0.female",
-              header: "Perempuan",
-              compact: true,
-              render: (v) => formattedNumber(v),
-            },
-            {
-              key: "data.0.total",
-              header: "Jumlah",
-              compact: true,
-              render: (v) => formattedNumber(v),
-            },
-            {
-              key: "data.1.male",
-              header: "Laki-Laki",
-              compact: true,
-              nowrap: true,
-              render: (v) => formattedNumber(v),
-            },
-            {
-              key: "data.1.female",
-              header: "Perempuan",
-              compact: true,
-              render: (v) => formattedNumber(v),
-            },
-            {
-              key: "data.1.total",
-              header: "Jumlah",
-              compact: true,
-              render: (v) => formattedNumber(v),
-            },
-            {
-              key: "data.2.male",
-              header: "Laki-Laki",
-              compact: true,
-              nowrap: true,
-              render: (v) => formattedNumber(v),
-            },
-            {
-              key: "data.2.female",
-              header: "Perempuan",
-              compact: true,
-              render: (v) => formattedNumber(v),
-            },
-            {
-              key: "data.2.total",
-              header: "Jumlah",
-              compact: true,
-              render: (v) => formattedNumber(v),
-            },
-          ],
-        ]}
-        data={[
-          {
-            qualification: "SD",
-            data: [
-              {
-                male: 0,
-                female: 0,
-                total: 0,
-              },
-              {
-                male: 0,
-                female: 0,
-                total: 0,
-              },
-              {
-                male: 0,
-                female: 0,
-                total: 0,
-              },
-            ],
-          },
-          {
-            qualification: "SLTP",
-            data: [
-              {
-                male: 7,
-                female: 0,
-                total: 7,
-              },
-              {
-                male: 3,
-                female: 0,
-                total: 3,
-              },
-              {
-                male: 3,
-                female: 0,
-                total: 3,
-              },
-            ],
-          },
-          {
-            qualification: "SLTA",
-            data: [
-              {
-                male: 1_424,
-                female: 721,
-                total: 2_145,
-              },
-              {
-                male: 1_424,
-                female: 721,
-                total: 2_145,
-              },
-              {
-                male: 1_124,
-                female: 541,
-                total: 1_665,
-              },
-            ],
-          },
-          {
-            qualification: "D I / D II",
-            data: [
-              {
-                male: 280,
-                female: 221,
-                total: 501,
-              },
-              {
-                male: 280,
-                female: 221,
-                total: 501,
-              },
-              {
-                male: 183,
-                female: 163,
-                total: 246,
-              },
-            ],
-          },
-          {
-            qualification: "D III",
-            data: [
-              {
-                male: 32,
-                female: 32,
-                total: 64,
-              },
-              {
-                male: 32,
-                female: 32,
-                total: 64,
-              },
-              {
-                male: 18,
-                female: 17,
-                total: 35,
-              },
-            ],
-          },
-          {
-            qualification: "Sarjana/Doktor/Phd",
-            data: [
-              {
-                male: 157,
-                female: 112,
-                total: 269,
-              },
-              {
-                male: 157,
-                female: 112,
-                total: 269,
-              },
-              {
-                male: 91,
-                female: 63,
-                total: 154,
-              },
-            ],
-          },
-        ]}
-        footers={[
-          {
-            render: () => "Total",
-          },
-          {
-            render: (items) => footerCounter(items, (d) => d.data[0].male),
-          },
-          {
-            render: (items) => footerCounter(items, (d) => d.data[0].female),
-          },
-          {
-            render: (items) => footerCounter(items, (d) => d.data[0].total),
-          },
-          {
-            render: (items) => footerCounter(items, (d) => d.data[1].male),
-          },
-          {
-            render: (items) => footerCounter(items, (d) => d.data[1].female),
-          },
-          {
-            render: (items) => footerCounter(items, (d) => d.data[1].total),
-          },
-          {
-            render: (items) => footerCounter(items, (d) => d.data[2].male),
-          },
-          {
-            render: (items) => footerCounter(items, (d) => d.data[2].female),
-          },
-          {
-            render: (items) => footerCounter(items, (d) => d.data[2].total),
-          },
-        ]}
-        sourceInfo="Sumber/Source: Dinas Tenaga Kerja dan Transmigrasi Provinsi DKI Jakarta/Manpower and Transmigration Office of DKI Jakarta Province"
-        noteSection={
-          <div className="mt-8 flex gap-8 text-xs text-[#23272E] font-medium">
-            <div>Note:</div>
-            <div className="flex-1">
-              <ul className="flex gap-8">
-                <li>0 ≤ Sekolah Dasar (SD)</li>
-                <li>1. Sekolah Menengah Pertama</li>
-                <li>2. Sekolah Menengah Atas</li>
-                <li>3. Perguruan Tinggi</li>
-              </ul>
-              <ul className="flex gap-8">
-                <li>1. Mencari pekerjaan</li>
-                <li>2. Mempersiapkan usaha</li>
-                <li>3. Merasa tidak mungkin mendapat pekerjaan</li>
-                <li>4. Sudah punya pekerjaan tetapi belum mulai bekerja</li>
-              </ul>
-            </div>
-          </div>
-        }
-      />
+      <Table {...jobseekerOptions} data={data.jobseekers} />
 
       <div className="grid grid-cols-2 gap-6">
         <CitizenCountStatusStatistic
@@ -896,26 +893,24 @@ export const DemografiSection = () => {
       <Table
         title="Ikhtisar Statistik Antar Kerja Kota Jakarta Timur, 2020"
         columns={[
-          [
-            {
-              key: "description",
-              header: "Uraian",
-              textAlign: "left",
-              maxWidth: 200,
-            },
-            {
-              key: "male",
-              header: "Laki-Laki",
-            },
-            {
-              key: "female",
-              header: "Perempuan",
-            },
-            {
-              key: "total",
-              header: "Jumlah",
-            },
-          ],
+          {
+            key: "description",
+            header: "Uraian",
+            textAlign: "left",
+            maxWidth: 200,
+          },
+          {
+            key: "male",
+            header: "Laki-Laki",
+          },
+          {
+            key: "female",
+            header: "Perempuan",
+          },
+          {
+            key: "total",
+            header: "Jumlah",
+          },
         ]}
         data={[
           {

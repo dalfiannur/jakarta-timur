@@ -212,5 +212,169 @@
         "total": 11
       }
     }
+  ],
+  "citizenEducations": [
+    {
+      "id": 0,
+      "employers": 150890,
+      "unemployers": 10082,
+      "totalEmployers": 160972,
+      "percentage": 93.74,
+      "notWorkforce": 121186,
+      "total": 282158,
+      "workforcePercentage": 57.05
+    },
+    {
+      "id": 1,
+      "employers": 167137,
+      "unemployers": 12972,
+      "totalEmployers": 180109,
+      "percentage": 92.8,
+      "notWorkforce": 195091,
+      "total": 375200,
+      "workforcePercentage": 48.0
+    },
+    {
+      "id": 2,
+      "employers": 599530,
+      "unemployers": 77911,
+      "totalEmployers": 677441,
+      "percentage": 88.5,
+      "notWorkforce": 403144,
+      "total": 1080585,
+      "workforcePercentage": 62.69
+    },
+    {
+      "id": 3,
+      "employers": 340195,
+      "unemployers": 27774,
+      "totalEmployers": 367969,
+      "percentage": 92.45,
+      "notWorkforce": 130975,
+      "total": 498944,
+      "workforcePercentage": 73.75
+    }
+  ],
+  "jobseekers": [
+    {
+      "qualification": "SD",
+      "data": [
+        {
+          "male": 0,
+          "female": 0,
+          "total": 0
+        },
+        {
+          "male": 0,
+          "female": 0,
+          "total": 0
+        },
+        {
+          "male": 0,
+          "female": 0,
+          "total": 0
+        }
+      ]
+    },
+    {
+      "qualification": "SLTP",
+      "data": [
+        {
+          "male": 7,
+          "female": 0,
+          "total": 7
+        },
+        {
+          "male": 3,
+          "female": 0,
+          "total": 3
+        },
+        {
+          "male": 3,
+          "female": 0,
+          "total": 3
+        }
+      ]
+    },
+    {
+      "qualification": "SLTA",
+      "data": [
+        {
+          "male": 1424,
+          "female": 721,
+          "total": 2145
+        },
+        {
+          "male": 1424,
+          "female": 721,
+          "total": 2145
+        },
+        {
+          "male": 1124,
+          "female": 541,
+          "total": 1665
+        }
+      ]
+    },
+    {
+      "qualification": "D I / D II",
+      "data": [
+        {
+          "male": 280,
+          "female": 221,
+          "total": 501
+        },
+        {
+          "male": 280,
+          "female": 221,
+          "total": 501
+        },
+        {
+          "male": 183,
+          "female": 163,
+          "total": 246
+        }
+      ]
+    },
+    {
+      "qualification": "D III",
+      "data": [
+        {
+          "male": 32,
+          "female": 32,
+          "total": 64
+        },
+        {
+          "male": 32,
+          "female": 32,
+          "total": 64
+        },
+        {
+          "male": 18,
+          "female": 17,
+          "total": 35
+        }
+      ]
+    },
+    {
+      "qualification": "Sarjana/Doktor/Phd",
+      "data": [
+        {
+          "male": 157,
+          "female": 112,
+          "total": 269
+        },
+        {
+          "male": 157,
+          "female": 112,
+          "total": 269
+        },
+        {
+          "male": 91,
+          "female": 63,
+          "total": 154
+        }
+      ]
+    }
   ]
 }

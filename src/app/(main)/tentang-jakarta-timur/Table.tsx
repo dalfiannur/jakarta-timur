@@ -1,5 +1,5 @@
 import { Icon } from "@/app/icons";
-import { ReactNode } from "react";
+import { ReactNode, useMemo } from "react";
 import _ from "lodash";
 
 type TextAlign = "center" | "left" | "right" | "justify";
@@ -14,6 +14,7 @@ export type Column = {
   render?: (value: string | number) => ReactNode;
   textAlign?: TextAlign;
   maxWidth?: number;
+  children?: Column[];
 };
 
 export type Footer<T> = {
@@ -32,20 +33,28 @@ export const Table = <T,>({
   noteSection,
 }: {
   title: string;
-  columns: Column[][];
+  columns: Column[];
   footers: Footer<T>[];
   data: T[];
   sourceInfo?: string;
   noteSection?: ReactNode;
 }) => {
-  const dataColumns: Column[] = columns.flat().filter((d) => d.key !== null);
+  const headerColumns = useMemo(
+    () => [columns, columns.map((d) => d.children ?? []).flat()],
+    [columns],
+  );
+  const dataColumns: Column[] = useMemo(
+    () =>
+      columns.map(({ children, ...rest }) => children ?? [{ ...rest }]).flat(2),
+    [columns],
+  );
 
   return (
     <div className="border rounded-xl p-10">
       <h5 className="text-center text-xl font-bold">{title}</h5>
       <table className="mt-8 rounded-t-2xl overflow-hidden w-full">
         <thead>
-          {columns.map((cols, index) => (
+          {headerColumns.map((cols, index) => (
             <tr key={index} className="bg-[#E9F6FE]">
               {cols.map(({ header, ...cell }, i) => (
                 <Th {...cell} key={i}>
