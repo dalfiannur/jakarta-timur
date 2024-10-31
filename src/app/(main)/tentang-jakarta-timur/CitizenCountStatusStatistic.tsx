@@ -43,13 +43,23 @@ export const CitizenCountStatusStatistic = ({
       marginLeft,
       height,
       marks: [
+        Plot.axisFy({
+          label: null,
+          lineWidth: 12,
+          anchor: "left",
+          fill: "#666666",
+          fontSize: 14,
+          fontWeight: 500,
+        }),
         Plot.barX(rows, {
           fy: "label",
           y: "type",
           x: "value",
           fill: "type",
-          rx2y2: 5,
-          rx2y1: 5,
+          rx2y2: 10,
+          rx2y1: 10,
+          insetBottom: 2,
+          insetTop: 2,
         }),
         Plot.tip(
           rows,
@@ -74,6 +84,7 @@ export const CitizenCountStatusStatistic = ({
       x: {
         label: null,
         grid: true,
+        axis: null,
       },
       fy: {
         label: null,
@@ -87,7 +98,7 @@ export const CitizenCountStatusStatistic = ({
 
     ref.current?.append(plot);
     return () => plot.remove();
-  }, [ref, data, height, rows, marginLeft]);
+  }, [ref, data, height, rows, marginLeft, legend]);
 
   return (
     <div className="border rounded-xl p-10 flex flex-col gap-6">
@@ -102,7 +113,7 @@ export const CitizenCountStatusStatistic = ({
       </div>
       <div ref={ref} />
       {sourceInfo && (
-        <p className="mt-6 flex gap-4 items-center text-blue-500 text-sm">
+        <p className="flex gap-4 items-center text-blue-500 text-sm">
           <Icon name="Info" size={16} />
           {sourceInfo}
         </p>
