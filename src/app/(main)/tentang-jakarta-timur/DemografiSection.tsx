@@ -5,7 +5,6 @@ import { CitizenCountStatistic } from "./CitizenCountStatistic";
 import { CitizenOverview } from "./CitizenOverview";
 import { BirthRegistrationStatistic } from "./BirthRegistrationStatistic";
 import { CitizenCountStatusStatistic } from "./CitizenCountStatusStatistic";
-import { CitizenEducationTable } from "./CitizenEducationTable";
 import { Column, Footer, Table } from "./Table";
 import { formattedNumber } from "@/utils/format-number";
 import data from "./data.json";
