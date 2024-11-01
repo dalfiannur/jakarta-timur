@@ -1,0 +1,68 @@
+{
+  "data": {
+    "counters": [
+      {
+        "label": "Total Keseluruhan",
+        "value": 1257752
+      },
+      {
+        "label": "Jenis Kelamin Laki-Laki",
+        "value": 796511
+      },
+      {
+        "label": "Jenis Kelamin Perempuan",
+        "value": 461241
+      }
+    ],
+    "items": [
+      {
+        "id": 1,
+        "label": "Berusaha Sendiri",
+        "values": {
+          "male": 2,
+          "female": 1
+        }
+      },
+      {
+        "id": 2,
+        "label": "Berusaha dibantu buruh tidak tetap/buruh tidak dibayar",
+        "values": {
+          "male": 2,
+          "female": 1
+        }
+      },
+      {
+        "id": 3,
+        "label": "Berusaha dibantu buruh tetap/buruh dibayar",
+        "values": {
+          "male": 2,
+          "female": 1
+        }
+      },
+      {
+        "id": 4,
+        "label": "Buruh/Karyawan/Pegawai",
+        "values": {
+          "male": 2,
+          "female": 1
+        }
+      },
+      {
+        "id": 5,
+        "label": "Pekerja Bebas",
+        "values": {
+          "male": 2,
+          "female": 1
+        }
+      },
+      {
+        "id": 6,
+        "label": "Pekerja keluarga/tak dibawar",
+        "values": {
+          "male": 2,
+          "female": 1
+        }
+      }
+    ]
+  }
+}

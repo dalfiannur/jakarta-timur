@@ -1,0 +1,70 @@
+{
+  "data": [
+    {
+      "description": "A. Pencari Kerja/Penempatan/Job Seekers/Placement",
+      "male": "",
+      "female": "",
+      "total": ""
+    },
+    {
+      "description": "Pencari kerja yang belum ditempatkan awal tahun",
+      "male": 2060,
+      "female": 1934,
+      "total": 3994
+    },
+    {
+      "description": "Pencari kerja yang terdaftar",
+      "male": 1959,
+      "female": 1185,
+      "total": 3144
+    },
+    {
+      "description": "Pencari kerja yang ditempatkan",
+      "male": 1424,
+      "female": 787,
+      "total": 2.211
+    },
+    {
+      "description": "Pencari kerja yang dihapus",
+      "male": 0,
+      "female": 0,
+      "total": 0
+    },
+    {
+      "description": "B. Lowongan yang ada",
+      "male": "",
+      "female": "",
+      "total": ""
+    },
+    {
+      "description": "Lowongan yang belum dipenuhi",
+      "male": 606,
+      "female": 449,
+      "total": 1055
+    },
+    {
+      "description": "Lowongan yang terdaftar",
+      "male": 1799,
+      "female": 1059,
+      "total": 2858
+    },
+    {
+      "description": "Lowongan yang dipenuhi",
+      "male": 1424,
+      "female": 787,
+      "total": 2211
+    },
+    {
+      "description": "Lowongan yang dihapus",
+      "male": 0,
+      "female": 0,
+      "total": 0
+    },
+    {
+      "description": "Lowongan yang belum dihapus",
+      "male": 0,
+      "female": 0,
+      "total": 0
+    }
+  ]
+}

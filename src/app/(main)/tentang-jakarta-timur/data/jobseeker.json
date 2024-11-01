@@ -1,0 +1,124 @@
+{
+  "data": [
+    {
+      "qualification": "SD",
+      "data": [
+        {
+          "male": 0,
+          "female": 0,
+          "total": 0
+        },
+        {
+          "male": 0,
+          "female": 0,
+          "total": 0
+        },
+        {
+          "male": 0,
+          "female": 0,
+          "total": 0
+        }
+      ]
+    },
+    {
+      "qualification": "SLTP",
+      "data": [
+        {
+          "male": 7,
+          "female": 0,
+          "total": 7
+        },
+        {
+          "male": 3,
+          "female": 0,
+          "total": 3
+        },
+        {
+          "male": 3,
+          "female": 0,
+          "total": 3
+        }
+      ]
+    },
+    {
+      "qualification": "SLTA",
+      "data": [
+        {
+          "male": 1424,
+          "female": 721,
+          "total": 2145
+        },
+        {
+          "male": 1424,
+          "female": 721,
+          "total": 2145
+        },
+        {
+          "male": 1124,
+          "female": 541,
+          "total": 1665
+        }
+      ]
+    },
+    {
+      "qualification": "D I / D II",
+      "data": [
+        {
+          "male": 280,
+          "female": 221,
+          "total": 501
+        },
+        {
+          "male": 280,
+          "female": 221,
+          "total": 501
+        },
+        {
+          "male": 183,
+          "female": 163,
+          "total": 246
+        }
+      ]
+    },
+    {
+      "qualification": "D III",
+      "data": [
+        {
+          "male": 32,
+          "female": 32,
+          "total": 64
+        },
+        {
+          "male": 32,
+          "female": 32,
+          "total": 64
+        },
+        {
+          "male": 18,
+          "female": 17,
+          "total": 35
+        }
+      ]
+    },
+    {
+      "qualification": "Sarjana/Doktor/Phd",
+      "data": [
+        {
+          "male": 157,
+          "female": 112,
+          "total": 269
+        },
+        {
+          "male": 157,
+          "female": 112,
+          "total": 269
+        },
+        {
+          "male": 91,
+          "female": 63,
+          "total": 154
+        }
+      ]
+    }
+  ]
+}

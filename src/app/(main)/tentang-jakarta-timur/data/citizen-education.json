@@ -1,0 +1,44 @@
+{
+  "data": [
+    {
+      "id": 0,
+      "employers": 150890,
+      "unemployers": 10082,
+      "totalEmployers": 160972,
+      "percentage": 93.74,
+      "notWorkforce": 121186,
+      "total": 282158,
+      "workforcePercentage": 57.05
+    },
+    {
+      "id": 1,
+      "employers": 167137,
+      "unemployers": 12972,
+      "totalEmployers": 180109,
+      "percentage": 92.8,
+      "notWorkforce": 195091,
+      "total": 375200,
+      "workforcePercentage": 48.0
+    },
+    {
+      "id": 2,
+      "employers": 599530,
+      "unemployers": 77911,
+      "totalEmployers": 677441,
+      "percentage": 88.5,
+      "notWorkforce": 403144,
+      "total": 1080585,
+      "workforcePercentage": 62.69
+    },
+    {
+      "id": 3,
+      "employers": 340195,
+      "unemployers": 27774,
+      "totalEmployers": 367969,
+      "percentage": 92.45,
+      "notWorkforce": 130975,
+      "total": 498944,
+      "workforcePercentage": 73.75
+    }
+  ]
+}

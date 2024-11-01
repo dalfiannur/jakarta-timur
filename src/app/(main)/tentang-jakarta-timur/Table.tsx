@@ -1,6 +1,7 @@
 import { Icon } from "@/app/icons";
 import { ReactNode, useMemo } from "react";
 import _ from "lodash";
+import { formattedNumber } from "@/utils/format-number";
 
 type TextAlign = "center" | "left" | "right" | "justify";
 
@@ -163,3 +164,21 @@ const Td = ({
     {children}
   </td>
 );
+
+export const footerCounter = <T,>(
+  items: T[],
+  callback: (item: T) => number | string,
+  type: "sum" | "avg" = "sum",
+) => {
+  let value: number;
+  if (type === "sum") {
+    value = items
+      .map(callback)
+      .filter((d) => typeof d === "number")
+      .reduce((a, b) => a + b, 0);
+  } else {
+    value = _.mean(items.map(callback).filter((d) => typeof d === "number"));
+  }
+
+  return formattedNumber(value, type === "sum" ? 0 : 2);
+};
