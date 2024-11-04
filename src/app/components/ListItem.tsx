@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { Icon, IconKeys } from "../icons";
 
 interface ListItemProps {
-  icon: IconKeys;
+  icon?: IconKeys;
   title: string;
   description?: string;
   link?: string;

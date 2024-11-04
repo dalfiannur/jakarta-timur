@@ -1,9 +1,10 @@
-import { ReactNode, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { ListItem } from "./ListItem";
 import _ from "lodash";
+import { IconKeys } from "../icons";
 
 interface Item {
-  icon: ReactNode;
+  icon?: IconKeys;
   title: string;
   description: string;
   link?: string;

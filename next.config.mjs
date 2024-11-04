@@ -1,7 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["timur.jakarta.go.id", "picsum.photos"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**.jakarta.go.id",
+        port: "",
+        search: "",
+      },
+      {
+        protocol: "https",
+        hostname: "picsum.photos",
+        port: "",
+        search: "",
+      },
+    ],
   },
 };
 

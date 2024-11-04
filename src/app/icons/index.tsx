@@ -155,15 +155,13 @@ const icons = {
 export type IconKeys = keyof typeof icons;
 
 interface IconProps {
-  name: keyof typeof icons;
+  name: IconKeys;
   size?: number;
 }
 
 export const Icon = ({ name, size = 24 }: IconProps) => {
   const IconNode = icons[name];
   return (
-    <div style={{ width: size, height: size }}>
-      <IconNode />
-    </div>
+    <div style={{ width: size, height: size }}>{IconNode && <IconNode />}</div>
   );
 };

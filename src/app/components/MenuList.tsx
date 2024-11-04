@@ -3,7 +3,7 @@ import { ListItem } from "./ListItem";
 import { IconKeys } from "../icons";
 
 interface Item {
-  icon: IconKeys;
+  icon?: IconKeys;
   title: string;
   link: string;
   description?: string;
