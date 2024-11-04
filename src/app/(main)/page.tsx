@@ -11,31 +11,7 @@ import { NewsStory } from "../components/NewsStory/NewsStories";
 import { BuletinSlider } from "../components/BuletinSlider/BuletinSlider";
 import { SponsorSection } from "./SponsorSection";
 import { getNews, getNewsStory } from "./actions";
-
-const publicServices = [
-  {
-    icon: <Icon name="CustomerServiceColored" size={48} />,
-    title: "Kanal Aduan",
-    description: "Sampaikan Aduan dan Keluhan dan dapatkan Respon yang Efektif",
-  },
-  {
-    icon: <Icon name="DocumentChecklistColored" size={48} />,
-    title: "Perizinan",
-    description:
-      "Penjabaran informasi terkait pelayanan dan perizinan Provinsi DKI Jakarta",
-  },
-  {
-    icon: <Icon name="BusSignColored" size={48} />,
-    title: "Transportasi",
-    description:
-      "Temukan Informasi Lengkap tentang Transportasi Publik dan Rute Terbaik",
-  },
-  {
-    icon: <Icon name="SmartCityColored" size={48} />,
-    title: "Internet Jak Wifi",
-    description: "Informasi Lengkap tentang Layanan Internet di Area Anda",
-  },
-];
+import { PublicIntegrationServiceSection } from "./PublicIntegrationServiceSection";
 
 const governmentInformation = [
   {
@@ -114,16 +90,7 @@ export default async function Home() {
   return (
     <div className="min-h-screen">
       <Hero />
-      <SectionBox
-        title="Layanan Publik Terintegrasi"
-        subtitle="Semua layanan pemerintah dalam satu tempat, untuk kenyamanan Anda."
-      >
-        <div className="grid grid-cols-4 gap-6">
-          {publicServices.map((item, index) => (
-            <CardLink key={index} {...item} />
-          ))}
-        </div>
-      </SectionBox>
+      <PublicIntegrationServiceSection />
       <SectionBox
         title="Transparansi Informasi Pemerintah"
         subtitle="Kami berkomitmen untuk menyediakan informasi publik yang mudah diakses dan dipahami."
