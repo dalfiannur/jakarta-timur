@@ -4,17 +4,19 @@ import { motion } from "framer-motion";
 import { ReactNode, useState } from "react";
 import { Icon } from "../icons";
 
+export type CardLinkProps = {
+  title: string;
+  description: string;
+  icon: ReactNode;
+  href?: string;
+};
+
 export const CardLink = ({
   title,
   description,
   icon,
   href = "#",
-}: {
-  title: string;
-  description: string;
-  icon: ReactNode;
-  href?: string;
-}) => {
+}: CardLinkProps) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <Link href={href}>
