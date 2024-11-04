@@ -152,6 +152,8 @@ const icons = {
   FacebookFill,
 };
 
+export type IconKeys = keyof typeof icons;
+
 interface IconProps {
   name: keyof typeof icons;
   size?: number;
