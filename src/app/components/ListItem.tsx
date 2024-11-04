@@ -1,10 +1,11 @@
 "use client";
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { Icon, IconKeys } from "../icons";
 
 interface ListItemProps {
-  icon: ReactNode;
+  icon: IconKeys;
   title: string;
   description?: string;
   link?: string;
@@ -26,7 +27,7 @@ export const ListItem = ({ icon, title, description, link }: ListItemProps) => {
     >
       <div className="h-full">
         <div className="bg-gray-100 group-hover:bg-pink-100 p-2 text-gray-500 group-hover:text-pink-500 rounded-lg transition-all duration-500">
-          {icon}
+          {icon && <Icon name={icon} size={16} />}
         </div>
       </div>
       <div className="transition-all duration-500">
