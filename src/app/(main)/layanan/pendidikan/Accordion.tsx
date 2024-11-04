@@ -17,7 +17,9 @@ export const Accordion = ({
     <div className="border-b">
       <Disclosure>
         <DisclosureButton className="w-full inline-flex justify-between gap-20 py-6">
-          <div className="font-bold text-2xl text-pink-500">{label}</div>
+          <div className="font-bold text-2xl text-pink-500 font-plus-jakarta-sans">
+            {label}
+          </div>
           <Icon name="ChevronDown" size={24} />
         </DisclosureButton>
         <DisclosurePanel

@@ -8,6 +8,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        "plus-jakarta-sans": "var(--font-plus-jakarta-sans)",
+        roboto: "var(--font-roboto)",
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
