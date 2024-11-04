@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@faker-js/faker": "^9.2.0",
     "@headlessui/react": "^2.1.8",
     "@observablehq/plot": "^0.6.16",
     "@reduxjs/toolkit": "^2.3.0",

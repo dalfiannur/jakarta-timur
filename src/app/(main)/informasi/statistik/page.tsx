@@ -2,8 +2,24 @@ import { PageTitle } from "@/app/components/PageTitle";
 import { CardItem } from "./CardItem";
 import { Icon } from "@/app/icons";
 import { Pagination } from "@/app/components/Pagination";
+import { faker } from "@faker-js/faker";
 
-export default function Page() {
+const getData = async () => {
+  "use server";
+  const items = Array.from(new Array(15).keys()).map((_, i) => ({
+    id: i + 1,
+    title: "Kota Jakarta Timur Dalam Angka 2024",
+    image: faker.image.urlPicsumPhotos(),
+  }));
+
+  return {
+    items: items.slice(0, 10),
+    pages: Math.ceil(items.length / 10),
+  };
+};
+
+export default async function Page() {
+  const data = await getData();
   return (
     <div>
       <PageTitle
@@ -34,15 +50,12 @@ export default function Page() {
         </div>
         <div className="mt-6">
           <div className="grid grid-cols-5 gap-x-4 gap-y-12">
-            <CardItem />
-            <CardItem />
-            <CardItem />
-            <CardItem />
-            <CardItem />
-            <CardItem />
+            {data.items.map((item, index) => (
+              <CardItem key={index} {...item} />
+            ))}
           </div>
           <div className="mt-12 flex justify-center">
-            <Pagination total={100} color="blue" />
+            <Pagination total={data.pages} color="blue" />
           </div>
         </div>
       </div>

@@ -60,19 +60,19 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
   - [ ] Kepegawaian
 - [ ] Layanan
   - [ ] Pendidikan
-  - [ ] Transportasi
-  - [ ] PTSP
-  - [ ] Kanal Aduan
+  - [x] Transportasi
+  - [x] PTSP
+  - [x] Kanal Aduan
   - [ ] Kesehatan
-  - [ ] Internet Jak Wifi
-  - [ ] Pajak
+  - [] Internet Jak Wifi
+  - [x] Pajak
 - [ ] Informasi
   - [ ] Pariwisata
   - [ ] Kebudayaan
   - [ ] RPTRA
   - [ ] Urban Farming
   - [ ] Inovasi
-  - [ ] Statistik
+  - [x] Statistik
 - [ ] PPID
 - [ ] Dashboard
 - [ ] Publikasi
