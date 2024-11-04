@@ -8,14 +8,16 @@ export const CardLink = ({
   title,
   description,
   icon,
+  href = "#",
 }: {
   title: string;
   description: string;
   icon: ReactNode;
+  href?: string;
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
-    <Link href="#">
+    <Link href={href}>
       <motion.div
         onHoverStart={() => setIsHovered(true)}
         onHoverEnd={() => setIsHovered(false)}
