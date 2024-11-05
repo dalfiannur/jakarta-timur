@@ -56,6 +56,10 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 - [ ] Beranda
 - [ ] Pemerintah Kota
   - [ ] Tentang Jakarta Timur
+    - [x] Visi Misi & Kegiatan Strategis
+    - [ ] Peta dan Batas Wilayah
+    - [ ] Demografis
+    - [ ] Prestasi
   - [ ] Satuan dan Unit Kerja
   - [ ] Kepegawaian
 - [ ] Layanan

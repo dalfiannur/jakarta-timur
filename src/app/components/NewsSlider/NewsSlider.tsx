@@ -1,58 +1,42 @@
 "use client";
 import { motion } from "framer-motion";
 import { SliderItem } from "./SliderItem";
-import { useEffect, useMemo, useRef, useState } from "react";
 import { News } from "@/app/(main)/actions";
 import _ from "lodash";
+import { useSlider } from "./useSlider";
+import { use } from "react";
 
 interface NewsSliderProps {
-  data: News[];
+  getData: Promise<News[]>;
 }
 
-export const NewsSlider = ({ data }: NewsSliderProps) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const itemRef = useRef<HTMLDivElement[]>([]);
-  const [step, setStep] = useState(0);
-  const x = useMemo(() => {
-    const to = step * (containerRef.current?.clientWidth ?? 0);
-    return -to;
-  }, [containerRef, step]);
-
+export const NewsSlider = ({ getData }: NewsSliderProps) => {
+  const data = use(getData);
   const sections = _.chunk(data, 5);
 
-  useEffect(() => {
-    if (containerRef.current && itemRef.current.length > 0) {
-      itemRef.current.map((item) => {
-        item.setAttribute(
-          "style",
-          `width: ${containerRef.current?.clientWidth ?? 0}px`
-        );
-      });
-    }
-
-    const autoplay = setInterval(() => {
-      setStep((prev) => (prev < sections.length - 1 ? prev + 1 : 0));
-    }, 5000);
-
-    return () => clearInterval(autoplay);
-  }, [containerRef, itemRef, sections]);
+  const { containerRef, itemRef, x, step, setStep } = useSlider({
+    total: sections.length,
+  });
 
   return (
     <div>
       <div ref={containerRef} className="flex overflow-hidden">
         {sections.map((items, index) => (
           <motion.div
-            ref={(ref) => {
+            ref={(ref: HTMLDivElement) => {
               if (ref) {
                 itemRef.current?.push(ref);
               }
             }}
             key={index}
-            className="shrink-0 grid grid-cols-4 grid-rows-2 gap-4"
             animate={{
               x,
               opacity: step === index ? 1 : 0,
-
+              flexShrink: 0,
+              display: "grid",
+              gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+              gridTemplateRows: "repeat(2, minmax(2, 1fr))",
+              gap: "1rem",
               transition: {
                 type: "spring",
                 duration: 1,
@@ -63,12 +47,14 @@ export const NewsSlider = ({ data }: NewsSliderProps) => {
             {items.map((item, index) => (
               <SliderItem
                 key={item.id}
+                id={item.id}
                 primary={index === 0}
-                image={`https://timur.jakarta.go.id/storage/news/${item.img}`}
+                image={item.img}
                 title={item.title}
-                category="Kesejahteraan"
+                category={item.catID.name}
                 date={item.time}
                 author={item.writer}
+                reporter={item.reporter}
               />
             ))}
           </motion.div>

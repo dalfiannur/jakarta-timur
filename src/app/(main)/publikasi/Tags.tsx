@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const Tags = ({ data }: { data: { label: string }[] }) => {
   return (
-    <div>
+    <div className="font-plus-jakarta-sans">
       <h6 className="font-bold text-xl">Tags</h6>
       <div className="mt-2 flex gap-4">
         {data.map((item, index) => (

@@ -1,18 +1,6 @@
 "use server";
 
-export interface News {
-  id: number;
-  catID: number;
-  title: string;
-  slug: string;
-  writer: string;
-  reporter: string;
-  content: string;
-  time: string;
-  img: string;
-  viewed: number;
-  img_name: string | null;
-}
+import { News } from "@/types/news";
 
 export interface NewsPhoto {
   id: number;
@@ -29,35 +17,19 @@ export interface NewsPhoto {
 }
 
 interface Pagination<T> {
-  meta: {
-    code: number;
-    status: string;
-    message: string;
-  };
-  data: {
-    current_page: number;
-    data: T[];
-    first_page_url: string;
-    from: number;
-    last_page: number;
-    last_page_url: string;
-    links: {
-      url: string;
-      label: string;
-      active: boolean;
-    }[];
-    next_page_url: string | null;
-    to: number;
-    total: number;
-  };
+  status: string;
+  data: T[];
 }
 
-export const getNews = async (): Promise<Pagination<News>> => {
-  return fetch("https://timur.jakarta.go.id/API_Timur/api/news")
+export const getNews = async (): Promise<News[]> => {
+  const news = await fetch("https://timur.jakarta.go.id/API_Timur/api/news")
     .then((res) => res.json())
+    .then((res) => res.data.reverse().slice(0, 10))
     .catch((err) => {
       console.error(err);
     });
+
+  return news;
 };
 
 export const getNewsStory = async (): Promise<Pagination<NewsPhoto>> => {

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Plus_Jakarta_Sans, Roboto } from "next/font/google";
+import { Plus_Jakarta_Sans, Roboto, Poppins } from "next/font/google";
 import "./globals.css";
 import { NavigationBar } from "./components/NavigationBar";
 import { Footer } from "./components/Footer";
@@ -26,6 +26,11 @@ const roboto = Roboto({
   weight: ["100", "300", "400", "500", "700", "900"],
   subsets: ["latin"],
 });
+const poppins = Poppins({
+  variable: "--font-poppins",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -40,7 +45,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${plusJakartaSans.variable} ${roboto.variable} antialiased bg-soft-white font-roboto`}
+        className={`${geistSans.variable} ${geistMono.variable} ${plusJakartaSans.variable} ${roboto.variable} ${poppins.variable} antialiased bg-soft-white font-roboto`}
       >
         <Providers>
           <NavigationBar />

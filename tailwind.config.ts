@@ -11,6 +11,7 @@ const config: Config = {
       fontFamily: {
         "plus-jakarta-sans": "var(--font-plus-jakarta-sans)",
         roboto: "var(--font-roboto)",
+        poppins: "var(--font-poppins)",
       },
       colors: {
         background: "var(--background)",

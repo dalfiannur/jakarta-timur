@@ -84,7 +84,7 @@ const listAgenda = [
 ];
 
 export default async function Home() {
-  const news = await getNews();
+  const news = getNews();
   const newsStory = await getNewsStory();
 
   return (
@@ -147,7 +147,7 @@ export default async function Home() {
           </a>
         }
       >
-        <NewsSlider data={news.data.data} />
+        <NewsSlider getData={news} />
       </SectionBox>
       <SectionBox
         title="Video Informasi dan Edukasi"
