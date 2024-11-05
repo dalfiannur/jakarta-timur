@@ -1,6 +1,7 @@
-import { IconKeys } from "../icons";
+import type { Tab } from "../components/MenuTabs";
+import type { IconKeys } from "../icons";
 
-type Link = {
+export type Link = {
   icon: IconKeys;
   title: string;
   link: string;
@@ -9,7 +10,7 @@ type Link = {
 
 type NavigationBarConfig = {
   links: {
-    [key: string]: Link[];
+    [key: string]: (Link | Tab)[];
   };
 };
 
@@ -125,6 +126,102 @@ export const navigationBarConfig: NavigationBarConfig = {
         link: "https://jaki.jakarta.go.id/id/",
         description:
           "Sampaikan Aduan dan Keluhan Anda untuk Mendapatkan Respon Cepat dan Efektif",
+      },
+    ],
+    tentangJakartaTimur: [
+      {
+        key: "tentang-jakarta-timur",
+        label: "Tentang Jakarta Timur",
+        items: [
+          {
+            icon: "GoalsFill",
+            title: "Visi Misi & Kegiatan Strategies",
+            link: "/tentang-jakarta-timur?s=visi-misi-kegiatan-strategis",
+            description:
+              "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
+          },
+          {
+            icon: "MapMarkerAlt",
+            title: "Peta & Batas Wilayah",
+            link: "/tentang-jakarta-timur?s=peta",
+            description:
+              "Temukan data dan informasi  berbagai aspek demografis kota.",
+          },
+          {
+            icon: "StatisticUpSolid",
+            title: "Demografi",
+            link: "/tentang-jakarta-timur?s=demografi",
+            description:
+              "Panduan yang jelas untuk  memahami struktur geografis dan tata ruang kota.",
+          },
+          {
+            icon: "Trophy",
+            title: "Prestasi",
+            link: "/tentang-jakarta-timur?s=prestasi",
+            description:
+              "Lihat berbagai prestasi yang telah diraih oleh Kota Administrasi Jakarta Timur.",
+          },
+        ],
+      },
+      {
+        key: "unit-kerja",
+        label: "Satuan Unit Kerja",
+        items: [
+          {
+            icon: "ClarityOrganizationSolid",
+            title: "Struktur Organisasi",
+            link: "/satuan-unit-kerja?s=struktur-organisasi",
+            description:
+              "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
+          },
+          {
+            icon: "User",
+            title: "Wali Kota",
+            link: "/satuan-unit-kerja?s=walikota",
+            description:
+              "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
+          },
+          {
+            icon: "Users",
+            title: "Sekretariat Kota",
+            link: "/satuan-unit-kerja?s=sekretariat-kota",
+            description:
+              "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
+          },
+          {
+            icon: "Employees",
+            title: "Bagian Kota",
+            link: "/satuan-unit-kerja?s=bagian-kota",
+            description:
+              "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
+          },
+          {
+            icon: "Employee",
+            title: "UKPD",
+            link: "/satuan-unit-kerja?s=ukpd",
+            description:
+              "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
+          },
+          {
+            icon: "District",
+            title: "Kecamatan",
+            link: "/satuan-unit-kerja?s=kecamatan",
+            description:
+              "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
+          },
+          {
+            icon: "Office",
+            title: "Kelurahan",
+            link: "/satuan-unit-kerja?s=kelurahan",
+            description:
+              "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
+          },
+        ],
+      },
+      {
+        key: "kepegawaian",
+        label: "Kepegawaian",
+        items: [],
       },
     ],
   },

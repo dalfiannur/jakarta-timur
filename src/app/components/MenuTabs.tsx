@@ -10,11 +10,11 @@ interface Item {
   link?: string;
 }
 
-interface Tab {
+export type Tab = {
   key: string;
   label: string;
   items: Item[];
-}
+};
 
 interface MenuTabsProps {
   tabs: Tab[];

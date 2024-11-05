@@ -1,12 +1,12 @@
 "use client";
-import { MenuTabs } from "./MenuTabs";
+import { MenuTabs, Tab } from "./MenuTabs";
 import { MenuList } from "./MenuList";
 import { HoverPopover } from "./HoverPopover";
 import Image from "next/image";
 import { Icon } from "../icons";
 import { PopoverGroup } from "@headlessui/react";
 import { NavigationBarSingleItem } from "./NavigationBarSingleItem";
-import { navigationBarConfig } from "../configs/navigation-bar.config";
+import { Link, navigationBarConfig } from "../configs/navigation-bar.config";
 
 const links = navigationBarConfig.links;
 
@@ -23,106 +23,11 @@ export const NavigationBar = () => {
             <HoverPopover label="Pemerintah Kota" index="/pemerintah-kota">
               <MenuTabs
                 defaultTab="tentang-jakarta-timur"
-                tabs={[
-                  {
-                    key: "tentang-jakarta-timur",
-                    label: "Tentang Jakarta Timur",
-                    items: [
-                      {
-                        icon: "GoalsFill",
-                        title: "Visi Misi & Kegiatan Strategies",
-                        link: "/tentang-jakarta-timur?s=visi-misi-kegiatan-strategis",
-                        description:
-                          "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
-                      },
-                      {
-                        icon: "MapMarkerAlt",
-                        title: "Peta & Batas Wilayah",
-                        link: "/tentang-jakarta-timur?s=peta",
-                        description:
-                          "Temukan data dan informasi  berbagai aspek demografis kota.",
-                      },
-                      {
-                        icon: "StatisticUpSolid",
-                        title: "Demografi",
-                        link: "/tentang-jakarta-timur?s=demografi",
-                        description:
-                          "Panduan yang jelas untuk  memahami struktur geografis dan tata ruang kota.",
-                      },
-                      {
-                        icon: "Trophy",
-                        title: "Prestasi",
-                        link: "/tentang-jakarta-timur?s=prestasi",
-                        description:
-                          "Lihat berbagai prestasi yang telah diraih oleh Kota Administrasi Jakarta Timur.",
-                      },
-                    ],
-                  },
-                  {
-                    key: "unit-kerja",
-                    label: "Satuan Unit Kerja",
-                    items: [
-                      {
-                        icon: "ClarityOrganizationSolid",
-                        title: "Struktur Organisasi",
-                        link: "/satuan-unit-kerja?s=struktur-organisasi",
-                        description:
-                          "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
-                      },
-                      {
-                        icon: "User",
-                        title: "Wali Kota",
-                        link: "/satuan-unit-kerja?s=walikota",
-                        description:
-                          "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
-                      },
-                      {
-                        icon: "Users",
-                        title: "Sekretariat Kota",
-                        link: "/satuan-unit-kerja?s=sekretariat-kota",
-                        description:
-                          "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
-                      },
-                      {
-                        icon: "Employees",
-                        title: "Bagian Kota",
-                        link: "/satuan-unit-kerja?s=bagian-kota",
-                        description:
-                          "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
-                      },
-                      {
-                        icon: "Employee",
-                        title: "UKPD",
-                        link: "/satuan-unit-kerja?s=ukpd",
-                        description:
-                          "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
-                      },
-                      {
-                        icon: "District",
-                        title: "Kecamatan",
-                        link: "/satuan-unit-kerja?s=kecamatan",
-                        description:
-                          "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
-                      },
-                      {
-                        icon: "Office",
-                        title: "Kelurahan",
-                        link: "/satuan-unit-kerja?s=kelurahan",
-                        description:
-                          "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
-                      },
-                    ],
-                  },
-                  {
-                    key: "kepegawaian",
-                    label: "Kepegawaian",
-                    items: [],
-                  },
-                ]}
+                tabs={links.tentangJakartaTimur as Tab[]}
               />
             </HoverPopover>
             <HoverPopover label="Layanan" index="/layanan">
-              <MenuList items={links.layanan} />
+              <MenuList items={links.layanan as Link[]} />
             </HoverPopover>
           </ul>
           <div className="group flex-1 bg-gray-100 rounded-lg relative flex items-center border border-gray-100 text-gray-400 focus-within:border-pink-500/40">
@@ -136,7 +41,7 @@ export const NavigationBar = () => {
           </div>
           <ul className="flex gap-8">
             <HoverPopover label="Informasi" index="/informasi">
-              <MenuList items={links.informasi} />
+              <MenuList items={links.informasi as Link[]} />
             </HoverPopover>
             <NavigationBarSingleItem label="PPID" href="/ppid" index="/ppid" />
             <NavigationBarSingleItem
@@ -145,7 +50,7 @@ export const NavigationBar = () => {
               index="/dashboard"
             />
             <HoverPopover label="Publikasi" index="/publikasi">
-              <MenuList items={links.publikasi} />
+              <MenuList items={links.publikasi as Link[]} />
             </HoverPopover>
           </ul>
         </div>
