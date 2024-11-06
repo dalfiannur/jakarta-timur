@@ -1,59 +1,71 @@
 import { Icon } from "@/app/icons";
-import Image from "next/image";
 import { LatestNewsWidget } from "../../LatestNewsWidget";
 import { ShareContent } from "../../ShareContent";
 import { Tags } from "../../Tags";
+import { findVideoBySlug } from "@/app/actions/get-videos";
+import { dateFormatter } from "@/utils/date-formatter";
+import { getNews } from "@/app/actions/get-news";
 
-const content =
-  "<p>Jakarta Timur, (21/12/2023) - Pemerintah Kota Administrasi Jakarta Timur menerima gelar penganugerahan Keterbukaan Informasi Publik dalam kategori Pemerintah Kota dan Kabupaten Kota dengan predikat Informatif.</p><p>Penghargaan Anugeran Keterbukaan Informasi Publik yang diserahkan Ketua Komisi Informasi DKI Jakarta, Harry Ara Hutabarat, diterima langsung Walikota Administrasi Jakarta Timur, M. Anwar, di Balai Agung, Balaikota, Jakarta Pusat, Kamis (21/12/2023).</p>";
+type PageProps = {
+  params: Promise<{
+    slug: string;
+  }>;
+};
 
-export default function Page() {
+export default async function Page(props: PageProps) {
+  const params = await props.params;
+  const { data } = await findVideoBySlug(params.slug);
+  const { data: news } = await getNews({ limit: "3" });
+
   return (
     <div>
       <div className="mt-12 flex gap-16">
         <div className="flex-1">
           <div className="grid gap-4">
-            <div className="text-sm text-gray-500 uppercase">Pemerintah</div>
-            <h2 className="font-bold text-4xl">
-              400 Peserta Ikuti Kejuaraan Bulutangkis Antar OPD dan BUMD DKI
-              Jakarta di GOR Otista
+            <div className="text-sm text-gray-500 uppercase font-roboto">
+              {data.kategori.cat}
+            </div>
+            <h2 className="font-bold text-4xl font-plus-jakarta-sans">
+              {data.title}
             </h2>
-            <div className="flex gap-4 text-sm font-medium">
+            <div className="flex gap-4 text-sm font-medium font-plus-jakarta-sans">
               <div className="flex gap-2 items-center">
                 <div className="text-pink-500">
                   <Icon name="Calendar" size={16} />
                 </div>
-                <div>18 Juli 2024</div>
+                <div>{dateFormatter(data.tanggal)}</div>
               </div>
-              <div className="border-l" />
-              <div className="flex gap-2 items-center">
+              {/* <div className="border-l" /> */}
+              {/* <div className="flex gap-2 items-center">
                 <div className="text-pink-500">
                   <Icon name="QuillWrite" size={16} />
                 </div>
                 <div>Sudin Komunikasi</div>
-              </div>
-              <div className="border-l" />
-              <div className="flex gap-2 items-center">
+              </div> */}
+              {/* <div className="border-l" /> */}
+              {/* <div className="flex gap-2 items-center">
                 <div className="text-pink-500">
                   <Icon name="Camera" size={16} />
                 </div>
                 <div>KIP</div>
-              </div>
+              </div> */}
             </div>
           </div>
 
-          <div className="mt-12 relative aspect-[16/8]">
-            <Image
-              src="/img/kantor-walikota-jaktim.png"
-              alt="#"
-              fill
-              className="rounded-xl"
+          <div className="mt-12 relative aspect-video rounded-xl overflow-hidden">
+            <iframe
+              id="ytplayer"
+              width="100%"
+              height="100%"
+              src={`https://www.youtube.com/embed/${data.source}`}
+              frameBorder={0}
+              allowFullScreen
             />
           </div>
 
           <div
-            className="grid gap-4 text-gray-600 mt-12 text-justify"
-            dangerouslySetInnerHTML={{ __html: content }}
+            className="grid gap-4 text-gray-600 mt-12 text-justify font-plus-jakarta-sans"
+            dangerouslySetInnerHTML={{ __html: data.description }}
           />
 
           <div className="mt-8">
@@ -72,7 +84,7 @@ export default function Page() {
           </div>
         </div>
         <div className="w-[437px] flex flex-col gap-12">
-          <LatestNewsWidget />
+          <LatestNewsWidget data={news.data} />
         </div>
       </div>
     </div>

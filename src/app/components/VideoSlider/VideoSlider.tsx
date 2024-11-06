@@ -1,8 +1,9 @@
 "use client";
 import { Icon } from "@/app/icons";
+import { PaginationResponse } from "@/types/pagination";
+import { Video } from "@/types/video";
 import { motion } from "framer-motion";
-import Image from "next/image";
-import { ReactNode, useCallback, useState } from "react";
+import { ReactNode, use, useCallback, useState } from "react";
 import { tv } from "tailwind-variants";
 
 const pos = [
@@ -12,36 +13,45 @@ const pos = [
 ];
 
 interface VideoSliderProps {
-  items: any[];
+  getData: Promise<PaginationResponse<Video>>;
 }
 
-export const VideoSlider = ({ items }: VideoSliderProps) => {
+export const VideoSlider = ({ getData }: VideoSliderProps) => {
+  const { data } = use(getData);
   const [active, setActive] = useState(0);
 
   const next = useCallback(() => {
-    setActive((prev) => (prev > 0 ? prev - 1 : items.length - 1));
-  }, [setActive, items]);
+    setActive((prev) => (prev > 0 ? prev - 1 : data.data.length - 1));
+  }, [setActive, data]);
 
   const prev = useCallback(() => {
-    setActive((prev) => (prev < items.length - 1 ? prev + 1 : 0));
-  }, [setActive, items]);
+    setActive((prev) => (prev < data.data.length - 1 ? prev + 1 : 0));
+  }, [setActive, data]);
 
   const getSlide = useCallback(
     (index: number) =>
       pos[active][index] === 0
         ? "left"
         : pos[active][index] === 2
-        ? "center"
-        : "right",
-    [active]
+          ? "center"
+          : "right",
+    [active],
   );
 
   return (
     <div className="h-[500px] relative flex justify-center">
-      {items.map((item, index) => (
+      {data.data.map((item, index) => (
         <SlideItem key={index} position={getSlide(index)}>
-          <Image src="/img/event-1.png" alt="#" fill />
-          {index}
+          <iframe
+            width="100%"
+            height="100%"
+            src={`https://www.youtube.com/embed/${item.source}`}
+            title="YouTube video player"
+            frameBorder={0}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          ></iframe>
         </SlideItem>
       ))}
 
@@ -105,7 +115,8 @@ const SlideItem = ({
 const createStyles = tv({
   slots: {
     root: "absolute flex items-center bottom-0 top-0",
-    button: "border border-black hover:border-white rounded-full p-2 hover:bg-pink-500 hover:text-white transition-all",
+    button:
+      "border border-black hover:border-white rounded-full p-2 hover:bg-pink-500 hover:text-white transition-all",
   },
   variants: {
     position: {

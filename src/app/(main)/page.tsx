@@ -13,6 +13,8 @@ import { SponsorSection } from "./SponsorSection";
 import { PublicIntegrationServiceSection } from "./PublicIntegrationServiceSection";
 import { getNews } from "../actions/get-news";
 import { getNewsPhotos } from "../actions/get-news-photo";
+import { getVideos } from "../actions/get-videos";
+import Link from "next/link";
 
 const governmentInformation = [
   {
@@ -87,6 +89,7 @@ const listAgenda = [
 export default async function Page() {
   const news = getNews({});
   const newsPhotos = getNewsPhotos({});
+  const videos = getVideos({ limit: "3" });
 
   return (
     <div className="min-h-screen">
@@ -154,15 +157,15 @@ export default async function Page() {
         title="Video Informasi dan Edukasi"
         subtitle="Temukan informasi penting melalui video untuk tetap terinformasi dan teredukasi"
         rightSection={
-          <a
-            href="#"
+          <Link
+            href="/publikasi/video"
             className="inline-flex items-center gap-2 text-pink-500 font-semibold text-xl"
           >
             Lihat Video Lainnya <Icon name="ChevronRight" size={24} />
-          </a>
+          </Link>
         }
       >
-        <VideoSlider items={[1, 2, 3]} />
+        <VideoSlider getData={videos} />
       </SectionBox>
 
       <SectionBox
