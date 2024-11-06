@@ -3,26 +3,34 @@ import Image from "next/image";
 import { LatestNewsWidget } from "../../LatestNewsWidget";
 import { ShareContent } from "../../ShareContent";
 import { Tags } from "../../Tags";
+import { getNews } from "@/app/actions/get-news";
+import { findNewsPhotoById } from "@/app/actions/get-news-photo";
+import { dateFormatter } from "@/utils/date-formatter";
 
-const content =
-  "<p>Jakarta Timur, (21/12/2023) - Pemerintah Kota Administrasi Jakarta Timur menerima gelar penganugerahan Keterbukaan Informasi Publik dalam kategori Pemerintah Kota dan Kabupaten Kota dengan predikat Informatif.</p><p>Penghargaan Anugeran Keterbukaan Informasi Publik yang diserahkan Ketua Komisi Informasi DKI Jakarta, Harry Ara Hutabarat, diterima langsung Walikota Administrasi Jakarta Timur, M. Anwar, di Balai Agung, Balaikota, Jakarta Pusat, Kamis (21/12/2023).</p>";
+type PageProps = {
+  params: Promise<{
+    id: string;
+  }>;
+};
 
-export default function Page() {
+export default async function Page(props: PageProps) {
+  const params = await props.params;
+  const { data } = await findNewsPhotoById(params.id);
+  const { data: latestNews } = await getNews({ limit: "3" });
   return (
     <div>
       <div className="mt-12 flex gap-16">
         <div className="flex-1">
           <div className="grid gap-4">
-            <h2 className="font-bold text-4xl">
-              400 Peserta Ikuti Kejuaraan Bulutangkis Antar OPD dan BUMD DKI
-              Jakarta di GOR Otista
+            <h2 className="font-bold text-4xl font-plus-jakarta-sans">
+              {data.title}
             </h2>
-            <div className="flex gap-4 text-sm font-medium">
+            <div className="flex gap-4 text-sm font-medium font-plus-jakarta-sans">
               <div className="flex gap-2 items-center">
                 <div className="text-pink-500">
                   <Icon name="Calendar" size={16} />
                 </div>
-                <div>18 Juli 2024</div>
+                <div>{dateFormatter(data.time)}</div>
               </div>
               <div className="border-l" />
               <div className="flex gap-2 items-center">
@@ -36,17 +44,19 @@ export default function Page() {
           </div>
 
           <div className="mt-12 relative aspect-[16/8]">
-            <Image
-              src="/img/kantor-walikota-jaktim.png"
-              alt="#"
-              fill
-              className="rounded-xl"
-            />
+            {data.img_url && (
+              <Image
+                src={data.img_url}
+                alt={data.title}
+                fill
+                className="rounded-xl object-cover"
+              />
+            )}
           </div>
 
           <div
-            className="grid gap-4 text-gray-600 mt-12 text-justify"
-            dangerouslySetInnerHTML={{ __html: content }}
+            className="grid gap-4 text-gray-600 mt-12 text-justify font-plus-jakarta-sans"
+            dangerouslySetInnerHTML={{ __html: data.deskripsi }}
           />
 
           <div className="mt-8">
@@ -65,7 +75,7 @@ export default function Page() {
           </div>
         </div>
         <div className="w-[437px] flex flex-col gap-12">
-          <LatestNewsWidget />
+          <LatestNewsWidget data={latestNews.data} />
         </div>
       </div>
     </div>

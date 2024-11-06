@@ -2,9 +2,10 @@ import Image from "next/image";
 import { tv } from "tailwind-variants";
 
 interface ItemProps {
+  id: number;
   isPrimary?: boolean;
   title: string;
-  image: string;
+  image?: string | null;
 }
 
 const createStyles = tv({
@@ -13,7 +14,7 @@ const createStyles = tv({
     imgContainer: "rounded-xl overflow-hidden",
     description: "",
     title: "",
-    image: "group-hover:scale-110 transition-all duration-500",
+    image: "group-hover:scale-110 transition-all duration-500 object-cover",
   },
   variants: {
     isPrimary: {
@@ -33,13 +34,12 @@ const createStyles = tv({
   },
 });
 
-export const Item = ({ title, image, isPrimary }: ItemProps) => {
+export const Item = ({ id, title, image, isPrimary }: ItemProps) => {
   const x = createStyles({ isPrimary });
-  const src = `https://timur.jakarta.go.id/storage/newsphoto/${image}`;
   return (
-    <a href="#" className={x.root()}>
+    <a href={`/publikasi/galeri/${id}`} className={x.root()}>
       <div className={x.imgContainer()}>
-        <Image src={src} fill alt={title} className={x.image()} />
+        {image && <Image src={image} fill alt={title} className={x.image()} />}
       </div>
       <div className={x.description()}>
         <h6 className={x.title()}>{title}</h6>

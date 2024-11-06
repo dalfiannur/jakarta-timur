@@ -7,12 +7,12 @@ import { SectionBox } from "../components/SectionBox";
 import { Event } from "../components/Event";
 import { NewsSlider } from "../components/NewsSlider/NewsSlider";
 import { VideoSlider } from "../components/VideoSlider/VideoSlider";
-import { NewsStory } from "../components/NewsStory/NewsStories";
+import { NewsPhoto } from "../components/NewsPhoto/NewsPhoto";
 import { BuletinSlider } from "../components/BuletinSlider/BuletinSlider";
 import { SponsorSection } from "./SponsorSection";
-import { getNewsStory } from "./actions";
 import { PublicIntegrationServiceSection } from "./PublicIntegrationServiceSection";
 import { getNews } from "../actions/get-news";
+import { getNewsPhotos } from "../actions/get-news-photo";
 
 const governmentInformation = [
   {
@@ -84,17 +84,9 @@ const listAgenda = [
   },
 ];
 
-type PageProps = {
-  searchParams: Promise<{
-    page?: string;
-    limit?: string;
-  }>;
-};
-
-export default async function Page(props: PageProps) {
-  const searchParams = await props.searchParams;
-  const news = getNews(searchParams);
-  const newsStory = await getNewsStory();
+export default async function Page() {
+  const news = getNews({});
+  const newsPhotos = getNewsPhotos({});
 
   return (
     <div className="min-h-screen">
@@ -185,7 +177,7 @@ export default async function Page(props: PageProps) {
           </a>
         }
       >
-        {/* <NewsStory getData={newsStory} /> */}
+        <NewsPhoto getData={newsPhotos} />
       </SectionBox>
 
       <SectionBox

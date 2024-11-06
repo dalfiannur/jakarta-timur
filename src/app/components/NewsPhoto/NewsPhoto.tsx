@@ -2,8 +2,9 @@
 import _ from "lodash";
 import { Item } from "./Item";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
-import { NewsPhoto } from "@/app/(main)/actions";
+import { use, useEffect, useRef, useState } from "react";
+import { PaginationResponse } from "@/types/pagination";
+import { NewsPhoto as INewsPhoto } from "@/types/news-photo";
 
 const variants = {
   enter: (direction: number) => ({
@@ -22,14 +23,16 @@ const variants = {
   }),
 };
 
-interface NewsStoryProps {
-  data: NewsPhoto[];
+interface NewsPhotoProps {
+  getData: Promise<PaginationResponse<INewsPhoto>>;
 }
-export const NewsStory = ({ data }: NewsStoryProps) => {
+
+export const NewsPhoto = ({ getData }: NewsPhotoProps) => {
+  const { data } = use(getData);
   const [[active, direction], setActive] = useState([0, 0]);
   const refItem = useRef<HTMLDivElement>(null);
   const refContainer = useRef<HTMLDivElement>(null);
-  const sections = _.chunk(data, 5);
+  const sections = _.chunk(data.data, 5);
   const [height, setHeight] = useState<string | "auto">("auto");
 
   useEffect(() => {
@@ -67,9 +70,10 @@ export const NewsStory = ({ data }: NewsStoryProps) => {
             {sections[active]?.map((item, index) => (
               <Item
                 key={index}
+                id={item.id}
                 isPrimary={index === 0}
                 title={item.title}
-                image={item.img}
+                image={item.img_url}
               />
             ))}
           </motion.div>

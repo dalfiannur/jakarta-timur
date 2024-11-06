@@ -9,8 +9,7 @@ import { findNewsById, getNews } from "@/app/actions/get-news";
 export default async function Page(props: { params: Promise<{ id: string }> }) {
   const params = await props.params;
   const { data } = await findNewsById(params.id);
-
-  const latestNews = getNews({ limit: "3" });
+  const { data: latestNews } = await getNews({ page: "1", limit: "3" });
 
   return (
     <div>
@@ -77,7 +76,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
           </div>
         </div>
         <div className="w-[437px] flex flex-col gap-8">
-          <LatestNewsWidget getData={latestNews} />
+          <LatestNewsWidget data={latestNews.data} />
           <BulletinWidget />
         </div>
       </div>
