@@ -35,7 +35,7 @@ export const SliderItem = ({
   date,
   image,
   author,
-  reporter,
+  imageName,
 }: {
   id: number;
   primary?: boolean;
@@ -44,7 +44,7 @@ export const SliderItem = ({
   date: string;
   image: string;
   author: string;
-  reporter: string;
+  imageName?: string | null;
 }) => {
   const x = createStyles({ primary });
   return (
@@ -72,12 +72,14 @@ export const SliderItem = ({
             </div>
             <div className="text-white text-sm">{author}</div>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="text-pink-500">
-              <Icon name="Camera" size={16} />
+          {imageName && (
+            <div className="flex items-center gap-2">
+              <div className="text-pink-500">
+                <Icon name="Camera" size={16} />
+              </div>
+              <div className="text-white text-sm">{imageName}</div>
             </div>
-            <div className="text-white text-sm">{reporter}</div>
-          </div>
+          )}
         </div>
       </div>
     </Link>

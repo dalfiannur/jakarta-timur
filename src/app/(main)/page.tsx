@@ -10,8 +10,9 @@ import { VideoSlider } from "../components/VideoSlider/VideoSlider";
 import { NewsStory } from "../components/NewsStory/NewsStories";
 import { BuletinSlider } from "../components/BuletinSlider/BuletinSlider";
 import { SponsorSection } from "./SponsorSection";
-import { getNews, getNewsStory } from "./actions";
+import { getNewsStory } from "./actions";
 import { PublicIntegrationServiceSection } from "./PublicIntegrationServiceSection";
+import { getNews } from "../actions/get-news";
 
 const governmentInformation = [
   {
@@ -83,8 +84,16 @@ const listAgenda = [
   },
 ];
 
-export default async function Home() {
-  const news = getNews();
+type PageProps = {
+  searchParams: Promise<{
+    page?: string;
+    limit?: string;
+  }>;
+};
+
+export default async function Page(props: PageProps) {
+  const searchParams = await props.searchParams;
+  const news = getNews(searchParams);
   const newsStory = await getNewsStory();
 
   return (
@@ -176,7 +185,7 @@ export default async function Home() {
           </a>
         }
       >
-        <NewsStory data={newsStory.data.data} />
+        {/* <NewsStory getData={newsStory} /> */}
       </SectionBox>
 
       <SectionBox

@@ -1,18 +1,19 @@
 "use client";
+import _ from "lodash";
 import { motion } from "framer-motion";
 import { SliderItem } from "./SliderItem";
-import { News } from "@/app/(main)/actions";
-import _ from "lodash";
+import { News } from "@/types/news";
 import { useSlider } from "./useSlider";
 import { use } from "react";
+import { PaginationResponse } from "@/types/pagination";
 
 interface NewsSliderProps {
-  getData: Promise<News[]>;
+  getData: Promise<PaginationResponse<News>>;
 }
 
 export const NewsSlider = ({ getData }: NewsSliderProps) => {
-  const data = use(getData);
-  const sections = _.chunk(data, 5);
+  const { data } = use(getData);
+  const sections = _.chunk(data.data, 5);
 
   const { containerRef, itemRef, x, step, setStep } = useSlider({
     total: sections.length,
@@ -49,12 +50,12 @@ export const NewsSlider = ({ getData }: NewsSliderProps) => {
                 key={item.id}
                 id={item.id}
                 primary={index === 0}
-                image={item.img}
+                image={item.img_url}
                 title={item.title}
                 category={item.catID.name}
                 date={item.time}
                 author={item.writer}
-                reporter={item.reporter}
+                imageName={item.img_name}
               />
             ))}
           </motion.div>
