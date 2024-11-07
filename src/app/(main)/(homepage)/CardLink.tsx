@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ReactNode, useState } from "react";
-import { Icon } from "../icons";
+import { Icon } from "@/app/icons";
 
 export type CardLinkProps = {
   title: string;

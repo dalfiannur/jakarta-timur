@@ -4,8 +4,8 @@ import { tv } from "tailwind-variants";
 const SectionBoxStyle = tv({
   slots: {
     root: "container mx-auto py-10",
-    title: "font-bold text-3xl",
-    subtitle: "mt-2 text-xl text-gray-800/50",
+    title: "font-bold text-3xl font-plus-jakarta-sans",
+    subtitle: "mt-2 text-xl text-gray-800/50 font-plus-jakarta-sans",
   },
   variants: {
     align: {

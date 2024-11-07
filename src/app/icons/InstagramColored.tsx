@@ -1,7 +1,7 @@
 export const InstagramColored = () => {
   return (
     <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g clip-path="url(#clip0_7166_4349)">
+      <g clipPath="url(#clip0_7166_4349)">
         <path
           d="M24.5 0H7.5C3.35786 0 0 3.35786 0 7.5V24.5C0 28.6421 3.35786 32 7.5 32H24.5C28.6421 32 32 28.6421 32 24.5V7.5C32 3.35786 28.6421 0 24.5 0Z"
           fill="url(#paint0_radial_7166_4349)"
@@ -24,10 +24,10 @@ export const InstagramColored = () => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(8.5 34.4646) rotate(-90) scale(31.7144 29.4969)"
         >
-          <stop stop-color="#FFDD55" />
-          <stop offset="0.1" stop-color="#FFDD55" />
-          <stop offset="0.5" stop-color="#FF543E" />
-          <stop offset="1" stop-color="#C837AB" />
+          <stop stopColor="#FFDD55" />
+          <stop offset="0.1" stopColor="#FFDD55" />
+          <stop offset="0.5" stopColor="#FF543E" />
+          <stop offset="1" stopColor="#C837AB" />
         </radialGradient>
         <radialGradient
           id="paint1_radial_7166_4349"
@@ -37,9 +37,9 @@ export const InstagramColored = () => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(-5.36012 2.30512) rotate(78.681) scale(14.1765 58.436)"
         >
-          <stop stop-color="#3771C8" />
-          <stop offset="0.128" stop-color="#3771C8" />
-          <stop offset="1" stop-color="#6600FF" stop-opacity="0" />
+          <stop stopColor="#3771C8" />
+          <stop offset="0.128" stopColor="#3771C8" />
+          <stop offset="1" stopColor="#6600FF" stopOpacity="0" />
         </radialGradient>
         <clipPath id="clip0_7166_4349">
           <rect width="32" height="32" fill="white" />

@@ -1,7 +1,7 @@
 export const CustomerService = () => {
   return (
     <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g clip-path="url(#clip0_6812_11681)">
+      <g clipPath="url(#clip0_6812_11681)">
         <path
           d="M10.25 10.5H5.75C3.68 10.5 2 12.18 2 14.25C2 14.94 2.56 15.5 3.25 15.5H12.75C13.44 15.5 14 14.94 14 14.25C14 12.18 12.32 10.5 10.25 10.5ZM12.75 14.5H3.25C3.11 14.5 3 14.39 3 14.25C3 12.735 4.235 11.5 5.75 11.5H10.25C11.765 11.5 13 12.735 13 14.25C13 14.39 12.89 14.5 12.75 14.5Z"
           fill="currentColor"

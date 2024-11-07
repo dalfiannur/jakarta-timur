@@ -1,7 +1,7 @@
 export const ClarityOrganizationSolid = () => {
   return (
     <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g clip-path="url(#clip0_6812_4588)">
+      <g clipPath="url(#clip0_6812_4588)">
         <path
           d="M4.35564 8.35599H11.6445V9.72488H12.3556V7.64488H8.35564V6.22266H7.64453V7.64488H3.64453V9.72488H4.35564V8.35599Z"
           fill="currentColor"

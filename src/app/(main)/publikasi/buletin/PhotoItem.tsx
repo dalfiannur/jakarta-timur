@@ -1,21 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export const PhotoItem = () => {
+type PhotoItemProps = {
+  id: number;
+  image: string;
+  title: string;
+};
+
+export const PhotoItem = ({ id, image, title }: PhotoItemProps) => {
   return (
     <div>
-      <Link href="/publikasi/buletin/1">
+      <Link href={`/publikasi/buletin/${id}`}>
         <div className="relative aspect-[5/7]">
-          <Image
-            src={"/img/kantor-walikota-jaktim.png"}
-            alt="#"
-            fill
-            className="rounded-xl"
-          />
+          <Image src={image} alt={title} fill className="rounded-xl" />
         </div>
       </Link>
-      <Link href="/publikasi/buletin/1">
-        <h2 className="font-semibold mt-4">Buletin Info Jaktim Edisi ke-125</h2>
+      <Link href={`/publikasi/buletin/${id}`}>
+        <h2 className="font-semibold mt-4 font-plus-jakarta-sans">{title}</h2>
       </Link>
     </div>
   );

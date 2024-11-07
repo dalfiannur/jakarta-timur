@@ -1,26 +1,28 @@
+import { Video } from "@/types/video";
 import Image from "next/image";
 
-const items = [1, 2, 3];
+type VideoWidgetProps = {
+  data: Video[];
+};
 
-export const VideoWidget = () => {
+export const VideoWidget = ({ data }: VideoWidgetProps) => {
   return (
     <div>
-      <h3 className="font-semibold text-2xl">Video Informasi dan Edukasi</h3>
+      <h3 className="font-semibold text-2xl font-plus-jakarta-sans">
+        Video Informasi dan Edukasi
+      </h3>
       <div className="mt-10 grid gap-6">
-        {items.map((item, index) => (
+        {data.map((item, index) => (
           <div key={index} className="flex items-center gap-4">
             <div className="relative aspect-square w-20">
               <Image
-                src="/img/kantor-walikota-jaktim.png"
-                alt="#"
+                src={`https://img.youtube.com/vi/${item.source}/0.jpg`}
+                alt={item.title}
                 fill
-                className="rounded-xl"
+                className="rounded-xl object-cover"
               />
             </div>
-            <h4 className="font-semibold flex-1">
-              Sambut HUT Ke-497 Kota Jakarta, Walikota Lepas Ribuan Peserta
-              Gowes untuk Meriahkan Expo Pendidikan
-            </h4>
+            <h4 className="font-semibold flex-1">{item.title}</h4>
           </div>
         ))}
       </div>

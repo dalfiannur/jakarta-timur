@@ -1,6 +1,6 @@
 import { tv } from "tailwind-variants";
 import { Icon } from "../icons";
-import { format } from "date-fns";
+import { dateFormatter } from "@/utils/date-formatter";
 
 const Styles = tv({
   slots: {
@@ -9,15 +9,15 @@ const Styles = tv({
   },
   variants: {
     type: {
-      walikota: {
+      0: {
         root: "bg-green-50 border-green-50",
         title: "text-green-800",
       },
-      wakil_walikota: {
+      1: {
         root: "bg-orange-50 border-orange-50",
         title: "text-orange-500",
       },
-      sekretaris_walikota: {
+      2: {
         root: "bg-red-50 border-red-50",
         title: "text-red-500",
       },
@@ -28,17 +28,13 @@ const Styles = tv({
 export type AgendaType = "walikota" | "wakil_walikota" | "sekretaris_walikota";
 
 interface AgendaItemProps {
-  type: AgendaType;
+  type: number | 0 | 1 | 2;
   description: string;
-  date: Date;
+  date: string;
   times: string[];
 }
 
-const titles = {
-  walikota: "Walikota",
-  wakil_walikota: "Wakil Walikota",
-  sekretaris_walikota: "Sekretaris Walikota",
-};
+const titles = ["Walikota", "Wakil Walikota", "Sekretaris Walikota"];
 
 export const AgendaItem = ({
   type,
@@ -46,8 +42,8 @@ export const AgendaItem = ({
   date,
   times,
 }: AgendaItemProps) => {
+  //@ts-expect-error mismatch type
   const styles = Styles({ type });
-  const dateString = format(date, "dd MMMM yyyy");
 
   return (
     <a href="#" className={styles.root()}>
@@ -56,7 +52,7 @@ export const AgendaItem = ({
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-2">
           <Icon name="ScheduleColored" size={24} />
-          <div className="text-sm text-gray-500">{dateString}</div>
+          <div className="text-sm text-gray-500">{dateFormatter(date)}</div>
         </div>
         <div className="text-sm text-gray-500">
           {times[0]} - {times[1]} WIB

@@ -1,5 +1,5 @@
-import { SectionBox } from "../components/SectionBox";
-import { Icon } from "../icons";
+import { SectionBox } from "@/app/components/SectionBox";
+import { Icon } from "@/app/icons";
 import { CardLink, CardLinkProps } from "./CardLink";
 
 const ITEMS: CardLinkProps[] = [

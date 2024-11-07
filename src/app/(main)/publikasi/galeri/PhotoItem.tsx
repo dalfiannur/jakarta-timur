@@ -1,40 +1,54 @@
 import { Icon } from "@/app/icons";
+import { dateFormatter } from "@/utils/date-formatter";
 import Image from "next/image";
 import Link from "next/link";
 
-export const PhotoItem = () => {
+type PhotoItemProps = {
+  title: string;
+  id: number;
+  date: string;
+  location: string;
+  image?: string | null;
+};
+
+export const PhotoItem = ({
+  title,
+  id,
+  date,
+  image,
+  location,
+}: PhotoItemProps) => {
   return (
     <div>
-      <Link href="/publikasi/galeri/1">
+      <Link href={`/publikasi/galeri/${id}`}>
         <div className="relative aspect-[6/5]">
-          <Image
-            src={"/img/kantor-walikota-jaktim.png"}
-            alt="#"
-            fill
-            className="rounded-xl"
-          />
+          {image && (
+            <Image
+              src={image}
+              alt={title}
+              fill
+              className="rounded-xl object-cover"
+            />
+          )}
         </div>
       </Link>
       <div className="mt-6 grid gap-4">
-        <Link href="/publikasi/galeri/1">
-          <h2 className="text-2xl font-bold">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste aut
-            quisquam expedita cum asperiores itaque maxime
-          </h2>
+        <Link href={`/publikasi/galeri/${id}`}>
+          <h2 className="text-2xl font-bold">{title}</h2>
         </Link>
-        <div className="flex gap-4 text-sm font-medium">
+        <div className="flex gap-4 text-sm font-medium font-plus-jakarta-sans">
           <div className="flex gap-2 items-center">
             <div className="text-pink-500">
               <Icon name="Calendar" size={16} />
             </div>
-            <div>18 Juli 2024</div>
+            <div>{dateFormatter(date)}</div>
           </div>
           <div className="border-l" />
           <div className="flex gap-2 items-center">
             <div className="text-pink-500">
               <Icon name="QuillWrite" size={16} />
             </div>
-            <div>Pasar Jatinegara</div>
+            <div>{location}</div>
           </div>
         </div>
       </div>

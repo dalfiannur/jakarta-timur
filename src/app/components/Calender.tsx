@@ -16,6 +16,7 @@ import {
 import _ from "lodash";
 import { AgendaType } from "./AgendaItem";
 import { CalenderLegend } from "./CalenderLegend";
+import { Activity } from "@/types/activity";
 
 const dayLabels = ["Sen", "Sel", "Rab", "Kam", "Jum", "Sab", "Min"];
 const monthLabels = [
@@ -51,13 +52,8 @@ const legends: {
   },
 ];
 
-interface Agenda {
-  type: number;
-  date: Date;
-}
-
 interface CalenderProps {
-  listAgenda?: Agenda[];
+  listAgenda?: (Activity & { type: number })[];
   onItemClick?: (date: Date) => void;
 }
 
@@ -77,7 +73,7 @@ export const Calender = ({ listAgenda = [], onItemClick }: CalenderProps) => {
     }
 
     return calender.map((date, index) => {
-      const agenda = listAgenda.filter((item) => isSameDay(item.date, date));
+      const agenda = listAgenda.filter((item) => isSameDay(item.tanggal, date));
       return (
         <Day
           currentDate={active}
@@ -139,7 +135,7 @@ export const Calender = ({ listAgenda = [], onItemClick }: CalenderProps) => {
 interface DayProps {
   date: Date;
   currentDate: Date;
-  agenda: Agenda[];
+  agenda: (Activity & { type: number })[];
   onClick: () => void;
 }
 

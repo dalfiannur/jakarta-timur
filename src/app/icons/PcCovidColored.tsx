@@ -3,37 +3,37 @@ export const PcCovidColored = () => (
     <path
       d="M11.75 12.9042C15.4472 12.9042 19.1432 12.9042 26.5375 9.20703C33.9318 12.9054 38.5542 12.5962 38.5542 12.5962"
       stroke="#1DA1F2"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M9.89995 14.753C10.9212 14.753 11.7491 13.9251 11.7491 12.9039C11.7491 11.8826 10.9212 11.0547 9.89995 11.0547C8.87868 11.0547 8.05078 11.8826 8.05078 12.9039C8.05078 13.9251 8.87868 14.753 9.89995 14.753Z"
       stroke="#1DA1F2"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M43.1753 14.753C44.1966 14.753 45.0245 13.9251 45.0245 12.9039C45.0245 11.8826 44.1966 11.0547 43.1753 11.0547C42.1541 11.0547 41.3262 11.8826 41.3262 12.9039C41.3262 13.9251 42.1541 14.753 43.1753 14.753Z"
       stroke="#1DA1F2"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M26.5367 46.794C27.5579 46.794 28.3858 45.9661 28.3858 44.9449C28.3858 43.9236 27.5579 43.0957 26.5367 43.0957C25.5154 43.0957 24.6875 43.9236 24.6875 44.9449C24.6875 45.9661 25.5154 46.794 26.5367 46.794Z"
       stroke="#1DA1F2"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M26.537 25.7025C25.9887 25.8505 25.4138 25.8702 24.8567 25.7602C24.2997 25.6501 23.7754 25.4133 23.3246 25.068C22.8738 24.7228 22.5085 24.2783 22.2571 23.7692C22.0058 23.26 21.875 22.6998 21.875 22.1319C21.875 21.5641 22.0058 21.0039 22.2571 20.4947C22.5085 19.9855 22.8738 19.5411 23.3246 19.1958C23.7754 18.8505 24.2997 18.6137 24.8567 18.5037C25.4138 18.3937 25.9887 18.4134 26.537 18.5613"
       stroke="#EB30A2"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M22.0605 16.9121C22.5438 16.9121 22.9355 16.5204 22.9355 16.0371C22.9355 15.5539 22.5438 15.1621 22.0605 15.1621C21.5773 15.1621 21.1855 15.5539 21.1855 16.0371C21.1855 16.5204 21.5773 16.9121 22.0605 16.9121Z"
@@ -42,9 +42,9 @@ export const PcCovidColored = () => (
     <path
       d="M23.73 18.9304L22.0605 16.0371"
       stroke="#EB30A2"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M19.4844 26.5234C19.9676 26.5234 20.3594 26.1317 20.3594 25.6484C20.3594 25.1652 19.9676 24.7734 19.4844 24.7734C19.0011 24.7734 18.6094 25.1652 18.6094 25.6484C18.6094 26.1317 19.0011 26.5234 19.4844 26.5234Z"
@@ -53,9 +53,9 @@ export const PcCovidColored = () => (
     <path
       d="M22.3894 23.9727L19.4844 25.6503"
       stroke="#EB30A2"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M19.0215 21.248C19.5047 21.248 19.8965 20.8563 19.8965 20.373C19.8965 19.8898 19.5047 19.498 19.0215 19.498C18.5382 19.498 18.1465 19.8898 18.1465 20.373C18.1465 20.8563 18.5382 21.248 19.0215 21.248Z"
@@ -64,9 +64,9 @@ export const PcCovidColored = () => (
     <path
       d="M22.0093 21.1745L19.0215 20.373"
       stroke="#EB30A2"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M23.8223 29.5664C24.3055 29.5664 24.6973 29.1747 24.6973 28.6914C24.6973 28.2082 24.3055 27.8164 23.8223 27.8164C23.339 27.8164 22.9473 28.2082 22.9473 28.6914C22.9473 29.1747 23.339 29.5664 23.8223 29.5664Z"
@@ -75,23 +75,23 @@ export const PcCovidColored = () => (
     <path
       d="M24.6226 25.7031L23.8223 28.6898"
       stroke="#EB30A2"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M24.6891 44.9441C22.1243 43.4864 19.8018 41.6389 17.8046 39.4678M15.6369 36.7915C12.0704 31.7841 9.90039 25.2601 9.90039 17.216M43.1737 14.752C43.1737 15.655 43.2367 16.8893 43.2554 18.357M43.0711 23.3328C42.4644 29.6736 40.0634 37.6245 31.4662 43.095"
       stroke="#1DA1F2"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M9.89978 32.0042C4.35461 36.9334 5.58661 40.0146 7.43461 40.0146C10.0689 40.0146 12.7173 39.4102 16.1601 38.1549C25.6031 34.7132 37.8274 26.4602 51.3748 12.9141M51.3748 12.9141L50.1416 16.6112M51.3748 12.9141L47.6764 14.1461M26.5364 13.6292V30.6311M26.5364 35.9674V40.0157"
       stroke="#1DA1F2"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
