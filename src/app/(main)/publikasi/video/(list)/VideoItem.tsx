@@ -1,5 +1,7 @@
 import { Icon } from "@/app/icons";
 import { dateFormatter } from "@/utils/date-formatter";
+import { getYoutubeThumbnailUrl } from "@/utils/get-youtube-thumbnail";
+import Image from "next/image";
 import Link from "next/link";
 
 type VideoItemProps = {
@@ -19,16 +21,16 @@ export const VideoItem = ({
 }: VideoItemProps) => {
   return (
     <div className="flex flex-col gap-6">
-      <div className="relative aspect-video rounded-xl overflow-hidden">
-        <iframe
-          id="ytplayer"
-          width="100%"
-          height="100%"
-          src={`https://www.youtube.com/embed/${source}`}
-          frameBorder={0}
-          allowFullScreen
-        />
-      </div>
+      <Link href={`/publikasi/video/${slug}`}>
+        <div className="relative aspect-video ">
+          <Image
+            src={getYoutubeThumbnailUrl(source)}
+            alt={title}
+            fill
+            className="object-cover rounded-xl"
+          />
+        </div>
+      </Link>
 
       <div className="flex-1 flex flex-col gap-4">
         <div>

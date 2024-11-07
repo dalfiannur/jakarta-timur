@@ -4,7 +4,7 @@ import { dateFormatter } from "@/utils/date-formatter";
 import Image from "next/image";
 import Link from "next/link";
 
-export const LatestNewsWidget = ({ data = [] }: { data?: News[] }) => {
+export const NewsWidget = ({ data = [] }: { data?: News[] }) => {
   return (
     <div className="font-plus-jakarta-sans">
       <h3 className="font-semibold text-2xl">Berita Terbaru</h3>
