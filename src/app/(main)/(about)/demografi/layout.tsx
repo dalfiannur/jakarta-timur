@@ -51,7 +51,7 @@ export default function Layout({
 
       <div className="grid grid-cols-2 gap-6">
         {populationActivityGenderChart}
-        {/* {employedJobGenderChart} */}
+        {employedJobGenderChart}
       </div>
 
       {/* {populationEducationActivityTable} */}

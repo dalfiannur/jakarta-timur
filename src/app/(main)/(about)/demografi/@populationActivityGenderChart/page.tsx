@@ -52,6 +52,7 @@ export default async function Page() {
           bottom: "bottom",
           left: "left",
         },
+        tooltip: {},
       }}
     />
   );
