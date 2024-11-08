@@ -54,15 +54,15 @@ export default function Layout({
         {employedJobGenderChart}
       </div>
 
-      {/* {populationEducationActivityTable} */}
-      {/* {jobSeekersListingEducationTable} */}
+      {populationEducationActivityTable}
+      {jobSeekersListingEducationTable}
 
       <div className="grid grid-cols-2 gap-6">
-        {/* {jobSeekersListingTitleChart} */}
+        {jobSeekersListingTitleChart}
         {/* {jobSeekersListingEducationChart} */}
       </div>
 
-      {/* {jobStatsOverviewTable} */}
+      {jobStatsOverviewTable}
     </div>
   );
 }

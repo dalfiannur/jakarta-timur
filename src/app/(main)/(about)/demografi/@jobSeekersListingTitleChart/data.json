@@ -1,0 +1,67 @@
+{
+  "counters": [
+    {
+      "label": "Total Keseluruhan",
+      "value": 2236887
+    },
+    {
+      "label": "Jenis Kelamin Laki-Laki",
+      "value": 1127899
+    },
+    {
+      "label": "Jenis Kelamin Perempuan",
+      "value": 1108988
+    }
+  ],
+  "data": [
+    {
+      "id": 1,
+      "label": "Angkatan Kerja",
+
+      "male": 2,
+      "female": 3
+    },
+    {
+      "id": 2,
+      "label": "Bekerja",
+
+      "male": 2,
+      "female": 3
+    },
+    {
+      "id": 3,
+      "label": "Pengangguran Terbuka",
+
+      "male": 2,
+      "female": 3
+    },
+    {
+      "id": 4,
+      "label": "Bukan Angkatan Kerja",
+
+      "male": 2,
+      "female": 3
+    },
+    {
+      "id": 5,
+      "label": "Sekolah",
+
+      "male": 2,
+      "female": 3
+    },
+    {
+      "id": 6,
+      "label": "Mengurus Rumah Tangga",
+
+      "male": 2,
+      "female": 3
+    },
+    {
+      "id": 7,
+      "label": "Lainnya",
+
+      "male": 2,
+      "female": 3
+    }
+  ]
+}
