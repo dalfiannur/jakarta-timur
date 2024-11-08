@@ -1,0 +1,78 @@
+{
+  "counters": [
+    {
+      "title": "Total Keseluruhan Kelahiran",
+      "value": 41684
+    },
+    {
+      "title": "Total Keseluruhan Kematian",
+      "value": 21677
+    },
+    {
+      "title": "Total Keseluruhan",
+      "value": 63361
+    }
+  ],
+  "data": [
+    {
+      "label": "Januari",
+      "birth": 1000,
+      "death": 900
+    },
+    {
+      "label": "Februari",
+      "birth": 1200,
+      "death": 800
+    },
+    {
+      "label": "Maret",
+      "birth": 900,
+      "death": 1000
+    },
+    {
+      "label": "April",
+      "birth": 800,
+      "death": 700
+    },
+    {
+      "label": "Mei",
+      "birth": 1200,
+      "death": 900
+    },
+    {
+      "label": "Juni",
+      "birth": 1300,
+      "death": 930
+    },
+    {
+      "label": "Juli",
+      "birth": 1200,
+      "death": 700
+    },
+    {
+      "label": "Agustus",
+      "birth": 1200,
+      "death": 1000
+    },
+    {
+      "label": "September",
+      "birth": 1000,
+      "death": 1000
+    },
+    {
+      "label": "Oktober",
+      "birth": 1400,
+      "death": 1200
+    },
+    {
+      "label": "November",
+      "birth": 1000,
+      "death": 1000
+    },
+    {
+      "label": "Desember",
+      "birth": 1200,
+      "death": 1300
+    }
+  ]
+}

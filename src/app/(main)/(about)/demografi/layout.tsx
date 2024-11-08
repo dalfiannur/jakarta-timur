@@ -46,7 +46,7 @@ export default function Layout({
         {populationGenderDistrictChart}
       </div>
 
-      {/* {birthDeathRegChart} */}
+      {birthDeathRegChart}
       {/* {birthDeathRegTable} */}
 
       <div className="grid grid-cols-2 gap-6">
