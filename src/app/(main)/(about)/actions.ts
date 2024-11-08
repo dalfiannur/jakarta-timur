@@ -1,4 +1,3 @@
-import { XChartGenderData } from "./XBarGenderChart";
 import citizenGrowthData from "./data/citizen-growth.json";
 import citizenBirthRegistrationData from "./data/citizen-birth-registration.json";
 import citizenEducationData from "./data/citizen-education.json";
@@ -42,6 +41,6 @@ const chartData = {
 
 export const getChartData = async (
   key: keyof typeof chartData,
-): Promise<XChartGenderData> => {
+): Promise<any> => {
   return chartData[key].data;
 };
