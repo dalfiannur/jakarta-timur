@@ -1,67 +1,63 @@
 import { CitizenCountStatistic } from "../CitizenCountStatistic";
+import data from "./data.json";
 
 export default function Page() {
+  const maleSeries = data.data.map((d) => d.male);
+  const femaleSeries = data.data.map((d) => d.female);
+  const yAxis = data.data.map((d) => d.label);
+
   return (
     <CitizenCountStatistic
       title="Penduduk Menurut Jenis Kelamin dan Kecamatan Kota Jakarta Timur, 2020"
+      sourceInfo="Sumber: Hasil Sensus Penduduk 2020 (September)"
       total={[
         { label: "Total Keseluruhan", value: 3_037_139 },
         { label: "Jenis Kelamin Laki-Laki", value: 1_529_659 },
         { label: "Jenis Kelamin Perempuan", value: 1_507_480 },
       ]}
-      height={600}
-      data={[
-        {
-          label: "Pasar Rebo",
-          value: [3, 3],
-          id: 1,
+      height={700}
+      options={{
+        xAxis: {},
+        yAxis: {
+          type: "category",
+          data: yAxis,
         },
-        {
-          label: "Ciracas",
-          value: [3, 3],
-          id: 2,
+        series: [
+          {
+            type: "bar",
+            name: "Laki-Laki",
+            data: maleSeries,
+            barMaxWidth: 13,
+            itemStyle: {
+              borderRadius: 8,
+              color: "#1DA1F2",
+            },
+          },
+          {
+            type: "bar",
+            name: "Perempuan",
+            data: femaleSeries,
+            barMaxWidth: 13,
+            itemStyle: {
+              borderRadius: 8,
+              color: "#EB30A2",
+            },
+          },
+        ],
+        grid: {
+          right: 0,
+          left: 80,
+          top: 20,
+          bottom: 70,
         },
-        {
-          label: "Cipayung",
-          value: [3, 3],
-          id: 3,
+        tooltip: {},
+        legend: {
+          show: true,
+          orient: "horizontal",
+          left: "left",
+          bottom: "bottom",
         },
-        {
-          label: "Makasar",
-          value: [3, 3],
-          id: 4,
-        },
-        {
-          label: "Kramat Jati",
-          value: [3, 3],
-          id: 5,
-        },
-        {
-          label: "Jatinegara",
-          value: [3, 3],
-          id: 6,
-        },
-        {
-          label: "Duren Sawit",
-          value: [3, 3],
-          id: 7,
-        },
-        {
-          label: "Cakung",
-          value: [3, 3],
-          id: 8,
-        },
-        {
-          label: "Pulo Gadung",
-          value: [3, 3],
-          id: 9,
-        },
-        {
-          label: "Matraman",
-          value: [3, 3],
-          id: 10,
-        },
-      ]}
+      }}
     />
   );
 }

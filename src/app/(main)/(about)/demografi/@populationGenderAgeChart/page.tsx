@@ -1,97 +1,55 @@
 import { CitizenCountStatistic } from "../CitizenCountStatistic";
+import data from "./data.json";
 
 export default function Page() {
+  const maleSeries = data.data.map((d) => d.male);
+  const femaleSeries = data.data.map((d) => d.female);
+  const yAxis = data.data.map((d) => d.label);
+
   return (
     <CitizenCountStatistic
       title="Penduduk Menurut Jenis Kelamin dan Usia Kota Jakarta Timur, 2020"
+      sourceInfo="Sumber: Hasil Sensus Penduduk 2020 (September)"
       total={[
         { label: "Total Keseluruhan", value: 3_037_139 },
         { label: "Jenis Kelamin Laki-Laki", value: 1_529_659 },
         { label: "Jenis Kelamin Perempuan", value: 1_507_480 },
       ]}
       height={700}
-      data={[
-        {
-          label: "0 - 4th",
-          value: [1, 2],
-          id: 1,
+      options={{
+        xAxis: {},
+        yAxis: {
+          type: "category",
+          data: yAxis,
         },
-        {
-          label: "5 - 9th",
-          value: [2, 3],
-          id: 2,
+        series: [
+          {
+            type: "bar",
+            data: maleSeries,
+            barMaxWidth: 13,
+            itemStyle: {
+              borderRadius: 8,
+              color: "#1DA1F2",
+            },
+          },
+          {
+            type: "bar",
+            data: femaleSeries,
+            barMaxWidth: 13,
+            itemStyle: {
+              borderRadius: 8,
+              color: "#EB30A2",
+            },
+          },
+        ],
+        grid: {
+          right: 0,
+          left: 60,
+          top: 20,
+          bottom: 0,
         },
-        {
-          label: "10 - 14th",
-          value: [3, 4],
-          id: 3,
-        },
-        {
-          label: "15 - 19th",
-          value: [4, 5],
-          id: 4,
-        },
-        {
-          label: "20 - 24th",
-          value: [5, 6],
-          id: 5,
-        },
-        {
-          label: "25 - 29th",
-          value: [6, 7],
-          id: 6,
-        },
-        {
-          label: "30 - 34th",
-          value: [7, 8],
-          id: 7,
-        },
-        {
-          label: "35 - 39th",
-          value: [8, 7],
-          id: 8,
-        },
-        {
-          label: "40 - 44th",
-          value: [7, 6],
-          id: 9,
-        },
-        {
-          label: "45 - 49th",
-          value: [6, 5],
-          id: 10,
-        },
-        {
-          label: "50 - 54th",
-          value: [5, 4],
-          id: 11,
-        },
-        {
-          label: "55 - 59th",
-          value: [4, 3],
-          id: 12,
-        },
-        {
-          label: "60 - 64th",
-          value: [3, 2],
-          id: 13,
-        },
-        {
-          label: "65 - 69th",
-          value: [2, 1],
-          id: 14,
-        },
-        {
-          label: "70 - 74th",
-          value: [1, 2],
-          id: 15,
-        },
-        {
-          label: "75+th",
-          value: [2, 3],
-          id: 16,
-        },
-      ]}
+        tooltip: {},
+      }}
     />
   );
 }

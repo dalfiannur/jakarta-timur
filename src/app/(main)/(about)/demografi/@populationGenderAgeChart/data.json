@@ -1,0 +1,100 @@
+{
+  "data": [
+    {
+      "label": "0 - 4th",
+      "male": 1,
+      "female": 2,
+      "id": 1
+    },
+    {
+      "label": "5 - 9th",
+      "male": 1,
+      "female": 2,
+      "id": 2
+    },
+    {
+      "label": "10 - 14th",
+      "male": 1,
+      "female": 2,
+      "id": 3
+    },
+    {
+      "label": "15 - 19th",
+      "male": 1,
+      "female": 2,
+      "id": 4
+    },
+    {
+      "label": "20 - 24th",
+      "male": 1,
+      "female": 2,
+      "id": 5
+    },
+    {
+      "label": "25 - 29th",
+      "male": 1,
+      "female": 2,
+      "id": 6
+    },
+    {
+      "label": "30 - 34th",
+      "male": 1,
+      "female": 2,
+      "id": 7
+    },
+    {
+      "label": "35 - 39th",
+      "male": 1,
+      "female": 2,
+      "id": 8
+    },
+    {
+      "label": "40 - 44th",
+      "male": 1,
+      "female": 2,
+      "id": 9
+    },
+    {
+      "label": "45 - 49th",
+      "male": 1,
+      "female": 2,
+      "id": 10
+    },
+    {
+      "label": "50 - 54th",
+      "male": 1,
+      "female": 2,
+      "id": 11
+    },
+    {
+      "label": "55 - 59th",
+      "male": 1,
+      "female": 2,
+      "id": 12
+    },
+    {
+      "label": "60 - 64th",
+      "male": 1,
+      "female": 2,
+      "id": 13
+    },
+    {
+      "label": "65 - 69th",
+      "male": 1,
+      "female": 2,
+      "id": 14
+    },
+    {
+      "label": "70 - 74th",
+      "male": 1,
+      "female": 2,
+      "id": 15
+    },
+    {
+      "label": "75+th",
+      "male": 1,
+      "female": 2,
+      "id": 16
+    }
+  ]
+}

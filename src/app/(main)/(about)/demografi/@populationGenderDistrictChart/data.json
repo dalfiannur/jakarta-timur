@@ -1,0 +1,64 @@
+{
+  "data": [
+    {
+      "label": "Pasar Rebo",
+      "male": 1,
+      "female": 2,
+      "id": 1
+    },
+    {
+      "label": "Ciracas",
+      "male": 1,
+      "female": 2,
+      "id": 2
+    },
+    {
+      "label": "Cipayung",
+      "male": 1,
+      "female": 2,
+      "id": 3
+    },
+    {
+      "label": "Makasar",
+      "male": 1,
+      "female": 2,
+      "id": 4
+    },
+    {
+      "label": "Kramat Jati",
+      "male": 1,
+      "female": 2,
+      "id": 5
+    },
+    {
+      "label": "Jatinegara",
+      "male": 1,
+      "female": 2,
+      "id": 6
+    },
+    {
+      "label": "Duren Sawit",
+      "male": 1,
+      "female": 2,
+      "id": 7
+    },
+    {
+      "label": "Cakung",
+      "male": 1,
+      "female": 2,
+      "id": 8
+    },
+    {
+      "label": "Pulo Gadung",
+      "male": 1,
+      "female": 2,
+      "id": 9
+    },
+    {
+      "label": "Matraman",
+      "male": 1,
+      "female": 2,
+      "id": 10
+    }
+  ]
+}

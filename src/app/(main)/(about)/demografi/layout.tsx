@@ -46,16 +46,16 @@ export default function Layout({
         {populationGenderDistrictChart}
       </div>
 
-      {birthDeathRegChart}
-      {birthDeathRegTable}
+      {/* {birthDeathRegChart} */}
+      {/* {birthDeathRegTable} */}
 
       <div className="grid grid-cols-2 gap-6">
-        {populationActivityGenderChart}
-        {employedJobGenderChart}
+        {/* {populationActivityGenderChart} */}
+        {/* {employedJobGenderChart} */}
       </div>
 
-      {populationEducationActivityTable}
-      {jobSeekersListingEducationTable}
+      {/* {populationEducationActivityTable} */}
+      {/* {jobSeekersListingEducationTable} */}
 
       <div className="grid grid-cols-2 gap-6">
         {/* {jobSeekersListingTitleChart} */}
