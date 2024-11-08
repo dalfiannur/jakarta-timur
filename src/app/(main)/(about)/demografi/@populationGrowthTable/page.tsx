@@ -1,7 +1,6 @@
 import { formattedNumber } from "@/utils/format-number";
-import { CitizenGrowthData, getTableData } from "../actions";
-import { Column, Footer, footerCounter, Table } from "../Table";
-import { useRequest } from "ahooks";
+import { CitizenGrowthData, getTableData } from "../../actions";
+import { Column, Footer, footerCounter, Table } from "../../Table";
 
 const title =
   "Penduduk, Laju Pertumbuhan Penduduk per Tahun, Distribusi Persentase Penduduk, Kepadatan Penduduk, Rasio Jenis Kelamin Penduduk Menurut Kecamatan Kota Jakarta Timur, 2020";
@@ -58,15 +57,16 @@ const footers: Footer<CitizenGrowthData>[] = [
   },
 ];
 
-export const CitizenGrowthTable = () => {
-  const { data } = useRequest(() => getTableData("citizenGrowthData"));
+export default async function Page() {
+  const data = await getTableData("citizenGrowthData");
 
   return (
     <Table
       title={title}
       columns={columns}
       footers={footers}
-      data={data ?? []}
+      //@ts-expect-error missmatch type
+      data={data}
     />
   );
-};
+}

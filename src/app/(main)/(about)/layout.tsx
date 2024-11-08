@@ -1,11 +1,10 @@
-"use client";
 import { PageTitle } from "@/app/components/PageTitle";
-import { Content } from "./Content";
-import { Sidebar } from "@/app/components/Sidebar";
 import { PageBreadcrumbs } from "./PageBreadcrumbs";
+import { Sidebar } from "./Sidebar";
 import { sidebarItems } from "./constants";
+import { ReactNode } from "react";
 
-export default function Page() {
+export default function Layout({ children }: { children: ReactNode }) {
   return (
     <div className="pb-16">
       <PageTitle
@@ -17,7 +16,7 @@ export default function Page() {
         <PageBreadcrumbs />
         <div className="mt-8 flex gap-8">
           <Sidebar items={sidebarItems} />
-          <Content />
+          <div className="flex-1">{children}</div>
         </div>
       </div>
     </div>

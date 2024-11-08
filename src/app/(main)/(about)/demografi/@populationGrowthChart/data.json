@@ -1,0 +1,44 @@
+{
+  "data": [
+    {
+      "label": "Pasar Rebo",
+      "value": 6
+    },
+    {
+      "label": "Ciracas",
+      "value": 16
+    },
+    {
+      "label": "Cipayung",
+      "value": 40
+    },
+    {
+      "label": "Makasar",
+      "value": 20
+    },
+    {
+      "label": "Kramat Jati",
+      "value": 30
+    },
+    {
+      "label": "Jatinegara",
+      "value": 15
+    },
+    {
+      "label": "Duren Sawit",
+      "value": 3
+    },
+    {
+      "label": "Cakung",
+      "value": 23
+    },
+    {
+      "label": "Pulo Gadung",
+      "value": 26
+    },
+    {
+      "label": "Matraman",
+      "value": 40
+    }
+  ]
+}

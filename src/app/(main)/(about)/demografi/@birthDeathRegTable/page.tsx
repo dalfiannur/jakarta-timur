@@ -1,6 +1,7 @@
+"use client";
 import { formattedNumber } from "@/utils/format-number";
-import { Column, Footer, footerCounter, Table } from "../Table";
-import { CitizenBirthRegistrationData, getTableData } from "../actions";
+import { Column, Footer, footerCounter, Table } from "../../Table";
+import { CitizenBirthRegistrationData, getTableData } from "../../actions";
 import { useRequest } from "ahooks";
 
 const title =
@@ -90,7 +91,7 @@ const footers: Footer<CitizenBirthRegistrationData>[] = [
   },
 ];
 
-export const CitizenBirthRegistrationTable = () => {
+export default function Page() {
   const { data } = useRequest(() =>
     getTableData("citizenBirthRegistrationData"),
   );
@@ -104,4 +105,4 @@ export const CitizenBirthRegistrationTable = () => {
       data={data ?? []}
     />
   );
-};
+}

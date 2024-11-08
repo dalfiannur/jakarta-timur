@@ -136,14 +136,14 @@ export const navigationBarConfig: NavigationBarConfig = {
           {
             icon: "GoalsFill",
             title: "Visi Misi & Kegiatan Strategies",
-            link: "/tentang-jakarta-timur?s=visi-misi-kegiatan-strategis",
+            link: "/visi-misi",
             description:
               "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
           },
           {
             icon: "MapMarkerAlt",
             title: "Peta & Batas Wilayah",
-            link: "/tentang-jakarta-timur?s=peta",
+            link: "/peta-batas-wilayah",
             description:
               "Temukan data dan informasi  berbagai aspek demografis kota.",
           },

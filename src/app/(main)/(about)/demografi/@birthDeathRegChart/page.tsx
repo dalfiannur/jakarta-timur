@@ -1,3 +1,4 @@
+"use client";
 import { Icon } from "@/app/icons";
 import * as Plot from "@observablehq/plot";
 import { useEffect, useRef } from "react";
@@ -68,7 +69,7 @@ const data = [
   },
 ];
 
-export const BirthRegistrationStatistic = () => {
+export default function Page() {
   const statisticRef = useRef<HTMLDivElement>(null);
 
   const born = data.map((d) => ({
@@ -155,4 +156,4 @@ export const BirthRegistrationStatistic = () => {
       </p>
     </div>
   );
-};
+}

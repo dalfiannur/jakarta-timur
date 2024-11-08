@@ -1,16 +1,8 @@
-import { SectionTitle } from "./SectionTitle";
-import { MapArea } from "@/app/components/MapArea";
+import { SectionTitle } from "../SectionTitle";
+import { MapArea } from "./MapArea";
+import { StatisticItem } from "./StatisticItem";
 
-const StatisticItem = ({ title, value }: { title: string; value: number }) => {
-  return (
-    <div className="text-center">
-      <div className="text-2xl font-bold">{value}</div>
-      <div className="text-xl">{title}</div>
-    </div>
-  );
-};
-
-export const MapSection = () => {
+export default function Page() {
   return (
     <div>
       <SectionTitle>Visi Misi &amp; Kegiatan Strategis</SectionTitle>
@@ -24,7 +16,7 @@ export const MapSection = () => {
         </div>
       </div>
 
-      <div className="mt-8 grid grid-cols-2 gap-8">
+      <div className="mt-8 grid grid-cols-2 gap-8 font-plus-jakarta-sans">
         <div className="border rounded-xl p-8">
           <h5 className="font-semibold text-2xl">
             Letak Kota Jakarta Timur/Location of Jakarta Timur Municipality
@@ -84,4 +76,4 @@ export const MapSection = () => {
       </div>
     </div>
   );
-};
+}

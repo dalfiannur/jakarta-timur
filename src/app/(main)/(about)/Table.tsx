@@ -32,6 +32,7 @@ export const Table = <T,>({
   data = [],
   sourceInfo,
   noteSection,
+  px,
 }: {
   title: string;
   columns: Column[];
@@ -39,6 +40,7 @@ export const Table = <T,>({
   data: T[];
   sourceInfo?: string;
   noteSection?: ReactNode;
+  px?: number;
 }) => {
   const headerColumns = useMemo(
     () => [columns, columns.map((d) => d.children ?? []).flat()],
@@ -51,14 +53,14 @@ export const Table = <T,>({
   );
 
   return (
-    <div className="border rounded-xl p-10">
+    <div className="border rounded-xl p-10 flex flex-col gap-8">
       <h5 className="text-center text-xl font-bold">{title}</h5>
-      <table className="mt-8 rounded-t-2xl overflow-hidden w-full">
+      <table className="rounded-t-2xl overflow-hidden">
         <thead>
           {headerColumns.map((cols, index) => (
             <tr key={index} className="bg-[#E9F6FE]">
               {cols.map(({ header, ...cell }, i) => (
-                <Th {...cell} key={i}>
+                <Th {...cell} px={px} key={i}>
                   {header}
                 </Th>
               ))}
@@ -71,6 +73,7 @@ export const Table = <T,>({
               {dataColumns.map((col, i) => (
                 <Td
                   key={i}
+                  px={px}
                   striped={index % 2 !== 0}
                   textAlign={col.textAlign}
                   maxWidth={col.maxWidth}
@@ -82,9 +85,8 @@ export const Table = <T,>({
               ))}
             </tr>
           ))}
-        </tbody>
-        <tfoot>
-          <tr className="mt-2 text-sm text-center font-medium text-white">
+
+          <tr className="text-sm text-center font-medium text-white">
             {footers.map((item, index) => (
               <th
                 key={index}
@@ -95,23 +97,29 @@ export const Table = <T,>({
                       ? "r"
                       : undefined
                 }
-                style={{ maxWidth: item.maxWidth }}
+                style={{
+                  maxWidth: item.maxWidth,
+                  // paddingLeft: px ?? 16,
+                  // paddingRight: px ?? 16,
+                  // paddingTop: 16,
+                  // paddingBottom: 16,
+                }}
                 data-align={item.textAlign}
                 data-nowrap={item.nowrap}
-                className="bg-[#1DA1F2] p-4 data-[rounded=l]:rounded-l-2xl data-[nowrap=true]:whitespace-nowrap data-[rounded=r]:rounded-r-2xl data-[align=left]:text-left data-[align=center]:text-center data-[align=right]:text-right data-[align=justify]:text-justify"
+                className="bg-[#1DA1F2] data-[rounded=l]:rounded-l-2xl data-[nowrap=true]:whitespace-nowrap data-[rounded=r]:rounded-r-2xl data-[align=left]:text-left data-[align=center]:text-center data-[align=right]:text-right data-[align=justify]:text-justify"
               >
                 {item.render(data)}
               </th>
             ))}
           </tr>
-        </tfoot>
+        </tbody>
       </table>
       {noteSection}
       {sourceInfo && (
-        <p className="mt-6 flex gap-4 items-center text-blue-500 text-sm">
+        <div className="mt-6 flex gap-4 items-center text-blue-500 text-sm">
           <Icon name="Info" size={16} />
           {sourceInfo}
-        </p>
+        </div>
       )}
     </div>
   );
@@ -124,6 +132,7 @@ const Th = ({
   compact,
   nowrap,
   maxWidth,
+  px = 24,
 }: {
   children: ReactNode;
   colSpan?: number;
@@ -131,14 +140,15 @@ const Th = ({
   compact?: boolean;
   nowrap?: boolean;
   maxWidth?: number;
+  px?: number;
 }) => (
   <th
     colSpan={colSpan}
     rowSpan={rowSpan}
     data-compact={compact}
     data-nowrap={nowrap}
-    style={{ maxWidth }}
-    className="py-4 data-[compact=true]:py-2 px-6 text-center text-sm dont-semibold text-[#23272E] data-[nowrap=true]:whitespace-nowrap"
+    style={{ maxWidth, paddingLeft: px, paddingRight: px }}
+    className="py-4 data-[compact=true]:py-2 text-center text-sm dont-semibold text-[#23272E] data-[nowrap=true]:whitespace-nowrap"
   >
     {children}
   </th>
@@ -149,17 +159,19 @@ const Td = ({
   striped,
   textAlign = "center",
   maxWidth,
+  px = 24,
 }: {
   children: ReactNode;
   striped?: boolean;
   textAlign?: TextAlign;
   maxWidth?: number;
+  px?: number;
 }) => (
   <td
     data-striped={striped ? true : false}
     data-align={textAlign}
-    style={{ maxWidth }}
-    className="px-6 whitespace-nowrap text-sm font-medium text-[#666666] py-6 data-[striped=true]:bg-[#F6F6F6] data-[align=left]:text-left data-[align=center]:text-center data-[align=right]:text-right data-[align=justify]:text-justify"
+    style={{ maxWidth, paddingLeft: px, paddingRight: px }}
+    className="whitespace-nowrap text-sm font-medium text-[#666666] py-6 data-[striped=true]:bg-[#F6F6F6] data-[align=left]:text-left data-[align=center]:text-center data-[align=right]:text-right data-[align=justify]:text-justify"
   >
     {children}
   </td>

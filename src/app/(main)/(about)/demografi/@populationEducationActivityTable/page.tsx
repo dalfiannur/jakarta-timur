@@ -1,10 +1,7 @@
 import { formattedNumber } from "@/utils/format-number";
-import { CitizenEducationData, getTableData } from "../actions";
-import { Column, Footer, footerCounter, Table } from "../Table";
-import { useRequest } from "ahooks";
+import { CitizenEducationData, getTableData } from "../../actions";
+import { Column, Footer, footerCounter, Table } from "../../Table";
 
-const title =
-  "Penduduk Berumur 15 Tahun ke Atas Menurut Pendidikan Tertinggi yang Ditamatkan dan Jenis Kegiatan Selama Seminggu yang Lalu di Kota Jakarta Timur, 2020";
 const columns: Column[] = [
   {
     key: "id",
@@ -89,8 +86,7 @@ const footers: Footer<CitizenEducationData>[] = [
       footerCounter(items, (d) => d.workforcePercentage, "avg"),
   },
 ];
-const sourceInfo =
-  "Sumber/Source: BPS, Survei Angkatan Kerja Nasional (Sakernas) Agustus/BPS-Statistics Indonesia, August National Labor Force Survey";
+
 const NoteSection = () => (
   <div className="mt-8 flex gap-8 text-xs text-[#23272E] font-medium">
     <div>Catatan:</div>
@@ -111,17 +107,17 @@ const NoteSection = () => (
   </div>
 );
 
-export const CitizenEducationTable = () => {
-  const { data } = useRequest(() => getTableData("citizenEducationData"));
+export default async function Page() {
+  const data = await getTableData("citizenEducationData");
 
   return (
     <Table
-      title={title}
       columns={columns}
       footers={footers}
-      data={data ?? []}
-      sourceInfo={sourceInfo}
+      data={data}
       noteSection={<NoteSection />}
+      title="Penduduk Berumur 15 Tahun ke Atas Menurut Pendidikan Tertinggi yang Ditamatkan dan Jenis Kegiatan Selama Seminggu yang Lalu di Kota Jakarta Timur, 2020"
+      sourceInfo="Sumber/Source: BPS, Survei Angkatan Kerja Nasional (Sakernas) Agustus/BPS-Statistics Indonesia, August National Labor Force Survey"
     />
   );
-};
+}

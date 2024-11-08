@@ -1,10 +1,7 @@
 import { formattedNumber } from "@/utils/format-number";
-import { getTableData, JobSeekerData } from "../actions";
-import { Column, Footer, footerCounter, Table } from "../Table";
-import { useRequest } from "ahooks";
+import { getTableData, JobSeekerData } from "../../actions";
+import { Column, Footer, footerCounter, Table } from "../../Table";
 
-const title =
-  "Jumlah Pencari Kerja Lowongan dan Penempatan yang Terdaftar Menurut Pendidikan di Kota Jakarta Timur, 2020";
 const columns: Column[] = [
   {
     key: "qualification",
@@ -125,8 +122,7 @@ const footers: Footer<JobSeekerData>[] = [
     render: (items) => footerCounter(items, (d) => d.data[2].total),
   },
 ];
-const sourceInfo =
-  "Sumber/Source: Dinas Tenaga Kerja dan Transmigrasi Provinsi DKI Jakarta/Manpower and Transmigration Office of DKI Jakarta Province";
+
 const NoteSection = () => (
   <div className="mt-8 flex gap-8 text-xs text-[#23272E] font-medium">
     <div>Note:</div>
@@ -147,17 +143,18 @@ const NoteSection = () => (
   </div>
 );
 
-export const JobSeekerTable = () => {
-  const { data } = useRequest(() => getTableData("jobseekerData"));
+export default async function Page() {
+  const data = await getTableData("jobseekerData");
 
   return (
     <Table
-      title={title}
+      px={4}
+      title="Jumlah Pencari Kerja Lowongan dan Penempatan yang Terdaftar Menurut Pendidikan di Kota Jakarta Timur, 2020"
       columns={columns}
       footers={footers}
-      data={data ?? []}
-      sourceInfo={sourceInfo}
+      data={data}
+      sourceInfo="Sumber/Source: Dinas Tenaga Kerja dan Transmigrasi Provinsi DKI Jakarta/Manpower and Transmigration Office of DKI Jakarta Province"
       noteSection={<NoteSection />}
     />
   );
-};
+}

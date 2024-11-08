@@ -1,8 +1,6 @@
-import { useRequest } from "ahooks";
-import { getTableData, IkhtisarData } from "../actions";
-import { Column, Footer, footerCounter, Table } from "../Table";
+import { getTableData, IkhtisarData } from "../../actions";
+import { Column, Footer, footerCounter, Table } from "../../Table";
 
-const title = "Ikhtisar Statistik Antar Kerja Kota Jakarta Timur, 2020";
 const columns: Column[] = [
   {
     key: "description",
@@ -23,6 +21,7 @@ const columns: Column[] = [
     header: "Jumlah",
   },
 ];
+
 const footers: Footer<IkhtisarData>[] = [
   {
     render: () => <>Pencari kerja yang belum ditempatkan akhir tahun</>,
@@ -39,19 +38,17 @@ const footers: Footer<IkhtisarData>[] = [
     render: (items) => footerCounter(items, (d) => d.total),
   },
 ];
-const sourceInfo =
-  "Sumber/Source: Dinas Tenaga Kerja dan Transmigrasi Provinsi DKI Jakarta/Manpower and Transmigration Office of DKI Jakarta Province";
 
-export const IkhtisarTable = () => {
-  const { data } = useRequest(() => getTableData("ikhtisarData"));
+export default async function Page() {
+  const data = await getTableData("ikhtisarData");
 
   return (
     <Table
-      title={title}
       columns={columns}
-      data={data ?? []}
       footers={footers}
-      sourceInfo={sourceInfo}
+      data={data}
+      title="Ikhtisar Statistik Antar Kerja Kota Jakarta Timur, 2020"
+      sourceInfo="Sumber/Source: Dinas Tenaga Kerja dan Transmigrasi Provinsi DKI Jakarta/Manpower and Transmigration Office of DKI Jakarta Province"
     />
   );
-};
+}
