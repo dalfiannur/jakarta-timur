@@ -1,8 +1,9 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import * as echart from "echarts";
 import { formattedNumber } from "@/utils/format-number";
 import { Icon } from "@/app/icons";
+import _ from "lodash";
 
 export const CitizenCountStatistic = ({
   title,
@@ -10,25 +11,62 @@ export const CitizenCountStatistic = ({
   total,
   height,
   options,
+  wrapLabel,
 }: {
   title: string;
   sourceInfo?: string;
   total: { label: string; value: number }[];
   height?: number;
   options: echart.EChartsOption;
+  wrapLabel?: {
+    x?: number;
+    y?: number;
+  };
 }) => {
   const ref = useRef<HTMLDivElement>(null);
+
+  const formatter = useCallback((value: string, maxLineLength = 25) => {
+    const words = value.split(" "); // Split the label by spaces
+    let wrappedText = "";
+    let line = "";
+
+    words.forEach((word) => {
+      if ((line + word).length > maxLineLength) {
+        wrappedText += line.trim() + "\n"; // Add line break
+        line = word + " "; // Start new line with the word
+      } else {
+        line += word + " ";
+      }
+    });
+
+    wrappedText += line.trim(); // Add any remaining text
+    return wrappedText;
+  }, []);
 
   useEffect(() => {
     if (ref.current) {
       const chart = echart.init(ref.current, null, { height });
-      chart.setOption(options);
+      const _options = { ...options };
+      if (wrapLabel?.x) {
+        _.set(_options, "xAxis.axisLabel.formatter", (v: string) =>
+          formatter(v, wrapLabel.x),
+        );
+      }
+
+      if (wrapLabel?.y) {
+        _.set(_options, "yAxis.axisLabel.formatter", (v: string) =>
+          formatter(v, wrapLabel.y),
+        );
+      }
+
+      chart.setOption(_options);
+
       chart.resize();
       return () => {
         chart.dispose();
       };
     }
-  }, [ref, height, options]);
+  }, [ref, height, options, formatter, wrapLabel]);
 
   return (
     <div className="border rounded-xl p-10 flex flex-col gap-6">

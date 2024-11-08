@@ -1,0 +1,84 @@
+{
+  "data": [
+    {
+      "district": "Pasar Rebo",
+      "citizen": 220583,
+      "growth": 1.49,
+      "percentage": 7.26,
+      "depth": 16994,
+      "genderRatio": 102.2
+    },
+    {
+      "district": "Ciracas",
+      "citizen": 296316,
+      "growth": 1.59,
+      "percentage": 9.76,
+      "depth": 18428,
+      "genderRatio": 101.3
+    },
+    {
+      "district": "Cipayung",
+      "citizen": 285650,
+      "growth": 2.18,
+      "percentage": 9.41,
+      "depth": 10040,
+      "genderRatio": 101.9
+    },
+    {
+      "district": "Makasar",
+      "citizen": 207293,
+      "growth": 1.06,
+      "percentage": 6.83,
+      "depth": 9487,
+      "genderRatio": 101.0
+    },
+    {
+      "district": "Kramat Jati",
+      "citizen": 298437,
+      "growth": 0.88,
+      "percentage": 9.83,
+      "depth": 22957,
+      "genderRatio": 101.5
+    },
+    {
+      "district": "Jatinegara",
+      "citizen": 301717,
+      "growth": 1.2,
+      "percentage": 9.93,
+      "depth": 29436,
+      "genderRatio": 101.9
+    },
+    {
+      "district": "Duren Sawit",
+      "citizen": 414604,
+      "growth": 0.73,
+      "percentage": 13.65,
+      "depth": 18305,
+      "genderRatio": 99.5
+    },
+    {
+      "district": "Cakung",
+      "citizen": 559040,
+      "growth": 1.01,
+      "percentage": 18.41,
+      "depth": 13222,
+      "genderRatio": 104.1
+    },
+    {
+      "district": "Pulo Gadung",
+      "citizen": 281319,
+      "growth": 0.68,
+      "percentage": 9.26,
+      "depth": 18022,
+      "genderRatio": 99.6
+    },
+    {
+      "district": "Matraman",
+      "citizen": 172180,
+      "growth": 1.45,
+      "percentage": 5.67,
+      "depth": 35283,
+      "genderRatio": 99.7
+    }
+  ]
+}

@@ -1,72 +1,81 @@
+"use client";
 import { formattedNumber } from "@/utils/format-number";
-import { CitizenGrowthData, getTableData } from "../../actions";
-import { Column, Footer, footerCounter, Table } from "../../Table";
+import { Table } from "../../Table";
+import { createColumnHelper } from "@tanstack/react-table";
+import { PopulationGrowth } from "./type";
+import data from "./data.json";
+import _ from "lodash";
+import { Icon } from "@/app/icons";
 
-const title =
-  "Penduduk, Laju Pertumbuhan Penduduk per Tahun, Distribusi Persentase Penduduk, Kepadatan Penduduk, Rasio Jenis Kelamin Penduduk Menurut Kecamatan Kota Jakarta Timur, 2020";
-const columns: Column[] = [
-  {
-    header: "Kecamatan",
-    key: "district",
-  },
-  {
-    header: "Penduduk(Jiwa)",
-    key: "citizen",
-    render: (v) => formattedNumber(v),
-  },
-  {
-    header: "Laju Pertumbuhan Penduduk 2010-2020 (%)",
-    key: "growth",
-    render: (v) => formattedNumber(v, 2),
-  },
-  {
+const footerSumCounter = (values: number[]) => formattedNumber(_.sum(values));
+const footerAvgCounter = (values: number[]) =>
+  formattedNumber(_.mean(values), 2);
+
+const columnHelper = createColumnHelper<PopulationGrowth>();
+const columns = [
+  columnHelper.accessor("district", {
+    header: () => "Kecamatan",
+    footer: () => "Kota Jakarta Timur",
+  }),
+  columnHelper.accessor("citizen", {
+    header: () => <div className="whitespace-nowrap">Penduduk (Jiwa)</div>,
+    footer: ({ table }) =>
+      footerSumCounter(
+        table.getPrePaginationRowModel().rows.map((d) => d.getValue("citizen")),
+      ),
+  }),
+  columnHelper.accessor("growth", {
+    header: () => (
+      <div>
+        <div>Laju Pertumbuhan Penduduk</div>
+        <div>2010-2020 (%)</div>
+      </div>
+    ),
+    footer: ({ table }) =>
+      footerSumCounter(
+        table.getPrePaginationRowModel().rows.map((d) => d.getValue("growth")),
+      ),
+  }),
+  columnHelper.accessor("percentage", {
     header: "Persentase Penduduk",
-    key: "percentage",
-    render: (v) => formattedNumber(v, 2),
-  },
-  {
+    footer: ({ table }) =>
+      footerAvgCounter(
+        table
+          .getPrePaginationRowModel()
+          .rows.map((d) => d.getValue("percentage")),
+      ),
+  }),
+  columnHelper.accessor("depth", {
     header: "Kepadatan Penduduk per km2",
-    key: "depth",
-    render: (v) => formattedNumber(v),
-  },
-  {
+    footer: ({ table }) =>
+      footerSumCounter(
+        table.getPrePaginationRowModel().rows.map((d) => d.getValue("depth")),
+      ),
+  }),
+  columnHelper.accessor("genderRatio", {
     header: "Rasio Jenis Kelamin Penduduk",
-    key: "genderRatio",
-    render: (v) => formattedNumber(v, 2),
-  },
-];
-const footers: Footer<CitizenGrowthData>[] = [
-  {
-    render: () => "Kota Jakarta Timur",
-    nowrap: true,
-  },
-  {
-    render: (items) => footerCounter(items, (d) => d.citizen),
-  },
-  {
-    render: (items) => footerCounter(items, (d) => d.growth, "avg"),
-  },
-  {
-    render: (items) => footerCounter(items, (d) => d.percentage, "avg"),
-  },
-  {
-    render: (items) => footerCounter(items, (d) => d.depth),
-  },
-  {
-    render: (items) => footerCounter(items, (d) => d.genderRatio, "avg"),
-  },
+    footer: ({ table }) =>
+      footerAvgCounter(
+        table
+          .getPrePaginationRowModel()
+          .rows.map((d) => d.getValue("genderRatio")),
+      ),
+  }),
 ];
 
-export default async function Page() {
-  const data = await getTableData("citizenGrowthData");
-
+export default function Page() {
   return (
-    <Table
-      title={title}
-      columns={columns}
-      footers={footers}
-      //@ts-expect-error missmatch type
-      data={data}
-    />
+    <div className="p-10 rounded-2xl border">
+      <h4 className="text-center font-bold font-plus-jakarta-sans text-xl mb-6">
+        Penduduk, Laju Pertumbuhan Penduduk per Tahun, Distribusi Persentase
+        Penduduk, Kepadatan Penduduk, Rasio Jenis Kelamin Penduduk Menurut
+        Kecamatan Kota Jakarta Timur, 2020
+      </h4>
+      <Table columns={columns} data={data.data} />
+      <div className="mt-6 flex gap-2 text-sm text-blue-500 font-bold font-plus-jakarta-sans">
+        <Icon name="Info" size={16} />
+        <p>Sumber: Hasil Sensus Penduduk 2020 (September)</p>
+      </div>
+    </div>
   );
 }

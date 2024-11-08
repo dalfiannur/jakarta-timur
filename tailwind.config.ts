@@ -12,6 +12,7 @@ const config: Config = {
         "plus-jakarta-sans": "var(--font-plus-jakarta-sans)",
         roboto: "var(--font-roboto)",
         poppins: "var(--font-poppins)",
+        inter: "var(--font-inter)",
       },
       colors: {
         background: "var(--background)",

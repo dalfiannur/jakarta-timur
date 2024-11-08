@@ -8,14 +8,14 @@ type LayoutProps = {
   populationGenderAgeChart: ReactNode;
   populationGenderDistrictChart: ReactNode;
   populationActivityGenderChart: ReactNode;
-  populationEducationActivityTable: ReactNode;
+  // populationEducationActivityTable: ReactNode;
   birthDeathRegChart: ReactNode;
-  birthDeathRegTable: ReactNode;
+  // birthDeathRegTable: ReactNode;
   employedJobGenderChart: ReactNode;
   jobSeekersListingTitleChart: ReactNode;
   jobSeekersListingEducationChart: ReactNode;
-  jobSeekersListingEducationTable: ReactNode;
-  jobStatsOverviewTable: ReactNode;
+  // jobSeekersListingEducationTable: ReactNode;
+  // jobStatsOverviewTable: ReactNode;
 };
 
 export default function Layout({
@@ -47,22 +47,22 @@ export default function Layout({
       </div>
 
       {birthDeathRegChart}
-      {birthDeathRegTable}
+      {/* {birthDeathRegTable} */}
 
       <div className="grid grid-cols-2 gap-6">
         {populationActivityGenderChart}
         {employedJobGenderChart}
       </div>
 
-      {populationEducationActivityTable}
-      {jobSeekersListingEducationTable}
+      {/* {populationEducationActivityTable} */}
+      {/* {jobSeekersListingEducationTable} */}
 
       <div className="grid grid-cols-2 gap-6">
         {jobSeekersListingTitleChart}
-        {/* {jobSeekersListingEducationChart} */}
+        {jobSeekersListingEducationChart}
       </div>
 
-      {jobStatsOverviewTable}
+      {/* {jobStatsOverviewTable} */}
     </div>
   );
 }
