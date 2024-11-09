@@ -1,126 +1,124 @@
+"use client";
 import { formattedNumber } from "@/utils/format-number";
-import { getTableData, JobSeekerData } from "../../actions";
-import { Column, Footer, footerCounter, Table } from "../../Table";
+import { Table } from "@/app/components/Table";
+import { Icon } from "@/app/icons";
+import data from "./data.json";
+import { createColumnHelper } from "@tanstack/react-table";
+import _ from "lodash";
+import { JobSeekersListingEducation } from "./type";
 
-const columns: Column[] = [
-  {
-    key: "qualification",
+const footerSumCounter = (values: number[]) => formattedNumber(_.sum(values));
+const footerAvgCounter = (values: number[]) =>
+  formattedNumber(_.mean(values), 2);
+
+const columnHelper = createColumnHelper<JobSeekersListingEducation>();
+const columns = [
+  columnHelper.accessor("qualification", {
     header: "Pendidikan",
-    rowSpan: 2,
-  },
-  {
-    key: null,
+    footer: () => "Total",
+    meta: {
+      rowSpan: 2,
+    },
+  }),
+  columnHelper.group({
+    id: "jobseekers_0",
     header: "Pencari Kerja",
-    colSpan: 3,
-    compact: true,
-    children: [
-      {
-        key: "data.0.male",
+    columns: [
+      columnHelper.accessor("d0.male", {
         header: "Laki-Laki",
-        compact: true,
-        nowrap: true,
-        render: (v) => formattedNumber(v),
-      },
-      {
-        key: "data.0.female",
+        footer: ({ table }) =>
+          footerSumCounter(
+            table
+              .getPrePaginationRowModel()
+              .rows.map((d) => d.getValue("d0_male")),
+          ),
+      }),
+      columnHelper.accessor("d0.female", {
         header: "Perempuan",
-        compact: true,
-        render: (v) => formattedNumber(v),
-      },
-      {
-        key: "data.0.total",
-        header: "Jumlah",
-        compact: true,
-        render: (v) => formattedNumber(v),
-      },
+        footer: ({ table }) =>
+          footerSumCounter(
+            table
+              .getPrePaginationRowModel()
+              .rows.map((d) => d.getValue("d0_female")),
+          ),
+      }),
+      columnHelper.accessor("d0.total", {
+        header: "Total",
+        footer: ({ table }) =>
+          footerSumCounter(
+            table
+              .getPrePaginationRowModel()
+              .rows.map((d) => d.getValue("d0_total")),
+          ),
+      }),
     ],
-  },
-  {
-    key: null,
+  }),
+  columnHelper.group({
+    id: "jobseekers_1",
     header: "Pencari Kerja",
-    colSpan: 3,
-    compact: true,
-    children: [
-      {
-        key: "data.1.male",
+    columns: [
+      columnHelper.accessor("d1.male", {
         header: "Laki-Laki",
-        compact: true,
-        nowrap: true,
-        render: (v) => formattedNumber(v),
-      },
-      {
-        key: "data.1.female",
+        footer: ({ table }) =>
+          footerSumCounter(
+            table
+              .getPrePaginationRowModel()
+              .rows.map((d) => d.getValue("d1_male")),
+          ),
+      }),
+      columnHelper.accessor("d1.female", {
         header: "Perempuan",
-        compact: true,
-        render: (v) => formattedNumber(v),
-      },
-      {
-        key: "data.1.total",
-        header: "Jumlah",
-        compact: true,
-        render: (v) => formattedNumber(v),
-      },
+        footer: ({ table }) =>
+          footerSumCounter(
+            table
+              .getPrePaginationRowModel()
+              .rows.map((d) => d.getValue("d1_female")),
+          ),
+      }),
+      columnHelper.accessor("d1.total", {
+        header: "Total",
+        footer: ({ table }) =>
+          footerSumCounter(
+            table
+              .getPrePaginationRowModel()
+              .rows.map((d) => d.getValue("d1_total")),
+          ),
+      }),
     ],
-  },
-  {
-    key: null,
+  }),
+  columnHelper.group({
+    id: "jobseekers_2",
     header: "Pencari Kerja",
-    colSpan: 3,
-    compact: true,
-    children: [
-      {
-        key: "data.2.male",
+    columns: [
+      columnHelper.accessor("d2.male", {
         header: "Laki-Laki",
-        compact: true,
-        nowrap: true,
-        render: (v) => formattedNumber(v),
-      },
-      {
-        key: "data.2.female",
+        footer: ({ table }) =>
+          footerSumCounter(
+            table
+              .getPrePaginationRowModel()
+              .rows.map((d) => d.getValue("d2_male")),
+          ),
+      }),
+      columnHelper.accessor("d2.female", {
         header: "Perempuan",
-        compact: true,
-        render: (v) => formattedNumber(v),
-      },
-      {
-        key: "data.2.total",
-        header: "Jumlah",
-        compact: true,
-        render: (v) => formattedNumber(v),
-      },
+        footer: ({ table }) =>
+          footerSumCounter(
+            table
+              .getPrePaginationRowModel()
+              .rows.map((d) => d.getValue("d2_female")),
+          ),
+      }),
+      columnHelper.accessor("d2.total", {
+        header: "Total",
+        footer: ({ table }) =>
+          footerSumCounter(
+            table
+              .getPrePaginationRowModel()
+              .rows.map((d) => d.getValue("d2_total")),
+          ),
+      }),
     ],
-  },
-];
-const footers: Footer<JobSeekerData>[] = [
-  {
-    render: () => "Total",
-  },
-  {
-    render: (items) => footerCounter(items, (d) => d.data[0].male),
-  },
-  {
-    render: (items) => footerCounter(items, (d) => d.data[0].female),
-  },
-  {
-    render: (items) => footerCounter(items, (d) => d.data[0].total),
-  },
-  {
-    render: (items) => footerCounter(items, (d) => d.data[1].male),
-  },
-  {
-    render: (items) => footerCounter(items, (d) => d.data[1].female),
-  },
-  {
-    render: (items) => footerCounter(items, (d) => d.data[1].total),
-  },
-  {
-    render: (items) => footerCounter(items, (d) => d.data[2].male),
-  },
-  {
-    render: (items) => footerCounter(items, (d) => d.data[2].female),
-  },
-  {
-    render: (items) => footerCounter(items, (d) => d.data[2].total),
-  },
+  }),
 ];
 
 const NoteSection = () => (
@@ -143,18 +141,22 @@ const NoteSection = () => (
   </div>
 );
 
-export default async function Page() {
-  const data = await getTableData("jobseekerData");
-
+export default function Page() {
   return (
-    <Table
-      px={4}
-      title="Jumlah Pencari Kerja Lowongan dan Penempatan yang Terdaftar Menurut Pendidikan di Kota Jakarta Timur, 2020"
-      columns={columns}
-      footers={footers}
-      data={data}
-      sourceInfo="Sumber/Source: Dinas Tenaga Kerja dan Transmigrasi Provinsi DKI Jakarta/Manpower and Transmigration Office of DKI Jakarta Province"
-      noteSection={<NoteSection />}
-    />
+    <div className="p-10 rounded-2xl border">
+      <h4 className="text-center font-bold font-plus-jakarta-sans text-xl mb-6">
+        Jumlah Pencari Kerja Lowongan dan Penempatan yang Terdaftar Menurut
+        Pendidikan di Kota Jakarta Timur, 2020
+      </h4>
+      <Table columns={columns} data={data.data} />
+      <NoteSection />
+      <div className="mt-6 flex gap-2 text-sm text-blue-500 font-bold font-plus-jakarta-sans">
+        <Icon name="Info" size={16} />
+        <p>
+          Sumber/Source: Dinas Tenaga Kerja dan Transmigrasi Provinsi DKI
+          Jakarta/Manpower and Transmigration Office of DKI Jakarta Province
+        </p>
+      </div>
+    </div>
   );
 }

@@ -1,90 +1,104 @@
+"use client";
 import { formattedNumber } from "@/utils/format-number";
-import { CitizenEducationData, getTableData } from "../../actions";
-import { Column, Footer, footerCounter, Table } from "../../Table";
+import { Table } from "@/app/components/Table";
+import { Icon } from "@/app/icons";
+import { createColumnHelper } from "@tanstack/react-table";
+import { PopulationEducationActivity } from "./type";
+import _ from "lodash";
+import data from "./data.json";
 
-const columns: Column[] = [
-  {
-    key: "id",
-    header: "Pendidikan Tertinggi yang Ditamatkan",
-    rowSpan: 2,
-  },
-  {
-    key: null,
-    header: "Angkatan Kerja",
-    colSpan: 3,
-    compact: true,
-    children: [
-      {
-        key: "employers",
-        header: "Bekerja",
-        compact: true,
-        render: (v) => formattedNumber(v),
-      },
-      {
-        key: "unemployers",
+const footerSumCounter = (values: number[]) => formattedNumber(_.sum(values));
+const footerAvgCounter = (values: number[]) =>
+  formattedNumber(_.mean(values), 2);
+
+const columnHelper = createColumnHelper<PopulationEducationActivity>();
+const columns = [
+  columnHelper.accessor("id", {
+    header: () => "Pendidikan Tertinggi yang Ditamatkan",
+    footer: () => "Total",
+    meta: {
+      rowSpan: 2,
+    },
+  }),
+  columnHelper.group({
+    id: "workforce",
+    header: () => "Angkatan Kerja",
+    columns: [
+      columnHelper.accessor("employers", {
+        header: () => "Bekerja",
+        footer: ({ table }) =>
+          footerSumCounter(
+            table
+              .getPrePaginationRowModel()
+              .rows.map((d) => d.getValue("employers")),
+          ),
+      }),
+      columnHelper.accessor("unemployers", {
         header: "Pengangguran",
-        compact: true,
-        render: (v) => formattedNumber(v),
-      },
-      {
-        key: "totalEmployers",
-        header: "Jumlah Angkatan Kerja",
-        compact: true,
-        render: (v) => formattedNumber(v),
-      },
+        footer: ({ table }) =>
+          footerSumCounter(
+            table
+              .getPrePaginationRowModel()
+              .rows.map((d) => d.getValue("unemployers")),
+          ),
+      }),
+      columnHelper.accessor("totalEmployers", {
+        header: () => "Jumlah Angkatan Kerja",
+        footer: ({ table }) =>
+          footerSumCounter(
+            table
+              .getPrePaginationRowModel()
+              .rows.map((d) => d.getValue("totalEmployers")),
+          ),
+      }),
     ],
-  },
-  {
-    key: "percentage",
+  }),
+  columnHelper.accessor("percentage", {
     header: "Persentase Bekerja Terhadap Angkatan Kerja",
-    rowSpan: 2,
-    render: (v) => formattedNumber(v, 2),
-  },
-  {
-    key: "notWorkforce",
+    footer: ({ table }) =>
+      footerAvgCounter(
+        table
+          .getPrePaginationRowModel()
+          .rows.map((d) => d.getValue("percentage")),
+      ),
+    meta: {
+      rowSpan: 2,
+    },
+  }),
+  columnHelper.accessor("notWorkforce", {
     header: "Bukan Angkatan Kerja",
-    rowSpan: 2,
-    render: (v) => formattedNumber(v),
-  },
-  {
-    key: "total",
+    footer: ({ table }) =>
+      footerSumCounter(
+        table
+          .getPrePaginationRowModel()
+          .rows.map((d) => d.getValue("notWorkforce")),
+      ),
+    meta: {
+      rowSpan: 2,
+    },
+  }),
+  columnHelper.accessor("total", {
     header: "Jumlah",
-    rowSpan: 2,
-    render: (v) => formattedNumber(v),
-  },
-  {
-    key: "workforcePercentage",
+    footer: ({ table }) =>
+      footerSumCounter(
+        table.getPrePaginationRowModel().rows.map((d) => d.getValue("total")),
+      ),
+    meta: {
+      rowSpan: 2,
+    },
+  }),
+  columnHelper.accessor("workforcePercentage", {
     header: "Persentase Angkatan Kerja terhadap Penduduk Usia Kerja",
-    rowSpan: 2,
-    render: (v) => formattedNumber(v, 2),
-  },
-];
-const footers: Footer<CitizenEducationData>[] = [
-  {
-    render: () => "Total",
-  },
-  {
-    render: (items) => footerCounter(items, (d) => d.employers),
-  },
-  {
-    render: (items) => footerCounter(items, (d) => d.unemployers),
-  },
-  {
-    render: (items) => footerCounter(items, (d) => d.totalEmployers),
-  },
-  {
-    render: (items) => footerCounter(items, (d) => d.percentage, "avg"),
-  },
-  {
-    render: (items) => footerCounter(items, (d) => d.notWorkforce),
-  },
-  {
-    render: (items) => footerCounter(items, (d) => d.total),
-  },
-  {
-    render: (items) =>
-      footerCounter(items, (d) => d.workforcePercentage, "avg"),
-  },
+    footer: ({ table }) =>
+      footerAvgCounter(
+        table
+          .getPrePaginationRowModel()
+          .rows.map((d) => d.getValue("workforcePercentage")),
+      ),
+    meta: {
+      rowSpan: 2,
+    },
+  }),
 ];
 
 const NoteSection = () => (
@@ -107,17 +121,23 @@ const NoteSection = () => (
   </div>
 );
 
-export default async function Page() {
-  const data = await getTableData("citizenEducationData");
-
+export default function Page() {
   return (
-    <Table
-      columns={columns}
-      footers={footers}
-      data={data}
-      noteSection={<NoteSection />}
-      title="Penduduk Berumur 15 Tahun ke Atas Menurut Pendidikan Tertinggi yang Ditamatkan dan Jenis Kegiatan Selama Seminggu yang Lalu di Kota Jakarta Timur, 2020"
-      sourceInfo="Sumber/Source: BPS, Survei Angkatan Kerja Nasional (Sakernas) Agustus/BPS-Statistics Indonesia, August National Labor Force Survey"
-    />
+    <div className="p-10 rounded-2xl border">
+      <h4 className="text-center font-bold font-plus-jakarta-sans text-xl mb-6">
+        Penduduk Berumur 15 Tahun ke Atas Menurut Pendidikan Tertinggi yang
+        Ditamatkan dan Jenis Kegiatan Selama Seminggu yang Lalu di Kota Jakarta
+        Timur, 2020
+      </h4>
+      <Table columns={columns} data={data.data} />
+      <NoteSection />
+      <div className="mt-6 flex gap-2 text-sm text-blue-500 font-bold font-plus-jakarta-sans">
+        <Icon name="Info" size={16} />
+        <p>
+          Sumber/Source: BPS, Survei Angkatan Kerja Nasional (Sakernas)
+          Agustus/BPS-Statistics Indonesia, August National Labor Force Survey
+        </p>
+      </div>
+    </div>
   );
 }

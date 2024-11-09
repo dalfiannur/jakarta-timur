@@ -1,0 +1,112 @@
+{
+  "data": [
+    {
+      "qualification": "SD",
+      "d0": {
+        "male": 0,
+        "female": 0,
+        "total": 0
+      },
+      "d1": {
+        "male": 0,
+        "female": 0,
+        "total": 0
+      },
+      "d2": {
+        "male": 0,
+        "female": 0,
+        "total": 0
+      }
+    },
+    {
+      "qualification": "SLTP",
+      "d0": {
+        "male": 7,
+        "female": 0,
+        "total": 7
+      },
+      "d1": {
+        "male": 3,
+        "female": 0,
+        "total": 3
+      },
+      "d2": {
+        "male": 3,
+        "female": 0,
+        "total": 3
+      }
+    },
+    {
+      "qualification": "SLTA",
+      "d0": {
+        "male": 1424,
+        "female": 721,
+        "total": 2145
+      },
+      "d1": {
+        "male": 1424,
+        "female": 721,
+        "total": 2145
+      },
+      "d2": {
+        "male": 1124,
+        "female": 541,
+        "total": 1665
+      }
+    },
+    {
+      "qualification": "D I / D II",
+      "d0": {
+        "male": 280,
+        "female": 221,
+        "total": 501
+      },
+      "d1": {
+        "male": 280,
+        "female": 221,
+        "total": 501
+      },
+      "d2": {
+        "male": 183,
+        "female": 163,
+        "total": 246
+      }
+    },
+    {
+      "qualification": "D III",
+      "d0": {
+        "male": 32,
+        "female": 32,
+        "total": 64
+      },
+      "d1": {
+        "male": 32,
+        "female": 32,
+        "total": 64
+      },
+      "d2": {
+        "male": 18,
+        "female": 17,
+        "total": 35
+      }
+    },
+    {
+      "qualification": "Sarjana/Doktor/Phd",
+      "d0": {
+        "male": 157,
+        "female": 112,
+        "total": 269
+      },
+      "d1": {
+        "male": 157,
+        "female": 112,
+        "total": 269
+      },
+      "d2": {
+        "male": 91,
+        "female": 63,
+        "total": 154
+      }
+    }
+  ]
+}

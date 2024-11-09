@@ -1,6 +1,6 @@
 "use client";
 import { formattedNumber } from "@/utils/format-number";
-import { Table } from "../../Table";
+import { Table } from "@/app/components/Table";
 import { createColumnHelper } from "@tanstack/react-table";
 import { PopulationGrowth } from "./type";
 import data from "./data.json";

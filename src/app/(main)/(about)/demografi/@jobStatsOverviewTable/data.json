@@ -2,9 +2,9 @@
   "data": [
     {
       "description": "A. Pencari Kerja/Penempatan/Job Seekers/Placement",
-      "male": "",
-      "female": "",
-      "total": ""
+      "male": null,
+      "female": null,
+      "total": null
     },
     {
       "description": "Pencari kerja yang belum ditempatkan awal tahun",
@@ -32,9 +32,9 @@
     },
     {
       "description": "B. Lowongan yang ada",
-      "male": "",
-      "female": "",
-      "total": ""
+      "male": null,
+      "female": null,
+      "total": null
     },
     {
       "description": "Lowongan yang belum dipenuhi",
