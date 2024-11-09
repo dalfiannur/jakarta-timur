@@ -1,7 +1,7 @@
 "use client";
 
 import { Breadcrumbs } from "@/app/components/Breadcrumbs";
-import { useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { SIDEBAR_ITEMS } from "./constants";
 
 const ITEMS = [
@@ -15,8 +15,7 @@ const ITEMS = [
 ];
 
 export const PageBreadcrumbs = () => {
-  const params = useSearchParams();
-  const selected = params.get("s") as string;
-  const item = { label: SIDEBAR_ITEMS[selected] };
+  const pathname = usePathname();
+  const item = { label: SIDEBAR_ITEMS[pathname] };
   return <Breadcrumbs data={[...ITEMS, item]} />;
 };
