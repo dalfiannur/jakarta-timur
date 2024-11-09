@@ -36,12 +36,14 @@ import { HospitalColored } from "./HospitalColored";
 import { ImproveRelevance } from "./ImproveRelevance";
 import { Info } from "./Info";
 import { InstagramColored } from "./InstagramColored";
+import { LayoutList } from "./LayoutList";
 import { Link } from "./Link";
 import { LinkedInColored } from "./LinkedInColored";
 import { MageTrophyColored } from "./MageTrhopyColored";
 import { Mail } from "./Mail";
 import { MapHomeWork } from "./MapHomeWork";
 import { MapMarkerAlt } from "./MapMarkerAlt";
+import { Menu } from "./Menu";
 import { NetworkSettingLineColored } from "./NetworkSettingLineColored";
 import { News } from "./News";
 import { Office } from "./Office";
@@ -75,6 +77,7 @@ import { YoutubeColored } from "./YoutubeColored";
 import { WhatsappColored } from "@/app/icons/WhatsappColored";
 
 const icons = {
+  LayoutList,
   ChevronDown,
   Search,
   GoalsFill,
@@ -150,6 +153,7 @@ const icons = {
   Download,
   Link,
   FacebookFill,
+  Menu,
 };
 
 export type IconKeys = keyof typeof icons;

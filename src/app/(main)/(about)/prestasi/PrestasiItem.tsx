@@ -1,3 +1,4 @@
+"use client";
 import { Icon } from "@/app/icons";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -5,7 +6,7 @@ import { tv } from "tailwind-variants";
 
 const createStyles = tv({
   slots: {
-    root: "border rounded-2xl p-6 h-[240px] flex flex-col gap-4 text-left",
+    root: "border rounded-2xl p-6 flex text-left",
     icon: "bg-blue-400/20 w-14 h-14 rounded-xl flex justify-center items-center",
     title: "font-semibold text-lg transition-all duration-700 overflow-hidden",
     year: "text-gray-500",
@@ -17,12 +18,20 @@ const createStyles = tv({
         title: "line-clamp-2",
       },
     },
+    view: {
+      grid: {
+        root: "flex-col gap-4 h-[240px]",
+      },
+      list: {
+        root: "flex-row gap-6",
+      },
+    },
   },
 });
 
-export const PrestasiItem = () => {
+export const PrestasiItem = ({ view }: { view: "grid" | "list" }) => {
   const [hovered, setHovered] = useState(false);
-  const x = createStyles({ hovered });
+  const x = createStyles({ hovered, view });
 
   return (
     <motion.button
@@ -33,8 +42,8 @@ export const PrestasiItem = () => {
       <motion.div
         className={x.icon()}
         animate={{
-          opacity: hovered ? 0 : 1,
-          height: hovered ? 0 : 56,
+          opacity: view === "grid" && hovered ? 0 : 1,
+          height: view === "grid" && hovered ? 0 : 56,
           transition: { duration: 0.5 },
         }}
       >
