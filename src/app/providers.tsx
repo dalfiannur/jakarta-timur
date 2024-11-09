@@ -1,9 +1,13 @@
 "use client";
 
-import { Provider } from "react-redux";
-import { store } from "./stores";
 import { ReactNode } from "react";
+import NextTopLoader from "nextjs-toploader";
 
 export const Providers = ({ children }: { children: ReactNode }) => {
-  return <Provider store={store}>{children}</Provider>;
+  return (
+    <>
+      <NextTopLoader />
+      {children}
+    </>
+  );
 };
