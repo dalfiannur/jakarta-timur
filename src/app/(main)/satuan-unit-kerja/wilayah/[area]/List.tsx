@@ -12,6 +12,8 @@ type DataItem = {
   nama: string;
   jabatan: string;
   pejabat: string;
+  deskripsi: string;
+  sejarah: string;
 };
 
 type ListProps = {
@@ -39,7 +41,7 @@ export const List = ({ getData, params }: ListProps) => {
             className="w-20 h-20 relative"
           >
             <Image
-              src="/#"
+              src={item.image}
               alt={item.nama}
               fill
               className="object-cover rounded-xl"

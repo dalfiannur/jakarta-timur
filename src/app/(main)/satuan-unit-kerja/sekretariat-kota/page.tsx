@@ -3,7 +3,7 @@ import { SectionTitle } from "../SectionTitle";
 import { getData } from "./actions";
 
 export default async function Page() {
-  const data = await getData();
+  const { data } = await getData();
 
   return (
     <div className="flex-1">
@@ -15,10 +15,12 @@ export default async function Page() {
             className="flex items-center h-full bg-blue-50 rounded-xl px-6 py-4"
           >
             <div className="grid gap-4">
-              <Avatar src={item.image} size={50} alt={item.name} />
+              <Avatar src="/img/walikota.jpeg" size={50} alt={item.pejabat} />
               <div className="grid gap-1">
-                <p className="font-semibold text-lg">{item.title}</p>
-                <p className="font-medium text-lg text-gray-600">{item.name}</p>
+                <p className="font-semibold text-lg">{item.nama}</p>
+                <p className="font-medium text-lg text-gray-600">
+                  {item.pejabat}
+                </p>
               </div>
             </div>
           </div>

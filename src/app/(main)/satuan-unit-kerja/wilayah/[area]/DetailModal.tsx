@@ -3,7 +3,7 @@ import { Icon } from "@/app/icons";
 import Image from "next/image";
 
 interface Data {
-  id: string;
+  id: number;
   slug: string;
   nama: string;
   deskripsi: string;
