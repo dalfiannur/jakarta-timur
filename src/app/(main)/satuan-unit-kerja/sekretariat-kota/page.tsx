@@ -1,35 +1,15 @@
 import { Avatar } from "@/app/components/Avatar";
-import { SectionTitle } from "./SectionTitle";
+import { SectionTitle } from "../SectionTitle";
+import { getData } from "./actions";
 
-const items = [
-  {
-    image: "/img/walikota.jpeg",
-    title: "Sekretaris Kota",
-    name: "Kusmanto, S.Sos., M.Si.",
-  },
-  {
-    image: "/img/walikota.jpeg",
-    title: "Asisten Pemerintahan",
-    name: "Eka Darmawan",
-  },
-  {
-    image: "/img/walikota.jpeg",
-    title: "Asisten Perekonomian dan Pembangunan",
-    name: "Fauzi",
-  },
-  {
-    image: "/img/walikota.jpeg",
-    title: "Asisten Administrasi dan Kesejahteraan Rakyat",
-    name: "Achmad Salahudin",
-  },
-];
+export default async function Page() {
+  const data = await getData();
 
-export const SekretariatKotaSection = () => {
   return (
-    <div>
+    <div className="flex-1">
       <SectionTitle>Sekretariat Kota</SectionTitle>
       <div className="mt-12 grid grid-cols-4 gap-10">
-        {items.map((item, index) => (
+        {data.map((item, index) => (
           <div
             key={index}
             className="flex items-center h-full bg-blue-50 rounded-xl px-6 py-4"
@@ -46,4 +26,4 @@ export const SekretariatKotaSection = () => {
       </div>
     </div>
   );
-};
+}

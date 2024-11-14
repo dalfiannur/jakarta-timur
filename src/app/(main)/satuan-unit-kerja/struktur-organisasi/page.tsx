@@ -1,11 +1,11 @@
 import Image from "next/image";
-import { SectionTitle } from "./SectionTitle";
+import { SectionTitle } from "../SectionTitle";
 
-export const OrganizationStructureSection = () => {
+export default function Page() {
   return (
-    <div>
+    <div className="flex-1">
       <SectionTitle>Struktur Organisasi</SectionTitle>
-      <div className="mt-12 relative aspect-[1/1.2]">
+      <div className="mt-16 flex-1 relative aspect-[1/1.2]">
         <Image
           src="/img/struktur-organisasi.png"
           alt="Struktur Organisasi"
@@ -14,4 +14,4 @@ export const OrganizationStructureSection = () => {
       </div>
     </div>
   );
-};
+}

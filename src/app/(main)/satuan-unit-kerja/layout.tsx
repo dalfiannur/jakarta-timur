@@ -1,11 +1,22 @@
+"use client";
 import { PageTitle } from "@/app/components/PageTitle";
-import { Sidebar } from "./Sidebar";
-
 import { PageBreadcrumbs } from "./PageBreadcrumbs";
+import { Sidebar } from "./Sidebar";
+import { ReactNode } from "react";
 import { sidebarItems } from "./constants";
+import { usePathname } from "next/navigation";
 
-export default function Page() {
-  return (
+type LayoutProps = {
+  children: ReactNode;
+};
+
+export default function Layout({ children }: LayoutProps) {
+  const pathname = usePathname();
+
+  return pathname.includes("/satuan-unit-kerja/wilayah/kecamatan/") ||
+    pathname.includes("/satuan-unit-kerja/wilayah/kelurahan/") ? (
+    children
+  ) : (
     <div className="pb-16">
       <PageTitle
         image="/img/kantor-walikota-jaktim.png"
@@ -17,6 +28,7 @@ export default function Page() {
         <PageBreadcrumbs />
         <div className="mt-8 flex gap-8">
           <Sidebar items={sidebarItems} />
+          {children}
         </div>
       </div>
     </div>

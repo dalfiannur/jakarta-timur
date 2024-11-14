@@ -5,7 +5,7 @@ import { Accordion } from "./Accordion";
 import { PrestasiSection } from "./PrestasiSection";
 import { FollowUsSection } from "./FollowUsSection";
 
-export const PageContent = () => {
+export default function Page() {
   return (
     <div className="mt-32 container mx-auto py-12 flex flex-col gap-24">
       <div className="flex gap-52">
@@ -147,4 +147,4 @@ export const PageContent = () => {
       <FollowUsSection />
     </div>
   );
-};
+}
