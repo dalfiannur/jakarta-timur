@@ -46,7 +46,7 @@ export const NavigationBar = () => {
             <NavigationBarSingleItem label="PPID" href="/ppid" index="/ppid" />
             <NavigationBarSingleItem
               label="Dashboard"
-              href="#"
+              href="/dashboard"
               index="/dashboard"
             />
             <HoverPopover label="Publikasi" index="/publikasi">
