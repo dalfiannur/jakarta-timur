@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 import { ReactNode } from "react";
+import { Sidebar } from "./_components/Sidebar";
 
 type LayoutProps = {
   children: ReactNode;
@@ -52,47 +52,9 @@ export default function Layout({ children }: LayoutProps) {
         </div>
       </div>
       <div className="container mx-auto flex gap-20 py-10">
-        <div className="flex-1 max-w-72">
-          <SidebarItem active label="Dashboard Overview" href="/dashboard" />
-          <SidebarItem label="Kependudukan" href="/dashboard/kependudukan" />
-          <SidebarItem label="Pendidikan" href="/dashboard/pendidikan" />
-          <SidebarItem label="Kesehatan" href="/dashboard/kesehatan" />
-          <SidebarItem label="Industri" href="/dashboard/industri" />
-          <SidebarItem label="Ekonomi" href="/dashboard/ekonomi" />
-          <SidebarItem
-            label="Lingkungan Hidup"
-            href="/dashboard/lingkungan-hidup"
-          />
-          <SidebarItem label="Demokrasi" href="/dashboard/demokrasi" />
-          <SidebarItem label="Kesejahteraan" href="/dashboard/kesejahteraan" />
-        </div>
+        <Sidebar />
         <div className="flex-1">{children}</div>
       </div>
     </div>
   );
 }
-
-const SidebarItem = ({
-  label,
-  active,
-  href,
-}: {
-  label: string;
-  href: string;
-  active?: boolean;
-}) => {
-  return (
-    <Link
-      href={href}
-      data-active={active}
-      className="group w-full inline-flex items-center data-[active=true]:bg-[#FFF3EF] rounded-xl overflow-hidden"
-    >
-      <div className="p-4 w-fit">
-        <div className="bg-[#FF8361]/10 group-data-[active=true]:bg-[#FF8361] rounded w-8 h-8" />
-      </div>
-      <div className="flex-1 text-left border-r-4 border-transparent group-data-[active=true]:border-r-[#0C43AE] text-[#4D5054] group-data-[active=true]:text-[#040E05] p-4 font-plus-jakarta-sans font-semibold text-lg">
-        {label}
-      </div>
-    </Link>
-  );
-};

@@ -1,21 +1,18 @@
 import { Suspense } from "react";
-import { CounterSection } from "./_sections/CounterSection";
+import { CounterSection } from "../kependudukan/_sections/CounterSection";
 import { SebaranKepadatanPendudukSection } from "./_sections/SebaranKepadatanPendudukSection";
 import { ProfilPendudukSection } from "./_sections/ProfilPendudukSection";
-import { TableSection } from "./_sections/TableSection";
+import { TableSection } from "../kependudukan/_sections/TableSection";
+import { PageWrapper } from "../_components/PageWrapper";
 
 export const experimental_ppr = true;
 
 export default function Page() {
   return (
-    <div className="flex flex-col gap-6">
-      <div className="text-gray-950">
-        <h2 className="text-2xl font-plus-jakarta-sans font-bold">Overview</h2>
-        <p className="mt-4 text-lg font-roboto">
-          Ringkasan Data Penting untuk Pemahaman Cepat tentang Jakarta Timur
-        </p>
-      </div>
-
+    <PageWrapper
+      title="Overview"
+      description="Ringkasan Data Penting untuk Pemahaman Cepat tentang Jakarta Timur"
+    >
       <Suspense fallback={"Loading..."}>
         <CounterSection />
       </Suspense>
@@ -35,6 +32,6 @@ export default function Page() {
           </Suspense>
         </div>
       </div>
-    </div>
+    </PageWrapper>
   );
 }
