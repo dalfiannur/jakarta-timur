@@ -4,19 +4,19 @@ const getData = async () => {
   "use server";
   return [
     {
-      title: "Jumlah Penduduk",
+      title: "Jumlah Pelajar",
       value: 3314396,
     },
     {
-      title: "Laki-Laki",
+      title: "Jumlah Pendidik",
       value: 3314396,
     },
     {
-      title: "Perempuan",
+      title: "Jumlah Sekolah",
       value: 3314396,
     },
     {
-      title: "Kepadatan Penduduk",
+      title: "Jumlah Sekolah Negeri",
       value: 3314396,
     },
   ];
