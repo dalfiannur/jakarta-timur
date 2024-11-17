@@ -13,12 +13,22 @@ export const RatioSchoolChartSection = () => {
             itemStyle: {
               color: "#4F46C7",
             },
+            legend: {
+              suffix: (
+                <span className="text-[10px] ml-1 text-gray-700">Jiwa</span>
+              ),
+            },
           },
           {
             value: 2314396,
             name: "Perempuan",
             itemStyle: {
               color: "#FF8361",
+            },
+            legend: {
+              suffix: (
+                <span className="text-[10px] ml-1 text-gray-700">Jiwa</span>
+              ),
             },
           },
         ]}
@@ -33,6 +43,11 @@ export const RatioSchoolChartSection = () => {
             itemStyle: {
               color: "#FF8361",
             },
+            legend: {
+              suffix: (
+                <span className="text-[10px] ml-1 text-gray-700">Jiwa</span>
+              ),
+            },
           },
           {
             value: 2314396,
@@ -40,12 +55,22 @@ export const RatioSchoolChartSection = () => {
             itemStyle: {
               color: "#4F46C7",
             },
+            legend: {
+              suffix: (
+                <span className="text-[10px] ml-1 text-gray-700">Jiwa</span>
+              ),
+            },
           },
           {
             value: 2314396,
             name: "Sekolah SMA/SMK",
             itemStyle: {
               color: "#FFC053",
+            },
+            legend: {
+              suffix: (
+                <span className="text-[10px] ml-1 text-gray-700">Jiwa</span>
+              ),
             },
           },
         ]}

@@ -1,7 +1,7 @@
 "use client";
 import { formattedNumber } from "@/utils/format-number";
 import * as echarts from "echarts";
-import { useEffect, useRef } from "react";
+import { ReactNode, useEffect, useRef } from "react";
 import { Counter } from "./Counter";
 
 type DataItem = {
@@ -10,18 +10,31 @@ type DataItem = {
   itemStyle?: {
     color?: string;
   };
+  legend?: {
+    suffix?: ReactNode;
+  };
 };
 
 type RadioCounterChartCardProps = {
   title: string;
   total: number;
   data: DataItem[];
+  chartSize?: number;
+  gap?: number;
+  legendGap?: number;
+  legend?: {
+    gap?: number;
+    valueRender?: (value: number) => string;
+  };
 };
 
 export const RatioCounterChartCard = ({
   title,
   total,
   data,
+  chartSize = 120,
+  gap = 16,
+  legend,
 }: RadioCounterChartCardProps) => {
   const chartRef = useRef<HTMLDivElement>(null);
 
@@ -29,8 +42,8 @@ export const RatioCounterChartCard = ({
     if (chartRef.current) {
       const chart = echarts.init(chartRef.current);
       chart.setOption({
-        width: 120,
-        height: 120,
+        width: chartSize,
+        height: chartSize,
         series: [
           {
             type: "pie",
@@ -87,23 +100,28 @@ export const RatioCounterChartCard = ({
         },
       });
     }
-  }, [chartRef, total, data]);
+  }, [chartRef, total, data, chartSize]);
 
   return (
-    <div className="p-6">
+    <div className="p-6 flex flex-col" style={{ gap }}>
       <h6 className="text-xs text-neutral-500 font-plus-jakarta-sans font-medium w-full">
         {title}
       </h6>
       <div className="flex items-center justify-center">
-        <div ref={chartRef} className="w-[120px] aspect-square" />
+        <div ref={chartRef} style={{ width: chartSize, height: chartSize }} />
       </div>
-      <div className="flex justify-center gap-10">
+      <div className="flex justify-center" style={{ gap: legend?.gap ?? 40 }}>
         {data.map((item, index) => (
           <Counter
             key={index}
             title={item.name}
             color={item.itemStyle?.color}
-            value={12345}
+            value={
+              <>
+                {item.value}
+                {item.legend?.suffix}
+              </>
+            }
           />
         ))}
       </div>

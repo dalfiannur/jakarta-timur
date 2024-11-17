@@ -1,4 +1,4 @@
-import { formattedNumber } from "@/utils/format-number";
+import { ReactNode } from "react";
 
 export const Counter = ({
   title,
@@ -6,7 +6,7 @@ export const Counter = ({
   color,
 }: {
   title: string;
-  value: number;
+  value: ReactNode;
   color?: string;
 }) => {
   return (
@@ -18,9 +18,7 @@ export const Counter = ({
         }}
       />
       <div className="mt-[2px] text-xs font-medium">{title}</div>
-      <div className="mt-1 text-sm font-bold">
-        {formattedNumber(value)} <span className="font-[10px]">Jiwa</span>
-      </div>
+      <div className="mt-1 text-sm font-bold">{value}</div>
     </div>
   );
 };
