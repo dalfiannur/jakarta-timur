@@ -7,65 +7,46 @@ import {
   Label,
   Field,
 } from "@headlessui/react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { Icon } from "../icons";
-import { useRouter, useSearchParams } from "next/navigation";
 
-export type Option = {
+export type SelectOption = {
   label: string;
   value: string;
 };
 
-export const Select = ({
+export const SelectCSR = ({
   label,
   placeholder,
   data,
   defaultSelected,
-  paramKey,
+  onChange,
 }: {
   label?: string;
   placeholder?: string;
-  data: Option[];
-  defaultSelected?: Option;
-  paramKey: string;
+  data: SelectOption[];
+  defaultSelected?: SelectOption;
+  onChange?: (selected: SelectOption | null) => void;
 }) => {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const [selected, setSelected] = useState<Option | null>(
+  const [selected, setSelected] = useState<SelectOption | null>(
     defaultSelected ?? null,
   );
 
-  const defaultValue = searchParams.get(paramKey);
-
-  const onChange = useCallback(
-    (value: Option) => {
+  const _onChange = useCallback(
+    (value: SelectOption) => {
       setSelected(value);
-
-      const p = new URLSearchParams(searchParams);
-      p.set(paramKey, value.value);
-      router.push("?" + p.toString(), {
-        scroll: false,
-      });
+      onChange?.(value);
     },
-    [searchParams, paramKey, router],
+    [onChange],
   );
-
-  useEffect(() => {
-    if (defaultValue) {
-      const _selected = data.find((d) => d.value === defaultValue);
-      if (_selected) {
-        setSelected(_selected);
-      }
-    }
-  }, [data, defaultValue]);
 
   return (
     <Field className="flex items-center gap-4">
       {label && (
         <Label className="font-semibold text-lg text-gray-500">{label}:</Label>
       )}
-      <Listbox value={selected} onChange={onChange}>
-        <ListboxButton className="px-4 py-3 border rounded-lg font-semibold text-pink-500 flex items-center justify-between gap-4 min-w-[150px]">
+      <Listbox value={selected} onChange={_onChange}>
+        <ListboxButton className="p-4 border rounded-lg font-semibold text-pink-500 flex items-center justify-between gap-4 min-w-[150px]">
           <div className="text-black">{selected?.label ?? placeholder}</div>
           <Icon name="ChevronDown" size={24} />
         </ListboxButton>

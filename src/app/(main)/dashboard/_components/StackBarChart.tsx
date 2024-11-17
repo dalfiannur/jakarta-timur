@@ -4,27 +4,19 @@ import { useEffect, useRef } from "react";
 import * as echarts from "echarts";
 import _ from "lodash";
 
-const proList = ["Dokter", "Perawat", "Bidan", "Farmasi", "Ahli Gizi"];
-const areaList = ["Cipayung", "Ciracas", "Makasar", "Duren Sawit", "Cakung"];
-
-const data = areaList
-  .map((area) =>
-    proList.map((profession) => ({
-      area,
-      profession,
-      value: 1,
-    })),
-  )
-  .flat()
-  .map((row, id) => ({
-    ...row,
-    id,
-  }));
-
-const xKey = "area";
-const yKey = "profession";
-
-export const StackBarChart = () => {
+export const StackBarChart = <T,>({
+  data,
+  xKey,
+  yKey,
+  valueKey,
+  colors,
+}: {
+  data: T[];
+  xKey: keyof T;
+  yKey: keyof T;
+  valueKey: keyof T;
+  colors?: string[];
+}) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -37,12 +29,13 @@ export const StackBarChart = () => {
         stack: "Total",
         name: key,
         data: _.map(d, (row) => ({
-          name: row.profession,
-          value: row.value,
+          name: row[yKey],
+          value: row[valueKey],
         })),
       }));
 
       chart.setOption({
+        color: colors,
         tooltip: {},
         legend: {
           left: "left",
@@ -68,6 +61,7 @@ export const StackBarChart = () => {
         series,
       });
     }
-  }, [ref]);
+  }, [ref, data, xKey, yKey, valueKey, colors]);
+
   return <div ref={ref} className="h-[220px]" />;
 };

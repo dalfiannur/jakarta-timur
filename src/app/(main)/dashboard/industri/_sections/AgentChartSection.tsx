@@ -1,13 +1,24 @@
 import { StackBarChart } from "../../_components/StackBarChart";
 
-const proList = ["Dokter", "Perawat", "Bidan", "Farmasi", "Ahli Gizi"];
-const areaList = ["Cipayung", "Ciracas", "Makasar", "Duren Sawit", "Cakung"];
+const types = ["Agen", "Pangkalan"];
+const areaList = [
+  "Cipayung",
+  "Ciracas",
+  "Makasar",
+  "Duren Sawit",
+  "Cakung",
+  "Pasar Rebo",
+  "Kramat Jati",
+  "Jatinegara",
+  "Pulogadung",
+  "Matraman",
+];
 
 const data = areaList
   .map((area) =>
-    proList.map((profession) => ({
+    types.map((type) => ({
       area,
-      profession,
+      type,
       value: 1,
     })),
   )
@@ -17,19 +28,19 @@ const data = areaList
     id,
   }));
 
-export const DisabledPopulationChartSection = () => {
+export const AgentChartSection = () => {
   return (
     <div className="flex-1">
       <h6 className="text-lg font-plus-jakarta-sans font-bold">
-        Jumlah Penduduk Disabilitas
+        Jumlah Agen dan Pangkalan Setiap Kecamatan
       </h6>
       <div className="mt-6">
         <StackBarChart
           data={data}
           xKey="area"
-          yKey="profession"
+          yKey="type"
           valueKey="value"
-          colors={["#FF8361", "#4F46C7", "#FFC053", "#F48D8D", "#FFE5BA"]}
+          colors={["#4F46C7", "#FF8361"]}
         />
       </div>
     </div>

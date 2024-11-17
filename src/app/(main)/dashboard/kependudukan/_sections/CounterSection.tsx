@@ -1,40 +1,39 @@
+"use client";
 import { CounterCard } from "../../_components/CounterCard";
+import { trpc } from "@/app/utils/trpc";
 
-const getData = async () => {
-  "use server";
-  return [
-    {
-      title: "Jumlah Penduduk",
-      value: 3314396,
-    },
-    {
-      title: "Laki-Laki",
-      value: 3314396,
-    },
-    {
-      title: "Perempuan",
-      value: 3314396,
-    },
-    {
-      title: "Kepadatan Penduduk",
-      value: 3314396,
-    },
-  ];
-};
+const getValue = (value?: string | number | null) =>
+  value ? (value as number) : 0;
 
-export const CounterSection = async () => {
-  const data = await getData();
+export const CounterSection = () => {
+  const { useQuery } = trpc.config.findByName;
+  const totalPopulation = useQuery("total-population");
+  const totalMale = useQuery("total-male");
+  const totalFemale = useQuery("total-female");
+  const populationDensity = useQuery("population-density");
 
   return (
     <div className="grid grid-cols-4 gap-6">
-      {data.map((item, index) => (
-        <CounterCard
-          key={index}
-          title={item.title}
-          value={item.value}
-          icon={null}
-        />
-      ))}
+      <CounterCard
+        title="Jumlah Penduduk"
+        value={getValue(totalPopulation.data)}
+        icon={null}
+      />
+      <CounterCard
+        title="Laki - Laki"
+        value={getValue(totalMale.data)}
+        icon={null}
+      />
+      <CounterCard
+        title="Perempuan"
+        value={getValue(totalFemale.data)}
+        icon={null}
+      />
+      <CounterCard
+        title="Kepadatan Penduduk"
+        value={getValue(populationDensity.data)}
+        icon={null}
+      />
     </div>
   );
 };

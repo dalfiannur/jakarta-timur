@@ -14,9 +14,7 @@ export default function Page() {
       title="Kependudukan"
       description="Sumber : Dinas Kependudukan dan Pencatatan Sipil Provinsi DKI Jakarta"
     >
-      <Suspense fallback={"Loading..."}>
-        <CounterSection />
-      </Suspense>
+      <CounterSection />
 
       <Suspense fallback={"Loading..."}>
         <RatioCounterChartSection />
