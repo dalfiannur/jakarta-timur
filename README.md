@@ -11,12 +11,16 @@ First, Install required dependencies:
 
 ```bash
 npm install
+npm run db:push #push schema database to server
 # or
 yarn install
+yarn run db:push #push schema database to server
 # or
 pnpm install
+pnpm run db:push #push schema database to server
 # or
 bun install
+bun run db:push #push schema database to server
 ```
 
 Then, build for production:
@@ -30,6 +34,8 @@ pnpm build
 # or
 bun build
 ```
+
+Then, Add Example data from example-data.csv to database manual.
 
 Then, run nodejs server:
 
