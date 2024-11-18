@@ -1,6 +1,6 @@
 "use client";
 import { CounterCard } from "../../_components/CounterCard";
-import { trpc } from "@/app/utils/trpc";
+import { trpc } from "@/utils/trpc";
 
 const getValue = (value?: string | number | null) =>
   value ? (value as number) : 0;

@@ -2,10 +2,8 @@ import { SectionBox } from "@/app/components/SectionBox";
 import { Icon } from "@/app/icons";
 import Link from "next/link";
 import { VideoSlider } from "./VideoSlider";
-import { getVideos } from "@/app/actions/get-videos";
 
-export default async function Page() {
-  const videos = getVideos({ limit: "3" });
+export default function Page() {
   return (
     <SectionBox
       title="Video Informasi dan Edukasi"
@@ -19,7 +17,7 @@ export default async function Page() {
         </Link>
       }
     >
-      <VideoSlider getData={videos} />
+      <VideoSlider />
     </SectionBox>
   );
 }

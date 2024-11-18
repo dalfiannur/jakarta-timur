@@ -3,7 +3,6 @@ import { Hero } from "./Hero";
 import { SponsorSection } from "./SponsorSection";
 import { PublicIntegrationServiceSection } from "./PublicIntegrationServiceSection";
 import { GovernmentInformation } from "./GovernmentInformation";
-import { GovernmentActivity } from "./GovernmentActivity";
 
 type LayoutProps = {
   children: ReactNode;

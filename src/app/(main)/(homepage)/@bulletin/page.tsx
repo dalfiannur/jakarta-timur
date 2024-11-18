@@ -2,10 +2,8 @@ import { SectionBox } from "@/app/components/SectionBox";
 import { Icon } from "@/app/icons";
 import Link from "next/link";
 import { BulletinSlider } from "./BulletinSlider";
-import { getBulletins } from "@/app/actions/get-bulletin";
 
-export default async function Page() {
-  const bulletin = getBulletins({ limit: "12" });
+export default function Page() {
   return (
     <SectionBox
       title="Buletin Info Jaktim"
@@ -19,7 +17,7 @@ export default async function Page() {
         </Link>
       }
     >
-      <BulletinSlider getData={bulletin} />
+      <BulletinSlider />
     </SectionBox>
   );
 }

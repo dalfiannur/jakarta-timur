@@ -1,5 +1,5 @@
 "use client";
-import { trpc } from "@/app/utils/trpc";
+import { trpc } from "@/utils/trpc";
 import { RatioCounterChartCard } from "../../_components/RatioCounterChartCard";
 
 export const RatioCounterChartSection = () => {

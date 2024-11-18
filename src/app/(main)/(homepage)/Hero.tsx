@@ -1,38 +1,49 @@
 "use client";
 
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import {
+  Computed,
+  useObservable,
+  useObserveEffect,
+} from "@legendapp/state/react";
 
 const images = ["/img/hero-1.png", "/img/hero-2.png", "/img/hero-3.png"];
 
 export const Hero = () => {
-  const [active, setActive] = useState(0);
+  const active$ = useObservable(0);
 
-  useEffect(() => {
-    setInterval(() => {
-      setActive((val) => (val < 2 ? val + 1 : 0));
+  useObserveEffect(() => {
+    const interval = setInterval(() => {
+      active$.set((prev) => (prev < 2 ? prev + 1 : 0));
     }, 10000);
-  }, []);
+
+    return () => clearInterval(interval);
+  });
 
   return (
     <div className="w-full aspect-[5/2] overflow-hidden">
-      {images.map((image, key) => (
-        <SlideItem show={key === active} key={image}>
-          <Image src={image} alt="Hero" fill={true} />
-          <div className="absolute inset-0 flex justify-center items-center">
-            <div className="container mx-auto flex flex-col justify-center items-center gap-8 pt-14">
-              <h4 className="text-white font-bold text-6xl px-8 text-center">
-                JELAJAHI LAYANAN PEMERINTAH DENGAN MUDAH DAN AKURAT
-              </h4>
-              <h6 className="text-white text-2xl px-8 font-semibold">
-                Temukan Apa yang Kamu Butuhkan dengan Cepat dan Mudah dengan
-                Portal Kami yang Ramah Pengguna
-              </h6>
-            </div>
-          </div>
-        </SlideItem>
-      ))}
+      <Computed>
+        {() =>
+          images.map((image, key) => (
+            <SlideItem show={key === active$.get()} key={image}>
+              <Image src={image} alt="Hero" fill={true} />
+              <div className="absolute inset-0 flex justify-center items-center">
+                <div className="container mx-auto flex flex-col justify-center items-center gap-8 pt-14">
+                  <h4 className="text-white font-bold text-6xl px-8 text-center">
+                    JELAJAHI LAYANAN PEMERINTAH DENGAN MUDAH DAN AKURAT
+                  </h4>
+                  <h6 className="text-white text-2xl px-8 font-semibold">
+                    Temukan Apa yang Kamu Butuhkan dengan Cepat dan Mudah dengan
+                    Portal Kami yang Ramah Pengguna
+                  </h6>
+                </div>
+              </div>
+            </SlideItem>
+          ))
+        }
+      </Computed>
     </div>
   );
 };

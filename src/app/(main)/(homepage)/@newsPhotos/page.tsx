@@ -2,10 +2,8 @@ import { SectionBox } from "@/app/components/SectionBox";
 import { Icon } from "@/app/icons";
 import Link from "next/link";
 import { NewsPhoto } from "./NewsPhoto";
-import { getNewsPhotos } from "@/app/actions/get-news-photo";
 
-export default async function Page() {
-  const newsPhotos = getNewsPhotos({ limit: "10" });
+export default function Page() {
   return (
     <SectionBox
       title="Cerita Melalui Citra"
@@ -19,7 +17,7 @@ export default async function Page() {
         </Link>
       }
     >
-      <NewsPhoto getData={newsPhotos} />
+      <NewsPhoto />
     </SectionBox>
   );
 }

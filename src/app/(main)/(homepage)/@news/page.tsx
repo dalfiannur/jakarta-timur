@@ -1,12 +1,9 @@
 import { SectionBox } from "@/app/components/SectionBox";
 import { Icon } from "@/app/icons";
 import { NewsSlider } from "./NewsSlider";
-import { getNews } from "@/app/actions/get-news";
 import Link from "next/link";
 
 export default async function Page() {
-  const news = getNews({ limit: "10" });
-
   return (
     <SectionBox
       title="Berita Pemerintah Terkini"
@@ -20,7 +17,7 @@ export default async function Page() {
         </Link>
       }
     >
-      <NewsSlider getData={news} />
+      <NewsSlider />
     </SectionBox>
   );
 }

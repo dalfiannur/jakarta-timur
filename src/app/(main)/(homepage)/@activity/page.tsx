@@ -1,11 +1,34 @@
-import { getFormattedActivities } from "@/app/actions/get-activities";
+"use client";
 import { Agenda } from "@/app/components/Agenda";
 import { Calender } from "@/app/components/Calender";
 import { Event } from "@/app/components/Event";
 import { SectionBox } from "@/app/components/SectionBox";
+import { trpc } from "@/utils/trpc";
+import { useMemo } from "react";
 
-export default async function Page() {
-  const data = await getFormattedActivities();
+export default function Page() {
+  const { data } = trpc.externalApi.agenda.useQuery({
+    page: 1,
+    limit: 4,
+  });
+
+  const listAgenda = useMemo(() => {
+    if (data) {
+      const types: {
+        [key: string]: number;
+      } = {
+        Walikota: 0,
+        "Wakil Walikota": 1,
+        "Sekretaris WaliKota": 2,
+      };
+      return data.data.map((d) => ({
+        ...d,
+        type: types[d.pelaksana],
+      }));
+    }
+    return [];
+  }, [data]);
+
   return (
     <SectionBox
       align="center"
@@ -15,7 +38,7 @@ export default async function Page() {
       <div className="container mx-auto">
         <div className="flex gap-8 bg-white drop-shadow p-6 rounded-xl">
           <Calender
-            listAgenda={data}
+            listAgenda={listAgenda}
             // onItemClick={() => {
             //   console.log("");
             // }}
@@ -25,7 +48,7 @@ export default async function Page() {
             <h4 className="font-semibold text-2xl font-plus-jakarta-sans">
               Agenda Pimpinan
             </h4>
-            <Agenda data={data} />
+            <Agenda data={listAgenda} />
           </div>
           <Event
             items={[

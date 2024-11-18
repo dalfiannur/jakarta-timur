@@ -1,23 +1,18 @@
 "use client";
-import { Bulletin } from "@/types/bulletin";
-import { PaginationResponse } from "@/types/pagination";
-import { motion } from "framer-motion";
+import { trpc } from "@/utils/trpc";
+import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import { use, useMemo, useState } from "react";
+import { useObservable } from "@legendapp/state/react";
 
-type BulletinSliderProps = {
-  getData: Promise<PaginationResponse<Bulletin>>;
-};
+export const BulletinSlider = () => {
+  const step$ = useObservable(0);
 
-export const BulletinSlider = ({ getData }: BulletinSliderProps) => {
-  const { data } = use(getData);
+  const { data } = trpc.externalApi.buletin.useQuery({
+    limit: 12,
+  });
 
-  const [step, setStep] = useState(0);
-  const x = useMemo(() => {
-    const offset = step * 100;
-    return offset + "%";
-  }, [step]);
+  if (!data) return null;
 
   const indicators = Array.from(
     new Array(Math.ceil(data.data.length / 4)).keys(),
@@ -25,7 +20,10 @@ export const BulletinSlider = ({ getData }: BulletinSliderProps) => {
 
   return (
     <div className="overflow-hidden -mr-6">
-      <motion.div initial={{ display: "flex", gap: 24 }} animate={{ x }}>
+      <motion.div
+        initial={{ display: "flex", gap: 24 }}
+        animate={{ x: step$.get() * 100 + "%" }}
+      >
         {data.data.map((item, index) => (
           <Link
             key={index}
@@ -50,8 +48,8 @@ export const BulletinSlider = ({ getData }: BulletinSliderProps) => {
         {indicators.map((_, key) => (
           <button
             key={key}
-            onClick={() => setStep(-key)}
-            data-active={step === -key}
+            onClick={() => step$.set(-key)}
+            data-active={step$.get() === -key}
             className="rounded-full w-2 h-2 bg-gray-400 data-[active=true]:w-8 data-[active=true]:bg-orange-500 transition-all duration-500"
           />
         ))}
