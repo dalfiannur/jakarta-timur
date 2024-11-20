@@ -47,7 +47,7 @@ export const navigationBarConfig: NavigationBarConfig = {
       {
         icon: "Vacation",
         title: "Pariwisata",
-        link: "/informasi/parawisata",
+        link: "/informasi/pariwisata",
         description:
           "Layanan dan Program Pendidikan untuk Masa Depan yang Lebih Cerah",
       },
@@ -170,7 +170,7 @@ export const navigationBarConfig: NavigationBarConfig = {
           {
             icon: "ClarityOrganizationSolid",
             title: "Struktur Organisasi",
-            link: "/satuan-unit-kerja?s=struktur-organisasi",
+            link: "/satuan-unit-kerja/struktur-organisasi",
             description:
               "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
           },

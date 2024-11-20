@@ -11,7 +11,7 @@ export default function Page() {
     <div className="border-l pl-6 flex-1">
       <SectionTitle>Visi Misi &amp; Kegiatan Strategis</SectionTitle>
       <div className="mt-8">
-        <div className="flex gap-8 bg-[#0077B5] rounded-3xl text-white px-8 py-6 relative">
+        <div className="flex gap-8 bg-[#0077B5] rounded-3xl text-white px-8 py-6 relative overflow-hidden">
           <svg
             style={{
               position: "absolute",
