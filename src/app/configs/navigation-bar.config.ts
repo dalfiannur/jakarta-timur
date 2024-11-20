@@ -177,42 +177,42 @@ export const navigationBarConfig: NavigationBarConfig = {
           {
             icon: "User",
             title: "Wali Kota",
-            link: "/satuan-unit-kerja?s=walikota",
+            link: "/satuan-unit-kerja/walikota",
             description:
               "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
           },
           {
             icon: "Users",
             title: "Sekretariat Kota",
-            link: "/satuan-unit-kerja?s=sekretariat-kota",
+            link: "/satuan-unit-kerja/sekretariat-kota",
             description:
               "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
           },
           {
             icon: "Employees",
             title: "Bagian Kota",
-            link: "/satuan-unit-kerja?s=bagian-kota",
+            link: "/satuan-unit-kerja/bagian-kota",
             description:
               "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
           },
           {
             icon: "Employee",
             title: "UKPD",
-            link: "/satuan-unit-kerja?s=ukpd",
+            link: "/satuan-unit-kerja/ukpd",
             description:
               "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
           },
           {
             icon: "District",
             title: "Kecamatan",
-            link: "/satuan-unit-kerja?s=kecamatan",
+            link: "/satuan-unit-kerja/wilayah/kecamatan",
             description:
               "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
           },
           {
             icon: "Office",
             title: "Kelurahan",
-            link: "/satuan-unit-kerja?s=kelurahan",
+            link: "/satuan-unit-kerja/wilayah/kelurahan",
             description:
               "Pelajari visi dan misi kami dalam membangun kota yang lebih baik, serta kegiatan strategis yang dilakukan.",
           },
