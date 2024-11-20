@@ -1,7 +1,7 @@
 "use client";
 import { Fragment, ReactNode } from "react";
 import { Icon } from "../icons";
-import { AnimatePresence, easeOut, motion } from "framer-motion";
+import { AnimatePresence, easeOut, motion } from "motion/react";
 import {
   Disclosure,
   DisclosureButton,
@@ -32,11 +32,10 @@ export const ListNumberAccordion = ({
               {open && (
                 <DisclosurePanel static as={Fragment}>
                   <motion.div
-                    initial={{ opacity: 0, y: -24 }}
+                    initial={{ opacity: 0, y: -24, transformOrigin: "top" }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -24 }}
                     transition={{ duration: 0.2, ease: easeOut }}
-                    className="origin-top"
                   >
                     {children}
                   </motion.div>

@@ -2,7 +2,7 @@
 import { Icon } from "@/app/icons";
 import { trpc } from "@/utils/trpc";
 import { Computed, useObservable } from "@legendapp/state/react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { ReactNode, useCallback, useMemo } from "react";
 import { tv } from "tailwind-variants";
 
@@ -106,8 +106,14 @@ const SlideItem = ({
       }}
       initial={position}
       animate={position}
-      className="absolute h-[500px] aspect-video rounded-2xl overflow-hidden"
-      onClick={onClick}
+      onTapStart={onClick}
+      style={{
+        position: 'absolute',
+        height: 500,
+        aspectRatio: 16/9,
+        borderRadius: 16,
+        overflow: 'hidden'
+      }}
     >
       {children}
     </motion.div>

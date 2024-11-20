@@ -4,7 +4,7 @@ import { SearchInput } from "./SearchInput";
 import { ReactNode, useState } from "react";
 import { SelectOption } from "@/app/components/SelectCSR";
 import { SelectSubDistrict } from "@/app/sections/SelectSubDistrict";
-import _ from "lodash";
+import __ from "lodash";
 import { Icon } from "@/app/icons";
 
 export type Column<T> = {
@@ -23,7 +23,7 @@ export const IndustryTable = <T,>({
   data: T[];
 }) => {
   const [district, setDistrict] = useState<SelectOption | null>(null);
-  const [subDistrict, setSubDistrict] = useState<SelectOption | null>(null);
+  const [, setSubDistrict] = useState<SelectOption | null>(null);
 
   return (
     <div className="flex flex-col gap-6 p-4">
@@ -33,7 +33,7 @@ export const IndustryTable = <T,>({
       <div className="flex gap-6">
         <SearchInput placeholder="Cari Nama Kelurahan" />
         <SelectDistrict onChange={setDistrict} />
-        <SelectSubDistrict onChange={setSubDistrict} />
+        <SelectSubDistrict district={district?.value} onChange={setSubDistrict} />
       </div>
       <table>
         <thead>
@@ -56,7 +56,7 @@ export const IndustryTable = <T,>({
                   key={cIndex}
                   className="p-4 text-center border-b text-xs font-medium font-plus-jakarta-sans"
                 >
-                  {column.render ? column.render(row) : _.get(row, column.key)}
+                  {column.render ? column.render(row) : __.get(row, column.key)}
                 </td>
               ))}
             </tr>

@@ -71,7 +71,7 @@ export const NewsSlider = () => {
                     primary={index === 0}
                     image={item.img_url}
                     title={item.title}
-                    category={item.catID.name}
+                    category={item.kategori.name}
                     date={item.time}
                     author={item.writer}
                     imageName={item.img_name}

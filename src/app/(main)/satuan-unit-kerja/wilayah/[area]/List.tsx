@@ -14,6 +14,7 @@ type DataItem = {
   pejabat: string;
   deskripsi: string;
   sejarah: string;
+  image: string;
 };
 
 type ListProps = {

@@ -2,7 +2,7 @@
 import { ReactNode, useMemo, useState } from "react";
 import { Icon } from "../icons";
 import { tv } from "tailwind-variants";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Image from "next/image";
 
 interface EventProps {
@@ -42,7 +42,10 @@ export const Event = ({ items }: EventProps) => {
             x,
             transition: { type: "spring", duration: 1, bounce: 0.4 },
           }}
-          className="flex gap-[30px]"
+          style={{
+            display: "flex",
+            gap: 30,
+          }}
         >
           {items.map((item, index) => (
             <EventSlideItem key={index} src={item.image} />
@@ -72,9 +75,9 @@ export const Event = ({ items }: EventProps) => {
 
 const EventSlideItem = ({ src }: { src: string }) => {
   return (
-    <motion.div className="relative shrink-0 w-[390px] h-[396px] bg-red-500 rounded-xl overflow-hidden">
+    <div className="relative shrink-0 w-[390px] h-[396px] bg-red-500 rounded-xl overflow-hidden">
       <Image src={src} alt={src} fill />
-    </motion.div>
+    </div>
   );
 };
 

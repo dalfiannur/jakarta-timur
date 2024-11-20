@@ -70,7 +70,12 @@ export const NewsPhoto = () => {
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
                 dragElastic={1}
-                className="absolute grid grid-cols-4 gap-4"
+                style={{
+                  position: 'absolute',
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
+                  gap: 16
+                }}
               >
                 {sections[state$.get().active]?.map((item, index) => (
                   <Item

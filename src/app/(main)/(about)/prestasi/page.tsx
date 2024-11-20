@@ -1,21 +1,17 @@
+"use client";
 import { SectionTitle } from "../SectionTitle";
 import { Icon } from "@/app/icons";
 import { PrestasiItem } from "./PrestasiItem";
 import { Filter } from "./Filter";
 import { ViewButton } from "./ViewButton";
-
-type PageProps = {
-  searchParams: Promise<{
-    sort?: string;
-    years?: string;
-    view?: string;
-  }>;
-};
+import { Computed, useObservable } from "@legendapp/state/react";
 
 const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-export default async function Page(props: PageProps) {
-  const { sort, years, view = "grid" } = await props.searchParams;
+export default function Page() {
+  const view$ = useObservable<"grid" | "list">("grid");
+  const year$ = useObservable("");
+  const sort$ = useObservable("");
 
   return (
     <div>
@@ -29,17 +25,26 @@ export default async function Page(props: PageProps) {
           />
         </div>
         <div className="mt-8 flex justify-between items-center">
-          <Filter />
-          <ViewButton />
+          <Filter
+            onSortChange={(val) => sort$.set(val?.value ?? "")}
+            onYearChange={(val) => year$.set(val?.value ?? "")}
+          />
+          <Computed>
+            {() => <ViewButton view={view$.get()} onChange={view$.set} />}
+          </Computed>
         </div>
-        <div
-          data-view={view}
-          className="mt-8 data-[view=grid]:grid data-[view=grid]:grid-cols-3 data-[view=list]:flex data-[view=list]:flex-col gap-8"
-        >
-          {data.map((_, index) => (
-            <PrestasiItem key={index} view={view} />
-          ))}
-        </div>
+        <Computed>
+          {() => (
+            <div
+              data-view={view$.get()}
+              className="mt-8 data-[view=grid]:grid data-[view=grid]:grid-cols-3 data-[view=list]:flex data-[view=list]:flex-col gap-8"
+            >
+              {data.map((_, index) => (
+                <PrestasiItem key={index} view={view$.get()} />
+              ))}
+            </div>
+          )}
+        </Computed>
       </div>
     </div>
   );

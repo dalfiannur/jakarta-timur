@@ -1,5 +1,16 @@
 "use service";
 
+type DataItem = {
+  id: number;
+  slug: string;
+  nama: string;
+  jabatan: string;
+  pejabat: string;
+  deskripsi: string;
+  sejarah: string;
+  image: string;
+};
+
 export const getData = async ({
   area,
   filters = [],
@@ -13,8 +24,8 @@ export const getData = async ({
   });
 
   const url = `https://timur.jakarta.go.id/API_Timur/api/${area}?${searchParams.toString()}`;
-  console.log(url);
-  const { data } = await fetch(url).then((res) => res.json());
+  const res = await fetch(url).then((res) => res.json());
+  const data = res.data.data as DataItem[];
 
-  return data;
+  return { data };
 };

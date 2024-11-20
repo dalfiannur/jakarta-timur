@@ -1,7 +1,5 @@
 "use client";
-import { Select } from "@/app/components/Select";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback } from "react";
+import { SelectCSR, SelectOption } from "@/app/components/SelectCSR";
 
 const sort = [
   {
@@ -17,32 +15,23 @@ const years = [
   },
 ];
 
-export const Filter = () => {
-  const router = useRouter();
-  const sp = useSearchParams();
-
-  const onChange = useCallback((key: string, value: string) => {
-    const searchParams = new URLSearchParams(sp);
-    searchParams.set(key, value);
-    router.push("?" + searchParams.toString(), {
-      scroll: false,
-    });
-  }, []);
-
+export const Filter = ({
+  onSortChange,
+  onYearChange,
+}: {
+  onSortChange?: (item: SelectOption | null) => void;
+  onYearChange?: (item: SelectOption | null) => void;
+}) => {
   return (
     <div className="flex gap-6 items-center">
       <div className="font-plus-jakarta-sans font-bold">Urutkan :</div>
       <div className="flex gap-4">
-        <Select
+        <SelectCSR
           data={sort}
           defaultSelected={sort[0]}
-          onChange={({ value }) => onChange("sort", value)}
+          onChange={onSortChange}
         />
-        <Select
-          placeholder="Tahun"
-          data={years}
-          onChange={({ value }) => onChange("years", value)}
-        />
+        <SelectCSR placeholder="Tahun" data={years} onChange={onYearChange} />
       </div>
     </div>
   );

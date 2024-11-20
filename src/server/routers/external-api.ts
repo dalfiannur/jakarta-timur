@@ -7,21 +7,25 @@ import { EntityResponse } from "@/types/entity";
 import { News } from "@/types/news";
 import { NewsPhoto } from "@/types/news-photo";
 import { Video } from "@/types/video";
+import { District } from "@/types/district";
 
 const BASE_URL_API = "https://timur.jakarta.go.id/API_Timur/api";
 
 const fetchApi = async <TResponse>(
   pathname: string,
-  params: { [key: string]: string },
+  params: { [key: string]: string | undefined }
 ) => {
   const p = new URLSearchParams();
   Object.keys(params).map((key) => {
-    p.set(key, params[key]);
+    const value = params[key];
+    if (value) {
+      p.set(key, value);
+    }
   });
   const stringifyParams = p.toString();
 
   const data: TResponse = await fetch(
-    `${BASE_URL_API}${pathname}?${stringifyParams}`,
+    `${BASE_URL_API}${pathname}?${stringifyParams}`
   )
     .then((res) => res.json())
     .catch((err) => console.error(err));
@@ -46,7 +50,7 @@ export const externalApi = router({
     .query(async ({ input }) => {
       const { data } = await fetchApi<PaginationResponse<Activity>>(
         "/agenda",
-        input,
+        input
       );
 
       return data;
@@ -57,7 +61,7 @@ export const externalApi = router({
     .query(async ({ input }) => {
       const { data } = await fetchApi<PaginationResponse<Bulletin>>(
         "/buletin",
-        input,
+        input
       );
 
       return data;
@@ -90,7 +94,7 @@ export const externalApi = router({
     .query(async ({ input }) => {
       const { data } = await fetchApi<PaginationResponse<NewsPhoto>>(
         "/newsphoto",
-        input,
+        input
       );
 
       return data;
@@ -99,7 +103,7 @@ export const externalApi = router({
   findGalleryById: procedure.input(z.string()).query(async ({ input }) => {
     const { data } = await fetchApi<PaginationResponse<NewsPhoto>>(
       "/newsphoto",
-      { id: input },
+      { id: input }
     );
 
     return data;
@@ -110,7 +114,7 @@ export const externalApi = router({
     .query(async ({ input }) => {
       const { data } = await fetchApi<PaginationResponse<Video>>(
         "/video",
-        input,
+        input
       );
       return data;
     }),
@@ -121,4 +125,28 @@ export const externalApi = router({
     });
     return data;
   }),
+
+  getDistricts: procedure.query(async () => {
+    const { data } = await fetchApi<PaginationResponse<District>>(
+      "/kecamatan",
+      {}
+    );
+    return data;
+  }),
+
+  getSubDistricts: procedure
+    .input(
+      z.object({
+        districtSlug: z.string().optional(),
+      })
+    )
+    .query(async ({ input }) => {
+      const { data } = await fetchApi<PaginationResponse<District>>(
+        "/kelurahan",
+        {
+          slug: input.districtSlug,
+        }
+      );
+      return data;
+    }),
 });

@@ -1,8 +1,6 @@
 "use client";
-import Link from "next/link";
 import { Icon } from "../icons";
 import { tv } from "tailwind-variants";
-import { useSearchParams } from "next/navigation";
 
 const getPagination = (current: number, total: number) => {
   const range: (number | string)[] = [];
@@ -57,36 +55,43 @@ const getPagination = (current: number, total: number) => {
 
 export const Pagination = ({
   total,
+  page = 1,
   color = "pink",
+  onPageChange,
 }: {
   total: number;
   color?: "blue" | "pink";
+  page?: number;
+  onPageChange?: (page: number) => void;
 }) => {
-  const searchParams = useSearchParams();
-  const active = searchParams.has("page")
-    ? Number(searchParams.get("page"))
-    : 1;
-  const pagination = getPagination(active, total);
+  const pagination = getPagination(page, total);
 
   return (
     <div className="flex items-center gap-4">
-      <PaginationArrow position="left" color={color} disabled={active === 1} />
+      <PaginationArrow
+        position="left"
+        color={color}
+        disabled={page === 1}
+        onClick={() => onPageChange?.(page - 1)}
+      />
       {pagination.map((item, index) =>
         typeof item === "string" ? (
           <PaginationNumber key={index} label="..." />
         ) : (
           <PaginationNumber
             key={index}
-            active={active === item}
+            active={page === item}
             color={color}
             label={item.toString()}
+            onClick={() => onPageChange?.(item)}
           />
         )
       )}
       <PaginationArrow
         position="right"
         color={color}
-        disabled={active === total}
+        disabled={page === total}
+        onClick={() => onPageChange?.(page + 1)}
       />
     </div>
   );
@@ -119,32 +124,24 @@ const PaginationArrow = ({
   position,
   disabled,
   color = "pink",
+  onClick,
 }: {
   position: "left" | "right";
   disabled?: boolean;
   color?: "blue" | "pink";
+  onClick?: () => void;
 }) => {
-  const searchParams = useSearchParams();
-  const active = searchParams.has("page")
-    ? Number(searchParams.get("page"))
-    : 1;
-  const step = position === "left" ? -1 : 1;
-
-  const params = new URLSearchParams(searchParams);
-  params.set("page", (active + step).toString());
-
   return (
-    <Link
-      href={`?${params.toString()}`}
+    <button
+      onClick={onClick}
       aria-disabled={disabled}
-      scroll={!disabled}
       className={paginationArrowCss({ disabled, color })}
     >
       <Icon
         name={position === "left" ? "ChevronLeft" : "ChevronRight"}
         size={24}
       />
-    </Link>
+    </button>
   );
 };
 
@@ -188,20 +185,19 @@ const PaginationNumber = ({
   active,
   label,
   color = "pink",
+  onClick,
 }: {
   active?: boolean;
   label: string;
   color?: "blue" | "pink";
+  onClick?: () => void;
 }) => {
-  const searchParams = useSearchParams();
-  const params = new URLSearchParams(searchParams);
-  params.set("page", label);
   return (
-    <Link
-      href={`?${params.toString()}`}
+    <button
+      onClick={onClick}
       className={paginationNumberCss({ active, color })}
     >
       {label}
-    </Link>
+    </button>
   );
 };

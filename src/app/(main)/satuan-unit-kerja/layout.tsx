@@ -2,7 +2,7 @@
 import { PageTitle } from "@/app/components/PageTitle";
 import { PageBreadcrumbs } from "./PageBreadcrumbs";
 import { Sidebar } from "./Sidebar";
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 import { sidebarItems } from "./constants";
 import { usePathname } from "next/navigation";
 
@@ -25,7 +25,9 @@ export default function Layout({ children }: LayoutProps) {
       />
 
       <div className="relative z-10 -mt-28 container mx-auto bg-soft-white rounded-4xl p-8 shadow-light">
-        <PageBreadcrumbs />
+        <Suspense fallback={"Loading..."}>
+          <PageBreadcrumbs />
+        </Suspense>
         <div className="mt-8 flex gap-8">
           <Sidebar items={sidebarItems} />
           {children}

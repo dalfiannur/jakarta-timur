@@ -8,8 +8,6 @@ import _ from "lodash";
 import { JobSeekersListingEducation } from "./type";
 
 const footerSumCounter = (values: number[]) => formattedNumber(_.sum(values));
-const footerAvgCounter = (values: number[]) =>
-  formattedNumber(_.mean(values), 2);
 
 const columnHelper = createColumnHelper<JobSeekersListingEducation>();
 const columns = [

@@ -26,31 +26,33 @@ export const CardLink = ({
           <motion.div
             onHoverStart={() => hovered$.set(true)}
             onHoverEnd={() => hovered$.set(false)}
-            className="group w-full inline-flex bg-white hover:bg-pink-100 drop-shadow p-5 rounded-xl items-center gap-5 border border-transparent hover:border-pink-500 transition-all"
           >
-            <div className="w-16 h-16 rounded-xl bg-pink-100/60 group-hover:bg-white transition-all flex justify-center items-center">
-              {icon}
-            </div>
-            <div className="flex-1">
-              <h5 className="text-lg font-semibold">{title}</h5>
-              <motion.p
-                initial={{
-                  opacity: 0,
-                  height: 0,
-                  y: 10,
-                }}
-                animate={{
-                  opacity: hovered$.get() ? 1 : 0,
-                  height: hovered$.get() ? "auto" : 0,
-                  y: hovered$.get() ? 0 : 10,
-                }}
-                className="text-xs text-gray-800/60"
-              >
-                {description}
-              </motion.p>
-            </div>
-            <div>
-              <Icon name="ChevronRight" size={16} />
+            <div className="group w-full inline-flex bg-white hover:bg-pink-100 drop-shadow p-5 rounded-xl items-center gap-5 border border-transparent hover:border-pink-500 transition-all">
+              <div className="w-16 h-16 rounded-xl bg-pink-100/60 group-hover:bg-white transition-all flex justify-center items-center">
+                {icon}
+              </div>
+              <div className="flex-1">
+                <h5 className="text-lg font-semibold">{title}</h5>
+                <motion.p
+                  initial={{
+                    opacity: 0,
+                    height: 0,
+                    y: 10,
+                    fontSize: 12,
+                    lineHeight: 16
+                  }}
+                  animate={{
+                    opacity: hovered$.get() ? 1 : 0,
+                    height: hovered$.get() ? "auto" : 0,
+                    y: hovered$.get() ? 0 : 10,
+                  }}
+                >
+                  {description}
+                </motion.p>
+              </div>
+              <div>
+                <Icon name="ChevronRight" size={16} />
+              </div>
             </div>
           </motion.div>
         )}

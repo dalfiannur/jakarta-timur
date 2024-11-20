@@ -1,6 +1,6 @@
 "use client";
 import { SelectCSR, SelectOption } from "@/app/components/SelectCSR";
-import { useRequest } from "ahooks";
+import { trpc } from "@/utils/trpc";
 import { useMemo } from "react";
 
 export const SelectDistrict = ({
@@ -10,11 +10,7 @@ export const SelectDistrict = ({
   hasLabel?: boolean;
   onChange?: (selected: SelectOption | null) => void;
 }) => {
-  const { data } = useRequest(() =>
-    fetch("https://timur.jakarta.go.id/API_Timur/api/kecamatan")
-      .then((res) => res.json())
-      .then((res) => res.data),
-  );
+  const { data } = trpc.externalApi.getDistricts.useQuery()
 
   const options = useMemo(
     () => data?.data?.map((d) => ({ value: d.slug, label: d.nama })) ?? [],

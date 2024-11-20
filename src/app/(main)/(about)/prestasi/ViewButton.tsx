@@ -1,32 +1,24 @@
 "use client";
 import { Icon, IconKeys } from "@/app/icons";
-import { useRouter, useSearchParams } from "next/navigation";
 
-export const ViewButton = () => {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-
-  const view = searchParams.get("view");
-
-  const onClick = (value: string) => {
-    const sp = new URLSearchParams(searchParams);
-    sp.set("view", value);
-    router.push("?" + sp.toString(), {
-      scroll: false,
-    });
-  };
-
+export const ViewButton = ({
+  view,
+  onChange,
+}: {
+  view: "grid" | "list";
+  onChange: (value: "grid" | "list") => void;
+}) => {
   return (
     <div className="flex gap-4">
       <Button
         icon="Menu"
         active={view === "grid" || view === null ? true : undefined}
-        onClick={() => onClick("grid")}
+        onClick={() => onChange("grid")}
       />
       <Button
         icon="LayoutList"
         active={view === "list"}
-        onClick={() => onClick("list")}
+        onClick={() => onChange("list")}
       />
     </div>
   );

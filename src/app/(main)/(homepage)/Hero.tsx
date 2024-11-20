@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import {
   Computed,
@@ -65,7 +65,10 @@ const SlideItem = ({
           }}
           initial="hidden"
           animate="show"
-          className="w-full h-full"
+          style={{
+            height: "100%",
+            width: "100%",
+          }}
         >
           {children}
         </motion.div>
