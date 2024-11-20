@@ -45,7 +45,7 @@ export const PrestasiItem = ({ view }: { view: "grid" | "list" }) => {
           style={{
             fontWeight: "600",
             fontSize: 18,
-            lineHeight: 28,
+            lineHeight: '28px',
             overflow: 'hidden',
             display: '-webkit-box',
             WebkitBoxOrient: 'vertical',

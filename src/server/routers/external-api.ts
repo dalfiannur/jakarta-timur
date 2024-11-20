@@ -9,7 +9,7 @@ import { NewsPhoto } from "@/types/news-photo";
 import { Video } from "@/types/video";
 import { District } from "@/types/district";
 
-const BASE_URL_API = "https://timur.jakarta.go.id/API_Timur/api";
+const BASE_URL_API = "https://timur.jakarta.go.id/API_Timur/api"
 
 const fetchApi = async <TResponse>(
   pathname: string,

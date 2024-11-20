@@ -1,7 +1,10 @@
+import { PrismaClient } from "@prisma/client";
+
 export const createContext = async () => {
-  // const session = await getSession();
+  const database = new PrismaClient();
+
   const ctx = {
-    // session,
+    database,
   };
 
   return ctx;

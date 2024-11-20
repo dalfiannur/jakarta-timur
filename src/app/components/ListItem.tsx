@@ -36,7 +36,7 @@ export const ListItem = ({ icon, title, description, link }: ListItemProps) => {
             <motion.p
               initial={{
                 fontSize: 12,
-                lineHeight: 16,
+                lineHeight: '16px',
                 opacity: 0,
                 height: 0,
                 y: 10,

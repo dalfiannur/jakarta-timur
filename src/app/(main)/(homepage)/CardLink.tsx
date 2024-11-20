@@ -39,7 +39,7 @@ export const CardLink = ({
                     height: 0,
                     y: 10,
                     fontSize: 12,
-                    lineHeight: 16
+                    lineHeight: '16px'
                   }}
                   animate={{
                     opacity: hovered$.get() ? 1 : 0,

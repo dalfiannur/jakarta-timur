@@ -1,14 +1,13 @@
-import { database } from "@/db";
-import { configs } from "@/db/schema";
 import { procedure, router } from "@/server/trpc";
 import { TRPCError } from "@trpc/server";
-import { eq } from "drizzle-orm";
 import { z } from "zod";
 
 export const config = router({
-  findByName: procedure.input(z.string()).query(async ({ input }) => {
-    const data = await database.query.configs.findFirst({
-      where: eq(configs.name, input),
+  findByName: procedure.input(z.string()).query(async ({ input, ctx }) => {
+    const data = await ctx.database.config.findFirst({
+      where: {
+        name: input,
+      },
     });
 
     if (!data) {
