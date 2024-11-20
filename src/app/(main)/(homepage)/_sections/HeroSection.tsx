@@ -11,7 +11,7 @@ import {
 
 const images = ["/img/hero-1.png", "/img/hero-2.png", "/img/hero-3.png"];
 
-export const Hero = () => {
+export const HeroSection = () => {
   const active$ = useObservable(0);
 
   useObserveEffect(() => {
@@ -23,18 +23,18 @@ export const Hero = () => {
   });
 
   return (
-    <div className="w-full aspect-[5/2] overflow-hidden">
+    <div className="w-full h-screen md:h-auto md:aspect-[5/2] overflow-hidden">
       <Computed>
         {() =>
           images.map((image, key) => (
             <SlideItem show={key === active$.get()} key={image}>
-              <Image src={image} alt="Hero" fill={true} />
+              <Image src={image} alt="Hero" fill={true} className="object-cover" />
               <div className="absolute inset-0 flex justify-center items-center">
-                <div className="container mx-auto flex flex-col justify-center items-center gap-8 pt-14">
-                  <h4 className="text-white font-bold text-6xl px-8 text-center">
+                <div className="container mx-auto flex flex-col justify-center items-center gap-8 pt-14 text-center">
+                  <h4 className="text-white font-bold text-3xl md:text-6xl px-4 md:px-8">
                     JELAJAHI LAYANAN PEMERINTAH DENGAN MUDAH DAN AKURAT
                   </h4>
-                  <h6 className="text-white text-2xl px-8 font-semibold">
+                  <h6 className="text-white text-lg md:text-2xl px-4 md:px-8 font-semibold">
                     Temukan Apa yang Kamu Butuhkan dengan Cepat dan Mudah dengan
                     Portal Kami yang Ramah Pengguna
                   </h6>

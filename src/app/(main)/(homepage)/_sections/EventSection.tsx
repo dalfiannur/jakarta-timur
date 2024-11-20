@@ -6,13 +6,13 @@ import { SectionBox } from "@/app/components/SectionBox";
 import { trpc } from "@/utils/trpc";
 import { useMemo } from "react";
 
-export default function Page() {
+export const EventSection = () => {
   const { data } = trpc.externalApi.agenda.useQuery({
     page: 1,
     limit: 4,
   });
 
-  const listAgenda = useMemo(() => {
+  const eventList = useMemo(() => {
     if (data) {
       const types: {
         [key: string]: number;
@@ -36,19 +36,19 @@ export default function Page() {
       subtitle="Ketahui Informasi dan Pengumuman Pemerintah Jakarta Timur Terkini"
     >
       <div className="container mx-auto">
-        <div className="flex gap-8 bg-white drop-shadow p-6 rounded-xl">
+        <div className="flex flex-col lg:flex-row gap-8 bg-white drop-shadow p-6 rounded-xl">
           <Calender
-            listAgenda={listAgenda}
+            listAgenda={eventList}
             // onItemClick={() => {
             //   console.log("");
             // }}
           />
 
           <div className="flex-1 grid gap-1">
-            <h4 className="font-semibold text-2xl font-plus-jakarta-sans">
+            <h4 className="font-semibold text-xl md:text-2xl font-plus-jakarta-sans">
               Agenda Pimpinan
             </h4>
-            <Agenda data={listAgenda} />
+            <Agenda data={eventList} />
           </div>
           <Event
             items={[

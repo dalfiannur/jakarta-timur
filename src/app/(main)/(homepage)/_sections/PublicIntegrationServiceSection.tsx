@@ -1,6 +1,7 @@
+"use client"
 import { SectionBox } from "@/app/components/SectionBox";
 import { Icon } from "@/app/icons";
-import { CardLink, CardLinkProps } from "./CardLink";
+import { CardLink, CardLinkProps } from "../_components/CardLink";
 
 const ITEMS: CardLinkProps[] = [
   {
@@ -37,7 +38,7 @@ export const PublicIntegrationServiceSection = () => {
       title="Layanan Publik Terintegrasi"
       subtitle="Semua layanan pemerintah dalam satu tempat, untuk kenyamanan Anda."
     >
-      <div className="grid grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {ITEMS.map((item, index) => (
           <CardLink key={index} {...item} />
         ))}

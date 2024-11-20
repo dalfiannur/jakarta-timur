@@ -1,22 +1,17 @@
 "use client";
 import _ from "lodash";
 import { motion } from "motion/react";
-import { SliderItem } from "./SliderItem";
-import { trpc } from "@/utils/trpc";
+import { NewsSliderItem } from "./NewsSliderItem";
 import {
   Computed,
   useComputed,
   useObservable,
   useObserveEffect,
 } from "@legendapp/state/react";
+import { News } from "@/types/news";
 
-export const NewsSlider = () => {
-  const { data } = trpc.externalApi.news.useQuery({
-    limit: 10,
-    page: 1,
-  });
-
-  const sections = _.chunk(data?.data ?? [], 5);
+export const NewsSlider = ({ data }: { data: News[] }) => {
+  const sections = _.chunk(data, 5);
 
   const containerWidth$ = useObservable(0);
   const step$ = useObservable(0);
@@ -53,10 +48,6 @@ export const NewsSlider = () => {
                   x: x$.get(),
                   opacity: step$.get() === index ? 1 : 0,
                   flexShrink: 0,
-                  display: "grid",
-                  gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
-                  gridTemplateRows: "repeat(2, minmax(2, 1fr))",
-                  gap: "1rem",
                   transition: {
                     type: "spring",
                     duration: 1,
@@ -64,19 +55,21 @@ export const NewsSlider = () => {
                   },
                 }}
               >
-                {items.map((item, index) => (
-                  <SliderItem
-                    key={item.id}
-                    id={item.id}
-                    primary={index === 0}
-                    image={item.img_url}
-                    title={item.title}
-                    category={item.kategori.name}
-                    date={item.time}
-                    author={item.writer}
-                    imageName={item.img_name}
-                  />
-                ))}
+                <div className="grid grid-cols-2 md:grid-cols-4 grid-rows-4 md:grid-rows-2 gap-4">
+                  {items.map((item, index) => (
+                    <NewsSliderItem
+                      key={item.id}
+                      id={item.id}
+                      primary={index === 0}
+                      image={item.img_url}
+                      title={item.title}
+                      category={item.kategori.name}
+                      date={item.time}
+                      author={item.writer}
+                      imageName={item.img_name}
+                    />
+                  ))}
+                </div>
               </motion.div>
             ))
           }

@@ -1,9 +1,15 @@
+"use client";
 import { SectionBox } from "@/app/components/SectionBox";
 import { Icon } from "@/app/icons";
 import Link from "next/link";
-import { NewsPhoto } from "./NewsPhoto";
+import { GallerySlider } from "../_components/GallerySlider";
+import { trpc } from "@/utils/trpc";
 
-export default function Page() {
+export const GallerySection = () => {
+  const { data } = trpc.externalApi.galleries.useQuery({
+    limit: 10,
+  });
+
   return (
     <SectionBox
       title="Cerita Melalui Citra"
@@ -11,13 +17,13 @@ export default function Page() {
       rightSection={
         <Link
           href="/publikasi/galeri"
-          className="inline-flex items-center gap-2 text-pink-500 font-semibold text-xl font-plus-jakarta-sans"
+          className="inline-flex items-center gap-2 text-pink-500 font-semibold text-base lg:text-xl font-plus-jakarta-sans"
         >
           Lihat Foto Lainnya <Icon name="ChevronRight" size={24} />
         </Link>
       }
     >
-      <NewsPhoto />
+      <GallerySlider data={data?.data ?? []} />
     </SectionBox>
   );
-}
+};

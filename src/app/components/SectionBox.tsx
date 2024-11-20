@@ -1,25 +1,5 @@
 import { ReactNode } from "react";
-import { tv } from "tailwind-variants";
 
-const SectionBoxStyle = tv({
-  slots: {
-    root: "container mx-auto py-10",
-    title: "font-bold text-3xl font-plus-jakarta-sans",
-    subtitle: "mt-2 text-xl text-gray-800/50 font-plus-jakarta-sans",
-  },
-  variants: {
-    align: {
-      left: {
-        title: "text-left",
-        subtitle: "text-left",
-      },
-      center: {
-        title: "text-center",
-        subtitle: "text-center",
-      },
-    },
-  },
-});
 interface SectionBoxProps {
   title: string;
   subtitle: string;
@@ -35,13 +15,17 @@ export const SectionBox = ({
   children,
   rightSection,
 }: SectionBoxProps) => {
-  const x = SectionBoxStyle({ align });
   return (
-    <div className={x.root()}>
-      <div className="flex justify-between">
-        <div className="flex-1">
-          <h2 className={x.title()}>{title}</h2>
-          <h5 className={x.subtitle()}>{subtitle}</h5>
+    <div className="container mx-auto py-4 px-4 md:px-8 md:py-10">
+      <div className="flex flex-col lg:flex-row justify-between gap-2">
+        <div
+          data-align={align}
+          className="flex-1 data-[align=left]:text-left data-[align=right]:text-right"
+        >
+          <h2 className="font-bold text-xl md:text-3xl font-plus-jakarta-sans">{title}</h2>
+          <h5 className="mt-2 text-base md:text-xl text-gray-800/50 font-plus-jakarta-sans">
+            {subtitle}
+          </h5>
         </div>
         {rightSection}
       </div>

@@ -20,9 +20,9 @@ export const Event = ({ items }: EventProps) => {
   );
 
   return (
-    <div className="w-[512px]">
+    <div className="w-full md:max-w-[512px]">
       <div className="flex items-center justify-between">
-        <h4 className="font-semibold text-2xl">Acara Jakarta Timur</h4>
+        <h4 className="font-semibold text-xl md:text-2xl">Acara Jakarta Timur</h4>
         <div className="flex gap-4">
           <EventButton
             onClick={() => setStep((prev) => (prev < 0 ? prev + 1 : 0))}

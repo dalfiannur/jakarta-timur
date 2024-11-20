@@ -1,9 +1,14 @@
 import { SectionBox } from "@/app/components/SectionBox";
 import { Icon } from "@/app/icons";
 import Link from "next/link";
-import { BulletinSlider } from "./BulletinSlider";
+import { BulletinSlider } from "../_components/BulletinSlider";
+import { trpc } from "@/utils/trpc";
 
-export default function Page() {
+export const BulletinSection = () => {
+  const { data } = trpc.externalApi.buletin.useQuery({
+    limit: 12,
+  });
+
   return (
     <SectionBox
       title="Buletin Info Jaktim"
@@ -11,13 +16,13 @@ export default function Page() {
       rightSection={
         <Link
           href="/publikasi/buletin"
-          className="inline-flex items-center gap-2 text-pink-500 font-semibold text-xl font-plus-jakarta-sans"
+          className="inline-flex items-center gap-2 text-pink-500 font-semibold text-base lg:text-xl font-plus-jakarta-sans"
         >
           Lihat Foto Lainnya <Icon name="ChevronRight" size={24} />
         </Link>
       }
     >
-      <BulletinSlider />
+      <BulletinSlider data={data?.data ?? []} />
     </SectionBox>
   );
-}
+};

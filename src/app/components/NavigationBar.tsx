@@ -13,7 +13,7 @@ const links = navigationBarConfig.links;
 export const NavigationBar = () => {
   return (
     <PopoverGroup>
-      <div className="z-20 absolute w-full top-8">
+      <div className="z-20 absolute w-full top-8 hidden md:block">
         <div className="container mx-auto bg-white drop-shadow-lg rounded-full px-8 py-4 flex gap-8 items-center">
           <div>
             <Image src="/img/logo.png" alt="Logo" width={175} height={62} />

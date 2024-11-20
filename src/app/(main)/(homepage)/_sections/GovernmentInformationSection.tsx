@@ -1,6 +1,6 @@
 import { SectionBox } from "@/app/components/SectionBox";
 import { Icon } from "@/app/icons";
-import { CardLink } from "./CardLink";
+import { CardLink } from "../_components/CardLink";
 
 const governmentInformation = [
   {
@@ -55,7 +55,7 @@ export const GovernmentInformation = () => {
       title="Transparansi Informasi Pemerintah"
       subtitle="Kami berkomitmen untuk menyediakan informasi publik yang mudah diakses dan dipahami."
     >
-      <div className="grid grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {governmentInformation.map((item, index) => (
           <CardLink key={index} {...item} />
         ))}

@@ -28,7 +28,7 @@ export const CardLink = ({
             onHoverEnd={() => hovered$.set(false)}
           >
             <div className="group w-full inline-flex bg-white hover:bg-pink-100 drop-shadow p-5 rounded-xl items-center gap-5 border border-transparent hover:border-pink-500 transition-all">
-              <div className="w-16 h-16 rounded-xl bg-pink-100/60 group-hover:bg-white transition-all flex justify-center items-center">
+              <div className="w-10 md:w-16 aspect-square rounded-xl bg-pink-100/60 group-hover:bg-white transition-all flex justify-center items-center">
                 {icon}
               </div>
               <div className="flex-1">

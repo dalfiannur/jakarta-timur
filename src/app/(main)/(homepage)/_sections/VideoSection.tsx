@@ -1,9 +1,13 @@
+"use client";
 import { SectionBox } from "@/app/components/SectionBox";
 import { Icon } from "@/app/icons";
 import Link from "next/link";
-import { VideoSlider } from "./VideoSlider";
+import { VideoSlider } from "../_components/VideoSlider";
+import { trpc } from "@/utils/trpc";
 
-export default function Page() {
+export const VideoSection = () => {
+  const { data } = trpc.externalApi.videos.useQuery({ limit: 3 });
+
   return (
     <SectionBox
       title="Video Informasi dan Edukasi"
@@ -11,13 +15,13 @@ export default function Page() {
       rightSection={
         <Link
           href="/publikasi/video"
-          className="inline-flex items-center gap-2 text-pink-500 font-semibold text-xl font-plus-jakarta-sans"
+          className="inline-flex items-center gap-2 text-pink-500 font-semibold text-base lg:text-xl font-plus-jakarta-sans"
         >
           Lihat Video Lainnya <Icon name="ChevronRight" size={24} />
         </Link>
       }
     >
-      <VideoSlider />
+      <VideoSlider data={data?.data ?? []} />
     </SectionBox>
   );
-}
+};

@@ -1,3 +1,4 @@
+"use client";
 import { Icon } from "@/app/icons";
 import Image from "next/image";
 import Link from "next/link";
@@ -27,7 +28,7 @@ const createStyles = tv({
   },
 });
 
-export const SliderItem = ({
+export const NewsSliderItem = ({
   id,
   primary,
   title,

@@ -97,7 +97,7 @@ export const Calender = ({ listAgenda = [], onItemClick }: CalenderProps) => {
 
   return (
     <div>
-      <div className="border rounded-xl w-[460px] p-5">
+      <div className="border rounded-xl w-full lg:max-w-[460px] p-5">
         <div className="flex justify-between items-center py-2">
           <button className="text-pink-500" onClick={handlePrevMonth}>
             <Icon name="ChevronLeft" size={24} />
@@ -109,17 +109,17 @@ export const Calender = ({ listAgenda = [], onItemClick }: CalenderProps) => {
             <Icon name="ChevronRight" size={24} />
           </button>
         </div>
-        <div className="mt-8 grid grid-cols-7 gap-6">
+        <div className="mt-8 grid grid-cols-7 gap-4 md:gap-6">
           {dayLabels.map((day) => (
             <div key={day} className="text-center">
               {day}
             </div>
           ))}
         </div>
-        <div className="mt-12 grid grid-cols-7 gap-8">{renderDays}</div>
+        <div className="mt-12 grid grid-cols-7 gap-4 md:gap-8">{renderDays}</div>
       </div>
 
-      <div className="mt-6 flex gap-8">
+      <div className="mt-6 flex flex-col md:flex-row gap-2 md:gap-8">
         {legends.map((legend) => (
           <CalenderLegend
             key={legend.type}
