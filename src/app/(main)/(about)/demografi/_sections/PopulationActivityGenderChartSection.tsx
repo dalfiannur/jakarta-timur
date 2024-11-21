@@ -1,7 +1,7 @@
-import { CitizenCountStatistic } from "../CitizenCountStatistic";
-import data from "./data.json";
+import { CitizenCountStatistic } from "../_components/CitizenCountStatistic";
+import data from "../_data/population-activity-gender-chart.json";
 
-export default async function Page() {
+export const PopulationActivityGenderChartSection = () => {
   const yAxis = data.data.map((d) => d.label);
   const maleData = data.data.map((d) => d.male);
   const femaleData = data.data.map((d) => d.female);
@@ -9,8 +9,8 @@ export default async function Page() {
   return (
     <CitizenCountStatistic
       height={550}
-      title="Jumlah Pencari Kerja yang Belum Ditempatkan Menurut Golongan Jabatan dan Jenis Kelamin di Kota Jakarta Timur, 2020"
-      sourceInfo="Sumber/Source: Dinas Tenaga Kerja dan Transmigrasi Provinsi DKI Jakarta/Manpower and Transmigration Office of DKI Jakarta Province"
+      title="Jumlah Penduduk Berumur 15 Tahun Keatas Menurut Jenis Kegiatan Selama Seminggu yang Lalu dan Jenis Kelamin di Kota Jakarta Timur, 2020"
+      sourceInfo="Sumber/Source: BPS, Survei Angkatan Kerja Nasional (Sakernas) Agustus/BPS-Statistics Indonesia, August National Labor Force Survey"
       total={data.counters}
       options={{
         yAxis: {
@@ -56,4 +56,4 @@ export default async function Page() {
       }}
     />
   );
-}
+};

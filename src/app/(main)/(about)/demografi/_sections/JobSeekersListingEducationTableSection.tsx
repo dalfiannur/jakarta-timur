@@ -1,11 +1,23 @@
 "use client";
 import { formattedNumber } from "@/utils/format-number";
-import { Table } from "@/app/components/Table";
+import { Table } from "..//_components/Table";
 import { Icon } from "@/app/icons";
-import data from "./data.json";
+import data from "../_data/jobseekers-listing-education-table.json";
 import { createColumnHelper } from "@tanstack/react-table";
 import _ from "lodash";
-import { JobSeekersListingEducation } from "./type";
+
+type Data = {
+  male: number;
+  female: number;
+  total: number;
+};
+
+type JobSeekersListingEducation = {
+  qualification: string;
+  d0: Data;
+  d1: Data;
+  d2: Data;
+};
 
 const footerSumCounter = (values: number[]) => formattedNumber(_.sum(values));
 
@@ -28,7 +40,7 @@ const columns = [
           footerSumCounter(
             table
               .getPrePaginationRowModel()
-              .rows.map((d) => d.getValue("d0_male")),
+              .rows.map((d) => d.getValue("d0_male"))
           ),
       }),
       columnHelper.accessor("d0.female", {
@@ -37,7 +49,7 @@ const columns = [
           footerSumCounter(
             table
               .getPrePaginationRowModel()
-              .rows.map((d) => d.getValue("d0_female")),
+              .rows.map((d) => d.getValue("d0_female"))
           ),
       }),
       columnHelper.accessor("d0.total", {
@@ -46,7 +58,7 @@ const columns = [
           footerSumCounter(
             table
               .getPrePaginationRowModel()
-              .rows.map((d) => d.getValue("d0_total")),
+              .rows.map((d) => d.getValue("d0_total"))
           ),
       }),
     ],
@@ -61,7 +73,7 @@ const columns = [
           footerSumCounter(
             table
               .getPrePaginationRowModel()
-              .rows.map((d) => d.getValue("d1_male")),
+              .rows.map((d) => d.getValue("d1_male"))
           ),
       }),
       columnHelper.accessor("d1.female", {
@@ -70,7 +82,7 @@ const columns = [
           footerSumCounter(
             table
               .getPrePaginationRowModel()
-              .rows.map((d) => d.getValue("d1_female")),
+              .rows.map((d) => d.getValue("d1_female"))
           ),
       }),
       columnHelper.accessor("d1.total", {
@@ -79,7 +91,7 @@ const columns = [
           footerSumCounter(
             table
               .getPrePaginationRowModel()
-              .rows.map((d) => d.getValue("d1_total")),
+              .rows.map((d) => d.getValue("d1_total"))
           ),
       }),
     ],
@@ -94,7 +106,7 @@ const columns = [
           footerSumCounter(
             table
               .getPrePaginationRowModel()
-              .rows.map((d) => d.getValue("d2_male")),
+              .rows.map((d) => d.getValue("d2_male"))
           ),
       }),
       columnHelper.accessor("d2.female", {
@@ -103,7 +115,7 @@ const columns = [
           footerSumCounter(
             table
               .getPrePaginationRowModel()
-              .rows.map((d) => d.getValue("d2_female")),
+              .rows.map((d) => d.getValue("d2_female"))
           ),
       }),
       columnHelper.accessor("d2.total", {
@@ -112,7 +124,7 @@ const columns = [
           footerSumCounter(
             table
               .getPrePaginationRowModel()
-              .rows.map((d) => d.getValue("d2_total")),
+              .rows.map((d) => d.getValue("d2_total"))
           ),
       }),
     ],
@@ -123,13 +135,13 @@ const NoteSection = () => (
   <div className="mt-8 flex gap-8 text-xs text-[#23272E] font-medium">
     <div>Note:</div>
     <div className="flex-1">
-      <ul className="flex gap-8">
+      <ul className="flex flex-col lg:flex-row gap-0 lg:gap-8">
         <li>0 ≤ Sekolah Dasar (SD)</li>
         <li>1. Sekolah Menengah Pertama</li>
         <li>2. Sekolah Menengah Atas</li>
         <li>3. Perguruan Tinggi</li>
       </ul>
-      <ul className="flex gap-8">
+      <ul className="mt-6 lg:mt-2 flex flex-col lg:flex-row gap-0 lg:gap-8">
         <li>1. Mencari pekerjaan</li>
         <li>2. Mempersiapkan usaha</li>
         <li>3. Merasa tidak mungkin mendapat pekerjaan</li>
@@ -139,16 +151,16 @@ const NoteSection = () => (
   </div>
 );
 
-export default function Page() {
+export const JobSeekersListingEducationTableSection = () => {
   return (
-    <div className="p-10 rounded-2xl border">
-      <h4 className="text-center font-bold font-plus-jakarta-sans text-xl mb-6">
+    <div className="p-4 lg:p-10 rounded-2xl border-none lg:border">
+      <h4 className="text-center font-bold font-plus-jakarta-sans text-base lg:text-xl mb-6">
         Jumlah Pencari Kerja Lowongan dan Penempatan yang Terdaftar Menurut
         Pendidikan di Kota Jakarta Timur, 2020
       </h4>
       <Table columns={columns} data={data.data} />
       <NoteSection />
-      <div className="mt-6 flex gap-2 text-sm text-blue-500 font-bold font-plus-jakarta-sans">
+      <div className="mt-6 flex gap-2 text-xs lg:text-sm text-blue-500 font-bold font-plus-jakarta-sans">
         <Icon name="Info" size={16} />
         <p>
           Sumber/Source: Dinas Tenaga Kerja dan Transmigrasi Provinsi DKI
@@ -157,4 +169,4 @@ export default function Page() {
       </div>
     </div>
   );
-}
+};

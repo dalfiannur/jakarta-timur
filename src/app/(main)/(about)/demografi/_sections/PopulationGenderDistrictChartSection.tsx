@@ -1,7 +1,7 @@
-import { CitizenCountStatistic } from "../CitizenCountStatistic";
-import data from "./data.json";
+import { CitizenCountStatistic } from "../_components/CitizenCountStatistic";
+import data from "../_data/population-gender-district-chart.json";
 
-export default function Page() {
+export const PopulationGenderDistrictChartSection = () => {
   const maleSeries = data.data.map((d) => d.male);
   const femaleSeries = data.data.map((d) => d.female);
   const yAxis = data.data.map((d) => d.label);
@@ -60,4 +60,4 @@ export default function Page() {
       }}
     />
   );
-}
+};

@@ -1,16 +1,16 @@
-import { CitizenCountStatistic } from "../CitizenCountStatistic";
-import data from "./data.json";
+import { CitizenCountStatistic } from "../_components/CitizenCountStatistic";
+import data from "../_data/employed-job-gender-chart.json";
 
-export default async function Page() {
+export const EmployedJobGenderChartSection = () => {
   const yAxis = data.data.map((d) => d.label);
   const maleData = data.data.map((d) => d.male);
   const femaleData = data.data.map((d) => d.female);
 
   return (
     <CitizenCountStatistic
-      height={550}
-      title="Jumlah Penduduk Berumur 15 Tahun Keatas Menurut Jenis Kegiatan Selama Seminggu yang Lalu dan Jenis Kelamin di Kota Jakarta Timur, 2020"
-      sourceInfo="Sumber/Source: BPS, Survei Angkatan Kerja Nasional (Sakernas) Agustus/BPS-Statistics Indonesia, August National Labor Force Survey"
+      height={480}
+      title="Penduduk Berumur 15 Tahun Ke Atas yang Bekerja Selama Seminggu yang Lalu Menurut Status Pekerjaan Utama dan Jenis Kelamin di Kota Jakarta Timur, 2020"
+      sourceInfo="Sumber: BPS, Survei Angkatan Kerja Nasional (Sakernas) Agustus"
       total={data.counters}
       options={{
         yAxis: {
@@ -56,4 +56,4 @@ export default async function Page() {
       }}
     />
   );
-}
+};

@@ -1,7 +1,8 @@
-import { CitizenCountStatistic } from "../CitizenCountStatistic";
-import data from "./data.json";
+"use client";
+import { CitizenCountStatistic } from "../_components/CitizenCountStatistic";
+import data from "../_data/jobseekers-listing-eduction-chart.json";
 
-export default async function Page() {
+export const JobSeekersListingEducationChartSection = () => {
   const yAxis = data.data.map((d) => d.label);
   const maleData = data.data.map((d) => d.male);
   const femaleData = data.data.map((d) => d.female);
@@ -9,8 +10,8 @@ export default async function Page() {
   return (
     <CitizenCountStatistic
       height={480}
-      title="Penduduk Berumur 15 Tahun Ke Atas yang Bekerja Selama Seminggu yang Lalu Menurut Status Pekerjaan Utama dan Jenis Kelamin di Kota Jakarta Timur, 2020"
-      sourceInfo="Sumber: BPS, Survei Angkatan Kerja Nasional (Sakernas) Agustus"
+      title="Jumlah Pencari Kerja yang Belum Ditempatkan Menurut Tingkat Pendidikan di Kota Jakarta Timur, 2020"
+      sourceInfo="Sumber/Source: Dinas Tenaga Kerja dan Transmigrasi Provinsi DKI Jakarta/Manpower and Transmigration Office of DKI Jakarta Province"
       total={data.counters}
       options={{
         yAxis: {
@@ -54,6 +55,9 @@ export default async function Page() {
         },
         tooltip: {},
       }}
+      wrapLabel={{
+        y: 25,
+      }}
     />
   );
-}
+};

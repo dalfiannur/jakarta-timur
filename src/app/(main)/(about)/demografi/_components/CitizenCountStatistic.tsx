@@ -1,6 +1,6 @@
 "use client";
 import { useCallback, useEffect, useRef } from "react";
-import * as echart from "echarts";
+import * as echarts from "echarts";
 import { formattedNumber } from "@/utils/format-number";
 import { Icon } from "@/app/icons";
 import _ from "lodash";
@@ -17,7 +17,7 @@ export const CitizenCountStatistic = ({
   sourceInfo?: string;
   total: { label: string; value: number }[];
   height?: number;
-  options: echart.EChartsOption;
+  options: echarts.EChartsOption;
   wrapLabel?: {
     x?: number;
     y?: number;
@@ -45,17 +45,17 @@ export const CitizenCountStatistic = ({
 
   useEffect(() => {
     if (ref.current) {
-      const chart = echart.init(ref.current, null, { height });
+      const chart = echarts.init(ref.current, null, { height });
       const _options = { ...options };
       if (wrapLabel?.x) {
         _.set(_options, "xAxis.axisLabel.formatter", (v: string) =>
-          formatter(v, wrapLabel.x),
+          formatter(v, wrapLabel.x)
         );
       }
 
       if (wrapLabel?.y) {
         _.set(_options, "yAxis.axisLabel.formatter", (v: string) =>
-          formatter(v, wrapLabel.y),
+          formatter(v, wrapLabel.y)
         );
       }
 
@@ -69,16 +69,18 @@ export const CitizenCountStatistic = ({
   }, [ref, height, options, formatter, wrapLabel]);
 
   return (
-    <div className="border rounded-xl p-10 flex flex-col gap-6">
-      <h5 className="font-bold text-xl font-plus-jakarta-sans">{title}</h5>
-      <div className="grid grid-cols-3 gap-4">
+    <div className="border-none lg:border rounded-xl p-4 lg:p-10 flex flex-col gap-6">
+      <h5 className="font-bold text-base lg:text-xl font-plus-jakarta-sans">
+        {title}
+      </h5>
+      <div className="grid grid-cols-3 gap-2 lg:gap-4">
         {total.map((item, index) => (
           <div
             key={index}
-            className="p-4 border rounded-xl font-plus-jakarta-sans"
+            className="p-2 lg:p-4 border rounded-xl font-plus-jakarta-sans"
           >
-            <h6 className="text-sm text-gray-600">{item.label}</h6>
-            <p className="mt-2 font-semibold text-[#1D252D]">
+            <h6 className="text-xs lg:text-sm text-gray-600">{item.label}</h6>
+            <p className="text-sm lg:text-base mt-2 font-semibold text-[#1D252D]">
               {formattedNumber(item.value)}
             </p>
           </div>

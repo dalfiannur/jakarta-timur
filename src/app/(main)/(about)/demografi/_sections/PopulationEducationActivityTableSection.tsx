@@ -1,11 +1,21 @@
 "use client";
 import { formattedNumber } from "@/utils/format-number";
-import { Table } from "@/app/components/Table";
+import { Table } from "../_components/Table";
 import { Icon } from "@/app/icons";
 import { createColumnHelper } from "@tanstack/react-table";
-import { PopulationEducationActivity } from "./type";
 import _ from "lodash";
-import data from "./data.json";
+import data from "../_data/population-education-activity-table.json";
+
+type PopulationEducationActivity = {
+  id: number;
+  employers: number;
+  unemployers: number;
+  totalEmployers: number;
+  percentage: number;
+  notWorkforce: number;
+  total: number;
+  workforcePercentage: number;
+};
 
 const footerSumCounter = (values: number[]) => formattedNumber(_.sum(values));
 const footerAvgCounter = (values: number[]) =>
@@ -30,7 +40,7 @@ const columns = [
           footerSumCounter(
             table
               .getPrePaginationRowModel()
-              .rows.map((d) => d.getValue("employers")),
+              .rows.map((d) => d.getValue("employers"))
           ),
       }),
       columnHelper.accessor("unemployers", {
@@ -39,7 +49,7 @@ const columns = [
           footerSumCounter(
             table
               .getPrePaginationRowModel()
-              .rows.map((d) => d.getValue("unemployers")),
+              .rows.map((d) => d.getValue("unemployers"))
           ),
       }),
       columnHelper.accessor("totalEmployers", {
@@ -48,7 +58,7 @@ const columns = [
           footerSumCounter(
             table
               .getPrePaginationRowModel()
-              .rows.map((d) => d.getValue("totalEmployers")),
+              .rows.map((d) => d.getValue("totalEmployers"))
           ),
       }),
     ],
@@ -59,7 +69,7 @@ const columns = [
       footerAvgCounter(
         table
           .getPrePaginationRowModel()
-          .rows.map((d) => d.getValue("percentage")),
+          .rows.map((d) => d.getValue("percentage"))
       ),
     meta: {
       rowSpan: 2,
@@ -71,7 +81,7 @@ const columns = [
       footerSumCounter(
         table
           .getPrePaginationRowModel()
-          .rows.map((d) => d.getValue("notWorkforce")),
+          .rows.map((d) => d.getValue("notWorkforce"))
       ),
     meta: {
       rowSpan: 2,
@@ -81,7 +91,7 @@ const columns = [
     header: "Jumlah",
     footer: ({ table }) =>
       footerSumCounter(
-        table.getPrePaginationRowModel().rows.map((d) => d.getValue("total")),
+        table.getPrePaginationRowModel().rows.map((d) => d.getValue("total"))
       ),
     meta: {
       rowSpan: 2,
@@ -93,7 +103,7 @@ const columns = [
       footerAvgCounter(
         table
           .getPrePaginationRowModel()
-          .rows.map((d) => d.getValue("workforcePercentage")),
+          .rows.map((d) => d.getValue("workforcePercentage"))
       ),
     meta: {
       rowSpan: 2,
@@ -102,16 +112,16 @@ const columns = [
 ];
 
 const NoteSection = () => (
-  <div className="mt-8 flex gap-8 text-xs text-[#23272E] font-medium">
+  <div className="mt-4 lg:mt-8 flex gap-2 lg:gap-8 text-xs text-[#23272E] font-medium">
     <div>Catatan:</div>
     <div className="flex-1">
-      <ul className="flex gap-8">
+      <ul className="flex flex-col lg:flex-row gap-0 lg:gap-8">
         <li>0 ≤ Sekolah Dasar (SD)</li>
         <li>1. Sekolah Menengah Pertama</li>
         <li>2. Sekolah Menengah Atas</li>
         <li>3. Perguruan Tinggi</li>
       </ul>
-      <ul className="mt-2 flex gap-8">
+      <ul className="mt-4 lg:mt-2 flex flex-col lg:flex-row gap-0 lg:gap-8">
         <li>1. Mencari pekerjaan</li>
         <li>2. Mempersiapkan usaha</li>
         <li>3. Merasa tidak mungkin mendapat pekerjaan</li>
@@ -121,17 +131,17 @@ const NoteSection = () => (
   </div>
 );
 
-export default function Page() {
+export const PopulationEducationActivityTableSection = () => {
   return (
-    <div className="p-10 rounded-2xl border">
-      <h4 className="text-center font-bold font-plus-jakarta-sans text-xl mb-6">
+    <div className="p-4 lg:p-10 rounded-2xl border-none lg:border">
+      <h4 className="text-center font-bold font-plus-jakarta-sans text-base lg:text-xl mb-6">
         Penduduk Berumur 15 Tahun ke Atas Menurut Pendidikan Tertinggi yang
         Ditamatkan dan Jenis Kegiatan Selama Seminggu yang Lalu di Kota Jakarta
         Timur, 2020
       </h4>
       <Table columns={columns} data={data.data} />
       <NoteSection />
-      <div className="mt-6 flex gap-2 text-sm text-blue-500 font-bold font-plus-jakarta-sans">
+      <div className="mt-3 lg:mt-6 flex gap-2 text-xs lg:text-sm text-blue-500 font-bold font-plus-jakarta-sans">
         <Icon name="Info" size={16} />
         <p>
           Sumber/Source: BPS, Survei Angkatan Kerja Nasional (Sakernas)
@@ -140,4 +150,4 @@ export default function Page() {
       </div>
     </div>
   );
-}
+};

@@ -1,16 +1,16 @@
 "use client";
 import { Icon } from "@/app/icons";
 import { useEffect, useRef } from "react";
-import * as echart from "echarts";
+import * as echarts from "echarts";
 
-import data from "./data.json";
+import data from "../_data/population-growth-chart.json";
 
-export default function Page() {
+export const PopulationGrowthChartSection = () => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (ref.current) {
-      const chart = echart.init(ref.current);
+      const chart = echarts.init(ref.current);
 
       const xData = data.data.map((d) => d.label);
       const yData = data.data.map((d) => d.value);
@@ -52,11 +52,11 @@ export default function Page() {
   }, [ref]);
 
   return (
-    <div className="border rounded-xl px-10 pb-10 pt-4">
-      <h5 className="text-xl font-bold font-plus-jakarta-sans">
+    <div className="border-none lg:border rounded-xl px-4 lg:px-10 pb-10 pt-2 lg:pt-4">
+      <h5 className="text-base lg:text-xl font-bold font-plus-jakarta-sans">
         Laju Pertumbuhan Penduduk per Tahun (%), 2010-2020
       </h5>
-      <div ref={ref} className="mt-6 h-96" />
+      <div ref={ref} className="mt-6 aspect-[4/2] lg:aspect-auto h-auto lg:h-96" />
       <div className="mt-6 flex gap-4 items-center">
         <div className="text-blue-500">
           <Icon name="Info" size={16} />
@@ -68,4 +68,4 @@ export default function Page() {
       </div>
     </div>
   );
-}
+};

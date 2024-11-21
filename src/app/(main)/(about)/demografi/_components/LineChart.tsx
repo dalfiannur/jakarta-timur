@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import * as echart from "echarts";
+import * as echarts from "echarts";
 
-export const Statistic = ({
+export const LineChart = ({
   birthData,
   deathData,
 }: {
@@ -14,7 +14,7 @@ export const Statistic = ({
 
   useEffect(() => {
     if (ref.current) {
-      const chart = echart.init(ref.current, null, {
+      const chart = echarts.init(ref.current, null, {
         height: 315,
       });
 

@@ -33,18 +33,18 @@ const items = [
   },
 ];
 
-export default function Page() {
+export const OverviewSection = () => {
   return (
-    <div className="py-4 px-10">
-      <h5 className="text-xl font-bold">Overview Kependudukan</h5>
-      <div className="mt-4 grid grid-cols-6 gap-4">
+    <div className="py-4 px-4 lg:px-10">
+      <h5 className="text-base lg:text-xl font-bold">Overview Kependudukan</h5>
+      <div className="mt-4 grid grid-cols-3 lg:grid-cols-6 gap-2 lg:gap-4">
         {items.map((item, index) => (
           <div
             key={index}
-            className="p-4 border rounded-xl bg-[#0077B5] text-white relative"
+            className="p-2 lg:p-4 border rounded-xl bg-[#0077B5] text-white relative"
           >
-            <p className="font-bold">{item.value}</p>
-            <h6 className="mt-2 text-sm">{item.title}</h6>
+            <p className="font-bold text-xs lg:text-base">{item.value}</p>
+            <h6 className="mt-1 lg:mt-2 text-xs lg:text-sm">{item.title}</h6>
 
             <svg
               className="absolute bottom-0 right-0"
@@ -94,4 +94,4 @@ export default function Page() {
       </div>
     </div>
   );
-}
+};

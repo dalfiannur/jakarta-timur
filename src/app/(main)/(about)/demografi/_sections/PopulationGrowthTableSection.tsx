@@ -1,11 +1,19 @@
 "use client";
 import { formattedNumber } from "@/utils/format-number";
-import { Table } from "@/app/components/Table";
+import { Table } from "../_components/Table";
 import { createColumnHelper } from "@tanstack/react-table";
-import { PopulationGrowth } from "./type";
-import data from "./data.json";
+import data from "../_data/population-growth-table.json";
 import _ from "lodash";
 import { Icon } from "@/app/icons";
+
+type PopulationGrowth = {
+  district: string;
+  citizen: number;
+  growth: number;
+  percentage: number;
+  depth: number;
+  genderRatio: number;
+};
 
 const footerSumCounter = (values: number[]) => formattedNumber(_.sum(values));
 const footerAvgCounter = (values: number[]) =>
@@ -21,7 +29,7 @@ const columns = [
     header: () => <div className="whitespace-nowrap">Penduduk (Jiwa)</div>,
     footer: ({ table }) =>
       footerSumCounter(
-        table.getPrePaginationRowModel().rows.map((d) => d.getValue("citizen")),
+        table.getPrePaginationRowModel().rows.map((d) => d.getValue("citizen"))
       ),
   }),
   columnHelper.accessor("growth", {
@@ -33,7 +41,7 @@ const columns = [
     ),
     footer: ({ table }) =>
       footerSumCounter(
-        table.getPrePaginationRowModel().rows.map((d) => d.getValue("growth")),
+        table.getPrePaginationRowModel().rows.map((d) => d.getValue("growth"))
       ),
   }),
   columnHelper.accessor("percentage", {
@@ -42,14 +50,14 @@ const columns = [
       footerAvgCounter(
         table
           .getPrePaginationRowModel()
-          .rows.map((d) => d.getValue("percentage")),
+          .rows.map((d) => d.getValue("percentage"))
       ),
   }),
   columnHelper.accessor("depth", {
     header: "Kepadatan Penduduk per km2",
     footer: ({ table }) =>
       footerSumCounter(
-        table.getPrePaginationRowModel().rows.map((d) => d.getValue("depth")),
+        table.getPrePaginationRowModel().rows.map((d) => d.getValue("depth"))
       ),
   }),
   columnHelper.accessor("genderRatio", {
@@ -58,15 +66,15 @@ const columns = [
       footerAvgCounter(
         table
           .getPrePaginationRowModel()
-          .rows.map((d) => d.getValue("genderRatio")),
+          .rows.map((d) => d.getValue("genderRatio"))
       ),
   }),
 ];
 
-export default function Page() {
+export const PopulationGrowthTableSection = () => {
   return (
-    <div className="p-10 rounded-2xl border">
-      <h4 className="text-center font-bold font-plus-jakarta-sans text-xl mb-6">
+    <div className="p-4 lg:p-10 rounded-2xl border-none lg:border">
+      <h4 className="text-center font-bold font-plus-jakarta-sans text-base lg:text-xl mb-6">
         Penduduk, Laju Pertumbuhan Penduduk per Tahun, Distribusi Persentase
         Penduduk, Kepadatan Penduduk, Rasio Jenis Kelamin Penduduk Menurut
         Kecamatan Kota Jakarta Timur, 2020
@@ -78,4 +86,4 @@ export default function Page() {
       </div>
     </div>
   );
-}
+};

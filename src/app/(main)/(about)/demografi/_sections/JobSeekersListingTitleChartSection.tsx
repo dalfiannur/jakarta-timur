@@ -1,16 +1,15 @@
-"use client";
-import { CitizenCountStatistic } from "../CitizenCountStatistic";
-import data from "./data.json";
+import { CitizenCountStatistic } from "../_components/CitizenCountStatistic";
+import data from "../_data/jobseekers-lingting-title-chart.json";
 
-export default function Page() {
+export const JobSeekersListingTitleChartSection = () => {
   const yAxis = data.data.map((d) => d.label);
   const maleData = data.data.map((d) => d.male);
   const femaleData = data.data.map((d) => d.female);
 
   return (
     <CitizenCountStatistic
-      height={480}
-      title="Jumlah Pencari Kerja yang Belum Ditempatkan Menurut Tingkat Pendidikan di Kota Jakarta Timur, 2020"
+      height={550}
+      title="Jumlah Pencari Kerja yang Belum Ditempatkan Menurut Golongan Jabatan dan Jenis Kelamin di Kota Jakarta Timur, 2020"
       sourceInfo="Sumber/Source: Dinas Tenaga Kerja dan Transmigrasi Provinsi DKI Jakarta/Manpower and Transmigration Office of DKI Jakarta Province"
       total={data.counters}
       options={{
@@ -55,9 +54,6 @@ export default function Page() {
         },
         tooltip: {},
       }}
-      wrapLabel={{
-        y: 25,
-      }}
     />
   );
-}
+};
