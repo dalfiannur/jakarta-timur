@@ -2,7 +2,7 @@
 import { Icon } from "@/app/icons";
 import { Card } from "./Card";
 import Image from "next/image";
-import { SectionTitle } from "../SectionTitle";
+import { SectionTitle } from "../_components/SectionTitle";
 import { MisiArt } from "./MisiArt";
 import { NumberList } from "@/app/components/NumberList";
 
@@ -10,8 +10,8 @@ export default function Page() {
   return (
     <div className="border-l pl-6 flex-1">
       <SectionTitle>Visi Misi &amp; Kegiatan Strategis</SectionTitle>
-      <div className="mt-8">
-        <div className="flex gap-8 bg-[#0077B5] rounded-3xl text-white px-8 py-6 relative overflow-hidden">
+      <div className="mt-0 lg:mt-8">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-8 bg-[#0077B5] rounded-3xl text-white px-8 py-6 relative overflow-hidden">
           <svg
             style={{
               position: "absolute",
@@ -49,8 +49,8 @@ export default function Page() {
           </svg>
 
           <div className="font-plus-jakarta-sans">
-            <h4 className="text-3xl font-bold">Visi</h4>
-            <div className="mt-8 font-semibold text-2xl">
+            <h4 className="text-center text-2xl lg:text-3xl font-bold">Visi</h4>
+            <div className="text-center lg:text-left mt-8 font-semibold text-xl lg:text-2xl">
               <span className="relative">
                 <svg
                   width="56"
@@ -118,12 +118,14 @@ export default function Page() {
           </div>
         </div>
 
-        <div className="mt-8 flex items-center gap-12">
+        <div className="mt-8 flex flex-col-reverse lg:flex-row items-center gap-12">
           <div className="w-80">
             <MisiArt />
           </div>
           <div className="flex-1 font-plus-jakarta-sans">
-            <h4 className="text-3xl font-bold text-pink-500 mb-8">Misi</h4>
+            <h4 className="text-center text-xl lg:text-3xl font-bold text-pink-500 mb-8">
+              Misi
+            </h4>
             <NumberList
               data={[
                 "Meningkatkan pengelolaan dan pelayanan informasi yang berkualitas, benar dan bertanggung jawab.",
@@ -137,18 +139,18 @@ export default function Page() {
 
         <div className="border-t my-10" />
 
-        <div className="flex items-center gap-14 p-8">
+        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-14 p-0 lg:p-8">
           <div>
-            <h4 className="font-bold text-3xl font-plus-jakarta-sans">
+            <h4 className="text-center font-bold text-lg lg:text-3xl font-plus-jakarta-sans">
               Kegiatan Strategis
             </h4>
-            <p className="mt-4 text-xl text-gray-600 font-roboto">
+            <p className="mt-4 text-base lg:text-xl text-gray-600 font-roboto">
               Proyek Strategis yang Mempersiapkan Kota untuk Masa Depan yang
               Lebih Baik.
             </p>
           </div>
 
-          <div className="flex items-center gap-5 font-plus-jakarta-sans">
+          <div className="hidden lg:flex items-center gap-5 font-plus-jakarta-sans">
             <Card icon={<Icon name="FloodWarningColored" size={40} />}>
               Pengendalian dan Penanganan Banjir
             </Card>
@@ -160,6 +162,21 @@ export default function Page() {
                 Penanganan Pasca Covid
               </Card>
             </div>
+            <Card icon={<Icon name="NetworkSettingLineColored" size={40} />}>
+              Penataan Kawasan
+            </Card>
+          </div>
+
+          <div className="grid lg:hidden grid-cols-2 gap-5 font-plus-jakarta-sans">
+            <Card icon={<Icon name="FloodWarningColored" size={40} />}>
+              Pengendalian dan Penanganan Banjir
+            </Card>
+            <Card icon={<Icon name="GlobalIncreaseColored" size={40} />}>
+              Peningkatan Ekonomi Kreatif
+            </Card>
+            <Card icon={<Icon name="PcCovidColored" size={40} />}>
+              Penanganan Pasca Covid
+            </Card>
             <Card icon={<Icon name="NetworkSettingLineColored" size={40} />}>
               Penataan Kawasan
             </Card>

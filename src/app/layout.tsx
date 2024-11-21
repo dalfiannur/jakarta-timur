@@ -5,6 +5,7 @@ import "./globals.css";
 import { NavigationBar } from "./components/NavigationBar";
 import { Footer } from "./components/Footer";
 import { Providers } from "./providers";
+import { MobileNavigationBar } from "./components/MobileNavigationBar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -54,6 +55,7 @@ export default function RootLayout({
       >
         <Providers>
           <NavigationBar />
+          <MobileNavigationBar />
           {children}
           <Footer />
         </Providers>

@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { SectionTitle } from "../SectionTitle";
+import { SectionTitle } from "../_components/SectionTitle";
 
 type LayoutProps = {
   overview: ReactNode;

@@ -1,4 +1,4 @@
-import { SectionTitle } from "../SectionTitle";
+import { SectionTitle } from "../_components/SectionTitle";
 import { MapArea } from "./MapArea";
 import { StatisticItem } from "./StatisticItem";
 

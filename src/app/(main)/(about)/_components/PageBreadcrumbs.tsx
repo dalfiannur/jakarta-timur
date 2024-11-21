@@ -2,7 +2,7 @@
 
 import { Breadcrumbs } from "@/app/components/Breadcrumbs";
 import { usePathname } from "next/navigation";
-import { SIDEBAR_ITEMS } from "./constants";
+import { SIDEBAR_ITEMS } from "../constants";
 
 const ITEMS = [
   {

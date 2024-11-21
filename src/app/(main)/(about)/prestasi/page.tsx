@@ -1,5 +1,5 @@
 "use client";
-import { SectionTitle } from "../SectionTitle";
+import { SectionTitle } from "../_components/SectionTitle";
 import { Icon } from "@/app/icons";
 import { PrestasiItem } from "./PrestasiItem";
 import { Filter } from "./Filter";
