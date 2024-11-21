@@ -14,7 +14,7 @@ export const FacilityList = ({ dataString }: { dataString: string }) => {
   return (
     <>
       <div className="text-gray-500">Fasilitas</div>
-      <div className="mt-2 grid grid-cols-2 gap-6">
+      <div className="mt-2 grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-6">
         {list.map((facilities, index) => (
           <ul key={index} className="flex flex-col gap-2">
             {facilities.map((facility, fIndex) => (
