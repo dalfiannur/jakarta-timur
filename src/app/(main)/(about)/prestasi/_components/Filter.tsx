@@ -23,9 +23,9 @@ export const Filter = ({
   onYearChange?: (item: SelectOption | null) => void;
 }) => {
   return (
-    <div className="flex gap-6 items-center">
-      <div className="font-plus-jakarta-sans font-bold">Urutkan :</div>
-      <div className="flex gap-4">
+    <div className="flex gap-2 lg:gap-6 items-center">
+      <div className="text-xs lg:text-base whitespace-nowrap font-plus-jakarta-sans font-bold">Urutkan :</div>
+      <div className="flex gap-2 lg:gap-4">
         <SelectCSR
           data={sort}
           defaultSelected={sort[0]}

@@ -46,8 +46,8 @@ export const SelectCSR = ({
         <Label className="font-semibold text-lg text-gray-500">{label}:</Label>
       )}
       <Listbox value={selected} onChange={_onChange}>
-        <ListboxButton className="p-4 border rounded-lg font-semibold text-pink-500 flex items-center justify-between gap-4 min-w-[150px]">
-          <div className="text-black">{selected?.label ?? placeholder}</div>
+        <ListboxButton className="p-2 lg:p-4 border rounded-lg font-semibold text-pink-500 flex items-center justify-between gap-4 min-w-[100px] lg:min-w-[150px]">
+          <div className="text-black text-xs lg:text-base">{selected?.label ?? placeholder}</div>
           <Icon name="ChevronDown" size={24} />
         </ListboxButton>
         <ListboxOptions
@@ -59,7 +59,7 @@ export const SelectCSR = ({
             <ListboxOption
               value={item}
               key={index}
-              className="px-4 py-3  rounded-xl data-[focus]:bg-blue-50 cursor-pointer data-[selected]:bg-pink-50 data-[selected]:text-pink-500 data-[selected]:font-bold"
+              className="px-4 py-3 text-xs lg:text-base rounded-xl data-[focus]:bg-blue-50 cursor-pointer data-[selected]:bg-pink-50 data-[selected]:text-pink-500 data-[selected]:font-bold"
             >
               {item.label}
             </ListboxOption>

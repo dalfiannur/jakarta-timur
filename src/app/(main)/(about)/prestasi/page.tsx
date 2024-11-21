@@ -1,10 +1,10 @@
 "use client";
 import { SectionTitle } from "../_components/SectionTitle";
-import { Icon } from "@/app/icons";
-import { PrestasiItem } from "./PrestasiItem";
-import { Filter } from "./Filter";
-import { ViewButton } from "./ViewButton";
+import { PrestasiItem } from "./_components/PrestasiItem";
+import { Filter } from "./_components/Filter";
+import { ViewButton } from "./_components/ViewButton";
 import { Computed, useObservable } from "@legendapp/state/react";
+import { SearchInput } from "./_components/SearchInput";
 
 const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -16,15 +16,9 @@ export default function Page() {
   return (
     <div>
       <SectionTitle>Prestasi</SectionTitle>
-      <div className="mt-8">
-        <div className="border rounded-xl overflow-hidden flex pl-4 items-center focus-within:border-pink-400">
-          <Icon name="Search" size={24} />
-          <input
-            className="py-4 px-6 flex-1 focus:outline-none"
-            placeholder="Cari Nama Dokumen"
-          />
-        </div>
-        <div className="mt-8 flex justify-between items-center">
+      <div className="mt-0 lg:mt-8 px-4">
+        <SearchInput />
+        <div className="mt-4 lg:mt-8 flex justify-between items-center">
           <Filter
             onSortChange={(val) => sort$.set(val?.value ?? "")}
             onYearChange={(val) => year$.set(val?.value ?? "")}
@@ -37,7 +31,7 @@ export default function Page() {
           {() => (
             <div
               data-view={view$.get()}
-              className="mt-8 data-[view=grid]:grid data-[view=grid]:grid-cols-3 data-[view=list]:flex data-[view=list]:flex-col gap-8"
+              className="mt-4 lg:mt-8 grid data-[view=grid]:grid-cols-2 lg:data-[view=grid]:grid-cols-3 data-[view=list]:grid-cols-1 gap-4 lg:gap-8"
             >
               {data.map((_, index) => (
                 <PrestasiItem key={index} view={view$.get()} />
