@@ -5,13 +5,13 @@ import { Filter } from "./_components/Filter";
 import { ViewButton } from "./_components/ViewButton";
 import { Computed, useObservable } from "@legendapp/state/react";
 import { SearchInput } from "./_components/SearchInput";
-
-const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+import { trpc } from "@/utils/trpc";
 
 export default function Page() {
   const view$ = useObservable<"grid" | "list">("grid");
   const year$ = useObservable("");
   const sort$ = useObservable("");
+  const { data } = trpc.externalApi.getAchievements.useQuery();
 
   return (
     <div>
@@ -33,8 +33,8 @@ export default function Page() {
               data-view={view$.get()}
               className="mt-4 lg:mt-8 grid data-[view=grid]:grid-cols-2 lg:data-[view=grid]:grid-cols-3 data-[view=list]:grid-cols-1 gap-4 lg:gap-8"
             >
-              {data.map((_, index) => (
-                <PrestasiItem key={index} view={view$.get()} />
+              {data?.data.map((row, index) => (
+                <PrestasiItem key={index} view={view$.get()} item={row} />
               ))}
             </div>
           )}

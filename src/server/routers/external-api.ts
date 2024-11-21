@@ -8,8 +8,9 @@ import { News } from "@/types/news";
 import { NewsPhoto } from "@/types/news-photo";
 import { Video } from "@/types/video";
 import { District } from "@/types/district";
+import { Achievement } from "@/types/achievement";
 
-const BASE_URL_API = "https://timur.jakarta.go.id/API_Timur/api"
+const BASE_URL_API = "https://timur.jakarta.go.id/API_Timur/api";
 
 const fetchApi = async <TResponse>(
   pathname: string,
@@ -149,4 +150,12 @@ export const externalApi = router({
       );
       return data;
     }),
+
+  getAchievements: procedure.query(async () => {
+    const { data } = await fetchApi<PaginationResponse<Achievement>>(
+      "/prestasi",
+      {}
+    );
+    return data;
+  }),
 });
