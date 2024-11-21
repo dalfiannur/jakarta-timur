@@ -7,8 +7,8 @@ export const StatisticItem = ({
 }) => {
   return (
     <div className="text-center">
-      <div className="text-2xl font-bold">{value}</div>
-      <div className="text-xl">{title}</div>
+      <div className="text-lg lg:text-2xl font-bold">{value}</div>
+      <div className="text-xs lg:text-xl">{title}</div>
     </div>
   );
 };

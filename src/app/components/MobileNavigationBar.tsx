@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion } from "motion/react";
 import { MobileNavigationList } from "./MobileNavigationList";
 import { observable } from "@legendapp/state";
+import { SearchInput } from "./SearchInput";
 
 export const open$ = observable(false);
 
@@ -74,8 +75,14 @@ export const MobileNavigationBar = () => {
                 <motion.div
                   initial={{ opacity: 0, height: 0, y: -10 }}
                   animate={{ opacity: 1, height: "auto", y: 0 }}
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 16,
+                    overflow: 'hidden'
+                  }}
                 >
-                  <div>Search</div>
+                  <SearchInput />
                   <MobileNavigationList />
                 </motion.div>
               </div>

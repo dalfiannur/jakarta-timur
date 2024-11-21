@@ -27,11 +27,10 @@ export const MapArea = () => {
 
   return (
     <svg
-      width="345"
-      height="554"
       viewBox="0 0 345 554"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className="w-[50vw] lg:w-[345px]"
     >
       <g>
         <motion.g
