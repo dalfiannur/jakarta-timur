@@ -16,13 +16,15 @@ const BASE_URL_API = "https://timur.jakarta.go.id/API_Timur/api";
 
 const fetchApi = async <TResponse>(
   pathname: string,
-  params: { [key: string]: string | undefined }
+  params: { [key: string]: string | number | undefined }
 ) => {
   const p = new URLSearchParams();
   Object.keys(params).map((key) => {
     const value = params[key];
-    if (value) {
+    if (typeof value === "string") {
       p.set(key, value);
+    } else if (typeof value === "number") {
+      p.set(key, value.toString());
     }
   });
   const stringifyParams = p.toString();
@@ -153,13 +155,26 @@ export const externalApi = router({
       return data;
     }),
 
-  getAchievements: procedure.query(async () => {
-    const { data } = await fetchApi<PaginationResponse<Achievement>>(
-      "/prestasi",
-      {}
-    );
-    return data;
-  }),
+  getAchievements: procedure
+    .input(
+      z.object({
+        search: z.string().optional(),
+        year: z.string().optional(),
+        sort: z.string().optional().default("desc"),
+      })
+    )
+    .query(async ({ input }) => {
+      console.log({ input });
+      const { data } = await fetchApi<PaginationResponse<Achievement>>(
+        "/prestasi",
+        {
+          search: input.search,
+          tahun: input.year,
+          sort: input.sort,
+        }
+      );
+      return data;
+    }),
 
   getHealthCares: procedure.query(async () => {
     const { data } = await fetchApi<PaginationResponse<HealthCare>>(

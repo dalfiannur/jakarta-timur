@@ -39,10 +39,15 @@ export const SelectCSR = ({
 
   const _onChange = useCallback(
     (value: SelectOption) => {
-      setSelected(value);
-      onChange?.(value);
+      if (selected === value) {
+        setSelected(null)
+        onChange?.(null);
+      } else {
+        setSelected(value);
+        onChange?.(value);
+      }
     },
-    [onChange]
+    [onChange, selected]
   );
 
   return (
