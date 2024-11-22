@@ -21,15 +21,20 @@ export const SelectCSR = ({
   data,
   defaultSelected,
   onChange,
+  classNames,
 }: {
   label?: string;
   placeholder?: string;
   data: SelectOption[];
   defaultSelected?: SelectOption;
+  classNames?: {
+    root?: string;
+    button?: string;
+  };
   onChange?: (selected: SelectOption | null) => void;
 }) => {
   const [selected, setSelected] = useState<SelectOption | null>(
-    defaultSelected ?? null,
+    defaultSelected ?? null
   );
 
   const _onChange = useCallback(
@@ -37,17 +42,21 @@ export const SelectCSR = ({
       setSelected(value);
       onChange?.(value);
     },
-    [onChange],
+    [onChange]
   );
 
   return (
-    <Field className="flex items-center gap-4">
+    <Field className={`flex items-center gap-4 ${classNames?.root}`}>
       {label && (
         <Label className="font-semibold text-lg text-gray-500">{label}:</Label>
       )}
       <Listbox value={selected} onChange={_onChange}>
-        <ListboxButton className="p-2 lg:p-4 border rounded-lg font-semibold text-pink-500 flex items-center justify-between gap-4 min-w-[100px] lg:min-w-[150px]">
-          <div className="text-black text-xs lg:text-base">{selected?.label ?? placeholder}</div>
+        <ListboxButton
+          className={`p-2 lg:p-4 border rounded-xl font-semibold text-pink-500 flex items-center justify-between gap-4 min-w-[100px] lg:min-w-[150px] ${classNames?.button}`}
+        >
+          <div className="text-black text-xs lg:text-base">
+            {selected?.label ?? placeholder}
+          </div>
           <Icon name="ChevronDown" className="w-6 h-6" />
         </ListboxButton>
         <ListboxOptions

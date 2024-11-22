@@ -10,6 +10,7 @@ import { Video } from "@/types/video";
 import { District } from "@/types/district";
 import { Achievement } from "@/types/achievement";
 import { HealthCare } from "@/types/health-care";
+import { School } from "@/types/school";
 
 const BASE_URL_API = "https://timur.jakarta.go.id/API_Timur/api";
 
@@ -165,6 +166,11 @@ export const externalApi = router({
       "/kesehatan",
       {}
     );
+    return data;
+  }),
+
+  getSchools: procedure.query(async () => {
+    const { data } = await fetchApi<PaginationResponse<School>>("/sekolah", {});
     return data;
   }),
 });

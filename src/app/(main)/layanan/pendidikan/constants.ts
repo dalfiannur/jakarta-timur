@@ -15,24 +15,24 @@ export const schools = [
     title: "Sekolah Dasar",
     description:
       "Temukan pilihan Sekolah Dasar terbaik di wilayah Anda untuk memastikan pendidikan awal yang berkualitas.",
-    link: "#",
+    link: "/layanan/pendidikan/profil",
   },
   {
     title: "Sekolah Menengah Pertama",
     description:
       "Temukan pilihan Sekolah Menengah Pertama terbaik di wilayah Anda untuk memastikan pendidikan awal yang berkualitas.",
-    link: "#",
+    link: "/layanan/pendidikan/profil",
   },
   {
     title: "Sekolah Menengah Atas",
     description:
       "Temukan pilihan Sekolah Menengah Atas terbaik di wilayah Anda untuk memastikan pendidikan awal yang berkualitas.",
-    link: "#",
+    link: "/layanan/pendidikan/profil",
   },
   {
     title: "Sekolah Menengah Kejuruan",
     description:
       "Temukan pilihan Sekolah Menengah Kejuruan terbaik di wilayah Anda untuk memastikan pendidikan awal yang berkualitas.",
-    link: "#",
+    link: "/layanan/pendidikan/profil",
   },
 ];
