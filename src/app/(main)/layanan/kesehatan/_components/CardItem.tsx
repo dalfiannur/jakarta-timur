@@ -32,7 +32,7 @@ export const CardItem = ({
             <p className="text-xl text-gray-600">{address}</p>
           </div>
           <p className="text-xs whitespace-nowrap bg-green-100 text-green-700 h-fit w-fit p-2 rounded-full flex gap-2">
-            <Icon name="Phone" size={16} /> --
+            <Icon name="Phone" className="w-4 h-4" /> --
           </p>
         </div>
         <div className="mt-6">

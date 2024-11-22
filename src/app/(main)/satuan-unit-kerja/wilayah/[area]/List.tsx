@@ -62,7 +62,7 @@ export const List = ({ getData, params }: ListProps) => {
             href={`/satuan-unit-kerja/wilayah/${params.area}/${item.slug}`}
             className="text-pink-500 z-30"
           >
-            <Icon name="OutlineShare" size={32} />
+            <Icon name="OutlineShare" className="w-8 h-8" />
           </Link>
         </div>
       ))}

@@ -59,7 +59,7 @@ export const PopulationGrowthChartSection = () => {
       <div ref={ref} className="mt-6 aspect-[4/2] lg:aspect-auto h-auto lg:h-96" />
       <div className="mt-6 flex gap-4 items-center">
         <div className="text-blue-500">
-          <Icon name="Info" size={16} />
+          <Icon name="Info" className="w-4 h-4" />
         </div>
         <div className="text-blue-500 text-sm font-semibold font-plus-jakarta-sans">
           Sumber: BPS, Sensus Penduduk (SP) 2010 dan Sensus Penduduk (SP) 2020

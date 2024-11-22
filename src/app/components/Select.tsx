@@ -67,7 +67,7 @@ export const Select = ({
       <Listbox value={selected} onChange={onChange}>
         <ListboxButton className="px-4 py-3 border rounded-lg font-semibold text-pink-500 flex items-center justify-between gap-4 min-w-[150px]">
           <div className="text-black">{selected?.label ?? placeholder}</div>
-          <Icon name="ChevronDown" size={24} />
+          <Icon name="ChevronDown" className="w-6 h-6" />
         </ListboxButton>
         <ListboxOptions
           anchor="bottom"

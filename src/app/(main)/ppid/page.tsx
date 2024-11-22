@@ -38,7 +38,7 @@ export default function Page() {
             >
               <div className="flex flex-col gap-6">
                 <div className="w-14 h-14 bg-blue-100 rounded-xl flex justify-center items-center">
-                  <Icon name="ScheduleColored" size={40} />
+                  <Icon name="ScheduleColored" className="w-10 h-10" />
                 </div>
                 <div className="flex flex-col gap-3">
                   <h5 className="font-bold text-lg">{item.title}</h5>
@@ -51,7 +51,7 @@ export default function Page() {
                   {item.requirements.map((req, index) => (
                     <li key={index} className="flex gap-4 items-center">
                       <div className="text-green-500">
-                        <Icon name="CheckOne" size={24} />
+                        <Icon name="CheckOne" className="w-6 h-6" />
                       </div>
                       <div className="text-lg font-bold">{req}</div>
                     </li>
@@ -76,7 +76,7 @@ export default function Page() {
         <div className="grid grid-cols-5 gap-6">
           <div className="bg-white border drop-shadow-sm p-4 flex flex-col gap-6 rounded-2xl">
             <div className="flex justify-center items-center bg-gray-100 rounded-xl p-4">
-              <Icon name="Pdf" size={80} />
+              <Icon name="Pdf" className="w-20 h-20" />
             </div>
             <div className="flex flex-col gap-3">
               <div className="font-bold text-lg text-gray-500">2023</div>
@@ -94,7 +94,7 @@ export default function Page() {
                 href={"#"}
                 className="bg-pink-500 w-10 h-10 rounded-xl flex justify-center items-center text-white"
               >
-                <Icon name="Download" size={24} />
+                <Icon name="Download" className="w-6 h-6" />
               </Link>
             </div>
           </div>

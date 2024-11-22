@@ -15,7 +15,7 @@ export const Breadcrumbs = ({ data }: BreadcrumbsProps) => {
         <div key={index} className="flex items-center gap-2">
           {index !== 0 && (
             <div className="text-gray-500">
-              <Icon name="ChevronRight" size={16} />
+              <Icon name="ChevronRight" className="w-4 h-4" />
             </div>
           )}
           <BreadcrumbItem

@@ -230,7 +230,7 @@ export const Content = () => {
             {item.items.map((row, index) => (
               <div key={index} className="border rounded-xl p-8">
                 <div className="bg-blue-100 w-fit rounded p-3">
-                  <Icon name="ParkMultiColored" size={40} />
+                  <Icon name="ParkMultiColored" className="w-10 h-10" />
                 </div>
                 <div className="mt-4 grid gap-2">
                   <h4 className="text-lg font-bold">{row.name}</h4>
@@ -239,7 +239,7 @@ export const Content = () => {
                     href={row.link}
                     className="border border-pink-500 text-pink-500 text-[10px] rounded-lg w-fit py-[6px] px-2 inline-flex gap-2"
                   >
-                    <Icon name="GoogleMapColored" size={10} />
+                    <Icon name="GoogleMapColored" className="w-[10px] h-[10px]" />
                     Lihat di Google Maps
                   </Link>
                 </div>

@@ -139,7 +139,7 @@ const PaginationArrow = ({
     >
       <Icon
         name={position === "left" ? "ChevronLeft" : "ChevronRight"}
-        size={24}
+        className="w-6 h-6"
       />
     </button>
   );

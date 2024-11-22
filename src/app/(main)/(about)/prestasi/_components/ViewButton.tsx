@@ -39,7 +39,7 @@ const Button = ({
       className="data-[active=true]:text-blue-500"
       onClick={onClick}
     >
-      <Icon name={icon} size={24} />
+      <Icon name={icon} className="w-6 h-6" />
     </button>
   );
 };

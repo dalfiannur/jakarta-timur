@@ -9,7 +9,7 @@ export const SearchInput = ({
   return (
     <div className="group relative border rounded-xl overflow-hidden flex items-center focus-within:border-pink-500">
       <div className="absolute left-2 group-focus-within:text-pink-500">
-        <Icon name="Search" size={24} />
+        <Icon name="Search" className="w-6 h-6" />
       </div>
       <input
         placeholder="Pencarian..."

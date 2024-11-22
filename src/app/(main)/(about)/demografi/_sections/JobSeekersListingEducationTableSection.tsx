@@ -161,7 +161,7 @@ export const JobSeekersListingEducationTableSection = () => {
       <Table columns={columns} data={data.data} />
       <NoteSection />
       <div className="mt-6 flex gap-2 text-xs lg:text-sm text-blue-500 font-bold font-plus-jakarta-sans">
-        <Icon name="Info" size={16} />
+        <Icon name="Info" className="w-4 h-4" />
         <p>
           Sumber/Source: Dinas Tenaga Kerja dan Transmigrasi Provinsi DKI
           Jakarta/Manpower and Transmigration Office of DKI Jakarta Province

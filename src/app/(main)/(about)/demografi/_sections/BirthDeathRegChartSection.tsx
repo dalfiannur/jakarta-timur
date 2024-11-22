@@ -25,7 +25,7 @@ export const BirthDeathRegChartSection = () => {
       </div>
       <LineChart birthData={birthData} deathData={deathData} />
       <div className="mt-4 flex gap-4 items-center text-blue-500 bg-blue-100 px-4 py-2 rounded-lg text-xs lg:text-sm font-plus-jakarta-sans">
-        <Icon name="Info" size={16} />
+        <Icon name="Info" className="w-4 h-4"/>
         Sumber/Source: Dinas Kependudukan dan Catatan Sipil Provinsi DKI
         Jakarta/Civil Registration Service of DKI Jakarta Province
       </div>

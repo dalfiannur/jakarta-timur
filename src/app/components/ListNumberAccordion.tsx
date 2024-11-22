@@ -84,7 +84,7 @@ const ButtonTrigger = ({
       <div className={x.number()}>{numberLabel}</div>
       <div className="flex-1 text-left text-2xl font-bold">{label}</div>
       <div className="text-blue-500">
-        <Icon name="CirclePlus" size={48} />
+        <Icon name="CirclePlus" className="w-12 h-12" />
       </div>
     </DisclosureButton>
   );

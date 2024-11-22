@@ -42,7 +42,7 @@ export default async function Page() {
         </div>
         <div className="flex items-center gap-2 p-4">
           <i className="text-blue-500">
-            <Icon name="Info" size={16} />
+            <Icon name="Info" className="w-4 h-4" />
           </i>
           <a href="" className="text-blue-500 font-bold text-sm">
             Sumber: https://jaktimkota.bps.go.id/

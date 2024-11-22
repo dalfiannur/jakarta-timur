@@ -160,12 +160,12 @@ export type IconKeys = keyof typeof icons;
 
 interface IconProps {
   name: IconKeys;
-  size?: number;
+  className?: string;
 }
 
-export const Icon = ({ name, size = 24 }: IconProps) => {
+export const Icon = ({ name, className }: IconProps) => {
   const IconNode = icons[name];
   return (
-    <div style={{ width: size, height: size }}>{IconNode && <IconNode />}</div>
+    <i className={`inline-block ${className}`}>{IconNode && <IconNode />}</i>
   );
 };

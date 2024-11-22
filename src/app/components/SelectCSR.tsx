@@ -48,7 +48,7 @@ export const SelectCSR = ({
       <Listbox value={selected} onChange={_onChange}>
         <ListboxButton className="p-2 lg:p-4 border rounded-lg font-semibold text-pink-500 flex items-center justify-between gap-4 min-w-[100px] lg:min-w-[150px]">
           <div className="text-black text-xs lg:text-base">{selected?.label ?? placeholder}</div>
-          <Icon name="ChevronDown" size={24} />
+          <Icon name="ChevronDown" className="w-6 h-6" />
         </ListboxButton>
         <ListboxOptions
           anchor="bottom"

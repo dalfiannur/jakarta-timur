@@ -51,7 +51,7 @@ export const AgendaItem = ({
       <div className="font-semibold text-base/4">{description}</div>
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <Icon name="ScheduleColored" size={24} />
+          <Icon name="ScheduleColored" className="w-6 h-6" />
           <div className="text-sm text-gray-500">{dateFormatter(date)}</div>
         </div>
         <div className="text-sm text-gray-500">

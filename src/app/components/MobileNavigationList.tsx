@@ -1,11 +1,17 @@
 "use client";
 import { MouseEventHandler, ReactNode } from "react";
-import { Computed, Show, useObservable } from "@legendapp/state/react";
+import {
+  reactiveComponents,
+  Show,
+  useObservable,
+} from "@legendapp/state/react";
 import { motion } from "motion/react";
-import { navigationBarConfig } from "../configs/navigation-bar.config";
+import { Link, navigationBarConfig } from "../configs/navigation-bar.config";
 import { Tab } from "./MenuTabs";
 import { open$ } from "./MobileNavigationBar";
 import { useRouter } from "next/navigation";
+
+const Motion = reactiveComponents(motion);
 
 const links = navigationBarConfig.links;
 
@@ -20,6 +26,15 @@ export const MobileNavigationList = () => {
               <Item key={iItem} label={item.title} href={item.link} />
             ))}
           </DropdownItem>
+        ))}
+      </DropdownItem>
+      <DropdownItem label="Layanan">
+        {links.layanan.map((link, index) => (
+          <Item
+            key={index}
+            label={(link as Link).title}
+            href={(link as Link).link}
+          />
         ))}
       </DropdownItem>
     </ul>
@@ -68,28 +83,24 @@ const DropdownItem = ({
         {label}
       </a>
 
-      <Computed>
-        {() => (
-          <Show if={expand$.get()}>
-            <motion.ul
-              initial={{ opacity: 0, height: 0, y: -5 }}
-              animate={{ opacity: 1, height: "auto", y: 0 }}
-              exit={{ opacity: 0, height: 0, y: -5 }}
-              style={{
-                paddingLeft: 16,
-                borderLeftWidth: 1,
-                borderLeftColor: "#EB30A2",
-                display: "flex",
-                flexDirection: "column",
-                marginTop: 8,
-                gap: 12,
-              }}
-            >
-              {children}
-            </motion.ul>
-          </Show>
-        )}
-      </Computed>
+      <Show if={expand$}>
+        <Motion.ul
+          initial={{ opacity: 0, height: 0, y: -5 }}
+          animate={{ opacity: 1, height: "auto", y: 0 }}
+          exit={{ opacity: 0, height: 0, y: -5 }}
+          style={{
+            paddingLeft: 16,
+            borderLeftWidth: 1,
+            borderLeftColor: "#EB30A2",
+            display: "flex",
+            flexDirection: "column",
+            marginTop: 8,
+            gap: 12,
+          }}
+        >
+          {children}
+        </Motion.ul>
+      </Show>
     </li>
   );
 };

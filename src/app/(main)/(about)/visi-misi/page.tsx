@@ -151,33 +151,33 @@ export default function Page() {
           </div>
 
           <div className="hidden lg:flex items-center gap-5 font-plus-jakarta-sans">
-            <Card icon={<Icon name="FloodWarningColored" size={40} />}>
+            <Card icon={<Icon name="FloodWarningColored" className="w-10 h-10" />}>
               Pengendalian dan Penanganan Banjir
             </Card>
             <div className="grid gap-5">
-              <Card icon={<Icon name="GlobalIncreaseColored" size={40} />}>
+              <Card icon={<Icon name="GlobalIncreaseColored" className="w-10 h-10" />}>
                 Peningkatan Ekonomi Kreatif
               </Card>
-              <Card icon={<Icon name="PcCovidColored" size={40} />}>
+              <Card icon={<Icon name="PcCovidColored" className="w-10 h-10" />}>
                 Penanganan Pasca Covid
               </Card>
             </div>
-            <Card icon={<Icon name="NetworkSettingLineColored" size={40} />}>
+            <Card icon={<Icon name="NetworkSettingLineColored" className="w-10 h-10" />}>
               Penataan Kawasan
             </Card>
           </div>
 
           <div className="grid lg:hidden grid-cols-2 gap-5 font-plus-jakarta-sans">
-            <Card icon={<Icon name="FloodWarningColored" size={40} />}>
+            <Card icon={<Icon name="FloodWarningColored" className="w-10 h-10" />}>
               Pengendalian dan Penanganan Banjir
             </Card>
-            <Card icon={<Icon name="GlobalIncreaseColored" size={40} />}>
+            <Card icon={<Icon name="GlobalIncreaseColored" className="w-10 h-10" />}>
               Peningkatan Ekonomi Kreatif
             </Card>
-            <Card icon={<Icon name="PcCovidColored" size={40} />}>
+            <Card icon={<Icon name="PcCovidColored" className="w-10 h-10" />}>
               Penanganan Pasca Covid
             </Card>
-            <Card icon={<Icon name="NetworkSettingLineColored" size={40} />}>
+            <Card icon={<Icon name="NetworkSettingLineColored" className="w-10 h-10" />}>
               Penataan Kawasan
             </Card>
           </div>

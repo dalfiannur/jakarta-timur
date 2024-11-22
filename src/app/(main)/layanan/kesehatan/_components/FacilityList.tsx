@@ -20,7 +20,7 @@ export const FacilityList = ({ dataString }: { dataString: string }) => {
             {facilities.map((facility, fIndex) => (
               <li key={fIndex} className="flex items-center gap-2">
                 <div className="text-pink-500">
-                  <Icon name="CheckOne" size={16} />
+                  <Icon name="CheckOne" className="w-4 h-4" />
                 </div>
                 <span className="text-base">{facility}</span>
               </li>

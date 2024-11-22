@@ -51,7 +51,7 @@ export const CarouselItem = ({
               >
                 <div className="mt-1 flex gap-2 border-b">
                   <div className="mt-1">
-                    <Icon name="GoogleMapColored" size={8} />
+                    <Icon name="GoogleMapColored" className="w-2 h-2" />
                   </div>
                   <div className="pb-2 text-xs text-gray-500">{address}</div>
                 </div>
@@ -61,7 +61,7 @@ export const CarouselItem = ({
                     {routes.map((item, index) => (
                       <li key={index} className="flex items-start gap-4">
                         <div className="mt-1 text-pink-500">
-                          <Icon name="MapMarkerAlt" size={14} />
+                          <Icon name="MapMarkerAlt" className="w-[14px]" />
                         </div>
                         <div>
                           {item.type}: {item.label}

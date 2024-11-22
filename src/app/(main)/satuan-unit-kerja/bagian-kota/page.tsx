@@ -16,7 +16,7 @@ export default async function Page() {
           >
             <h5 className="text-xl font-semibold">{item.pejabat}</h5>
             <div className="flex items-center gap-4">
-              <Icon name="UserRoundedBoldDuotone" size={24} />
+              <Icon name="UserRoundedBoldDuotone" className="w-6 h-6" />
               <h6 className="text-gray-500">{item.nama}</h6>
             </div>
           </div>

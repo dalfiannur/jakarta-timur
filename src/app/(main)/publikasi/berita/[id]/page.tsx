@@ -20,21 +20,21 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
         <div className="flex gap-4 text-sm font-medium font-poppins">
           <div className="flex gap-2 items-center">
             <div className="text-pink-500">
-              <Icon name="Calendar" size={16} />
+              <Icon name="Calendar" className="w-4 h-4" />
             </div>
             <div>18 Juli 2024</div>
           </div>
           <div className="border-l" />
           <div className="flex gap-2 items-center">
             <div className="text-pink-500">
-              <Icon name="QuillWrite" size={16} />
+              <Icon name="QuillWrite" className="w-4 h-4" />
             </div>
             <div>{data.writer}</div>
           </div>
           <div className="border-l" />
           <div className="flex gap-2 items-center">
             <div className="text-pink-500">
-              <Icon name="Camera" size={16} />
+              <Icon name="Camera" className="w-4 h-4" />
             </div>
             <div>{data.img_name}</div>
           </div>

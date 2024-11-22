@@ -27,12 +27,12 @@ export const Event = ({ items }: EventProps) => {
           <EventButton
             onClick={() => setStep((prev) => (prev < 0 ? prev + 1 : 0))}
           >
-            <Icon name="ChevronLeft" size={18} />
+            <Icon name="ChevronLeft" className="w-4 h-4" />
           </EventButton>
           <EventButton
             onClick={() => setStep((prev) => (prev > min + 1 ? prev - 1 : min))}
           >
-            <Icon name="ChevronRight" size={18} />
+            <Icon name="ChevronRight" className="w-4 h-4" />
           </EventButton>
         </div>
       </div>
@@ -66,7 +66,7 @@ export const Event = ({ items }: EventProps) => {
           Informasi Pemerintah
         </div>
         <div className="text-white">
-          <Icon name="ChevronRight" size={24} />
+          <Icon name="ChevronRight" className="w-6 h-6" />
         </div>
       </a>
     </div>

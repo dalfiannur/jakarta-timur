@@ -51,7 +51,7 @@ export const CardLink = ({
                 </motion.p>
               </div>
               <div>
-                <Icon name="ChevronRight" size={16} />
+                <Icon name="ChevronRight" className="w-4 h-4" />
               </div>
             </div>
           </motion.div>

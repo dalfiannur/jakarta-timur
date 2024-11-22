@@ -10,7 +10,7 @@ export const Accordion = ({children, label}: { children: ReactNode, label: strin
                     <div className="font-bold text-2xl text-pink-500">
                         {label}
                     </div>
-                    <Icon name="ChevronDown" size={24}/>
+                    <Icon name="ChevronDown" className="w-6 h-6"/>
                 </DisclosureButton>
                 <DisclosurePanel transition className="px-10 origin-top transition duration-200 ease-out data-[closed]:-translate-y-6 data-[closed]:opacity-0">
                     {children}

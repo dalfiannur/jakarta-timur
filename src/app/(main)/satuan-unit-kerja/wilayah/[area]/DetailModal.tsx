@@ -19,7 +19,7 @@ export const DetailModal = ({ data, onClose }: DetailModalProps) => {
     <Modal>
       <div className="relative">
         <button className="absolute top-2 right-2" onClick={onClose}>
-          <Icon name="XGrey" size={40} />
+          <Icon name="XGrey" className="w-10 h-10" />
         </button>
 
         <div className="p-8">

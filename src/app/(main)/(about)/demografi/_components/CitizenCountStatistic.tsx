@@ -90,7 +90,7 @@ export const CitizenCountStatistic = ({
       {sourceInfo && (
         <div className="flex items-center gap-2 font-plus-jakarta-sans text-sm text-blue-500">
           <div>
-            <Icon name="Info" size={16} />
+            <Icon name="Info" className="w-4 h-4" />
           </div>
           {sourceInfo}
         </div>

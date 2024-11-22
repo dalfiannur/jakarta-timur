@@ -31,7 +31,7 @@ export const NewsWidget = ({ data = [] }: { data?: News[] }) => {
               />
               <div className="flex items-center gap-2">
                 <div className="text-pink-500">
-                  <Icon name="Calendar" size={16} />
+                  <Icon name="Calendar" className="w-4 h-4" />
                 </div>
                 <div className="text-sm text-gray-600">
                   {dateFormatter(data.time)}

@@ -100,13 +100,13 @@ export const Calender = ({ listAgenda = [], onItemClick }: CalenderProps) => {
       <div className="border rounded-xl w-full lg:max-w-[460px] p-5">
         <div className="flex justify-between items-center py-2">
           <button className="text-pink-500" onClick={handlePrevMonth}>
-            <Icon name="ChevronLeft" size={24} />
+            <Icon name="ChevronLeft" className="w-6 h-6" />
           </button>
           <div className="font-semibold text-2xl">
             {monthLabels[active.getMonth()]} {active.getFullYear()}
           </div>
           <button className="text-pink-500" onClick={handleNextMonth}>
-            <Icon name="ChevronRight" size={24} />
+            <Icon name="ChevronRight" className="w-6 h-6" />
           </button>
         </div>
         <div className="mt-8 grid grid-cols-7 gap-4 md:gap-6">

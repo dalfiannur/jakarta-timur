@@ -69,7 +69,7 @@ export const IndustryTable = <T,>({
         </div>
         <div className="flex gap-4">
           <button disabled className="text-gray-400">
-            <Icon name="ChevronLeft" size={24} />
+            <Icon name="ChevronLeft" className="w-6 h-6" />
           </button>
           <button className="bg-orange-500 rounded-full text-white w-8 h-8 font-semibold flex items-center justify-center">
             1
@@ -84,7 +84,7 @@ export const IndustryTable = <T,>({
             4
           </button>
           <button className="text-orange-500">
-            <Icon name="ChevronRight" size={24} />
+            <Icon name="ChevronRight" className="w-6 h-6" />
           </button>
         </div>
       </div>

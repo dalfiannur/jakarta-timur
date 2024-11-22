@@ -55,10 +55,10 @@ export const VideoSlider = ({ data }: { data: Video[] }) => {
       </Computed>
 
       <VideoSliderArrowButton position="left" onClick={prev}>
-        <Icon name="ChevronLeft" size={24} />
+        <Icon name="ChevronLeft" className="w-6 h-6" />
       </VideoSliderArrowButton>
       <VideoSliderArrowButton position="right" onClick={next}>
-        <Icon name="ChevronRight" size={24} />
+        <Icon name="ChevronRight" className="w-6 h-6" />
       </VideoSliderArrowButton>
     </div>
   );

@@ -23,7 +23,7 @@ export const FollowUsSection = () => {
               className="object-cover rounded-xl"
             />
             <div className="absolute top-4 right-4">
-              <Icon name="InstagramColored" size={40} />
+              <Icon name="InstagramColored" className="w-10 h-10" />
             </div>
           </div>
         ))}

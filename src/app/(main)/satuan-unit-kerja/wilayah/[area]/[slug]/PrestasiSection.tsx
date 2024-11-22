@@ -64,7 +64,7 @@ export const PrestasiSection = () => {
             className="flex items-center gap-6 bg-white drop-shadow px-6 py-5 rounded-xl"
           >
             <div className="w-16 h-16 bg-blue-100 rounded-xl flex justify-center items-center">
-              <Icon name="MageTrophyColored" size={42} />
+              <Icon name="MageTrophyColored" className="w-10 h-10" />
             </div>
             <div className="flex-1">
               <div className="text-gray-500 font-medium">Tahun {item.year}</div>

@@ -39,18 +39,18 @@ export default function Page() {
             </div>
             <div className="flex gap-6">
               <div className="flex items-center gap-2 text-gray-500 text-lg">
-                <Icon name="Mail" size={24} />
+                <Icon name="Mail" className="w-6 h-6" />
                 <div>kecamatan_pasarrebo@jakarta.go.id</div>
               </div>
               <div className="flex items-center gap-2 text-gray-500 text-lg">
-                <Icon name="Phone" size={24} />
+                <Icon name="Phone" className="w-6 h-6" />
                 <div>( 021 ) 4800487</div>
               </div>
             </div>
             <div className="flex gap-6">
-              <Icon name="FacebookColored" size={24} />
-              <Icon name="XColored" size={24} />
-              <Icon name="WhatsappColored" size={24} />
+              <Icon name="FacebookColored" className="w-6 h-6" />
+              <Icon name="XColored" className="w-6 h-6" />
+              <Icon name="WhatsappColored" className="w-6 h-6" />
             </div>
           </div>
         </div>

@@ -41,7 +41,7 @@ export const Footer = () => {
               <p>Jakarta Timur</p>
             </div>
             <a href="#" className="text-pink-500 flex gap-2 items-center mt-4">
-              <Icon name="MapHomeWork" size={16} />
+              <Icon name="MapHomeWork" className="w-4 h-4" />
               <p>Denah Kantor Walikota JT</p>
             </a>
           </div>
@@ -74,26 +74,26 @@ export const Footer = () => {
           <div className="w-full lg:w-fit px-4 lg:px-0">
             <h5 className="font-semibold text-gray-600">Hubungi Kami</h5>
             <div className="mt-1 flex items-center gap-2 text-gray-500">
-              <Icon name="Mail" size={16} />
+              <Icon name="Mail" className="w-4 h-4" />
               <p className="text-sm font-normal lg:font-semibold">
                 suratwalikotajkt@jakarta.go.id
               </p>
             </div>
             <div className="mt-4 flex gap-4">
               <a href="#">
-                <Icon name="FacebookColored" size={32} />
+                <Icon name="FacebookColored" className="w-8 h-8" />
               </a>
               <a href="#">
-                <Icon name="XColored" size={32} />
+                <Icon name="XColored" className="w-8 h-8" />
               </a>
               <a href="#">
-                <Icon name="YoutubeColored" size={32} />
+                <Icon name="YoutubeColored" className="w-8 h-8" />
               </a>
               <a href="#">
-                <Icon name="LinkedInColored" size={32} />
+                <Icon name="LinkedInColored" className="w-8 h-8" />
               </a>
               <a href="#">
-                <Icon name="InstagramColored" size={32} />
+                <Icon name="InstagramColored" className="w-8 h-8" />
               </a>
             </div>
           </div>

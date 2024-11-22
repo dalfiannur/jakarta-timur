@@ -36,7 +36,7 @@ export default async function Page() {
                 href="#"
                 className="inlin-block mt-6 font-semibold text-blue-500 inline-flex gap-2 items-center"
               >
-                Lihat Profile <Icon name="ArrowRight" size={24} />
+                Lihat Profile <Icon name="ArrowRight" className="w-6 h-6" />
               </Link>
             </div>
           </div>

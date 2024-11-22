@@ -142,7 +142,7 @@ export const PopulationEducationActivityTableSection = () => {
       <Table columns={columns} data={data.data} />
       <NoteSection />
       <div className="mt-3 lg:mt-6 flex gap-2 text-xs lg:text-sm text-blue-500 font-bold font-plus-jakarta-sans">
-        <Icon name="Info" size={16} />
+        <Icon name="Info" className="w-4 h-4" />
         <p>
           Sumber/Source: BPS, Survei Angkatan Kerja Nasional (Sakernas)
           Agustus/BPS-Statistics Indonesia, August National Labor Force Survey

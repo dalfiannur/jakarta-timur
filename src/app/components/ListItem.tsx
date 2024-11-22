@@ -27,7 +27,7 @@ export const ListItem = ({ icon, title, description, link }: ListItemProps) => {
       <div className="group flex items-center hover:items-start gap-6 hover:bg-[#FFF9FC] w-72 rounded-lg p-4 text-left">
         <div className="h-full">
           <div className="bg-gray-100 group-hover:bg-pink-100 p-2 text-gray-500 group-hover:text-pink-500 rounded-lg transition-all duration-500">
-            {icon && <Icon name={icon} size={16} />}
+            {icon && <Icon name={icon} className="w-4 h-4" />}
           </div>
         </div>
         <div className="transition-all duration-500">

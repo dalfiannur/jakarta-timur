@@ -18,7 +18,7 @@ export const BulletinSection = () => {
           href="/publikasi/buletin"
           className="inline-flex items-center gap-2 text-pink-500 font-semibold text-base lg:text-xl font-plus-jakarta-sans"
         >
-          Lihat Foto Lainnya <Icon name="ChevronRight" size={24} />
+          Lihat Foto Lainnya <Icon name="ChevronRight" className="w-6 h-6" />
         </Link>
       }
     >

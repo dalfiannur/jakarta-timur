@@ -4,46 +4,46 @@ import { CardLink } from "../_components/CardLink";
 
 const governmentInformation = [
   {
-    icon: <Icon name="BriefcaseColored" size={48} />,
+    icon: <Icon name="BriefcaseColored" className="w-12 h-12" />,
     title: "Karir",
     description:
       "Sumber Daya dan Informasi untuk Karir yang Sukses dan Berkelanjutan",
   },
   {
-    icon: <Icon name="UserFolderColored" size={48} />,
+    icon: <Icon name="UserFolderColored" className="w-12 h-12" />,
     title: "Kependudukan",
     description: "Informasi dan Prosedur Pengurusan Dokumen Kependudukan Resmi",
   },
   {
-    icon: <Icon name="HospitalColored" size={48} />,
+    icon: <Icon name="HospitalColored" className="w-12 h-12" />,
     title: "Kesehatan",
     description: "Informasi pelayanan kesehatan di Jakarta Timur",
   },
   {
-    icon: <Icon name="SchoolColored" size={48} />,
+    icon: <Icon name="SchoolColored" className="w-12 h-12" />,
     title: "Pendidikan",
     description:
       "Layanan dan Program Pendidikan untuk Masa Depan yang Lebih Cerah",
   },
   {
-    icon: <Icon name="GrowthColored" size={48} />,
+    icon: <Icon name="GrowthColored" className="w-12 h-12" />,
     title: "Kesejahteraan",
     description:
       "Program Kesejahteraan untuk Meningkatkan Kualitas Hidup Warga",
   },
   {
-    icon: <Icon name="ParkColored" size={48} />,
+    icon: <Icon name="ParkColored" className="w-12 h-12" />,
     title: "Taman / RPTRA",
     description: "Nikmati Fasilitas Taman dan RPTRA di Kota Anda",
   },
   {
-    icon: <Icon name="EcoFactoryColored" size={48} />,
+    icon: <Icon name="EcoFactoryColored" className="w-12 h-12" />,
     title: "Lingkungan dan Energi",
     description:
       "Program Pemerintah untuk Lingkungan Bersih dan Energi Terbarukan",
   },
   {
-    icon: <Icon name="GreenEnergyColored" size={48} />,
+    icon: <Icon name="GreenEnergyColored" className="w-12 h-12" />,
     title: "Urban Farming",
     description: "Informasi Tanaman di perkotaan serta manfaatnya",
   },

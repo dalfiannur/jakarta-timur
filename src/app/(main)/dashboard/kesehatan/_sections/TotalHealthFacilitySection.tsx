@@ -2,7 +2,7 @@ import { RatioCounterChartCard } from "../../_components/RatioCounterChartCard";
 
 export const TotalHealthFacilitySection = () => {
   return (
-    <div>
+    <div className="">
       <RatioCounterChartCard
         title="Jumlah Fasilitas Kesehatan Kota Administrasi Jakarta Timur"
         total={12345}

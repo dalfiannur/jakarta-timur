@@ -20,7 +20,7 @@ export const NewsSection = () => {
           href="/publikasi/berita"
           className="inline-flex items-center gap-2 text-pink-500 font-semibold text-base lg:text-xl font-plus-jakarta-sans"
         >
-          Lihat Berita Lainnya <Icon name="ChevronRight" size={24} />
+          Lihat Berita Lainnya <Icon name="ChevronRight" className="w-6 h-6" />
         </Link>
       }
     >

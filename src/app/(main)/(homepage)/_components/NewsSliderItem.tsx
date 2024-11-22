@@ -63,20 +63,20 @@ export const NewsSliderItem = ({
         <div className="flex gap-4">
           <div className="flex items-center gap-2">
             <div className="text-pink-500">
-              <Icon name="Calendar" size={16} />
+              <Icon name="Calendar" className="w-4 h-4" />
             </div>
             <div className="text-white text-sm">{date}</div>
           </div>
           <div className="flex items-center gap-2">
             <div className="text-pink-500">
-              <Icon name="QuillWrite" size={16} />
+              <Icon name="QuillWrite" className="w-4 h-4" />
             </div>
             <div className="text-white text-sm">{author}</div>
           </div>
           {imageName && (
             <div className="flex items-center gap-2">
               <div className="text-pink-500">
-                <Icon name="Camera" size={16} />
+                <Icon name="Camera" className="w-4 h-4" />
               </div>
               <div className="text-white text-sm">{imageName}</div>
             </div>

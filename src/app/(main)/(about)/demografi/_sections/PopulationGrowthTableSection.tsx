@@ -81,7 +81,7 @@ export const PopulationGrowthTableSection = () => {
       </h4>
       <Table columns={columns} data={data.data} />
       <div className="mt-6 flex gap-2 text-sm text-blue-500 font-bold font-plus-jakarta-sans">
-        <Icon name="Info" size={16} />
+        <Icon name="Info" className="w-4 h-4" />
         <p>Sumber: Hasil Sensus Penduduk 2020 (September)</p>
       </div>
     </div>

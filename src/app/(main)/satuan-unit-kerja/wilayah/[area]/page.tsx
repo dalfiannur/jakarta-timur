@@ -42,7 +42,7 @@ export default async function Page(props: PageProps) {
       <SectionTitle>{params.area}</SectionTitle>
       <div className="flex border rounded-xl focus-within:border-pink-500/40 overflow-hidden">
         <div className="p-4 text-gray-500">
-          <Icon name="Search" size={24} />
+          <Icon name="Search" className="w-6 h-6" />
         </div>
         <input className="py-4 flex-1 focus:outline-none" />
       </div>
