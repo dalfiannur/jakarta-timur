@@ -22,7 +22,6 @@ export const Carousel = <T,>({
 }) => {
   return (
     <div className="slider-container">
-      {/* @ts-expect-error Invalid type */}
       <Slider {...settings}>{items.map((item) => renderItem(item))}</Slider>
     </div>
   );

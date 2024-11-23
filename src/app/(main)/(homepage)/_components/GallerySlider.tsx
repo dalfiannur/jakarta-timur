@@ -11,7 +11,6 @@ export const GallerySlider = ({ data }: { data: NewsPhoto[] }) => {
 
   return (
     <div>
-      {/* @ts-expect-error invalid */}
       <Slider dots infinite speed={500} slidesToShow={1} slidesToScroll={1}>
         {chunk.map((c, cIndex) => (
           <div key={cIndex}>

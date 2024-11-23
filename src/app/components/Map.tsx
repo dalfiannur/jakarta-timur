@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import * as leaflet from "leaflet";
 import "leaflet/dist/leaflet.css";
 
@@ -20,11 +20,11 @@ type MapProps = {
   markers?: Marker[];
 };
 
-export const MapArea = ({ options, markers = [] }: MapProps) => {
+export default function MapArea({ options, markers = [] }: MapProps) {
   const mapRef = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<leaflet.Map>();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (mapRef.current) {
       const m = leaflet.map(mapRef.current);
       m.setView([options.latitude, options.longitude], 13);
@@ -35,7 +35,7 @@ export const MapArea = ({ options, markers = [] }: MapProps) => {
     }
   }, [mapRef, options]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (map && markers.length > 0) {
       markers.forEach((marker) => {
         leaflet.marker([marker.latitude, marker.longitude]).addTo(map);
@@ -52,4 +52,4 @@ export const MapArea = ({ options, markers = [] }: MapProps) => {
       }}
     />
   );
-};
+}

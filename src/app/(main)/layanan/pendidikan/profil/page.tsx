@@ -1,8 +1,12 @@
-"use clint"
+"use client";
 import { Breadcrumbs } from "@/app/components/Breadcrumbs";
 import { FilterSection } from "./_sections/FilterSection";
-import { MapArea } from "@/app/components/Map";
 import { SchoolList } from "./_features/SchoolList";
+import dynamic from "next/dynamic";
+
+const MapArea = dynamic(() => import("@/app/components/Map"), {
+  ssr: false,
+});
 
 export default function Page() {
   return (

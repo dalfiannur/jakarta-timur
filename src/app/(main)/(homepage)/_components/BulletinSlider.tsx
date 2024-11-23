@@ -10,11 +10,10 @@ export const BulletinSlider = ({ data }: { data: Bulletin[] }) => {
 
   return (
     <div className="pb-8">
-      {/* @ts-expect-error invalid */}
       <Slider slidesToShow={1} slidesToScroll={1} dots infinite>
         {chunks.map((items, cIndex) => (
           <div key={cIndex}>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
+            <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-8">
               {items.map((item, index) => (
                 <div key={index}>
                   <Link href={`/publikasi/buletin/${item.id}`}>
@@ -26,7 +25,7 @@ export const BulletinSlider = ({ data }: { data: Bulletin[] }) => {
                         className="object-cover rounded-xl"
                       />
                     </div>
-                    <h6 className="mt-2 lg:mt-6 font-semibold font-plus-jakarta-sans text-base lg:text-xl">
+                    <h6 className="mt-2 text-base font-semibold lg:mt-6 font-plus-jakarta-sans lg:text-xl">
                       {item.title}
                     </h6>
                   </Link>
