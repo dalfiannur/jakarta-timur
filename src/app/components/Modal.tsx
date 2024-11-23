@@ -13,8 +13,8 @@ export const Modal = ({ children }: { children?: ReactNode }) => {
       transition
       className="relative z-50 transition duration-300 ease-out data-[closed]:opacity-0"
     >
-      <div className="fixed inset-0 flex justify-center items-center w-screen p-4 bg-black/10">
-        <DialogPanel className="max-w-[1024px] bg-white drop-shadow rounded-xl">
+      <div className="fixed inset-0 flex items-center justify-center w-screen p-4 bg-black/10">
+        <DialogPanel className="max-w-full lg:max-w-[1024px] bg-white drop-shadow rounded-xl">
           {children}
         </DialogPanel>
       </div>

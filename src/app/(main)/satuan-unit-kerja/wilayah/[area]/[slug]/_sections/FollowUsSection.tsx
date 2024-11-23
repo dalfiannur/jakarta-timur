@@ -7,13 +7,13 @@ export const FollowUsSection = () => {
   return (
     <div>
       <div className="text-center">
-        <h3 className="font-semibold text-4xl">Ikuti Kami di Instagram</h3>
-        <p className="mt-2 text-2xl text-gray-500">
+        <h3 className="text-xl font-semibold lg:text-4xl">Ikuti Kami di Instagram</h3>
+        <p className="mt-2 text-sm text-gray-500 lg:text-2xl">
           Jangan ketinggalan update terbaru dan aktivitas seru kami di Instagram
         </p>
       </div>
 
-      <div className="mt-10 grid grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 gap-4 mt-10 lg:grid-cols-4 lg:gap-6">
         {items.map((item, index) => (
           <div key={index} className="relative w-full aspect-[2/3]">
             <Image

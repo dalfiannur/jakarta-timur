@@ -11,6 +11,8 @@ import { District } from "@/types/district";
 import { Achievement } from "@/types/achievement";
 import { HealthCare } from "@/types/health-care";
 import { School } from "@/types/school";
+import { Provost } from "@/types/provost";
+import { GovEmployer } from "@/types/gov-employer";
 
 const BASE_URL_API = "https://timur.jakarta.go.id/API_Timur/api";
 
@@ -188,4 +190,66 @@ export const externalApi = router({
     const { data } = await fetchApi<PaginationResponse<School>>("/sekolah", {});
     return data;
   }),
+
+  getProvost: procedure.query(async () => {
+    const { data } = await fetchApi<{ data: Provost[] }>("/walikota", {});
+    return data.sort((a, b) => (a.id < b.id ? -1 : 1));
+  }),
+
+  getGovSecretariatEmployers: procedure.query(async () => {
+    const { data } = await fetchApi<PaginationResponse<GovEmployer>>(
+      "/perangkatkota",
+      {}
+    );
+    return data;
+  }),
+
+  getGovCityEmployers: procedure.query(async () => {
+    const { data } = await fetchApi<PaginationResponse<GovEmployer>>(
+      "/bagiankota",
+      {}
+    );
+    return data;
+  }),
+
+  getGovAreaEmployers: procedure
+    .input(
+      z.object({
+        search: z.string().optional(),
+        area: z.string(),
+        limit: z.number().optional().default(9),
+        filters: z
+          .array(z.object({ by: z.string(), value: z.string() }))
+          .default([]),
+      })
+    )
+    .query(async ({ input }) => {
+      const filters: { [key: string]: string } = {};
+
+      input.filters.forEach((d) => {
+        filters[d.by] = d.value;
+      });
+
+      const { data } = await fetchApi<PaginationResponse<GovEmployer>>(
+        "/" + input.area,
+        {
+          nama: input.search,
+          limit: input.limit,
+          ...filters,
+        }
+      );
+      return data;
+    }),
+
+  getGovSubDistrictEmployers: procedure
+    .input(z.object({ limit: z.number().optional().default(9) }))
+    .query(async ({ input }) => {
+      const { data } = await fetchApi<PaginationResponse<GovEmployer>>(
+        "/kelurahan",
+        {
+          limit: input.limit,
+        }
+      );
+      return data;
+    }),
 });

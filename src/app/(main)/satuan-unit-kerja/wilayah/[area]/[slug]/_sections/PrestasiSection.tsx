@@ -51,24 +51,24 @@ export const PrestasiSection = () => {
   return (
     <div>
       <div className="text-center">
-        <h3 className="text-4xl font-semibold">Prestasi</h3>
-        <p className="mt-2 text-2xl text-gray-800">
+        <h3 className="text-xl font-semibold lg:text-4xl">Prestasi</h3>
+        <p className="mt-2 text-sm text-gray-800 lg:text-2xl">
           Ketahui prestasi yang diberikan kepada Kecamatan Matraman
         </p>
       </div>
 
-      <div className="mt-10 grid grid-cols-2 gap-10">
+      <div className="grid grid-cols-1 gap-4 mt-10 lg:grid-cols-2 lg:gap-10">
         {items.map((item, index) => (
           <div
             key={index}
-            className="flex items-center gap-6 bg-white drop-shadow px-6 py-5 rounded-xl"
+            className="flex items-center gap-4 p-4 bg-white lg:gap-6 lg:px-6 lg:py-5 drop-shadow rounded-xl"
           >
-            <div className="w-16 h-16 bg-blue-100 rounded-xl flex justify-center items-center">
-              <Icon name="MageTrophyColored" className="w-10 h-10" />
+            <div className="flex items-center justify-center bg-blue-100 w-14 lg:w-16 aspect-square rounded-xl">
+              <Icon name="MageTrophyColored" className="w-8 lg:w-10 aspect-square" />
             </div>
             <div className="flex-1">
-              <div className="text-gray-500 font-medium">Tahun {item.year}</div>
-              <div className="mt-2 font-bold text-lg">{item.title}</div>
+              <div className="text-xs font-medium text-gray-500 lg:text-base">Tahun {item.year}</div>
+              <div className="mt-0 text-sm font-bold lg:mt-2 lg:text-lg">{item.title}</div>
             </div>
           </div>
         ))}

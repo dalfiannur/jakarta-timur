@@ -1,24 +1,25 @@
+"use client";
 import { Avatar } from "@/app/components/Avatar";
-import { SectionTitle } from "../SectionTitle";
-import { getData } from "./actions";
+import { SectionTitle } from "../_components/SectionTitle";
+import { trpc } from "@/utils/trpc";
 
-export default async function Page() {
-  const { data } = await getData();
+export default function Page() {
+  const { data } = trpc.externalApi.getGovSecretariatEmployers.useQuery();
 
   return (
     <div className="flex-1">
       <SectionTitle>Sekretariat Kota</SectionTitle>
-      <div className="mt-12 grid grid-cols-4 gap-10">
-        {data.map((item, index) => (
+      <div className="grid grid-cols-2 gap-10 mt-12 lg:grid-cols-4">
+        {data?.data.map((item, index) => (
           <div
             key={index}
-            className="flex items-center h-full bg-blue-50 rounded-xl px-6 py-4"
+            className="flex items-center h-full px-6 py-4 bg-blue-50 rounded-xl"
           >
             <div className="grid gap-4">
               <Avatar src="/img/walikota.jpeg" size={50} alt={item.pejabat} />
               <div className="grid gap-1">
-                <p className="font-semibold text-lg">{item.nama}</p>
-                <p className="font-medium text-lg text-gray-600">
+                <p className="text-sm font-semibold lg:text-lg">{item.nama}</p>
+                <p className="text-sm font-medium text-gray-600 lg:text-lg">
                   {item.pejabat}
                 </p>
               </div>

@@ -1,7 +1,7 @@
 "use client";
 import { PageTitle } from "@/app/components/PageTitle";
-import { PageBreadcrumbs } from "./PageBreadcrumbs";
-import { Sidebar } from "./Sidebar";
+import { PageBreadcrumbs } from "./_components/PageBreadcrumbs";
+import { Sidebar } from "./_components/Sidebar";
 import { ReactNode, Suspense } from "react";
 import { sidebarItems } from "./constants";
 import { usePathname } from "next/navigation";
@@ -24,11 +24,11 @@ export default function Layout({ children }: LayoutProps) {
         subtitle="Menghadirkan Inovasi dan Solusi untuk Kemajuan Kota yang Berkelanjutan"
       />
 
-      <div className="relative z-10 -mt-28 container mx-auto bg-soft-white rounded-4xl p-8 shadow-light">
+      <div className="relative z-10 mt-0 lg:-mt-28 container mx-auto bg-soft-white rounded-4xl p-0 lg:p-8 shadow-none lg:shadow-light">
         <Suspense fallback={"Loading..."}>
           <PageBreadcrumbs />
         </Suspense>
-        <div className="mt-8 flex gap-8">
+        <div className="mt-8 flex flex-col lg:flex-row gap-8 px-4 lg-px-0">
           <Sidebar items={sidebarItems} />
           {children}
         </div>

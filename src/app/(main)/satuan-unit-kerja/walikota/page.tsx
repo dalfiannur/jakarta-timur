@@ -1,42 +1,46 @@
+"use client";
 import { Icon } from "@/app/icons";
-import { SectionTitle } from "../SectionTitle";
+import { SectionTitle } from "../_components/SectionTitle";
 import Image from "next/image";
 import Link from "next/link";
-import { getData } from "./actions";
+import { trpc } from "@/utils/trpc";
 
-export default async function Page() {
-  const data = await getData();
+export default function Page() {
+  const { data } = trpc.externalApi.getProvost.useQuery();
 
   return (
     <div className="flex-1">
       <SectionTitle>Walikota</SectionTitle>
-      <div className="mt-12 grid grid-cols-2 gap-10">
-        {data.map((item, index) => (
+      <div className="grid grid-cols-1 gap-10 mt-6 lg:mt-12 lg:grid-cols-2">
+        {data?.map((item, index) => (
           <div key={index} className="flex gap-4">
-            <div className="relative h-[330px] w-[190px]">
+            <div className="relative w-24 lg:w-48 aspect-[33/19]">
               <Image
                 src={item.img_url}
                 alt="#"
                 fill
-                className="rounded-xl object-cover"
+                className="object-cover rounded-xl"
               />
             </div>
-            <div className="flex-1 pr-6 pl-2 py-4">
-              <p className="text-xl text-pink-500 font-medium">
+            <div className="flex-1 py-0 pl-2 pr-0 lg:pr-6 lg:py-4">
+              <p className="text-xs font-medium text-pink-500 lg:text-xl">
                 {item.jabatan}
               </p>
-              <p className="mt-4 text-2xl font-bold">{item.nama}</p>
+              <p className="mt-1 text-sm font-bold lg:mt-4 lg:text-2xl">
+                {item.nama}
+              </p>
               <div
-                className="mt-2 text-xl text-gray-600 line-clamp-4"
+                className="mt-1 text-xs text-gray-600 lg:mt-2 lg:text-xl line-clamp-4"
                 dangerouslySetInnerHTML={{
                   __html: item.biodata.split(/<[^>]*>/).join(""),
                 }}
               />
               <Link
                 href="#"
-                className="inlin-block mt-6 font-semibold text-blue-500 inline-flex gap-2 items-center"
+                className="inline-flex items-center gap-2 mt-6 text-xs font-semibold text-blue-500 lg:text-base"
               >
-                Lihat Profile <Icon name="ArrowRight" className="w-6 h-6" />
+                Lihat Profile{" "}
+                <Icon name="ArrowRight" className="w-4 lg:w-6 aspect-square" />
               </Link>
             </div>
           </div>
