@@ -1,3 +1,4 @@
+"use client";
 import { useMemo } from "react";
 
 type SchoolListItemProps = {
@@ -52,23 +53,23 @@ export const SchoolListItem = ({
   );
 
   return (
-    <div className="border rounded-xl flex p-2 lg:p-4 gap-4 lg:gap-10">
-      <div className="w-8 lg:w-16 h-8 lg:h-16 rounded-full bg-blue-100" />
+    <div className="flex gap-4 p-2 border rounded-xl lg:p-4 lg:gap-10">
+      <div className="w-8 h-8 bg-blue-100 rounded-full lg:w-16 lg:h-16" />
       <div className="flex-1">
         <div className="flex justify-between gap-6">
           <div className="flex-1 font-plus-jakarta-sans">
-            <h2 className="font-bold text-base lg:text-xl">{name}</h2>
+            <h2 className="text-base font-bold lg:text-xl">{name}</h2>
             <p className="mt-0 lg:mt-[2px] font-medium text-sm lg:text-lg text-gray-500/80">
               {address}
             </p>
           </div>
-          <div className="w-6 lg:w-8 h-6 lg:h-8 bg-blue-500 text-white rounded-full flex justify-center items-center text-xs lg:text-base">
+          <div className="flex items-center justify-center w-6 h-6 text-xs text-white bg-blue-500 rounded-full lg:w-8 lg:h-8 lg:text-base">
             A
           </div>
         </div>
-        <div className="mt-4 flex gap-6 border-t pt-4">
+        <div className="flex gap-6 pt-4 mt-4 border-t">
           {details.map(({ label, value }, index) => (
-            <div key={index} className="font-plus-jakarta-sans font-medium">
+            <div key={index} className="font-medium font-plus-jakarta-sans">
               <div className="text-[8px] lg:text-sm text-gray-500/80">
                 {label}
               </div>

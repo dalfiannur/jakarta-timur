@@ -1,3 +1,4 @@
+"use client"
 import {
   Disclosure,
   DisclosureButton,
@@ -16,8 +17,8 @@ export const Accordion = ({
   return (
     <div className="border-b">
       <Disclosure>
-        <DisclosureButton className="w-full inline-flex justify-between gap-20 py-6">
-          <div className="text-left lg:text-center font-bold text-base lg:text-2xl text-pink-500 font-plus-jakarta-sans">
+        <DisclosureButton className="inline-flex justify-between w-full gap-20 py-6">
+          <div className="text-base font-bold text-left text-pink-500 lg:text-center lg:text-2xl font-plus-jakarta-sans">
             {label}
           </div>
           <Icon name="ChevronDown" className="w-6 h-6" />

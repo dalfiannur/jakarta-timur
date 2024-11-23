@@ -1,3 +1,4 @@
+"use client"
 import { SelectCSR } from "@/app/components/SelectCSR";
 
 const data = [

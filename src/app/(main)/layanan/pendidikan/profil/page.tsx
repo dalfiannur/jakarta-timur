@@ -1,3 +1,4 @@
+"use clint"
 import { Breadcrumbs } from "@/app/components/Breadcrumbs";
 import { FilterSection } from "./_sections/FilterSection";
 import { MapArea } from "@/app/components/Map";
@@ -30,17 +31,17 @@ export default function Page() {
           />
 
           <div className="mt-0 lg:mt-10">
-            <h1 className="font-plus-jakarta-sans font-bold text-2xl text-center text-gray-950">
+            <h1 className="text-2xl font-bold text-center font-plus-jakarta-sans text-gray-950">
               Profil &amp; Data Sekolah Kota Jakarta Timur, D.K.I. Jakarta
             </h1>
-            <p className="mt-2 font-roboto text-lg text-center text-gray-500">
+            <p className="mt-2 text-lg text-center text-gray-500 font-roboto">
               Sumber : Kementerian Pendidikan, Kebudayaan, Riset dan Teknologi
             </p>
           </div>
 
           <div className="mt-10">
             <FilterSection />
-            <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4 mt-10 lg:grid-cols-2">
               <MapArea
                 options={{
                   aspectRatio: 1,

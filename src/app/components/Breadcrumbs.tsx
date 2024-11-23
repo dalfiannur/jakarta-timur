@@ -1,3 +1,4 @@
+"use client"
 import { Icon } from "../icons";
 import { BreadcrumbItem } from "./BreadcrumbItem";
 
@@ -10,7 +11,7 @@ interface BreadcrumbsProps {
 
 export const Breadcrumbs = ({ data }: BreadcrumbsProps) => {
   return (
-    <div className="hidden lg:flex gap-2">
+    <div className="hidden gap-2 lg:flex">
       {data.map((item, index) => (
         <div key={index} className="flex items-center gap-2">
           {index !== 0 && (
