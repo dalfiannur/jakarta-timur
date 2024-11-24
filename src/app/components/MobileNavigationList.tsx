@@ -28,6 +28,15 @@ export const MobileNavigationList = () => {
           </DropdownItem>
         ))}
       </DropdownItem>
+      <DropdownItem label="Informasi">
+        {links.informasi.map((link, index) => (
+          <Item
+            key={index}
+            label={(link as Link).title}
+            href={(link as Link).link}
+          />
+        ))}
+      </DropdownItem>
       <DropdownItem label="Layanan">
         {links.layanan.map((link, index) => (
           <Item
