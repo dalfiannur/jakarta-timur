@@ -1,9 +1,9 @@
 "use client";
 import Slider from "react-slick";
 import { CarouselItem } from "../../_components/CarouselItem";
+import { DetailItem } from "../_components/DetailItem";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { DetailItem } from "../_components/DetailItem";
 
 const LIST_ITEMS = [
   {
