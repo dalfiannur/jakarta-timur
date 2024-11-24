@@ -27,7 +27,7 @@ export const ListNumberAccordion = ({
             label={label}
             numberLabel={numberLabel}
           />
-          <div className="overflow-hidden py-2">
+          <div className="overflow-hidden py-0 lg:py-2">
             <AnimatePresence>
               {open && (
                 <DisclosurePanel static as={Fragment}>
@@ -49,26 +49,6 @@ export const ListNumberAccordion = ({
   );
 };
 
-const buttonTriggerCss = tv({
-  slots: {
-    button:
-      "w-full flex items-center p-6 gap-6 border rounded-2xl transition-all duration-300",
-    number:
-      "w-10 h-10 rounded-xl flex justify-center items-center font-bold text-sm transition-all duration-300",
-  },
-  variants: {
-    isOpened: {
-      true: {
-        button: "bg-blue-100 border-blue-100",
-        number: "bg-blue-500 text-white",
-      },
-      false: {
-        number: "bg-gray-200/60 text-gray-400",
-      },
-    },
-  },
-});
-
 const ButtonTrigger = ({
   isOpened,
   label,
@@ -78,13 +58,22 @@ const ButtonTrigger = ({
   label: string;
   numberLabel: number;
 }) => {
-  const x = buttonTriggerCss({ isOpened });
   return (
-    <DisclosureButton className={x.button()}>
-      <div className={x.number()}>{numberLabel}</div>
-      <div className="flex-1 text-left text-2xl font-bold">{label}</div>
+    <DisclosureButton
+      data-active={isOpened}
+      className="group flex w-full items-center gap-6 rounded-2xl border p-4 transition-all duration-300 data-[active=true]:rounded-b-none data-[active=true]:border-blue-100 data-[active=true]:bg-blue-100 lg:p-6"
+    >
+      <div className="flex aspect-square w-8 items-center justify-center rounded-xl bg-gray-200/60 text-xs font-bold text-gray-400 transition-all duration-300 group-data-[active=true]:bg-blue-500 group-data-[active=true]:text-white lg:h-10 lg:text-sm">
+        {numberLabel}
+      </div>
+      <div className="flex-1 text-left text-lg font-bold lg:text-2xl">
+        {label}
+      </div>
       <div className="text-blue-500">
-        <Icon name="CirclePlus" className="w-12 h-12" />
+        <Icon
+          name={isOpened ? "MinusCircle" : "CirclePlus"}
+          className="aspect-square w-8 lg:w-12"
+        />
       </div>
     </DisclosureButton>
   );

@@ -219,27 +219,33 @@ const items = [
 
 export const Content = () => {
   return (
-    <div>
+    <div className="flex flex-col gap-4">
       {items.map((item) => (
         <ListNumberAccordion
           key={item.numberLabel}
           numberLabel={item.numberLabel}
           label={item.label}
         >
-          <div className="grid grid-cols-3 gap-8 p-8">
+          <div className="grid grid-cols-1 gap-0 p-0 lg:grid-cols-3 lg:gap-8 lg:p-8">
             {item.items.map((row, index) => (
-              <div key={index} className="border rounded-xl p-8">
-                <div className="bg-blue-100 w-fit rounded p-3">
-                  <Icon name="ParkMultiColored" className="w-10 h-10" />
+              <div
+                key={index}
+                className="rounded-none border p-4 lg:rounded-xl lg:p-8"
+              >
+                <div className="w-fit rounded bg-blue-100 p-3">
+                  <Icon name="ParkMultiColored" className="h-10 w-10" />
                 </div>
                 <div className="mt-4 grid gap-2">
                   <h4 className="text-lg font-bold">{row.name}</h4>
                   <p className="text-gray-500">{row.address}</p>
                   <Link
                     href={row.link}
-                    className="border border-pink-500 text-pink-500 text-[10px] rounded-lg w-fit py-[6px] px-2 inline-flex gap-2"
+                    className="inline-flex w-fit gap-2 rounded-lg border border-pink-500 px-2 py-[6px] text-[10px] text-pink-500"
                   >
-                    <Icon name="GoogleMapColored" className="w-[10px] h-[10px]" />
+                    <Icon
+                      name="GoogleMapColored"
+                      className="h-[10px] w-[10px]"
+                    />
                     Lihat di Google Maps
                   </Link>
                 </div>

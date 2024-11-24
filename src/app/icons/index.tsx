@@ -44,6 +44,7 @@ import { Mail } from "./Mail";
 import { MapHomeWork } from "./MapHomeWork";
 import { MapMarkerAlt } from "./MapMarkerAlt";
 import { Menu } from "./Menu";
+import { MinusCircle } from "./MinusCircle";
 import { NetworkSettingLineColored } from "./NetworkSettingLineColored";
 import { News } from "./News";
 import { Office } from "./Office";
@@ -77,6 +78,7 @@ import { YoutubeColored } from "./YoutubeColored";
 import { WhatsappColored } from "@/app/icons/WhatsappColored";
 
 const icons = {
+  MinusCircle,
   LayoutList,
   ChevronDown,
   Search,
