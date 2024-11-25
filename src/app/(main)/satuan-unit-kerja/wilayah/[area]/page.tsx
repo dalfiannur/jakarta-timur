@@ -17,12 +17,12 @@ export default function Page() {
   });
 
   return (
-    <div className="grid gap-8">
+    <div className="flex flex-1 flex-col gap-8">
       <SectionTitle>{area}</SectionTitle>
       <SearchInput onChange={(value) => set(value)} />
       {area === "kelurahan" && (
         <SelectKecamatan
-          onChange={(value) => store$.setKey("kecamatan_slug", value)}
+          onChange={(value) => store$.setKey("kecamatan_id", value)}
         />
       )}
 

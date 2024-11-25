@@ -2,9 +2,11 @@ import { deepMap } from "nanostores";
 
 type Store = {
   search: string;
-  kecamatan_slug?: string;
+  page: number;
+  kecamatan_id?: string;
 };
 
 export const store$ = deepMap<Store>({
   search: "",
+  page: 1,
 });

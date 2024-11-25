@@ -13,7 +13,10 @@ export const SelectKecamatan = ({
   });
 
   const options =
-    res.data?.data.map((d) => ({ value: d.slug ?? "", label: d.nama })) ?? [];
+    res.data?.data.map((d) => ({
+      value: d.id.toString() ?? "",
+      label: d.nama,
+    })) ?? [];
 
   return (
     <div className="flex items-center gap-4">
