@@ -9,30 +9,29 @@ export const CardItem = ({
   address,
   facilities,
   website,
+  image,
+  phone,
 }: {
   name: string;
   address: string;
   facilities: string;
   website: string;
+  image: string;
+  phone: string;
 }) => {
   return (
-    <div className="border rounded-xl p-4 flex flex-col lg:flex-row items-center lg:items-start gap-2">
-      <div className="relative w-32 lg:w-28 h-20 lg:h-16">
-        <Image
-          src="/img/rskd-duren-sawit.png"
-          alt={name}
-          fill
-          className="object-contain"
-        />
+    <div className="flex flex-col items-center gap-2 rounded-xl border p-4 lg:flex-row lg:items-start lg:gap-4 lg:p-8">
+      <div className="relative aspect-square h-20 w-32 lg:w-28">
+        <Image src={image} alt={name} fill className="object-contain" />
       </div>
       <div>
-        <div className="flex-1 flex flex-col lg:flex-row gap-2 lg:gap-6 border-b pb-6">
+        <div className="flex flex-1 flex-col gap-2 border-b pb-6 lg:flex-row lg:gap-6">
           <div className="grid gap-[2px]">
-            <h3 className="font-bold text-2xl">{name}</h3>
-            <p className="text-xl text-gray-600">{address}</p>
+            <h3 className="text-2xl font-bold">{name}</h3>
+            <p className="text-base text-gray-600">{address}</p>
           </div>
-          <p className="text-xs whitespace-nowrap bg-green-100 text-green-700 h-fit w-fit p-2 rounded-full flex gap-2">
-            <Icon name="Phone" className="w-4 h-4" /> --
+          <p className="flex h-fit w-fit gap-2 whitespace-nowrap rounded-full bg-green-100 p-2 text-xs text-green-700">
+            <Icon name="Phone" className="h-4 w-4" /> {phone}
           </p>
         </div>
         <div className="mt-6">
@@ -40,7 +39,7 @@ export const CardItem = ({
         </div>
         <Link
           href={website}
-          className="mt-6 border border-pink-500 rounded-xl text-pink-500 px-4 py-3 text-semibold inline-block w-full text-center"
+          className="text-semibold mt-6 inline-block w-full rounded-xl border border-pink-500 px-4 py-3 text-center text-pink-500"
         >
           Akses Website Resmi
         </Link>

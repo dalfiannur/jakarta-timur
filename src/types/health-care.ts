@@ -4,6 +4,8 @@ export type HealthCare = {
   fasilitas: string;
   alamat: string;
   website: string;
+  img_url: string;
+  telpon: string;
   created_at: string;
   updated_at: string;
 };

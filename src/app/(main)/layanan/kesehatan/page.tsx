@@ -14,15 +14,17 @@ export default function Page() {
         image="/img/kantor-walikota-jaktim.png"
         topSpacer
       />
-      <div className="py-12 container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-10">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-10">
           {data?.data.map((item, index) => (
             <CardItem
               key={index}
+              image={item.img_url}
               name={item.nama}
               address={item.alamat}
               facilities={item.fasilitas}
               website={item.website}
+              phone={item.telpon}
             />
           ))}
         </div>
