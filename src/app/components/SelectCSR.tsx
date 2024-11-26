@@ -34,46 +34,46 @@ export const SelectCSR = ({
   onChange?: (selected: SelectOption | null) => void;
 }) => {
   const [selected, setSelected] = useState<SelectOption | null>(
-    defaultSelected ?? null
+    defaultSelected ?? null,
   );
 
   const _onChange = useCallback(
     (value: SelectOption) => {
       if (selected === value) {
-        setSelected(null)
+        setSelected(null);
         onChange?.(null);
       } else {
         setSelected(value);
         onChange?.(value);
       }
     },
-    [onChange, selected]
+    [onChange, selected],
   );
 
   return (
     <Field className={`flex items-center gap-4 ${classNames?.root}`}>
       {label && (
-        <Label className="font-semibold text-lg text-gray-500">{label}:</Label>
+        <Label className="text-lg font-semibold text-gray-500">{label}:</Label>
       )}
       <Listbox value={selected} onChange={_onChange}>
         <ListboxButton
-          className={`p-2 lg:p-4 border rounded-xl font-semibold text-pink-500 flex items-center justify-between gap-4 min-w-[100px] lg:min-w-[150px] ${classNames?.button}`}
+          className={`flex min-w-[100px] items-center justify-between gap-4 rounded-xl border p-2 font-semibold text-pink-500 lg:min-w-[150px] lg:p-4 ${classNames?.button}`}
         >
-          <div className="text-black text-xs lg:text-base">
+          <div className="text-xs text-black lg:text-base">
             {selected?.label ?? placeholder}
           </div>
-          <Icon name="ChevronDown" className="w-6 h-6" />
+          <Icon name="ChevronDown" className="h-6 w-6" />
         </ListboxButton>
         <ListboxOptions
           anchor="bottom"
           transition
-          className="p-1 origin-top transition duration-200 ease-out data-[closed]:scale-95 data-[closed]:opacity-0 bg-white z-10 rounded-xl drop-shadow w-[var(--button-width)] [--anchor-gap:4px] sm:[--anchor-gap:8px]"
+          className="z-[1000] w-[var(--button-width)] origin-top rounded-xl bg-white p-1 drop-shadow transition duration-200 ease-out [--anchor-gap:4px] data-[closed]:scale-95 data-[closed]:opacity-0 sm:[--anchor-gap:8px]"
         >
           {data.map((item, index) => (
             <ListboxOption
               value={item}
               key={index}
-              className="px-4 py-3 text-xs lg:text-base rounded-xl data-[focus]:bg-blue-50 cursor-pointer data-[selected]:bg-pink-50 data-[selected]:text-pink-500 data-[selected]:font-bold"
+              className="cursor-pointer rounded-xl px-4 py-3 text-xs data-[focus]:bg-blue-50 data-[selected]:bg-pink-50 data-[selected]:font-bold data-[selected]:text-pink-500 lg:text-base"
             >
               {item.label}
             </ListboxOption>

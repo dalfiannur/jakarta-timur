@@ -1,5 +1,5 @@
 "use client";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import * as leaflet from "leaflet";
 import "leaflet/dist/leaflet.css";
 
@@ -22,23 +22,34 @@ type MapProps = {
 
 export default function MapArea({ options, markers = [] }: MapProps) {
   const mapRef = useRef<HTMLDivElement>(null);
+  const currentMap = useRef<leaflet.Map>(null);
   const [map, setMap] = useState<leaflet.Map>();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (mapRef.current) {
-      const m = leaflet.map(mapRef.current);
+      let m = leaflet.map(mapRef.current);
       m.setView([options.latitude, options.longitude], 13);
       leaflet
         .tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png")
         .addTo(m);
       setMap(m);
+
+      return () => {
+        // m.remove();
+      };
     }
   }, [mapRef, options]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (map && markers.length > 0) {
       markers.forEach((marker) => {
-        leaflet.marker([marker.latitude, marker.longitude]).addTo(map);
+        if (marker.latitude && marker.longitude) {
+          const mark = leaflet.marker({
+            lat: marker.latitude,
+            lng: marker.longitude,
+          });
+          mark.addTo(map);
+        }
       });
     }
   }, [map, markers]);

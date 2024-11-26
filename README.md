@@ -59,22 +59,32 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## Pages
 
-- [ ] Beranda
+- [x] Beranda
 - [ ] Pemerintah Kota
   - [ ] Tentang Jakarta Timur
     - [x] Visi Misi & Kegiatan Strategis
-    - [ ] Peta dan Batas Wilayah
-    - [ ] Demografis
-    - [ ]
+    - [x] Peta dan Batas Wilayah
+    - [x] Demografis
+    - [x] Prestasi
   - [ ] Satuan dan Unit Kerja
+    - [x] Struktur Organisasi
+    - [ ] Walikota
+    - [x] Sekretariat Kota
+    - [x] Bagian Kota
+    - [x] UKPD
+    - [x] Kecamatan
+      - [ ] Detail
+    - [x] Kelurahan
+      - [ ] Detail
   - [ ] Kepegawaian
 - [ ] Layanan
-  - [ ] Pendidikan
+  - [x] Pendidikan
+    - [x] Data Sekolah
   - [x] Transportasi
   - [x] PTSP
   - [x] Kanal Aduan
-  - [ ] Kesehatan
-  - [] Internet Jak Wifi
+  - [x] Kesehatan
+  - [ ] Internet Jak Wifi
   - [x] Pajak
 - [ ] Informasi
   - [ ] Pariwisata

@@ -3,7 +3,7 @@ import { SelectCSR, SelectOption } from "@/app/components/SelectCSR";
 import { trpc } from "@/utils/trpc";
 import { useMemo } from "react";
 
-export const SelectSubDistrict = ({
+export const SelectRW = ({
   hasLabel,
   onChange,
   district,
@@ -28,11 +28,11 @@ export const SelectSubDistrict = ({
 
   return (
     <div className="flex items-center gap-4">
-      {hasLabel && <label>Pilih Kelurahan :</label>}
+      {hasLabel && <label>Pilih RW :</label>}
       <SelectCSR
         data={options}
         defaultSelected={options[0]}
-        placeholder="Pilih Kelurahan"
+        placeholder="Pilih RW"
         onChange={onChange}
         classNames={classNames}
       />

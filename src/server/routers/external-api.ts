@@ -18,7 +18,7 @@ const BASE_URL_API = "https://timur.jakarta.go.id/API_Timur/api";
 
 const fetchApi = async <TResponse>(
   pathname: string,
-  params: { [key: string]: string | number | undefined }
+  params: { [key: string]: string | number | undefined },
 ) => {
   const p = new URLSearchParams();
   Object.keys(params).map((key) => {
@@ -32,7 +32,7 @@ const fetchApi = async <TResponse>(
   const stringifyParams = p.toString();
 
   const data: TResponse = await fetch(
-    `${BASE_URL_API}${pathname}?${stringifyParams}`
+    `${BASE_URL_API}${pathname}?${stringifyParams}`,
   )
     .then((res) => res.json())
     .catch((err) => console.error(err));
@@ -57,7 +57,7 @@ export const externalApi = router({
     .query(async ({ input }) => {
       const { data } = await fetchApi<PaginationResponse<Activity>>(
         "/agenda",
-        input
+        input,
       );
 
       return data;
@@ -68,7 +68,7 @@ export const externalApi = router({
     .query(async ({ input }) => {
       const { data } = await fetchApi<PaginationResponse<Bulletin>>(
         "/buletin",
-        input
+        input,
       );
 
       return data;
@@ -101,7 +101,7 @@ export const externalApi = router({
     .query(async ({ input }) => {
       const { data } = await fetchApi<PaginationResponse<NewsPhoto>>(
         "/newsphoto",
-        input
+        input,
       );
 
       return data;
@@ -110,7 +110,7 @@ export const externalApi = router({
   findGalleryById: procedure.input(z.string()).query(async ({ input }) => {
     const { data } = await fetchApi<PaginationResponse<NewsPhoto>>(
       "/newsphoto",
-      { id: input }
+      { id: input },
     );
 
     return data;
@@ -121,7 +121,7 @@ export const externalApi = router({
     .query(async ({ input }) => {
       const { data } = await fetchApi<PaginationResponse<Video>>(
         "/video",
-        input
+        input,
       );
       return data;
     }),
@@ -136,7 +136,7 @@ export const externalApi = router({
   getDistricts: procedure.query(async () => {
     const { data } = await fetchApi<PaginationResponse<District>>(
       "/kecamatan",
-      {}
+      {},
     );
     return data;
   }),
@@ -145,14 +145,14 @@ export const externalApi = router({
     .input(
       z.object({
         districtSlug: z.string().optional(),
-      })
+      }),
     )
     .query(async ({ input }) => {
       const { data } = await fetchApi<PaginationResponse<District>>(
         "/kelurahan",
         {
           slug: input.districtSlug,
-        }
+        },
       );
       return data;
     }),
@@ -163,7 +163,7 @@ export const externalApi = router({
         search: z.string().optional(),
         year: z.string().optional(),
         sort: z.string().optional().default("desc"),
-      })
+      }),
     )
     .query(async ({ input }) => {
       console.log({ input });
@@ -173,7 +173,7 @@ export const externalApi = router({
           search: input.search,
           tahun: input.year,
           sort: input.sort,
-        }
+        },
       );
       return data;
     }),
@@ -181,7 +181,7 @@ export const externalApi = router({
   getHealthCares: procedure.query(async () => {
     const { data } = await fetchApi<PaginationResponse<HealthCare>>(
       "/kesehatan",
-      {}
+      {},
     );
     return data;
   }),
@@ -199,7 +199,7 @@ export const externalApi = router({
   getGovSecretariatEmployers: procedure.query(async () => {
     const { data } = await fetchApi<PaginationResponse<GovEmployer>>(
       "/perangkatkota",
-      {}
+      {},
     );
     return data;
   }),
@@ -207,7 +207,7 @@ export const externalApi = router({
   getGovCityEmployers: procedure.query(async () => {
     const { data } = await fetchApi<PaginationResponse<GovEmployer>>(
       "/bagiankota",
-      {}
+      {},
     );
     return data;
   }),
@@ -221,7 +221,7 @@ export const externalApi = router({
         filters: z
           .array(z.object({ by: z.string(), value: z.string() }))
           .default([]),
-      })
+      }),
     )
     .query(async ({ input }) => {
       const filters: { [key: string]: string } = {};
@@ -236,7 +236,7 @@ export const externalApi = router({
           nama: input.search,
           limit: input.limit,
           ...filters,
-        }
+        },
       );
       return data;
     }),
@@ -248,8 +248,31 @@ export const externalApi = router({
         "/kelurahan",
         {
           limit: input.limit,
-        }
+        },
       );
+      return data;
+    }),
+
+  getJakWifi: procedure
+    .input(
+      z.object({
+        limit: z.number().optional().default(10),
+        page: z.number().optional().default(1),
+        district: z.string().optional(),
+        subDistrict: z.string().optional(),
+        rw: z.string().optional(),
+        search: z.string().optional(),
+      }),
+    )
+    .query(async ({ input }) => {
+      const { data } = await fetchApi<PaginationResponse<JakWifi>>("/jakwifi", {
+        limit: input.limit,
+        page: input.page,
+        kecamatan_id: input.district,
+        kelurahan_id: input.subDistrict,
+        search: input.search,
+        rw: input.rw,
+      });
       return data;
     }),
 });
