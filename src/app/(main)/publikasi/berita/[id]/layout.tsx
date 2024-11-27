@@ -1,7 +1,7 @@
 "use client";
 import { ReactNode } from "react";
 import { NewsList } from "./_features/NewsList";
-import { BulletinList } from "../_features/BulletinList";
+import { BulletinList } from "../../_features/BulletinList";
 
 type LayoutProps = {
   children: ReactNode;

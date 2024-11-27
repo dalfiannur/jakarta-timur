@@ -65,6 +65,7 @@ import { SmartCity } from "./SmartCity";
 import { SmartCityColored } from "./SmartCityColored";
 import { StatisticUp } from "./StatisticUp";
 import { StatisticUpSolid } from "./StatisticUpSolid";
+import { Tags } from "./Tags";
 import { Tax } from "./Tax";
 import { Trophy } from "./Trophy";
 import { User } from "./User";
@@ -79,6 +80,7 @@ import { WhatsappColored } from "@/app/icons/WhatsappColored";
 
 const icons = {
   MinusCircle,
+  Tags,
   LayoutList,
   ChevronDown,
   Search,

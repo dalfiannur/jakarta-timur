@@ -1,16 +1,18 @@
 import { ReactNode } from "react";
+import { VideoList } from "../../_features/VideoList";
 
 type LayoutProps = {
   children: ReactNode;
-  video: ReactNode;
 };
 
-export default function Layout({ children, video }: LayoutProps) {
+export default function Layout({ children }: LayoutProps) {
   return (
-    <div>
-      <div className="mt-12 flex gap-16">
+    <div className="px-4">
+      <div className="mt-12 flex flex-col gap-16 lg:flex-row">
         {children}
-        <div className="w-[437px] flex flex-col gap-12">{video}</div>
+        <div className="flex w-full flex-col gap-12 lg:w-[437px]">
+          <VideoList />
+        </div>
       </div>
     </div>
   );

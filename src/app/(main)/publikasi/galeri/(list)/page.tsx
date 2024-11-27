@@ -1,5 +1,5 @@
 import { Pagination } from "@/app/components/Pagination";
-import { PhotoItem } from "./PhotoItem";
+import { PhotoItem } from "./_components/PhotoItem";
 import { getNewsPhotos } from "@/app/actions/get-news-photo";
 
 type PageProps = {
@@ -17,7 +17,7 @@ export default async function Page(props: PageProps) {
 
   return (
     <>
-      <div className="grid grid-cols-2 gap-12">
+      <div className="grid grid-cols-2 gap-8 md:gap-4 lg:gap-12">
         {data.data.map((item, index) => (
           <PhotoItem
             key={index}
@@ -29,7 +29,7 @@ export default async function Page(props: PageProps) {
           />
         ))}
       </div>
-      <div className="flex justify-center mt-14">
+      <div className="mt-14 flex justify-center">
         <Pagination total={pages} />
       </div>
     </>

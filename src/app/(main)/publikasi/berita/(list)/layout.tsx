@@ -1,7 +1,7 @@
 "use client";
 import { ReactNode } from "react";
-import { VideoList } from "./_features/VideoList";
-import { BulletinList } from "../_features/BulletinList";
+import { VideoList } from "../../_features/VideoList";
+import { BulletinList } from "../../_features/BulletinList";
 
 type LayoutProps = {
   children: ReactNode;

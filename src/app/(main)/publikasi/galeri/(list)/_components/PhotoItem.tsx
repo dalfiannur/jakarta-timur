@@ -32,23 +32,21 @@ export const PhotoItem = ({
           )}
         </div>
       </Link>
-      <div className="mt-6 grid gap-4">
+      <div className="mt-3 flex flex-col gap-2 lg:mt-6 lg:gap-4">
         <Link href={`/publikasi/galeri/${id}`}>
-          <h2 className="text-2xl font-bold">{title}</h2>
+          <h2 className="line-clamp-3 text-base font-bold lg:text-2xl">
+            {title}
+          </h2>
         </Link>
-        <div className="flex gap-4 text-sm font-medium font-plus-jakarta-sans">
-          <div className="flex gap-2 items-center">
-            <div className="text-pink-500">
-              <Icon name="Calendar" className="w-4 h-4" />
-            </div>
-            <div>{dateFormatter(date)}</div>
+        <div className="flex flex-wrap gap-2 font-plus-jakarta-sans text-[10px] font-medium lg:gap-4 lg:text-sm">
+          <div className="flex items-center gap-1 lg:gap-2">
+            <Icon name="Calendar" className="aspect-square h-4 text-pink-500" />
+            <div className="whitespace-nowrap">{dateFormatter(date)}</div>
           </div>
           <div className="border-l" />
-          <div className="flex gap-2 items-center">
-            <div className="text-pink-500">
-              <Icon name="QuillWrite" className="w-4 h-4" />
-            </div>
-            <div>{location}</div>
+          <div className="flex items-center gap-1 lg:gap-2">
+            <Icon name="Tags" className="aspect-square h-4 text-pink-500" />
+            <div className="whitespace-nowrap">{location}</div>
           </div>
         </div>
       </div>

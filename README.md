@@ -96,15 +96,15 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 - [ ] PPID
 - [ ] Dashboard
 - [ ] Publikasi
-  - [ ] Berita
+  - [x] Berita
     - [x] List Berita
     - [x] Detail Berita
-  - [ ] Galeri
-    - [ ] List Berita
-    - [ ] Detail Berita
+  - [x] Galeri
+    - [x] List Berita
+    - [x] Detail Berita
   - [ ] Video
     - [ ] List Berita
     - [ ] Detail Berita
-  - [ ] Buletin
-    - [ ] List Berita
-    - [ ] Detail Berita
+  - [x] Buletin
+    - [x] List Bulletin
+    - [x] Detail Bulletin

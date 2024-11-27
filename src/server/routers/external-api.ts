@@ -108,10 +108,9 @@ export const externalApi = router({
     }),
 
   findGalleryById: procedure.input(z.string()).query(async ({ input }) => {
-    const { data } = await fetchApi<PaginationResponse<NewsPhoto>>(
-      "/newsphoto",
-      { id: input },
-    );
+    const { data } = await fetchApi<EntityResponse<NewsPhoto>>("/newsphoto", {
+      id: input,
+    });
 
     return data;
   }),

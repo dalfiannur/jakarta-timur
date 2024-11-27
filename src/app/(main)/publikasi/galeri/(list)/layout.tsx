@@ -1,28 +1,28 @@
 import { ReactNode } from "react";
+import { BulletinList } from "../../_features/BulletinList";
+import { VideoList } from "../../_features/VideoList";
 
 type LayoutProps = {
   children: ReactNode;
-  video: ReactNode;
-  bulletin: ReactNode;
 };
 
-export default function Layout({ children, video, bulletin }: LayoutProps) {
+export default function Layout({ children }: LayoutProps) {
   return (
-    <div>
+    <div className="px-4">
       <div className="grid gap-2 text-center">
-        <h2 className="font-bold text-3xl font-plus-jakarta-sans">
+        <h2 className="font-plus-jakarta-sans text-lg font-bold lg:text-3xl">
           Cerita Melalui Citra
         </h2>
-        <p className="text-xl text-gray-500 font-plus-jakarta-sans">
+        <p className="font-plus-jakarta-sans text-base text-gray-500 lg:text-xl">
           Menampilkan Wajah Jakarta Timur dalam Citra: Transparansi, Progres,
           dan Aspirasi Bersama Pemerintah untuk Kemajuan Kota.
         </p>
       </div>
-      <div className="mt-12 flex gap-16">
+      <div className="mt-6 flex flex-col gap-16 lg:mt-12 lg:flex-row">
         <div className="flex-1">{children}</div>
-        <div className="w-[437px] flex flex-col gap-12">
-          {video}
-          {bulletin}
+        <div className="flex w-full flex-col gap-12 lg:w-[437px]">
+          <VideoList />
+          <BulletinList />
         </div>
       </div>
     </div>
