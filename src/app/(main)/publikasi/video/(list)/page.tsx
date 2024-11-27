@@ -1,5 +1,5 @@
 import { Pagination } from "@/app/components/Pagination";
-import { VideoItem } from "./VideoItem";
+import { VideoItem } from "./_components/VideoItem";
 import { getVideos } from "@/app/actions/get-videos";
 
 type PageProps = {
@@ -15,7 +15,7 @@ export default async function Page(props: PageProps) {
 
   return (
     <>
-      <div className="grid grid-cols-2 gap-12">
+      <div className="grid grid-cols-2 gap-x-4 gap-y-8 lg:gap-12">
         {data.data.map((item, index) => (
           <VideoItem
             key={index}
