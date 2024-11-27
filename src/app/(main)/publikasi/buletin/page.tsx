@@ -1,34 +1,37 @@
+"use client";
 import { Pagination } from "@/app/components/Pagination";
-import { PhotoItem } from "./PhotoItem";
-import { getBulletins } from "@/app/actions/get-bulletin";
+import { PhotoItem } from "./_components/PhotoItem";
+import { useSearchParams } from "next/navigation";
+import { trpc } from "@/utils/trpc";
 
-type PageProps = {
-  searchParams: Promise<{
-    page: string;
-    limit: string;
-  }>;
-};
+const LIMIT = 8;
 
-export default async function Page(props: PageProps) {
-  const { page = "1", limit = "8" } = await props.searchParams;
-  const { data } = await getBulletins({ limit, page });
-
-  const pages = Math.ceil(data.total / 8);
+export default function Page() {
+  const searchParams = useSearchParams();
+  const limit = searchParams.get("limit");
+  const page = searchParams.get("page");
+  const res = trpc.externalApi.buletin.useQuery({
+    limit: limit ? parseInt(limit) : LIMIT,
+    page: page ? parseInt(page) : 1,
+  });
+  const data = res.data?.data ?? [];
+  const total = res.data?.total ?? 0;
+  const pages = Math.ceil(total / LIMIT);
 
   return (
-    <div>
+    <div className="px-4">
       <div className="grid gap-2 text-center">
-        <h2 className="font-bold text-3xl font-plus-jakarta-sans">
+        <h2 className="font-plus-jakarta-sans text-lg font-bold lg:text-3xl">
           Buletin Info Jaktim
         </h2>
-        <p className="text-xl text-gray-500 font-plus-jakarta-sans">
+        <p className="font-plus-jakarta-sans text-base text-gray-500 lg:text-xl">
           Informasi terkini dan pembaruan penting bagi warga Jakarta Timur
         </p>
       </div>
 
       <div className="mt-12">
-        <div className="grid grid-cols-4 gap-12">
-          {data.data.map((item, index) => (
+        <div className="lf:grid-cols-4 grid grid-cols-2 gap-x-4 gap-y-6 lg:gap-12">
+          {data.map((item, index) => (
             <PhotoItem
               key={index}
               id={item.id}
@@ -37,7 +40,7 @@ export default async function Page(props: PageProps) {
             />
           ))}
         </div>
-        <div className="flex justify-center mt-12">
+        <div className="mt-12 flex justify-center">
           <Pagination total={pages} />
         </div>
       </div>

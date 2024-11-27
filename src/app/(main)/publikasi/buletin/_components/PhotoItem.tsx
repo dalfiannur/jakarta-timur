@@ -16,7 +16,9 @@ export const PhotoItem = ({ id, image, title }: PhotoItemProps) => {
         </div>
       </Link>
       <Link href={`/publikasi/buletin/${id}`}>
-        <h2 className="font-semibold mt-4 font-plus-jakarta-sans">{title}</h2>
+        <h2 className="mt-2 font-plus-jakarta-sans text-xs font-semibold lg:mt-4 lg:text-base">
+          {title}
+        </h2>
       </Link>
     </div>
   );
