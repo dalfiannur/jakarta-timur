@@ -7,8 +7,8 @@ import Link from "next/link";
 export const NewsWidget = ({ data = [] }: { data?: News[] }) => {
   return (
     <div className="font-plus-jakarta-sans">
-      <h3 className="font-semibold text-2xl">Berita Terbaru</h3>
-      <div className="mt-10 grid gap-6">
+      <h3 className="text-lg font-semibold lg:text-2xl">Berita Terbaru</h3>
+      <div className="mt-4 flex flex-col gap-6 lg:mt-10">
         {data.map((data, index) => (
           <Link
             href={`/publikasi/berita/${data.id}`}
@@ -23,17 +23,20 @@ export const NewsWidget = ({ data = [] }: { data?: News[] }) => {
                 className="rounded-xl object-cover"
               />
             </div>
-            <div className="flex-1 grid gap-2">
-              <h4 className="font-semibold line-clamp-2">{data.title}</h4>
+            <div className="flex flex-1 flex-col gap-2">
+              <h4 className="line-clamp-2 text-sm font-semibold lg:text-base">
+                {data.title}
+              </h4>
               <div
-                className="text-sm line-clamp-1 text-gray-600"
+                className="line-clamp-1 text-xs text-gray-600 lg:text-sm"
                 dangerouslySetInnerHTML={{ __html: data.content }}
               />
               <div className="flex items-center gap-2">
-                <div className="text-pink-500">
-                  <Icon name="Calendar" className="w-4 h-4" />
-                </div>
-                <div className="text-sm text-gray-600">
+                <Icon
+                  name="Calendar"
+                  className="aspect-square h-4 text-pink-500"
+                />
+                <div className="text-[10px] text-gray-600 lg:text-sm">
                   {dateFormatter(data.time)}
                 </div>
               </div>

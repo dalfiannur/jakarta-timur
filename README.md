@@ -97,8 +97,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 - [ ] Dashboard
 - [ ] Publikasi
   - [ ] Berita
-    - [ ] List Berita
-    - [ ] Detail Berita
+    - [x] List Berita
+    - [x] Detail Berita
   - [ ] Galeri
     - [ ] List Berita
     - [ ] Detail Berita

@@ -3,18 +3,20 @@ import Link from "next/link";
 export const Tags = ({ data }: { data: { label: string }[] }) => {
   return (
     <div className="font-plus-jakarta-sans">
-      <h6 className="font-bold text-xl">Tags</h6>
-      <div className="mt-2 flex gap-4">
+      <h6 className="text-base font-bold lg:text-xl">Tags</h6>
+      <ul className="mt-2 flex flex-row flex-wrap gap-x-2 gap-y-4 lg:gap-4">
         {data.map((item, index) => (
-          <Link
-            key={index}
-            href={"#"}
-            className="bg-pink-500/10 text-pink-500 rounded-full px-4 py-2 text-sm font-semibold"
-          >
-            {item.label}
-          </Link>
+          <li>
+            <Link
+              key={index}
+              href={"#"}
+              className="whitespace-nowrap rounded-full bg-pink-500/10 px-4 py-2 text-xs font-semibold text-pink-500 lg:text-sm"
+            >
+              {item.label}
+            </Link>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 };

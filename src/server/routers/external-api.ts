@@ -90,7 +90,7 @@ export const externalApi = router({
     }),
 
   findNewsById: procedure.input(z.string()).query(async ({ input }) => {
-    const { data } = await fetchApi<EntityResponse<News>>("/newsphoto", {
+    const { data } = await fetchApi<EntityResponse<News>>("/news", {
       id: input,
     });
     return data;

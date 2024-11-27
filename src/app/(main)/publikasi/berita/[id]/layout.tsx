@@ -1,19 +1,20 @@
+"use client";
 import { ReactNode } from "react";
+import { NewsList } from "./_features/NewsList";
+import { BulletinList } from "../_features/BulletinList";
 
 type LayoutProps = {
   children: ReactNode;
-  news: ReactNode;
-  bulletin: ReactNode;
 };
 
-export default function Layout({ children, news, bulletin }: LayoutProps) {
+export default function Layout({ children }: LayoutProps) {
   return (
-    <div>
-      <div className="mt-12 flex gap-16">
+    <div className="px-4">
+      <div className="mt-6 flex flex-col gap-16 lg:mt-12 lg:flex-row">
         <div className="flex-1">{children}</div>
-        <div className="w-[437px] flex flex-col gap-8">
-          {news}
-          {bulletin}
+        <div className="flex w-auto flex-col gap-8 lg:w-[437px]">
+          <NewsList />
+          <BulletinList />
         </div>
       </div>
     </div>
