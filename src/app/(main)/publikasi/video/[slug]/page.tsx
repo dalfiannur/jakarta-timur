@@ -1,8 +1,10 @@
+"use client";
 import { Icon } from "@/app/icons";
-import { ShareContent } from "../../ShareContent";
-import { Tags } from "../../Tags";
-import { findVideoBySlug } from "@/app/actions/get-videos";
+import { ShareContent } from "../../_components/ShareContent";
+import { Tags } from "../../_components/Tags";
 import { dateFormatter } from "@/utils/date-formatter";
+import { useParams } from "next/navigation";
+import { trpc } from "@/utils/trpc";
 
 type PageProps = {
   params: Promise<{
@@ -10,44 +12,29 @@ type PageProps = {
   }>;
 };
 
-export default async function Page(props: PageProps) {
-  const params = await props.params;
-  const { data } = await findVideoBySlug(params.slug);
+export default function Page(props: PageProps) {
+  const params = useParams();
+  const id = params.id as string;
+  const { data } = trpc.externalApi.findVideoById.useQuery(id);
 
-  return (
+  return data ? (
     <div className="flex-1">
-      <div className="grid gap-4">
-        <div className="text-sm text-gray-500 uppercase font-roboto">
+      <div className="grid gap-2 lg:gap-4">
+        <div className="font-roboto text-xs uppercase text-gray-500 lg:text-xl">
           {data.kategori.cat}
         </div>
-        <h2 className="font-bold text-4xl font-plus-jakarta-sans">
+        <h2 className="font-plus-jakarta-sans text-xl font-bold lg:text-3xl">
           {data.title}
         </h2>
-        <div className="flex gap-4 text-sm font-medium font-plus-jakarta-sans">
-          <div className="flex gap-2 items-center">
-            <div className="text-pink-500">
-              <Icon name="Calendar" className="w-4 h-4" />
-            </div>
+        <div className="flex gap-4 font-plus-jakarta-sans text-xs font-medium lg:text-sm">
+          <div className="flex items-center gap-2">
+            <Icon name="Calendar" className="aspect-square h-4 text-pink-500" />
             <div>{dateFormatter(data.tanggal)}</div>
           </div>
-          {/* <div className="border-l" /> */}
-          {/* <div className="flex gap-2 items-center">
-            <div className="text-pink-500">
-              <Icon name="QuillWrite" className="w-4 h-4" />
-            </div>
-            <div>Sudin Komunikasi</div>
-          </div> */}
-          {/* <div className="border-l" /> */}
-          {/* <div className="flex gap-2 items-center">
-            <div className="text-pink-500">
-              <Icon name="Camera" className="w-4 h-4" />
-            </div>
-            <div>KIP</div>
-          </div> */}
         </div>
       </div>
 
-      <div className="mt-12 relative aspect-video rounded-xl overflow-hidden">
+      <div className="relative mt-6 aspect-video overflow-hidden rounded-xl lg:mt-12">
         <iframe
           id="ytplayer"
           width="100%"
@@ -59,7 +46,7 @@ export default async function Page(props: PageProps) {
       </div>
 
       <div
-        className="grid gap-4 text-gray-600 mt-12 text-justify font-plus-jakarta-sans"
+        className="mt-6 grid gap-4 text-justify font-plus-jakarta-sans text-gray-600 lg:mt-12"
         dangerouslySetInnerHTML={{ __html: data.description }}
       />
 
@@ -78,5 +65,5 @@ export default async function Page(props: PageProps) {
         />
       </div>
     </div>
-  );
+  ) : null;
 }

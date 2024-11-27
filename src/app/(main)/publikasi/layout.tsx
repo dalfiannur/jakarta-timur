@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { PageBreadcrumbs } from "./PageBreadcrumbs";
+import { PageBreadcrumbs } from "./_components/PageBreadcrumbs";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (

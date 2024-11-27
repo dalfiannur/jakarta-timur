@@ -1,15 +1,18 @@
 import { ReactNode } from "react";
+import { NewsList } from "../../_features/NewsList";
 
 type LayoutProps = {
   children: ReactNode;
-  news: ReactNode;
 };
-export default function Layout({ children, news }: LayoutProps) {
+
+export default function Layout({ children }: LayoutProps) {
   return (
-    <div>
-      <div className="mt-12 flex gap-16">
+    <div className="px-4">
+      <div className="mt-12 flex flex-col gap-16 lg:flex-row">
         {children}
-        <div className="w-[437px] flex flex-col gap-12">{news}</div>
+        <div className="flex w-full flex-col gap-12 lg:w-[437px]">
+          <NewsList />
+        </div>
       </div>
     </div>
   );

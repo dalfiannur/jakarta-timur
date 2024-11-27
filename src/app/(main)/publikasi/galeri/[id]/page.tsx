@@ -1,8 +1,8 @@
 "use client";
 import { Icon } from "@/app/icons";
 import Image from "next/image";
-import { ShareContent } from "../../ShareContent";
-import { Tags } from "../../Tags";
+import { ShareContent } from "../../_components/ShareContent";
+import { Tags } from "../../_components/Tags";
 import { dateFormatter } from "@/utils/date-formatter";
 import { useParams } from "next/navigation";
 import { trpc } from "@/utils/trpc";

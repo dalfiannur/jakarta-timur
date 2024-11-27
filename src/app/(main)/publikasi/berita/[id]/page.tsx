@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
 import { Icon } from "@/app/icons";
-import { ShareContent } from "../../ShareContent";
-import { Tags } from "../../Tags";
+import { ShareContent } from "../../_components/ShareContent";
+import { Tags } from "../../_components/Tags";
 import { useParams } from "next/navigation";
 import { trpc } from "@/utils/trpc";
 
