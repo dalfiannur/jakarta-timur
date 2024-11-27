@@ -13,6 +13,6 @@ export interface News {
   img_url: string;
   kategori: {
     id: number;
-    name: string;
+    cat: string;
   };
 }

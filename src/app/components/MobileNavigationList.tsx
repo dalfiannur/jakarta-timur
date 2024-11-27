@@ -46,6 +46,15 @@ export const MobileNavigationList = () => {
           />
         ))}
       </DropdownItem>
+      <DropdownItem label="Publikasi">
+        {links.publikasi.map((link, index) => (
+          <Item
+            key={index}
+            label={(link as Link).title}
+            href={(link as Link).link}
+          />
+        ))}
+      </DropdownItem>
     </ul>
   );
 };

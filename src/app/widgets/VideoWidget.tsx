@@ -8,10 +8,10 @@ type VideoWidgetProps = {
 export const VideoWidget = ({ data }: VideoWidgetProps) => {
   return (
     <div>
-      <h3 className="font-semibold text-2xl font-plus-jakarta-sans">
+      <h3 className="font-plus-jakarta-sans text-lg font-semibold lg:text-2xl">
         Video Informasi dan Edukasi
       </h3>
-      <div className="mt-10 grid gap-6">
+      <div className="mt-4 flex flex-col gap-6 lg:mt-10">
         {data.map((item, index) => (
           <div key={index} className="flex items-center gap-4">
             <div className="relative aspect-square w-20">
@@ -22,7 +22,9 @@ export const VideoWidget = ({ data }: VideoWidgetProps) => {
                 className="rounded-xl object-cover"
               />
             </div>
-            <h4 className="font-semibold flex-1">{item.title}</h4>
+            <h4 className="flex-1 text-sm font-semibold lg:text-base">
+              {item.title}
+            </h4>
           </div>
         ))}
       </div>

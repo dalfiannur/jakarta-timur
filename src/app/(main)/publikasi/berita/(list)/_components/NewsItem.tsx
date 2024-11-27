@@ -31,37 +31,44 @@ export const NewsItem = ({
           <Image src={image} alt="#" fill className="rounded-xl object-cover" />
         </div>
       </Link>
-      <div className="mt-6 grid gap-4">
-        <div className="text-sm font-plus-jakarta-sans">{category}</div>
+      <div className="mt-3 flex flex-col gap-1 lg:mt-6 lg:gap-4">
+        <div className="font-roboto text-[10px] text-gray-600 lg:text-sm">
+          {category}
+        </div>
         <Link href="/publikasi/berita/1">
-          <h2 className="text-2xl font-bold font-plus-jakarta-sans">{title}</h2>
+          <h2 className="line-clamp-2 font-plus-jakarta-sans text-sm font-bold text-gray-900 lg:text-2xl">
+            {title}
+          </h2>
         </Link>
         <div
-          className="font-medium text-gray-600 line-clamp-2 font-plus-jakarta-sans"
+          className="line-clamp-2 font-plus-jakarta-sans text-xs font-medium text-gray-600 lg:text-base"
           dangerouslySetInnerHTML={{ __html: content }}
         />
 
-        <div className="flex gap-4 text-sm font-medium font-plus-jakarta-sans">
-          <div className="flex gap-2 items-center">
-            <div className="text-pink-500">
-              <Icon name="Calendar" className="w-4 h-4" />
-            </div>
+        <div className="flex gap-2 font-plus-jakarta-sans text-[8px] font-medium lg:gap-4 lg:text-sm">
+          <div className="flex items-center gap-1 lg:gap-2">
+            <Icon
+              name="Calendar"
+              className="aspect-square h-2 text-pink-500 lg:h-4"
+            />
             <div>{dateFormatter(date)}</div>
           </div>
           <div className="border-l" />
-          <div className="flex gap-2 items-center">
-            <div className="text-pink-500">
-              <Icon name="QuillWrite" className="w-4 h-4" />
-            </div>
+          <div className="flex items-center gap-1 lg:gap-2">
+            <Icon
+              name="QuillWrite"
+              className="aspect-square h-2 text-pink-500 lg:h-4"
+            />
             <div>{author}</div>
           </div>
           {imageName && (
             <>
               <div className="border-l" />
-              <div className="flex gap-2 items-center">
-                <div className="text-pink-500">
-                  <Icon name="Camera" className="w-4 h-4" />
-                </div>
+              <div className="flex items-center gap-1 lg:gap-2">
+                <Icon
+                  name="Camera"
+                  className="aspect-square h-2 text-pink-500 lg:h-4"
+                />
                 <div>{imageName}</div>
               </div>
             </>

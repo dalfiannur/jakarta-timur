@@ -84,11 +84,11 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
   - [x] PTSP
   - [x] Kanal Aduan
   - [x] Kesehatan
-  - [ ] Internet Jak Wifi
+  - [x] Internet Jak Wifi
   - [x] Pajak
 - [ ] Informasi
-  - [ ] Pariwisata
-  - [ ] Kebudayaan
+  - [x] Pariwisata
+  - [x] Kebudayaan
   - [ ] RPTRA
   - [ ] Urban Farming
   - [ ] Inovasi

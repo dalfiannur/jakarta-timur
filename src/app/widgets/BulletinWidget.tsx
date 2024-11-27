@@ -8,12 +8,12 @@ type BulletinWidgetProps = {
 export const BulletinWidget = ({ data = [] }: BulletinWidgetProps) => {
   return (
     <div>
-      <h3 className="font-semibold text-2xl font-plus-jakarta-sans">
+      <h3 className="font-plus-jakarta-sans text-lg font-semibold lg:text-2xl">
         Buletin Info Jaktim
       </h3>
-      <div className="mt-10 grid grid-cols-2 gap-x-4 gap-y-8">
+      <div className="mt-4 grid grid-cols-2 gap-x-4 gap-y-8 lg:mt-10">
         {data.map((item, index) => (
-          <div key={index} className="flex flex-col gap-4">
+          <div key={index} className="flex flex-col gap-2 lg:gap-4">
             <div className="relative aspect-square w-full">
               <Image
                 src={item.img_url}
@@ -22,7 +22,7 @@ export const BulletinWidget = ({ data = [] }: BulletinWidgetProps) => {
                 className="rounded-xl object-cover"
               />
             </div>
-            <h4 className="font-semibold text-sm font-plus-jakarta-sans">
+            <h4 className="font-plus-jakarta-sans text-xs font-semibold lg:text-sm">
               {item.title}
             </h4>
           </div>

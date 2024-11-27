@@ -1,31 +1,28 @@
+"use client";
 import { ReactNode } from "react";
+import { VideoList } from "./_features/VideoList";
+import { BulletinList } from "./_features/BulletinList";
 
 type LayoutProps = {
   children: ReactNode;
-  bulletin: ReactNode;
-  video: ReactNode;
 };
 
-export default async function Layout({
-  children,
-  bulletin,
-  video,
-}: LayoutProps) {
+export default function Layout({ children }: LayoutProps) {
   return (
-    <div>
-      <div className="grid gap-2 text-center">
-        <h2 className="font-bold text-3xl font-plus-jakarta-sans">
+    <div className="px-4">
+      <div className="flex flex-col gap-1 text-center lg:gap-2">
+        <h2 className="font-plus-jakarta-sans text-xl font-bold lg:text-3xl">
           Berita Pemerintah Terkini
         </h2>
-        <p className="text-xl text-gray-500 font-plus-jakarta-sans">
+        <p className="font-plus-jakarta-sans text-base text-gray-500 lg:text-xl">
           Baca Berita Terkini Program dan Kegiatan Pemerintah
         </p>
       </div>
-      <div className="mt-12 flex gap-16">
+      <div className="mt-4 flex flex-col gap-12 lg:mt-12 lg:flex-row lg:gap-16">
         <div className="flex-1">{children}</div>
-        <div className="w-[437px] flex flex-col gap-12">
-          {video}
-          {bulletin}
+        <div className="flex w-auto flex-col gap-12 lg:w-[437px]">
+          <VideoList />
+          <BulletinList />
         </div>
       </div>
     </div>
