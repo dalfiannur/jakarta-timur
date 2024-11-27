@@ -55,7 +55,7 @@ export const NewsSlider = ({ data }: { data: News[] }) => {
                   },
                 }}
               >
-                <div className="grid grid-cols-2 md:grid-cols-4 grid-rows-4 md:grid-rows-2 gap-4">
+                <div className="grid grid-cols-2 grid-rows-4 gap-4 md:grid-cols-4 md:grid-rows-2">
                   {items.map((item, index) => (
                     <NewsSliderItem
                       key={item.id}
@@ -63,7 +63,7 @@ export const NewsSlider = ({ data }: { data: News[] }) => {
                       primary={index === 0}
                       image={item.img_url}
                       title={item.title}
-                      category={item.kategori.name}
+                      category={item.kategori.cat}
                       date={item.time}
                       author={item.writer}
                       imageName={item.img_name}
@@ -84,7 +84,7 @@ export const NewsSlider = ({ data }: { data: News[] }) => {
                 key={index}
                 onClick={() => step$.set(index)}
                 data-selected={index === step$.get() ? true : undefined}
-                className="bg-gray-300 rounded-full w-2 h-2 data-[selected]:w-6 data-[selected]:bg-pink-500 transition-all"
+                className="h-2 w-2 rounded-full bg-gray-300 transition-all data-[selected]:w-6 data-[selected]:bg-pink-500"
               />
             ))
           }

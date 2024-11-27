@@ -8,10 +8,10 @@ import { NumberList } from "@/app/components/NumberList";
 
 export default function Page() {
   return (
-    <div className="border-l pl-6 flex-1">
+    <div className="flex-1 border-l pl-6">
       <SectionTitle>Visi Misi &amp; Kegiatan Strategis</SectionTitle>
       <div className="mt-0 lg:mt-8">
-        <div className="flex flex-col lg:flex-row gap-10 lg:gap-8 bg-[#0077B5] rounded-3xl text-white px-8 py-6 relative overflow-hidden">
+        <div className="relative flex flex-col gap-10 overflow-hidden rounded-3xl bg-[#0077B5] px-8 py-6 text-white lg:flex-row lg:gap-8">
           <svg
             style={{
               position: "absolute",
@@ -49,8 +49,8 @@ export default function Page() {
           </svg>
 
           <div className="font-plus-jakarta-sans">
-            <h4 className="text-center text-2xl lg:text-3xl font-bold">Visi</h4>
-            <div className="text-center lg:text-left mt-8 font-semibold text-xl lg:text-2xl">
+            <h4 className="text-center text-2xl font-bold lg:text-3xl">Visi</h4>
+            <div className="mt-8 text-center text-xl font-semibold lg:text-left lg:text-2xl">
               <span className="relative">
                 <svg
                   width="56"
@@ -67,12 +67,12 @@ export default function Page() {
                   <path
                     d="M18.876 27.1368H7.93268C8.11935 16.2401 10.266 14.4434 16.9627 10.4768C17.7327 10.0101 17.9893 9.0301 17.5227 8.23676C17.0793 7.46676 16.076 7.2101 15.306 7.67676C7.41935 12.3434 4.66602 15.1901 4.66602 28.7468V41.3234C4.66602 45.3134 7.90935 48.5334 11.876 48.5334H18.876C22.9827 48.5334 26.086 45.4301 26.086 41.3234V34.3234C26.086 30.2401 22.9827 27.1368 18.876 27.1368Z"
                     fill="white"
-                    fill-opacity="0.1"
+                    fillOpacity="0.1"
                   />
                   <path
                     d="M44.122 27.1368H33.1787C33.3653 16.2401 35.512 14.4434 42.2087 10.4768C42.9787 10.0101 43.2353 9.0301 42.7687 8.23676C42.302 7.46676 41.322 7.2101 40.5287 7.67676C32.642 12.3434 29.8887 15.1901 29.8887 28.7701V41.3468C29.8887 45.3368 33.132 48.5568 37.0987 48.5568H44.0987C48.2053 48.5568 51.3087 45.4534 51.3087 41.3468V34.3468C51.332 30.2401 48.2287 27.1368 44.122 27.1368Z"
                     fill="white"
-                    fill-opacity="0.1"
+                    fillOpacity="0.1"
                   />
                 </svg>
                 T
@@ -97,18 +97,18 @@ export default function Page() {
                   <path
                     d="M18.876 27.1368H7.93268C8.11935 16.2401 10.266 14.4434 16.9627 10.4768C17.7327 10.0101 17.9893 9.0301 17.5227 8.23676C17.0793 7.46676 16.076 7.2101 15.306 7.67676C7.41935 12.3434 4.66602 15.1901 4.66602 28.7468V41.3234C4.66602 45.3134 7.90935 48.5334 11.876 48.5334H18.876C22.9827 48.5334 26.086 45.4301 26.086 41.3234V34.3234C26.086 30.2401 22.9827 27.1368 18.876 27.1368Z"
                     fill="white"
-                    fill-opacity="0.1"
+                    fillOpacity="0.1"
                   />
                   <path
                     d="M44.122 27.1368H33.1787C33.3653 16.2401 35.512 14.4434 42.2087 10.4768C42.9787 10.0101 43.2353 9.0301 42.7687 8.23676C42.302 7.46676 41.322 7.2101 40.5287 7.67676C32.642 12.3434 29.8887 15.1901 29.8887 28.7701V41.3468C29.8887 45.3368 33.132 48.5568 37.0987 48.5568H44.0987C48.2053 48.5568 51.3087 45.4534 51.3087 41.3468V34.3468C51.332 30.2401 48.2287 27.1368 44.122 27.1368Z"
                     fill="white"
-                    fill-opacity="0.1"
+                    fillOpacity="0.1"
                   />
                 </svg>
               </span>
             </div>
           </div>
-          <div className="aspect-video h-52 relative">
+          <div className="relative aspect-video h-52">
             <Image
               src="/img/kantor-walikota-jaktim.png"
               alt="Kantor Walikota Administrasi Jakarta Timur"
@@ -118,12 +118,12 @@ export default function Page() {
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col-reverse lg:flex-row items-center gap-12">
+        <div className="mt-8 flex flex-col-reverse items-center gap-12 lg:flex-row">
           <div className="w-80">
             <MisiArt />
           </div>
           <div className="flex-1 font-plus-jakarta-sans">
-            <h4 className="text-center text-xl lg:text-3xl font-bold text-pink-500 mb-8">
+            <h4 className="mb-8 text-center text-xl font-bold text-pink-500 lg:text-3xl">
               Misi
             </h4>
             <NumberList
@@ -137,47 +137,65 @@ export default function Page() {
           </div>
         </div>
 
-        <div className="border-t my-10" />
+        <div className="my-10 border-t" />
 
-        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-14 p-0 lg:p-8">
+        <div className="flex flex-col items-center gap-8 p-0 lg:flex-row lg:gap-14 lg:p-8">
           <div>
-            <h4 className="text-center font-bold text-lg lg:text-3xl font-plus-jakarta-sans">
+            <h4 className="text-center font-plus-jakarta-sans text-lg font-bold lg:text-3xl">
               Kegiatan Strategis
             </h4>
-            <p className="mt-4 text-base lg:text-xl text-gray-600 font-roboto">
+            <p className="mt-4 font-roboto text-base text-gray-600 lg:text-xl">
               Proyek Strategis yang Mempersiapkan Kota untuk Masa Depan yang
               Lebih Baik.
             </p>
           </div>
 
-          <div className="hidden lg:flex items-center gap-5 font-plus-jakarta-sans">
-            <Card icon={<Icon name="FloodWarningColored" className="w-10 h-10" />}>
+          <div className="hidden items-center gap-5 font-plus-jakarta-sans lg:flex">
+            <Card
+              icon={<Icon name="FloodWarningColored" className="h-10 w-10" />}
+            >
               Pengendalian dan Penanganan Banjir
             </Card>
             <div className="grid gap-5">
-              <Card icon={<Icon name="GlobalIncreaseColored" className="w-10 h-10" />}>
+              <Card
+                icon={
+                  <Icon name="GlobalIncreaseColored" className="h-10 w-10" />
+                }
+              >
                 Peningkatan Ekonomi Kreatif
               </Card>
-              <Card icon={<Icon name="PcCovidColored" className="w-10 h-10" />}>
+              <Card icon={<Icon name="PcCovidColored" className="h-10 w-10" />}>
                 Penanganan Pasca Covid
               </Card>
             </div>
-            <Card icon={<Icon name="NetworkSettingLineColored" className="w-10 h-10" />}>
+            <Card
+              icon={
+                <Icon name="NetworkSettingLineColored" className="h-10 w-10" />
+              }
+            >
               Penataan Kawasan
             </Card>
           </div>
 
-          <div className="grid lg:hidden grid-cols-2 gap-5 font-plus-jakarta-sans">
-            <Card icon={<Icon name="FloodWarningColored" className="w-10 h-10" />}>
+          <div className="grid grid-cols-2 gap-5 font-plus-jakarta-sans lg:hidden">
+            <Card
+              icon={<Icon name="FloodWarningColored" className="h-10 w-10" />}
+            >
               Pengendalian dan Penanganan Banjir
             </Card>
-            <Card icon={<Icon name="GlobalIncreaseColored" className="w-10 h-10" />}>
+            <Card
+              icon={<Icon name="GlobalIncreaseColored" className="h-10 w-10" />}
+            >
               Peningkatan Ekonomi Kreatif
             </Card>
-            <Card icon={<Icon name="PcCovidColored" className="w-10 h-10" />}>
+            <Card icon={<Icon name="PcCovidColored" className="h-10 w-10" />}>
               Penanganan Pasca Covid
             </Card>
-            <Card icon={<Icon name="NetworkSettingLineColored" className="w-10 h-10" />}>
+            <Card
+              icon={
+                <Icon name="NetworkSettingLineColored" className="h-10 w-10" />
+              }
+            >
               Penataan Kawasan
             </Card>
           </div>

@@ -1,7 +1,7 @@
 "use client";
 import { SearchInput } from "@/app/components/SearchInput";
 import { SelectDistrict } from "@/app/sections/SelectDistrict";
-import { SelectSchoolLevel } from "../_features/SelectSchoolLevel";
+import { SelectSchoolLevel } from "./SelectSchoolLevel";
 
 export const FilterSection = () => {
   return (

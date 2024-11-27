@@ -13,6 +13,7 @@ import { HealthCare } from "@/types/health-care";
 import { School } from "@/types/school";
 import { Provost } from "@/types/provost";
 import { GovEmployer } from "@/types/gov-employer";
+import { JakWifi } from "@/types/jakwifi";
 
 const BASE_URL_API = "https://timur.jakarta.go.id/API_Timur/api";
 

@@ -7,7 +7,6 @@ import {
   DisclosureButton,
   DisclosurePanel,
 } from "@headlessui/react";
-import { tv } from "tailwind-variants";
 
 export const ListNumberAccordion = ({
   children,

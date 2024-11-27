@@ -6,13 +6,7 @@ import { dateFormatter } from "@/utils/date-formatter";
 import { useParams } from "next/navigation";
 import { trpc } from "@/utils/trpc";
 
-type PageProps = {
-  params: Promise<{
-    slug: string;
-  }>;
-};
-
-export default function Page(props: PageProps) {
+export default function Page() {
   const params = useParams();
   const id = params.id as string;
   const { data } = trpc.externalApi.findVideoById.useQuery(id);

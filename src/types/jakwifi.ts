@@ -1,4 +1,4 @@
-interface JakWifi {
+export interface JakWifi {
   id: number;
   kecamatan: string;
   kelurahan: string;

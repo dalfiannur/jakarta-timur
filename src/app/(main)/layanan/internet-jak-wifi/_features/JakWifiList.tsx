@@ -11,11 +11,7 @@ import { store$ } from "../store";
 
 const LIMIT = 4;
 
-export const JakWifiList = ({
-  onItemClicked,
-}: {
-  onItemClicked?: (date: JakWifi) => void;
-}) => {
+export const JakWifiList = () => {
   const store = useStore(store$);
   const [page, setPage] = useState(1);
   const res = trpc.externalApi.getJakWifi.useQuery({
@@ -40,7 +36,12 @@ export const JakWifiList = ({
               subDistrict={item.kelurahan}
               rw={item.RW}
               address={item.Alamat}
-              onClick={() => onItemClicked?.(item)}
+              onClick={() => {
+                store$.setKey("map", {
+                  longitude: parseFloat(item.Longitude),
+                  latitude: parseFloat(item.Latitude),
+                });
+              }}
             />
           ))}
 
