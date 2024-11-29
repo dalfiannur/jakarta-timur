@@ -60,20 +60,19 @@ const ButtonTrigger = ({
   return (
     <DisclosureButton
       data-active={isOpened}
-      className="group flex w-full items-center gap-6 rounded-2xl border p-4 transition-all duration-300 data-[active=true]:rounded-b-none data-[active=true]:border-blue-100 data-[active=true]:bg-blue-100 lg:p-6"
+      className="group flex w-full items-center gap-6 rounded-2xl border p-2 transition-all duration-300 data-[active=true]:rounded-b-none data-[active=true]:border-blue-100 data-[active=true]:bg-blue-100 lg:p-6"
     >
-      <div className="flex aspect-square w-8 items-center justify-center rounded-xl bg-gray-200/60 text-xs font-bold text-gray-400 transition-all duration-300 group-data-[active=true]:bg-blue-500 group-data-[active=true]:text-white lg:h-10 lg:text-sm">
+      <div className="flex aspect-square h-8 items-center justify-center rounded-xl bg-gray-200/60 text-xs font-bold text-gray-400 transition-all duration-300 group-data-[active=true]:bg-blue-500 group-data-[active=true]:text-white lg:h-10 lg:text-sm">
         {numberLabel}
       </div>
       <div className="flex-1 text-left text-lg font-bold lg:text-2xl">
         {label}
       </div>
-      <div className="text-blue-500">
-        <Icon
-          name={isOpened ? "MinusCircle" : "CirclePlus"}
-          className="aspect-square w-8 lg:w-12"
-        />
-      </div>
+
+      <Icon
+        name={isOpened ? "MinusCircle" : "CirclePlus"}
+        className="aspect-square w-8 text-blue-500 lg:w-12"
+      />
     </DisclosureButton>
   );
 };
