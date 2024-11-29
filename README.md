@@ -60,24 +60,24 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ## Pages
 
 - [x] Beranda
-- [ ] Pemerintah Kota
-  - [ ] Tentang Jakarta Timur
+- [x] Pemerintah Kota
+  - [x] Tentang Jakarta Timur
     - [x] Visi Misi & Kegiatan Strategis
     - [x] Peta dan Batas Wilayah
     - [x] Demografis
     - [x] Prestasi
-  - [ ] Satuan dan Unit Kerja
+  - [x] Satuan dan Unit Kerja
     - [x] Struktur Organisasi
     - [ ] Walikota
     - [x] Sekretariat Kota
     - [x] Bagian Kota
     - [x] UKPD
     - [x] Kecamatan
-      - [ ] Detail
+      - [x] Detail
     - [x] Kelurahan
-      - [ ] Detail
+      - [x] Detail
   - [ ] Kepegawaian
-- [ ] Layanan
+- [x] Layanan
   - [x] Pendidikan
     - [x] Data Sekolah
   - [x] Transportasi
