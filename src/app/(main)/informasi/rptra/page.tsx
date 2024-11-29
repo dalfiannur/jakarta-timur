@@ -12,7 +12,7 @@ export default function Page() {
         rounded={false}
         topSpacer
       />
-      <div className="container mx-auto py-10">
+      <div className="container mx-auto py-2 lg:py-10">
         <SectionBox
           title="Fasilitas Ramah Anak di Jakarta Timur"
           subtitle="Jelajahi ruang publik terintegrasi yang dirancang untuk memberikan lingkungan yang aman dan edukatif di wilayah Jakarta Timur"

@@ -232,15 +232,20 @@ export const Content = () => {
                 key={index}
                 className="rounded-none border p-4 lg:rounded-xl lg:p-8"
               >
-                <div className="w-fit rounded bg-blue-100 p-3">
-                  <Icon name="ParkMultiColored" className="h-10 w-10" />
+                <div className="flex aspect-square h-12 items-center justify-center rounded-xl bg-blue-100 lg:h-16">
+                  <Icon
+                    name="ParkMultiColored"
+                    className="aspect-square h-6 lg:h-8"
+                  />
                 </div>
                 <div className="mt-4 grid gap-2">
-                  <h4 className="text-lg font-bold">{row.name}</h4>
-                  <p className="text-gray-500">{row.address}</p>
+                  <h4 className="text-base font-bold lg:text-lg">{row.name}</h4>
+                  <p className="text-sm text-gray-600 lg:text-base">
+                    {row.address}
+                  </p>
                   <Link
                     href={row.link}
-                    className="inline-flex w-fit gap-2 rounded-lg border border-pink-500 px-2 py-[6px] text-[10px] text-pink-500"
+                    className="mt-2 inline-flex w-fit gap-2 rounded-lg border border-pink-500 px-2 py-[6px] text-[10px] text-pink-500"
                   >
                     <Icon
                       name="GoogleMapColored"

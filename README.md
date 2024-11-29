@@ -89,7 +89,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 - [ ] Informasi
   - [x] Pariwisata
   - [x] Kebudayaan
-  - [ ] RPTRA
+  - [x] RPTRA
   - [ ] Urban Farming
   - [x] Inovasi
   - [x] Statistik
