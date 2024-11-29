@@ -55,6 +55,7 @@ export const MobileNavigationList = () => {
           />
         ))}
       </DropdownItem>
+      <Item label="PPID" href="/ppid" />
     </ul>
   );
 };

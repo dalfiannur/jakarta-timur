@@ -93,9 +93,9 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
   - [ ] Urban Farming
   - [ ] Inovasi
   - [x] Statistik
-- [ ] PPID
+- [x] PPID
 - [ ] Dashboard
-- [ ] Publikasi
+- [x] Publikasi
   - [x] Berita
     - [x] List Berita
     - [x] Detail Berita
