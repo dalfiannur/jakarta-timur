@@ -25,7 +25,7 @@ export const PublicInformationSlider = () => {
         {
           breakpoint: 1024,
           settings: {
-            slidesToShow: 5,
+            slidesToShow: 3,
           },
         },
         {
