@@ -133,6 +133,13 @@ export const externalApi = router({
     return data;
   }),
 
+  findVideoBySlug: procedure.input(z.string()).query(async ({ input }) => {
+    const { data } = await fetchApi<EntityResponse<Video>>("/video", {
+      slug: input,
+    });
+    return data;
+  }),
+
   getDistricts: procedure.query(async () => {
     const { data } = await fetchApi<PaginationResponse<District>>(
       "/kecamatan",

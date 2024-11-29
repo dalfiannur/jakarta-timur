@@ -102,9 +102,9 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
   - [x] Galeri
     - [x] List Berita
     - [x] Detail Berita
-  - [ ] Video
-    - [ ] List Berita
-    - [ ] Detail Berita
+  - [x] Video
+    - [x] List Berita
+    - [x] Detail Berita
   - [x] Buletin
     - [x] List Bulletin
     - [x] Detail Bulletin
