@@ -91,7 +91,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
   - [x] Kebudayaan
   - [ ] RPTRA
   - [ ] Urban Farming
-  - [ ] Inovasi
+  - [x] Inovasi
   - [x] Statistik
 - [x] PPID
 - [ ] Dashboard

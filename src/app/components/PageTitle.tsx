@@ -16,8 +16,11 @@ export const PageTitle = ({
   topSpacer,
 }: PageTitleProps) => {
   return (
-    <div className="mt-[75px] lg:mt-0 relative overflow-hidden">
-      <div data-rounded={rounded} className="group relative aspect-[3/2] lg:aspect-[4/1]">
+    <div className="relative mt-[75px] overflow-hidden lg:mt-0">
+      <div
+        data-rounded={rounded}
+        className="group relative aspect-[4/2] lg:aspect-[4/1]"
+      >
         <Image
           src={image}
           fill
@@ -28,10 +31,14 @@ export const PageTitle = ({
       </div>
       <div
         data-spacer={topSpacer}
-        className="absolute flex flex-col justify-center items-center z-0 text-center text-white inset-0 data-[spacer=true]:top-20 gap-4"
+        className="absolute inset-0 z-0 flex flex-col items-center justify-center gap-4 text-center text-white data-[spacer=true]:top-0 lg:data-[spacer=true]:top-20"
       >
-        <h2 className="text-2xl lg:text-6xl font-bold uppercase font-plus-jakarta-sans">{title}</h2>
-        <h4 className="text-sm lg:text-2xl font-semibold font-roboto">{subtitle}</h4>
+        <h2 className="font-plus-jakarta-sans text-2xl font-bold uppercase lg:text-6xl">
+          {title}
+        </h2>
+        <h4 className="font-roboto text-sm font-semibold lg:text-2xl">
+          {subtitle}
+        </h4>
       </div>
     </div>
   );
