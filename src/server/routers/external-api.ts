@@ -203,6 +203,14 @@ export const externalApi = router({
     return data.sort((a, b) => (a.id < b.id ? -1 : 1));
   }),
 
+  getExProvost: procedure.query(async () => {
+    const { data } = await fetchApi<PaginationResponse<Provost>>(
+      "/ekswalikota",
+      {},
+    );
+    return data;
+  }),
+
   getGovSecretariatEmployers: procedure.query(async () => {
     const { data } = await fetchApi<PaginationResponse<GovEmployer>>(
       "/perangkatkota",
