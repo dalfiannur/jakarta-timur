@@ -95,6 +95,15 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
   - [x] Statistik
 - [x] PPID
 - [ ] Dashboard
+  - [x] Overview
+  - [x] Kependudukan
+  - [x] Pendidikan
+  - [x] Kesehatan
+  - [x] Industri
+  - [x] Ekonomi
+  - [ ] Lingkungan Hidup
+  - [ ] Demokrasi
+  - [ ] Kesejahteraan
 - [x] Publikasi
   - [x] Berita
     - [x] List Berita

@@ -1,29 +1,84 @@
 "use client";
+import { tv, VariantProps } from "tailwind-variants";
 import { Icon } from "../icons";
 
-export const SearchInput = ({
-  onChange,
-  classNames,
-}: {
+const styles = tv(
+  {
+    slots: {
+      root: "group relative border overflow-hidden flex items-center",
+      icon: "absolute aspect-square",
+      input: "peer pr-4 focus:outline-none",
+    },
+    variants: {
+      size: {
+        sm: {
+          root: "w-full rounded",
+          icon: "left-2 h-4",
+          input: "pl-8 py-2 text-xs",
+        },
+        md: {
+          root: "flex-1 rounded-lg",
+          icon: "left-2 h-5",
+          input: "pl-8 py-1 text-sm",
+        },
+        lg: {
+          root: "rounded-xl",
+          icon: "left-4 h-6",
+          input: "pl-14 py-2 text-base",
+        },
+      },
+      color: {
+        pink: {
+          root: "focus-within:border-pink-500",
+          icon: "group-focus-within:text-pink-500",
+        },
+        orange: {
+          root: "focus-within:border-orange-500",
+          icon: "group-focus-within:text-orange-500",
+        },
+      },
+    },
+    defaultVariants: {
+      size: "lg",
+      color: "pink",
+    },
+  },
+  { responsiveVariants: ["md", "lg"] },
+);
+
+type Variant = Omit<VariantProps<typeof styles>, "size">;
+
+type SearchInputProps = Variant & {
   onChange?: (value: string) => void;
+  placeholder?: string;
   classNames?: {
     root?: string;
     icon?: string;
     input?: string;
   };
-}) => {
-  return (
-    <div
-      className={`group relative border rounded-xl overflow-hidden flex items-center focus-within:border-pink-500 ${classNames?.root}`}
-    >
-      <Icon
-        name="Search"
-        className={`w-6 h-6 absolute left-2 group-focus-within:text-pink-500 ${classNames?.icon}`}
-      />
+};
 
+export const SearchInput = ({
+  onChange,
+  classNames,
+  placeholder,
+  ...props
+}: SearchInputProps) => {
+  const x = styles({
+    ...props,
+    size: {
+      initial: "sm",
+      md: "md",
+      lg: "lg",
+    },
+  });
+
+  return (
+    <div className={x.root({ className: classNames?.root })}>
+      <Icon name="Search" className={x.icon({ className: classNames?.icon })} />
       <input
-        placeholder="Pencarian..."
-        className={`peer pl-10 pr-4 py-2 focus:outline-none ${classNames?.input}`}
+        placeholder={placeholder}
+        className={x.input({ className: classNames?.input })}
         onChange={(e) => onChange?.(e.currentTarget.value)}
       />
     </div>

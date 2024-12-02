@@ -12,10 +12,10 @@ export const PageWrapper = ({
   children,
 }: PageWrapperProps) => {
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 px-4">
       <div className="text-gray-950">
-        <h2 className="text-2xl font-plus-jakarta-sans font-bold">{title}</h2>
-        <p className="mt-4 text-lg font-roboto">{description}</p>
+        <h2 className="font-plus-jakarta-sans text-2xl font-bold">{title}</h2>
+        <p className="mt-2 font-roboto text-lg">{description}</p>
       </div>
       {children}
     </div>

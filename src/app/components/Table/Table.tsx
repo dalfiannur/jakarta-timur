@@ -11,12 +11,21 @@ type ColumnMeta = {
 
 export const Table = <TColumn,>({
   columns,
+  footer = true,
   data = [],
+  classNames,
 }: {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   columns: any[];
-
+  footer?: boolean;
   data: TColumn[];
+  classNames?: {
+    tbody?: {
+      tr?: {
+        base?: string;
+      };
+    };
+  };
 }) => {
   const table = useReactTable({
     data,
@@ -31,7 +40,7 @@ export const Table = <TColumn,>({
     .flat();
 
   return (
-    <table className="rounded-t-2xl overflow-hidden w-full">
+    <table className="w-full overflow-hidden rounded-t-2xl">
       <thead>
         {headerGroups.map((headerGroup) => (
           <tr key={headerGroup.id} className="bg-[#E9F6FE]">
@@ -52,7 +61,7 @@ export const Table = <TColumn,>({
                   key={header.id}
                   colSpan={header.colSpan}
                   rowSpan={rowSpan}
-                  className="px-3 py-2 text-center text-sm font-plus-jakarta-sans font-medium text-[#23272E]"
+                  className="px-3 py-2 text-center font-plus-jakarta-sans text-sm font-medium text-[#23272E]"
                 >
                   {flexRender(
                     header.column.columnDef.header,
@@ -66,7 +75,7 @@ export const Table = <TColumn,>({
       </thead>
       <tbody>
         {table.getRowModel().rows.map((row, index) => (
-          <tr key={row.id}>
+          <tr key={row.id} className={classNames?.tbody?.tr?.base}>
             {row.getVisibleCells().map((cell) => (
               <td
                 key={cell.id}
@@ -79,21 +88,23 @@ export const Table = <TColumn,>({
           </tr>
         ))}
       </tbody>
-      <tfoot className="bg-[#1DA1F2] text-white text-center font-roboto text-sm font-medium">
-        <tr>
-          {footerColumns.map((column, index) => (
-            <th
-              key={column.id}
-              data-rl={index === 0}
-              data-rr={index === footerColumns.length - 1}
-              className="data-[rl=true]:rounded-l-xl data-[rr=true]:rounded-r-xl p-4"
-            >
-              {/* @ts-expect-error invalid implementation */}
-              {column.columnDef.footer({ table })}
-            </th>
-          ))}
-        </tr>
-      </tfoot>
+      {footer && (
+        <tfoot className="bg-[#1DA1F2] text-center font-roboto text-sm font-medium text-white">
+          <tr>
+            {footerColumns.map((column, index) => (
+              <th
+                key={column.id}
+                data-rl={index === 0}
+                data-rr={index === footerColumns.length - 1}
+                className="p-4 data-[rl=true]:rounded-l-xl data-[rr=true]:rounded-r-xl"
+              >
+                {/* @ts-expect-error invalid implementation */}
+                {column.columnDef?.footer({ table })}
+              </th>
+            ))}
+          </tr>
+        </tfoot>
+      )}
     </table>
   );
 };

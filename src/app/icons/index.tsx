@@ -2,6 +2,7 @@ import { ArrowRight } from "./ArrowRight";
 import { ArticleLine } from "./ArticleLine";
 import { ArtTrack } from "./ArtTrack";
 import { BriefcaseColored } from "./BriefcaseColored";
+import { BusinessMan } from "./BusinessMan";
 import { BusSign } from "./BusSign";
 import { BusSignColored } from "./BusSignColored";
 import { Calendar } from "./Calendar";
@@ -14,10 +15,12 @@ import { CirclePlus } from "./CirclePlus";
 import { ClarityOrganizationSolid } from "./ClarityOrganizationSolid";
 import { CustomerService } from "./CustomerService";
 import { CustomerServiceColored } from "./CustomerServiceColored";
+import { Demokrasi } from "./Demokrasi";
 import { District } from "./District";
 import { DocumentChecklistColored } from "./DocumentChecklistColored";
 import { Download } from "./Download";
 import { EcoFactoryColored } from "./EcoFactoryColored";
+import { Ekonomi } from "./Ekonomi";
 import { Employee } from "./Employee";
 import { Employees } from "./Employees";
 import { FacebookColored } from "./FacebookColored";
@@ -30,13 +33,19 @@ import { GoalsFill } from "./GoalsFill";
 import { GoogleMapColored } from "./GoogleMapColored";
 import { GreenEnergy } from "./GreenEnergy";
 import { GreenEnergyColored } from "./GreenEnergyColored";
+import { Grid2Line } from "./Grid2Line";
 import { GrowthColored } from "./GrowthColored";
 import { Hospital } from "./Hospital";
 import { HospitalColored } from "./HospitalColored";
 import { ImproveRelevance } from "./ImproveRelevance";
+import { Industri } from "./Industri";
 import { Info } from "./Info";
 import { InstagramColored } from "./InstagramColored";
+import { Kependudukan } from "./Kependudukan";
+import { Kesehatan } from "./Kesehatan";
+import { Kesejahteraan } from "./Kesejahteraan";
 import { LayoutList } from "./LayoutList";
+import { LingkunganHidup } from "./LingkunganHidup";
 import { Link } from "./Link";
 import { LinkedInColored } from "./LinkedInColored";
 import { MageTrophyColored } from "./MageTrhopyColored";
@@ -54,6 +63,7 @@ import { ParkColored } from "./ParkColored";
 import { ParkMultiColored } from "./ParkMultiColored";
 import { PcCovidColored } from "./PcCovidColored";
 import { Pdf } from "./Pdf";
+import { Pendidikan } from "./Pendidikan";
 import { Phone } from "./Phone";
 import { QuillWrite } from "./QuillWrite";
 import { ScheduleColored } from "./ScheduleColored";
@@ -79,6 +89,16 @@ import { YoutubeColored } from "./YoutubeColored";
 import { WhatsappColored } from "@/app/icons/WhatsappColored";
 
 const icons = {
+  Grid2Line,
+  Kependudukan,
+  Pendidikan,
+  Kesehatan,
+  Industri,
+  Ekonomi,
+  LingkunganHidup,
+  Demokrasi,
+  Kesejahteraan,
+  BusinessMan,
   MinusCircle,
   Tags,
   LayoutList,

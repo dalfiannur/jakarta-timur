@@ -10,15 +10,15 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <div>
       <div className="h-[514px] bg-[#0C43AE] bg-[url('/img/dashboard-header-background.png')] bg-cover bg-no-repeat">
-        <div className="flex justify-between gap-16 items-center pt-48 container mx-auto pr-32">
+        <div className="container mx-auto flex items-center justify-between gap-16 pr-32 pt-48">
           <div>
-            <h1 className="font-plus-jakarta-sans font-bold text-white text-4xl">
+            <h1 className="font-plus-jakarta-sans text-4xl font-bold text-white">
               Dashboard Jakarta Timur
             </h1>
             <p className="font-roboto text-3xl text-white">
               Informasi Terbaru dan Data Analitik seputar Jakarta Timur
             </p>
-            <div className="mt-4 flex gap-8 text-white font-roboto">
+            <div className="mt-4 flex gap-8 font-roboto text-white">
               <p className="text-2xl">Terakhir Diupdate, 1 September 2024</p>
               <button>
                 <svg
@@ -38,7 +38,7 @@ export default function Layout({ children }: LayoutProps) {
                 </svg>
               </button>
             </div>
-            <button className="mt-8 bg-[#306AD8] px-16 py-3 text-white rounded-full text-xl">
+            <button className="mt-8 rounded-full bg-[#306AD8] px-16 py-3 text-xl text-white">
               Login
             </button>
           </div>
@@ -51,7 +51,7 @@ export default function Layout({ children }: LayoutProps) {
           />
         </div>
       </div>
-      <div className="container mx-auto flex gap-20 py-10">
+      <div className="container mx-auto flex flex-col gap-20 py-10 lg:flex-row">
         <Sidebar />
         <div className="flex-1">{children}</div>
       </div>

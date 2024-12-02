@@ -1,6 +1,6 @@
 "use client";
-import { Icon } from "../icons";
-import { tv } from "tailwind-variants";
+import { PaginationNumber } from "./PaginationNumber";
+import { PaginationArrow } from "./PaginationArrow";
 
 const getPagination = (current: number, total: number) => {
   const range: (number | string)[] = [];
@@ -60,14 +60,14 @@ export const Pagination = ({
   onPageChange,
 }: {
   total: number;
-  color?: "blue" | "pink";
+  color?: "blue" | "pink" | "orange";
   page?: number;
   onPageChange?: (page: number) => void;
 }) => {
   const pagination = getPagination(page, total);
 
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-3 lg:gap-4">
       <PaginationArrow
         position="left"
         color={color}
@@ -85,7 +85,7 @@ export const Pagination = ({
             label={item.toString()}
             onClick={() => onPageChange?.(item)}
           />
-        )
+        ),
       )}
       <PaginationArrow
         position="right"
@@ -94,110 +94,5 @@ export const Pagination = ({
         onClick={() => onPageChange?.(page + 1)}
       />
     </div>
-  );
-};
-
-const paginationArrowCss = tv({
-  base: "",
-  variants: {
-    color: {
-      blue: "",
-      pink: "",
-    },
-    disabled: { true: "text-gray-400", false: "" },
-  },
-  compoundVariants: [
-    {
-      color: "pink",
-      disabled: false,
-      class: "text-pink-500",
-    },
-    {
-      color: "blue",
-      disabled: false,
-      class: "text-blue-500",
-    },
-  ],
-});
-
-const PaginationArrow = ({
-  position,
-  disabled,
-  color = "pink",
-  onClick,
-}: {
-  position: "left" | "right";
-  disabled?: boolean;
-  color?: "blue" | "pink";
-  onClick?: () => void;
-}) => {
-  return (
-    <button
-      onClick={onClick}
-      aria-disabled={disabled}
-      className={paginationArrowCss({ disabled, color })}
-    >
-      <Icon
-        name={position === "left" ? "ChevronLeft" : "ChevronRight"}
-        className="w-6 h-6"
-      />
-    </button>
-  );
-};
-
-const paginationNumberCss = tv({
-  base: "w-8 h-8 rounded-full font-semibold flex items-center justify-center",
-  variants: {
-    active: {
-      true: "",
-      false: "",
-    },
-    color: {
-      pink: "",
-      blue: "",
-    },
-  },
-  compoundVariants: [
-    {
-      active: false,
-      color: "pink",
-      class: "text-pink-500",
-    },
-    {
-      active: false,
-      color: "blue",
-      class: "text-blue-500",
-    },
-    {
-      active: true,
-      color: "pink",
-      class: "bg-pink-500 text-white",
-    },
-    {
-      active: true,
-      color: "blue",
-      class: "bg-blue-500 text-white",
-    },
-  ],
-});
-
-const PaginationNumber = ({
-  active,
-  label,
-  color = "pink",
-  onClick,
-}: {
-  active?: boolean;
-  label: string;
-  color?: "blue" | "pink";
-  onClick?: () => void;
-}) => {
-  return (
-    <button
-      onClick={onClick}
-      className={paginationNumberCss({ active, color })}
-    >
-      {label}
-    </button>
   );
 };
