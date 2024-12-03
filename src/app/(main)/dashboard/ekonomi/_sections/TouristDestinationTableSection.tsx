@@ -4,7 +4,6 @@ import { SearchInput } from "@/app/components/SearchInput";
 import { useTable } from "@/app/hooks/useTable";
 import { SelectDistrict } from "@/app/sections/SelectDistrict";
 import { SelectSubDistrict } from "@/app/sections/SelectSubDistrict";
-import { useMemo } from "react";
 
 type DataItem = {
   id: number;

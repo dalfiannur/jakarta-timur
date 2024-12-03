@@ -21,7 +21,7 @@ type TimelineProps = {
 };
 
 export const Timeline = forwardRef<TimelineRef, TimelineProps>(
-  ({ data }, ref) => {
+  function Timeline({ data }, ref) {
     const [containerRef, animateContainer] = useAnimate();
     const [x, setX] = useState(-(500 * data.length));
 
@@ -41,7 +41,7 @@ export const Timeline = forwardRef<TimelineRef, TimelineProps>(
         );
         setX(x);
       },
-      [containerRef, data.length],
+      [containerRef, data.length, animateContainer],
     );
 
     useImperativeHandle(
@@ -50,7 +50,7 @@ export const Timeline = forwardRef<TimelineRef, TimelineProps>(
         next: () => change("next", x - 500),
         prev: () => change("prev", x + 500),
       }),
-      [x],
+      [x, change],
     );
 
     useEffect(() => {
@@ -61,7 +61,7 @@ export const Timeline = forwardRef<TimelineRef, TimelineProps>(
           { duration: 15, delay: 5 },
         );
       }
-    }, [containerRef]);
+    }, [containerRef, animateContainer, x]);
 
     return (
       <div className="relative h-[500px] overflow-hidden">
@@ -72,6 +72,7 @@ export const Timeline = forwardRef<TimelineRef, TimelineProps>(
         >
           {data.map((item, index) => (
             <motion.div
+              key={index}
               style={{
                 opacity: 0,
                 position: "absolute",
@@ -95,9 +96,9 @@ export const Timeline = forwardRef<TimelineRef, TimelineProps>(
                 once: true,
               }}
             >
-              <div className="rounded-xl bg-white shadow-xl flex justify-between overflow-hidden">
-                <div className="p-4 flex gap-4">
-                  <div className="relative h-24 aspect-square overflow-hidden rounded-lg bg-gray-100">
+              <div className="flex justify-between overflow-hidden rounded-xl bg-white shadow-xl">
+                <div className="flex gap-4 p-4">
+                  <div className="relative aspect-square h-24 overflow-hidden rounded-lg bg-gray-100">
                     <Image
                       src={item.img_url}
                       alt={item.nama}
@@ -106,17 +107,24 @@ export const Timeline = forwardRef<TimelineRef, TimelineProps>(
                     />
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold font-plus-jakarta-sans">{item.nama}</h4>
-                    <p className="mt-2 text-sm font-plus-jakarta-sans tracking-widest text-gray-900/80">Tahun Menjabat</p>
-                    <p className="mt-2 bg-pink-100 text-pink-500 font-bold font-roboto w-max px-4 py-1 rounded-full">{item.jabatan}</p>
+                    <h4 className="font-plus-jakarta-sans text-xl font-bold">
+                      {item.nama}
+                    </h4>
+                    <p className="mt-2 font-plus-jakarta-sans text-sm tracking-widest text-gray-900/80">
+                      Tahun Menjabat
+                    </p>
+                    <p className="mt-2 w-max rounded-full bg-pink-100 px-4 py-1 font-roboto font-bold text-pink-500">
+                      {item.jabatan}
+                    </p>
                   </div>
                 </div>
-                <div className="w-2 h-full bg-pink-500" />
+                <div className="h-full w-2 bg-pink-500" />
               </div>
             </motion.div>
           ))}
           {data.map((_, index) => (
             <motion.div
+              key={index}
               style={{
                 position: "absolute",
                 height: 0,

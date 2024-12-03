@@ -18,13 +18,13 @@ const styles = tv(
         },
         md: {
           root: "flex-1 rounded-lg",
-          icon: "left-2 h-5",
+          icon: "left-2 h-4",
           input: "pl-8 py-1 text-sm",
         },
         lg: {
           root: "rounded-xl",
-          icon: "left-4 h-6",
-          input: "pl-14 py-2 text-base",
+          icon: "left-3 h-5",
+          input: "pl-10 py-3 text-base",
         },
       },
       color: {

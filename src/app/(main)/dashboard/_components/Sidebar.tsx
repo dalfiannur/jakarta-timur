@@ -1,6 +1,4 @@
 import { SidebarItem } from "./SidebarItem";
-import { CiGrid42 } from "react-icons/ci";
-import { MdFolderShared } from "react-icons/md";
 
 export const Sidebar = () => {
   return (

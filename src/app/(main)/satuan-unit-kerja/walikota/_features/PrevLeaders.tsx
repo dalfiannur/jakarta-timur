@@ -1,11 +1,11 @@
 "use client";
 import { Icon } from "@/app/icons";
 import { trpc } from "@/utils/trpc";
-import { Timeline } from "../_components/Timeline";
+import { Timeline, TimelineRef } from "../_components/Timeline";
 import { useRef } from "react";
 
 export const PrevLeaders = () => {
-  const timelineRef = useRef<any>(null);
+  const timelineRef = useRef<TimelineRef>(null);
   const res = trpc.externalApi.getExProvost.useQuery();
   const data = res.data?.data ?? [];
 

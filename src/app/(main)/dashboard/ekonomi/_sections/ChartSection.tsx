@@ -89,7 +89,7 @@ export const ChartSection = () => {
         ],
       });
     }
-  }, [chartRef.current]);
+  }, []);
 
   return (
     <div>

@@ -1,5 +1,16 @@
 import { ReactNode, useMemo } from "react";
 import _ from "lodash";
+import { tv } from "tailwind-variants";
+
+const TableStyle = tv({
+  slots: {
+    table: "w-full",
+    headerRow: "bg-orange-500/10 font-inter text-sm font-medium text-gray-700",
+    headerCell: "px-2 py-4",
+    row: "border-b",
+    cell: "p-2 text-xs text-gray-500",
+  },
+});
 
 type Column<T> = {
   keyIndex: string | number | symbol;
@@ -18,18 +29,29 @@ export const useTable = <T,>({
   columns: Column<T>[];
   data: T[];
   classNames?: {
+    header?: {
+      row?: string;
+      cell?: string;
+    };
     body?: {
       row?: string;
     };
   };
 }) => {
+  const x = TableStyle();
+
   const table = useMemo(
     () => (
-      <table className="w-full">
+      <table className={x.table()}>
         <thead>
-          <tr className="bg-orange-500/10 font-inter text-sm font-medium text-gray-700">
+          <tr className={x.headerRow({ className: classNames?.header?.row })}>
             {columns.map((column, index) => (
-              <th key={index} className="px-2 py-4">
+              <th
+                key={index}
+                className={x.headerCell({
+                  className: classNames?.header?.cell,
+                })}
+              >
                 {column.header()}
               </th>
             ))}
@@ -37,11 +59,14 @@ export const useTable = <T,>({
         </thead>
         <tbody>
           {data.map((row, index) => (
-            <tr key={index} className={`border-b ${classNames?.body?.row}`}>
+            <tr
+              key={index}
+              className={x.row({ className: classNames?.body?.row })}
+            >
               {columns.map((column, cIndex) => (
                 <td
                   key={cIndex}
-                  className={`p-2 text-xs text-gray-500 ${column.classNames?.cell}`}
+                  className={x.cell({ classNames: column.classNames?.cell })}
                 >
                   {column.cell ? column.cell(row) : _.get(row, column.keyIndex)}
                 </td>
@@ -51,7 +76,7 @@ export const useTable = <T,>({
         </tbody>
       </table>
     ),
-    [columns, data],
+    [columns, data, classNames, x],
   );
 
   return {
