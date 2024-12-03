@@ -17,22 +17,12 @@ export const CounterSection = () => {
       <CounterCard
         title="Jumlah Penduduk"
         value={getValue(totalPopulation.data)}
-        icon={null}
       />
-      <CounterCard
-        title="Laki - Laki"
-        value={getValue(totalMale.data)}
-        icon={null}
-      />
-      <CounterCard
-        title="Perempuan"
-        value={getValue(totalFemale.data)}
-        icon={null}
-      />
+      <CounterCard title="Laki - Laki" value={getValue(totalMale.data)} />
+      <CounterCard title="Perempuan" value={getValue(totalFemale.data)} />
       <CounterCard
         title="Kepadatan Penduduk"
         value={getValue(populationDensity.data)}
-        icon={null}
       />
     </div>
   );

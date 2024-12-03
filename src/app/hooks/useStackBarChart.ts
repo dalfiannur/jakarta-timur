@@ -74,7 +74,7 @@ export const useStackBarChart = <
         },
         grid: {
           left: 30,
-          right: 30,
+          right: 60,
           bottom: 30,
           top: 60,
         },

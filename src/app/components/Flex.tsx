@@ -6,7 +6,7 @@ const FlexStyle = tv(
     base: "flex",
     variants: {
       flex: {
-        true: 'flex-1',
+        true: "flex-1",
       },
       direction: {
         column: "flex-col",
@@ -42,9 +42,14 @@ const FlexStyle = tv(
 
 type FlexProps = VariantProps<typeof FlexStyle> & {
   children?: ReactNode;
+  className?: string;
 };
 
 export const Flex = ({ children, ...props }: FlexProps) => {
   const x = FlexStyle(props);
-  return <div className={x}>{children}</div>;
+  return (
+    <div {...props} className={x}>
+      {children}
+    </div>
+  );
 };

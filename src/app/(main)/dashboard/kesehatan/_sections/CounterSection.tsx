@@ -32,12 +32,7 @@ export const CounterSection = async () => {
   return (
     <div className="grid grid-cols-5 gap-6">
       {data.map((item, index) => (
-        <CounterCard
-          key={index}
-          title={item.title}
-          value={item.value}
-          icon={null}
-        />
+        <CounterCard key={index} title={item.title} value={item.value} />
       ))}
     </div>
   );

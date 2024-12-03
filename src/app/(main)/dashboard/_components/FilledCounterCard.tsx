@@ -5,22 +5,30 @@ import { Text } from "@/app/components/Text";
 import { Icon, IconKeys } from "@/app/icons";
 import { formattedNumber } from "@/utils/format-number";
 
-type CounterCardProps = {
+type FilledCounterCardProps = {
   title: string;
   value: number;
   icon?: IconKeys;
 };
 
-export const CounterCard = ({ title, value, icon }: CounterCardProps) => {
+export const FilledCounterCard = ({
+  title,
+  value,
+  icon,
+}: FilledCounterCardProps) => {
   return (
-    <Box padding={{ initial: "sm", md: "md", lg: "lg" }}>
+    <Box
+      rounded="lg"
+      padding={{ initial: "sm", md: "md", lg: "lg" }}
+      className="bg-orange-50"
+    >
       <Flex justify="between" align="center" gap="sm">
         <Flex flex direction="column" gap="sm">
-          <Text uppercase size="xxs" weight="medium" color="subtle">
-            {title}
-          </Text>
           <Text size="xl" weight="bold">
             {formattedNumber(value)}
+          </Text>
+          <Text uppercase size="xxs" weight="medium" color="subtle">
+            {title}
           </Text>
         </Flex>
         {icon && (

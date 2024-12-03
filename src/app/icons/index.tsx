@@ -52,6 +52,7 @@ import { MageTrophyColored } from "./MageTrhopyColored";
 import { Mail } from "./Mail";
 import { MapHomeWork } from "./MapHomeWork";
 import { MapMarkerAlt } from "./MapMarkerAlt";
+import { MapPoint } from "./MapPoint";
 import { Menu } from "./Menu";
 import { MinusCircle } from "./MinusCircle";
 import { NetworkSettingLineColored } from "./NetworkSettingLineColored";
@@ -65,6 +66,7 @@ import { PcCovidColored } from "./PcCovidColored";
 import { Pdf } from "./Pdf";
 import { Pendidikan } from "./Pendidikan";
 import { Phone } from "./Phone";
+import { Profile } from "./Profile";
 import { QuillWrite } from "./QuillWrite";
 import { ScheduleColored } from "./ScheduleColored";
 import { School } from "./School";
@@ -99,6 +101,8 @@ const icons = {
   Demokrasi,
   Kesejahteraan,
   BusinessMan,
+  Profile,
+  MapPoint,
   MinusCircle,
   Tags,
   LayoutList,

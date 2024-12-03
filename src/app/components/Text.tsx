@@ -27,6 +27,10 @@ const TextStyle = tv(
       color: {
         subtle: "text-[#71717A]",
         black: "text-[#040E05]",
+        orange: "text-orange-500",
+      },
+      uppercase: {
+        true: "uppercase",
       },
     },
     defaultVariants: {
@@ -42,6 +46,7 @@ const TextStyle = tv(
 type TextProps = VariantProps<typeof TextStyle> & {
   children?: ReactNode;
   classNames?: string;
+  uppercase?: boolean;
 };
 
 export const Text = ({ children, ...props }: TextProps) => {
