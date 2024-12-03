@@ -82,7 +82,7 @@ export const useMultiBarChart = <
       });
       return () => chart.dispose();
     }
-  }, [data, xAxisData, yKey, color, legend, series]);
+  }, [data, xAxisData, yKey, color, legend, series, ref]);
 
   return { ref };
 };

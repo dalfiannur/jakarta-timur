@@ -32,10 +32,17 @@ const TextStyle = tv(
       uppercase: {
         true: "uppercase",
       },
+      align: {
+        left: "text-left",
+        center: "text-center",
+        right: "text-right",
+        justify: "text-justify",
+      },
     },
     defaultVariants: {
       font: "jakarta",
       color: "black",
+      align: "left",
     },
   },
   {

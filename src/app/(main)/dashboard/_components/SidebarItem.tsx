@@ -25,7 +25,7 @@ export const SidebarItem = ({
           <Icon name={icon} className="h-6 w-6" />
         </div>
       </div>
-      <div className="flex-1 border-r-4 border-transparent p-4 text-left font-plus-jakarta-sans text-base font-medium text-[#4D5054] group-data-[active=true]:border-r-[#0C43AE] group-data-[active=true]:text-[#040E05]">
+      <div className="flex-1 border-r-[6px] border-transparent p-4 text-left font-plus-jakarta-sans text-base font-medium text-[#4D5054] group-data-[active=true]:border-r-[#0C43AE] group-data-[active=true]:text-[#040E05]">
         {label}
       </div>
     </Link>
