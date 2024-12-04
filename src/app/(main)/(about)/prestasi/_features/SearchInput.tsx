@@ -1,20 +1,22 @@
 import { useDebounceEvent } from "@/app/hooks/useDebounceEvent";
 import { Icon } from "@/app/icons";
-import { store$ } from "../store";
+import * as store from "../store";
+import { useSetAtom } from "jotai";
 
 export const SearchInput = () => {
+  const setSearch = useSetAtom(store.search);
   const set = useDebounceEvent<string>({
     timer: 1000,
     onChange: (value) => {
-      store$.setKey("filter.search", value);
+      setSearch(value);
     },
   });
 
   return (
-    <div className="border rounded-xl overflow-hidden flex pl-4 items-center focus-within:border-pink-400">
-      <Icon name="Search" className="w-6 h-6" />
+    <div className="flex items-center overflow-hidden rounded-xl border pl-4 focus-within:border-pink-400">
+      <Icon name="Search" className="h-6 w-6" />
       <input
-        className="py-4 px-6 flex-1 focus:outline-none"
+        className="flex-1 px-6 py-4 focus:outline-none"
         placeholder="Cari Nama Dokumen"
         onChange={(e) => set(e.currentTarget.value)}
       />

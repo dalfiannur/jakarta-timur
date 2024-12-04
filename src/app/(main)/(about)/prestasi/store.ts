@@ -1,8 +1,6 @@
-import { signal } from "@preact/signals-react";
+import { atom } from "jotai";
 
-export const view = signal<"grid" | "list">("grid");
-export const filter = signal({
-  search: signal<string | undefined>(),
-  year: signal<string | undefined>(),
-  sort: signal<string | undefined>(),
-});
+export const view = atom<"grid" | "list">("grid");
+export const search = atom<string|undefined>();
+export const year = atom<string|undefined>()
+export const sort = atom<string|undefined>()

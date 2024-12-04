@@ -1,7 +1,7 @@
-import { effect, signal } from "@preact/signals-react";
+import { atom } from "jotai";
 
-export const search = signal("");
-export const map = signal<{
+export const search = atom<string | undefined>();
+export const map = atom<{
   longitude?: number;
   latitude?: number;
 }>({});

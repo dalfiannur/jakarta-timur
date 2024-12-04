@@ -1,7 +1,5 @@
-import { signal } from "@preact/signals-react";
+import { atom } from "jotai";
 
-export const store = signal({
-  search: signal(""),
-  page: signal(1),
-  kecamatan_id: signal<string | undefined>(),
-});
+export const search = atom<string>("");
+export const page = atom<number>(1);
+export const kecamatanId = atom<string | undefined>();

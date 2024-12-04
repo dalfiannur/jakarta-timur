@@ -2,7 +2,7 @@
 import { Icon } from "@/app/icons";
 import { Achievement } from "@/types/achievement";
 import { AnimatePresence, motion } from "motion/react";
-import { useSignal } from "@preact/signals-react";
+import { useState } from "react";
 
 export const PrestasiItem = ({
   view,
@@ -11,13 +11,13 @@ export const PrestasiItem = ({
   view: "grid" | "list";
   item: Achievement;
 }) => {
-  const hovered = useSignal(false);
+  const [hovered, setHovered] = useState(false);
 
   return (
     <AnimatePresence>
       <motion.button
-        onHoverStart={() => (hovered.value = true)}
-        onHoverEnd={() => (hovered.value = false)}
+        onHoverStart={() => setHovered(true)}
+        onHoverEnd={() => setHovered(false)}
       >
         <div
           data-view={view}
@@ -25,8 +25,8 @@ export const PrestasiItem = ({
         >
           <motion.div
             animate={{
-              opacity: view === "grid" && hovered.value ? 0 : 1,
-              height: view === "grid" && hovered.value ? 0 : "auto",
+              opacity: view === "grid" && hovered ? 0 : 1,
+              height: view === "grid" && hovered ? 0 : "auto",
               transition: { duration: 0.5 },
             }}
           >
@@ -42,7 +42,7 @@ export const PrestasiItem = ({
 
             <motion.div
               animate={{
-                maxHeight: hovered.value ? 300 : 60,
+                maxHeight: hovered ? 300 : 60,
                 transition: { duration: 0.1 },
               }}
             >

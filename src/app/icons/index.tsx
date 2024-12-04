@@ -66,6 +66,7 @@ import { PcCovidColored } from "./PcCovidColored";
 import { Pdf } from "./Pdf";
 import { Pendidikan } from "./Pendidikan";
 import { Phone } from "./Phone";
+import { Popup } from "./Popup";
 import { Profile } from "./Profile";
 import { QuillWrite } from "./QuillWrite";
 import { ScheduleColored } from "./ScheduleColored";
@@ -75,6 +76,7 @@ import { Search } from "./Search";
 import { ServiceLine } from "./ServiceLine";
 import { SmartCity } from "./SmartCity";
 import { SmartCityColored } from "./SmartCityColored";
+import { Star } from "./Star";
 import { StatisticUp } from "./StatisticUp";
 import { StatisticUpSolid } from "./StatisticUpSolid";
 import { Tags } from "./Tags";
@@ -103,6 +105,8 @@ const icons = {
   BusinessMan,
   Profile,
   MapPoint,
+  Popup,
+  Star,
   MinusCircle,
   Tags,
   LayoutList,

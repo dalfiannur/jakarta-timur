@@ -6,9 +6,14 @@ import { GallerySlider } from "../_components/GallerySlider";
 import { trpc } from "@/utils/trpc";
 
 export const GallerySection = () => {
-  const { data } = trpc.externalApi.galleries.useQuery({
-    limit: 10,
-  });
+  const { data } = trpc.externalApi.galleries.useQuery(
+    {
+      limit: 10,
+    },
+    {
+      refetchOnWindowFocus: false,
+    },
+  );
 
   return (
     <SectionBox
@@ -17,9 +22,9 @@ export const GallerySection = () => {
       rightSection={
         <Link
           href="/publikasi/galeri"
-          className="inline-flex items-center gap-2 text-pink-500 font-semibold text-base lg:text-xl font-plus-jakarta-sans"
+          className="inline-flex items-center gap-2 font-plus-jakarta-sans text-base font-semibold text-pink-500 lg:text-xl"
         >
-          Lihat Foto Lainnya <Icon name="ChevronRight" className="w-6 h-6" />
+          Lihat Foto Lainnya <Icon name="ChevronRight" className="h-6 w-6" />
         </Link>
       }
     >

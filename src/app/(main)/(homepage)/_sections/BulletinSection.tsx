@@ -5,9 +5,14 @@ import { BulletinSlider } from "../_components/BulletinSlider";
 import { trpc } from "@/utils/trpc";
 
 export const BulletinSection = () => {
-  const { data } = trpc.externalApi.buletin.useQuery({
-    limit: 12,
-  });
+  const { data } = trpc.externalApi.buletin.useQuery(
+    {
+      limit: 12,
+    },
+    {
+      refetchOnWindowFocus: false,
+    },
+  );
 
   return (
     <SectionBox
@@ -16,9 +21,9 @@ export const BulletinSection = () => {
       rightSection={
         <Link
           href="/publikasi/buletin"
-          className="inline-flex items-center gap-2 text-pink-500 font-semibold text-base lg:text-xl font-plus-jakarta-sans"
+          className="inline-flex items-center gap-2 font-plus-jakarta-sans text-base font-semibold text-pink-500 lg:text-xl"
         >
-          Lihat Foto Lainnya <Icon name="ChevronRight" className="w-6 h-6" />
+          Lihat Foto Lainnya <Icon name="ChevronRight" className="h-6 w-6" />
         </Link>
       }
     >

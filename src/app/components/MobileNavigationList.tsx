@@ -1,11 +1,11 @@
 "use client";
-import { MouseEventHandler, ReactNode } from "react";
+import { MouseEventHandler, ReactNode, useState } from "react";
 import { motion } from "motion/react";
 import { Link, navigationBarConfig } from "../configs/navigation-bar.config";
 import { Tab } from "./MenuTabs";
 import { open } from "./MobileNavigationBar";
 import { useRouter } from "next/navigation";
-import { useSignal } from "@preact/signals-react";
+import { useSetAtom } from "jotai";
 
 const links = navigationBarConfig.links;
 
@@ -56,6 +56,7 @@ export const MobileNavigationList = () => {
 
 const Item = ({ label, href }: { label: string; href?: string }) => {
   const router = useRouter();
+  const setOpen = useSetAtom(open);
   return (
     <li>
       <a
@@ -65,7 +66,7 @@ const Item = ({ label, href }: { label: string; href?: string }) => {
           e.stopPropagation();
           if (href) {
             router.push(href);
-            open.value = false;
+            setOpen(false);
           }
         }}
       >
@@ -82,12 +83,12 @@ const DropdownItem = ({
   label: string;
   children?: ReactNode;
 }) => {
-  const expand = useSignal(false);
+  const [expand, setExpand] = useState(false);
 
   const handler: MouseEventHandler = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    expand.value = !expand.value;
+    setExpand((prev) => !prev);
   };
 
   return (
@@ -96,7 +97,7 @@ const DropdownItem = ({
         {label}
       </a>
 
-      {expand.value && (
+      {expand && (
         <motion.ul
           initial={{ opacity: 0, height: 0, y: -5 }}
           animate={{ opacity: 1, height: "auto", y: 0 }}

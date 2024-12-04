@@ -1,6 +1,7 @@
 "use client";
 import { SelectCSR } from "@/app/components/SelectCSR";
-import { store$ } from "../store";
+import * as store from "../store";
+import { useSetAtom } from "jotai";
 
 const sort = [
   {
@@ -17,9 +18,11 @@ const years = [
 ];
 
 export const Filter = () => {
+  const setSort = useSetAtom(store.sort);
+  const setYear = useSetAtom(store.year);
   return (
-    <div className="flex gap-2 lg:gap-6 items-center">
-      <div className="text-xs lg:text-base whitespace-nowrap font-plus-jakarta-sans font-bold">
+    <div className="flex items-center gap-2 lg:gap-6">
+      <div className="whitespace-nowrap font-plus-jakarta-sans text-xs font-bold lg:text-base">
         Urutkan :
       </div>
       <div className="flex gap-2 lg:gap-4">
@@ -27,16 +30,12 @@ export const Filter = () => {
           placeholder="Pilih"
           data={sort}
           defaultSelected={sort[0]}
-          onChange={(option) =>
-            store$.setKey("filter.sort", option?.value ?? undefined)
-          }
+          onChange={(option) => setSort(option?.value ?? undefined)}
         />
         <SelectCSR
           placeholder="Pilih Tahun"
           data={years}
-          onChange={(option) =>
-            store$.setKey("filter.year", option?.value ?? undefined)
-          }
+          onChange={(option) => setYear(option?.value ?? undefined)}
         />
       </div>
     </div>

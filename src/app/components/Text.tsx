@@ -52,7 +52,7 @@ const TextStyle = tv(
 
 type TextProps = VariantProps<typeof TextStyle> & {
   children?: ReactNode;
-  classNames?: string;
+  className?: string;
   uppercase?: boolean;
 };
 

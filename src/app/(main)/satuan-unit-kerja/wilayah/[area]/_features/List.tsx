@@ -7,8 +7,9 @@ import { Icon } from "@/app/icons";
 import { DetailModal } from "./DetailModal";
 import { trpc } from "@/utils/trpc";
 import { GovEmployer } from "@/types/gov-employer";
-import { store } from "../store";
+import * as store from "../store";
 import { Pagination } from "@/app/components/Pagination";
+import { useAtom, useAtomValue } from "jotai";
 
 type ListProps = {
   area: string;
@@ -17,23 +18,26 @@ type ListProps = {
 const PAGE_LIMIT = 10;
 
 export const List = ({ area }: ListProps) => {
-  const { search, kecamatan_id, page } = store.value;
+  const search = useAtomValue(store.search);
+  const kecamatanId = useAtomValue(store.kecamatanId);
+  const [page, setPage] = useAtom(store.page);
+
   const options: {
     search: string;
     area: string;
     limit: number;
     filters: { by: string; value: string }[];
   } = {
-    search: search.value,
+    search,
     area,
     limit: PAGE_LIMIT,
     filters: [],
   };
 
-  if (kecamatan_id.value) {
+  if (kecamatanId) {
     options.filters.push({
       by: "kecamatan_id",
-      value: kecamatan_id.value,
+      value: kecamatanId,
     });
   }
 
@@ -102,9 +106,9 @@ export const List = ({ area }: ListProps) => {
       {pages > 1 && (
         <div className="flex justify-center">
           <Pagination
-            page={page.value}
+            page={page}
             total={pages}
-            onPageChange={(v) => (page.value = v)}
+            onPageChange={(v) => setPage(v)}
           />
         </div>
       )}

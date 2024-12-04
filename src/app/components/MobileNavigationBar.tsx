@@ -4,11 +4,12 @@ import Image from "next/image";
 import { motion } from "motion/react";
 import { MobileNavigationList } from "./MobileNavigationList";
 import { SearchInput } from "./SearchInput";
-import { signal } from "@preact/signals-react";
+import { atom, useAtom } from "jotai";
 
-export const open = signal(false);
+export const open = atom(false)
 
 export const MobileNavigationBar = () => {
+  const [opened, setOpen] = useAtom(open);
   return (
     <div className="fixed left-0 right-0 top-0 z-20">
       <div className="flex items-center justify-between bg-white p-4 shadow lg:hidden">
@@ -20,9 +21,9 @@ export const MobileNavigationBar = () => {
         />
         <button
           className="flex h-8 w-8 items-center justify-center"
-          onClick={() => (open.value = !open.value)}
+          onClick={() => setOpen((prev) => !prev)}
         >
-          {open.value ? (
+          {opened ? (
             <svg
               width="24"
               height="25"
@@ -58,7 +59,7 @@ export const MobileNavigationBar = () => {
       </div>
 
       <AnimatePresence>
-        {open.value && (
+        {opened && (
           <div className="absolute left-0 right-0 top-16 z-30 bg-white p-4 shadow">
             <motion.div
               initial={{ opacity: 0, height: 0, y: -10 }}

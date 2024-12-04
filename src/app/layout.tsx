@@ -6,6 +6,7 @@ import { NavigationBar } from "./components/NavigationBar";
 import { Footer } from "./components/Footer";
 import { Providers } from "./providers";
 import { MobileNavigationBar } from "./components/MobileNavigationBar";
+import { PopoverFeedback } from "./sections/PopoverFeedback";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -58,6 +59,7 @@ export default function RootLayout({
           <MobileNavigationBar />
           {children}
           <Footer />
+          <PopoverFeedback />
         </Providers>
       </body>
     </html>

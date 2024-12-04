@@ -6,16 +6,19 @@ import {
 } from "../_components/JakWifiListItem";
 import { Pagination } from "@/app/components/Pagination";
 import { useState } from "react";
-import { search, map } from "../store";
+import * as store from "../store";
+import { useAtomValue, useSetAtom } from "jotai";
 
 const LIMIT = 4;
 
 export const JakWifiList = () => {
+  const search = useAtomValue(store.search);
+  const setMap = useSetAtom(store.map);
   const [page, setPage] = useState(1);
   const res = trpc.externalApi.getJakWifi.useQuery({
     page,
     limit: LIMIT,
-    search: search.value,
+    search,
   });
   const data = res.data?.data ?? [];
   const total = res.data?.total ?? 0;
@@ -35,10 +38,10 @@ export const JakWifiList = () => {
               rw={item.RW}
               address={item.Alamat}
               onClick={() => {
-                map.value = {
+                setMap({
                   longitude: parseFloat(item.Longitude),
                   latitude: parseFloat(item.Latitude),
-                };
+                });
               }}
             />
           ))}

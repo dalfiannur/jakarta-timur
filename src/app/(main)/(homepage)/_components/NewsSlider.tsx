@@ -3,27 +3,27 @@ import _ from "lodash";
 import { motion } from "motion/react";
 import { NewsSliderItem } from "./NewsSliderItem";
 import { News } from "@/types/news";
-import { useComputed, useSignal, useSignalEffect } from "@preact/signals-react";
+import { useEffect, useState } from "react";
 
 export const NewsSlider = ({ data }: { data: News[] }) => {
   const sections = _.chunk(data, 5);
 
-  const containerWidth = useSignal(0);
-  const step = useSignal(0);
-  const x = useComputed(() => -(step.value * containerWidth.value));
+  const [containerWidth, setContainerWidth] = useState(0);
+  const [step, setStep] = useState(0);
+  const x = -(step * containerWidth);
 
-  useSignalEffect(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
-      step.value = step.value < 1 ? step.value + 1 : 0;
+      setStep((prev) => (prev < 1 ? prev + 1 : 0));
     }, 5000);
     return () => clearInterval(interval);
-  });
+  }, []);
 
   return (
     <div>
       <div
         ref={(ref) => {
-          containerWidth.value = ref?.clientWidth ?? 0;
+          setContainerWidth(ref?.clientWidth ?? 0);
         }}
         className="flex overflow-hidden"
       >
@@ -31,11 +31,11 @@ export const NewsSlider = ({ data }: { data: News[] }) => {
           <motion.div
             key={index}
             style={{
-              width: containerWidth.value,
+              width: containerWidth,
             }}
             animate={{
-              x: x.value,
-              opacity: step.value === index ? 1 : 0,
+              x: x,
+              opacity: step === index ? 1 : 0,
               flexShrink: 0,
               transition: {
                 type: "spring",
@@ -67,8 +67,8 @@ export const NewsSlider = ({ data }: { data: News[] }) => {
         {sections.map((_, index) => (
           <button
             key={index}
-            onClick={() => (step.value = index)}
-            data-selected={index === step.value ? true : undefined}
+            onClick={() => setStep(index)}
+            data-selected={index === step ? true : undefined}
             className="h-2 w-2 rounded-full bg-gray-300 transition-all data-[selected]:w-6 data-[selected]:bg-pink-500"
           />
         ))}

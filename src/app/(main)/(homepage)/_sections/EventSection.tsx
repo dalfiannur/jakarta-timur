@@ -7,10 +7,15 @@ import { trpc } from "@/utils/trpc";
 import { useMemo } from "react";
 
 export const EventSection = () => {
-  const { data } = trpc.externalApi.agenda.useQuery({
-    page: 1,
-    limit: 4,
-  });
+  const { data } = trpc.externalApi.agenda.useQuery(
+    {
+      page: 1,
+      limit: 4,
+    },
+    {
+      refetchOnWindowFocus: false,
+    },
+  );
 
   const eventList = useMemo(() => {
     if (data) {
@@ -36,7 +41,7 @@ export const EventSection = () => {
       subtitle="Ketahui Informasi dan Pengumuman Pemerintah Jakarta Timur Terkini"
     >
       <div className="container mx-auto">
-        <div className="flex flex-col lg:flex-row gap-8 bg-white drop-shadow p-6 rounded-xl">
+        <div className="flex flex-col gap-8 rounded-xl bg-white p-6 drop-shadow lg:flex-row">
           <Calender
             listAgenda={eventList}
             // onItemClick={() => {
@@ -44,8 +49,8 @@ export const EventSection = () => {
             // }}
           />
 
-          <div className="flex-1 grid gap-1">
-            <h4 className="font-semibold text-xl md:text-2xl font-plus-jakarta-sans">
+          <div className="grid flex-1 gap-1">
+            <h4 className="font-plus-jakarta-sans text-xl font-semibold md:text-2xl">
               Agenda Pimpinan
             </h4>
             <Agenda data={eventList} />
@@ -67,4 +72,4 @@ export const EventSection = () => {
       </div>
     </SectionBox>
   );
-}
+};

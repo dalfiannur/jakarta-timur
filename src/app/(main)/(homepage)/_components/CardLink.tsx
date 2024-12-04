@@ -1,9 +1,8 @@
 "use client";
 import Link from "next/link";
 import { motion } from "motion/react";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { Icon } from "@/app/icons";
-import { useSignal } from "@preact/signals-react";
 
 export type CardLinkProps = {
   title: string;
@@ -18,12 +17,12 @@ export const CardLink = ({
   icon,
   href = "#",
 }: CardLinkProps) => {
-  const hovered = useSignal(false);
+  const [hovered, setHovered] = useState(false);
   return (
     <Link href={href}>
       <motion.div
-        onHoverStart={() => (hovered.value = true)}
-        onHoverEnd={() => (hovered.value = false)}
+        onHoverStart={() => setHovered(true)}
+        onHoverEnd={() => setHovered(false)}
       >
         <div className="group inline-flex w-full items-center gap-5 rounded-xl border border-transparent bg-white p-5 drop-shadow transition-all hover:border-pink-500 hover:bg-pink-100">
           <div className="flex aspect-square w-10 items-center justify-center rounded-xl bg-pink-100/60 transition-all group-hover:bg-white md:w-16">
@@ -40,9 +39,9 @@ export const CardLink = ({
                 lineHeight: "16px",
               }}
               animate={{
-                opacity: hovered.value ? 1 : 0,
-                height: hovered.value ? "auto" : 0,
-                y: hovered.value ? 0 : 10,
+                opacity: hovered ? 1 : 0,
+                height: hovered ? "auto" : 0,
+                y: hovered ? 0 : 10,
               }}
             >
               {description}
