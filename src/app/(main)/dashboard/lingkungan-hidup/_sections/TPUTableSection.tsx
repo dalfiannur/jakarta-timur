@@ -74,7 +74,7 @@ export const TPUTableSection = () => {
       <Flex direction="column" gap="lg">
         {table}
         <Grid cols={3} align="center">
-          <Text size="sm" color="subtle" classNames="col-span-2 md:col-span-1">
+          <Text size="sm" color="subtle" className="col-span-2 md:col-span-1">
             Menampilkan 1-5 dari 10 Data
           </Text>
           <Flex align="center" justify="center">
