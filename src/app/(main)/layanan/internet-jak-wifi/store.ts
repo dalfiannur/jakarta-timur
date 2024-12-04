@@ -1,13 +1,7 @@
-import { deepMap } from "nanostores";
+import { effect, signal } from "@preact/signals-react";
 
-type Store = {
-  search: string;
-  map?: {
-    longitude: number;
-    latitude: number;
-  };
-};
-
-export const store$ = deepMap<Store>({
-  search: "",
-});
+export const search = signal("");
+export const map = signal<{
+  longitude?: number;
+  latitude?: number;
+}>({});

@@ -1,19 +1,8 @@
-import { deepMap } from "nanostores";
+import { signal } from "@preact/signals-react";
 
-type Store = {
-  filter: {
-    search: string | undefined;
-    year: string | undefined;
-    sort: string | undefined;
-  };
-  view: "grid" | "list";
-};
-
-export const store$ = deepMap<Store>({
-  view: "grid",
-  filter: {
-    search: undefined,
-    year: undefined,
-    sort: undefined,
-  },
+export const view = signal<"grid" | "list">("grid");
+export const filter = signal({
+  search: signal<string | undefined>(),
+  year: signal<string | undefined>(),
+  sort: signal<string | undefined>(),
 });

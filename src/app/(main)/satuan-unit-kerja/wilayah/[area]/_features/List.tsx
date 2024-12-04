@@ -7,8 +7,7 @@ import { Icon } from "@/app/icons";
 import { DetailModal } from "./DetailModal";
 import { trpc } from "@/utils/trpc";
 import { GovEmployer } from "@/types/gov-employer";
-import { useStore } from "@nanostores/react";
-import { store$ } from "../store";
+import { store } from "../store";
 import { Pagination } from "@/app/components/Pagination";
 
 type ListProps = {
@@ -18,24 +17,23 @@ type ListProps = {
 const PAGE_LIMIT = 10;
 
 export const List = ({ area }: ListProps) => {
-  const store = useStore(store$);
-
+  const { search, kecamatan_id, page } = store.value;
   const options: {
     search: string;
     area: string;
     limit: number;
     filters: { by: string; value: string }[];
   } = {
-    search: store.search,
+    search: search.value,
     area,
     limit: PAGE_LIMIT,
     filters: [],
   };
 
-  if (store.kecamatan_id) {
+  if (kecamatan_id.value) {
     options.filters.push({
       by: "kecamatan_id",
-      value: store.kecamatan_id,
+      value: kecamatan_id.value,
     });
   }
 
@@ -104,9 +102,9 @@ export const List = ({ area }: ListProps) => {
       {pages > 1 && (
         <div className="flex justify-center">
           <Pagination
-            page={store.page}
+            page={page.value}
             total={pages}
-            onPageChange={(v) => store$.setKey("page", v)}
+            onPageChange={(v) => (page.value = v)}
           />
         </div>
       )}

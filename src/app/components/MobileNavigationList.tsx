@@ -1,17 +1,11 @@
 "use client";
 import { MouseEventHandler, ReactNode } from "react";
-import {
-  reactiveComponents,
-  Show,
-  useObservable,
-} from "@legendapp/state/react";
 import { motion } from "motion/react";
 import { Link, navigationBarConfig } from "../configs/navigation-bar.config";
 import { Tab } from "./MenuTabs";
-import { open$ } from "./MobileNavigationBar";
+import { open } from "./MobileNavigationBar";
 import { useRouter } from "next/navigation";
-
-const Motion = reactiveComponents(motion);
+import { useSignal } from "@preact/signals-react";
 
 const links = navigationBarConfig.links;
 
@@ -71,7 +65,7 @@ const Item = ({ label, href }: { label: string; href?: string }) => {
           e.stopPropagation();
           if (href) {
             router.push(href);
-            open$.set(false);
+            open.value = false;
           }
         }}
       >
@@ -88,12 +82,12 @@ const DropdownItem = ({
   label: string;
   children?: ReactNode;
 }) => {
-  const expand$ = useObservable(false);
+  const expand = useSignal(false);
 
   const handler: MouseEventHandler = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    expand$.set((prev) => !prev);
+    expand.value = !expand.value;
   };
 
   return (
@@ -102,8 +96,8 @@ const DropdownItem = ({
         {label}
       </a>
 
-      <Show if={expand$}>
-        <Motion.ul
+      {expand.value && (
+        <motion.ul
           initial={{ opacity: 0, height: 0, y: -5 }}
           animate={{ opacity: 1, height: "auto", y: 0 }}
           exit={{ opacity: 0, height: 0, y: -5 }}
@@ -118,8 +112,8 @@ const DropdownItem = ({
           }}
         >
           {children}
-        </Motion.ul>
-      </Show>
+        </motion.ul>
+      )}
     </li>
   );
 };

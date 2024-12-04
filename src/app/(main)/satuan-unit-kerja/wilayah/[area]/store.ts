@@ -1,12 +1,7 @@
-import { deepMap } from "nanostores";
+import { signal } from "@preact/signals-react";
 
-type Store = {
-  search: string;
-  page: number;
-  kecamatan_id?: string;
-};
-
-export const store$ = deepMap<Store>({
-  search: "",
-  page: 1,
+export const store = signal({
+  search: signal(""),
+  page: signal(1),
+  kecamatan_id: signal<string | undefined>(),
 });
