@@ -150,14 +150,14 @@ export const navigationBarConfig: NavigationBarConfig = {
           {
             icon: "StatisticUpSolid",
             title: "Demografi",
-            link: "/tentang-jakarta-timur?s=demografi",
+            link: "/demografi",
             description:
               "Panduan yang jelas untuk  memahami struktur geografis dan tata ruang kota.",
           },
           {
             icon: "Trophy",
             title: "Prestasi",
-            link: "/tentang-jakarta-timur?s=prestasi",
+            link: "/prestasi",
             description:
               "Lihat berbagai prestasi yang telah diraih oleh Kota Administrasi Jakarta Timur.",
           },
