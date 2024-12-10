@@ -2,7 +2,7 @@ import { RatioCounterChartCard } from "../../_components/RatioCounterChartCard";
 
 export const RatioSchoolChartSection = () => {
   return (
-    <div className="grid grid-cols-2 gap-16">
+    <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
       <RatioCounterChartCard
         title="Data Sekolah Perbandingan Sekolah Negeri Dan Swasta"
         total={1067897}
@@ -15,7 +15,7 @@ export const RatioSchoolChartSection = () => {
             },
             legend: {
               suffix: (
-                <span className="text-[10px] ml-1 text-gray-700">Jiwa</span>
+                <span className="ml-1 text-[10px] text-gray-700">Jiwa</span>
               ),
             },
           },
@@ -27,7 +27,7 @@ export const RatioSchoolChartSection = () => {
             },
             legend: {
               suffix: (
-                <span className="text-[10px] ml-1 text-gray-700">Jiwa</span>
+                <span className="ml-1 text-[10px] text-gray-700">Jiwa</span>
               ),
             },
           },
@@ -45,7 +45,7 @@ export const RatioSchoolChartSection = () => {
             },
             legend: {
               suffix: (
-                <span className="text-[10px] ml-1 text-gray-700">Jiwa</span>
+                <span className="ml-1 text-[10px] text-gray-700">Jiwa</span>
               ),
             },
           },
@@ -57,7 +57,7 @@ export const RatioSchoolChartSection = () => {
             },
             legend: {
               suffix: (
-                <span className="text-[10px] ml-1 text-gray-700">Jiwa</span>
+                <span className="ml-1 text-[10px] text-gray-700">Jiwa</span>
               ),
             },
           },
@@ -69,7 +69,7 @@ export const RatioSchoolChartSection = () => {
             },
             legend: {
               suffix: (
-                <span className="text-[10px] ml-1 text-gray-700">Jiwa</span>
+                <span className="ml-1 text-[10px] text-gray-700">Jiwa</span>
               ),
             },
           },

@@ -12,10 +12,7 @@ export default function Page() {
       description="Sumber : Sudin Pendidikan Jakarta Timur"
     >
       <CounterSection />
-
-      <Suspense fallback={"Loading..."}>
-        <RatioSchoolChartSection />
-      </Suspense>
+      <RatioSchoolChartSection />
 
       <Suspense fallback={"Loading..."}>
         <RatioTeacherStudentChartSection />
