@@ -1,6 +1,6 @@
 export const CitizenDepthMapSection = () => {
   return (
-    <div className="w-[485px]">
+    <div className="w-full lg:w-[485px]">
       <h6 className="text-lg font-bold font-plus-jakarta-sans">
         Sebaran Kepadatan Penduduk
       </h6>

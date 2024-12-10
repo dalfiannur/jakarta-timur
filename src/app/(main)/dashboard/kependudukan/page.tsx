@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import { PageWrapper } from "../_components/PageWrapper";
 import { CounterSection } from "./_sections/CounterSection";
 import { RatioCounterChartSection } from "./_sections/RatioCounterChartSection";
@@ -17,18 +16,12 @@ export default function Page() {
       <CounterSection />
       <RatioCounterChartSection />
 
-      <div className="flex gap-16">
-        <Suspense fallback={"Loading..."}>
-          <DisabilityCitizenChartSection />
-        </Suspense>
-        <Suspense fallback={"Loading..."}>
-          <CitizenDepthMapSection />
-        </Suspense>
+      <div className="flex flex-col gap-16 lg:flex-row">
+        <DisabilityCitizenChartSection />
+        <CitizenDepthMapSection />
       </div>
 
-      <Suspense fallback={"Loading..."}>
-        <TableSection />
-      </Suspense>
+      <TableSection />
     </PageWrapper>
   );
 }
