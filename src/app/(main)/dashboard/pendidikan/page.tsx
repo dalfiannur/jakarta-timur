@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import { PageWrapper } from "../_components/PageWrapper";
 import { CounterSection } from "./_sections/CounterSection";
 import { RatioSchoolChartSection } from "./_sections/RatioSchoolChartSection";
@@ -13,18 +12,9 @@ export default function Page() {
     >
       <CounterSection />
       <RatioSchoolChartSection />
-
-      <Suspense fallback={"Loading..."}>
-        <RatioTeacherStudentChartSection />
-      </Suspense>
-
-      <Suspense fallback={"Loading..."}>
-        <RatioSchoolGradeChartSection />
-      </Suspense>
-
-      <Suspense fallback={"Loading..."}>
-        <RatioSchoolGradeChartSection key="nasional" national />
-      </Suspense>
+      <RatioTeacherStudentChartSection />
+      <RatioSchoolGradeChartSection />
+      <RatioSchoolGradeChartSection key="nasional" national />
     </PageWrapper>
   );
 }
