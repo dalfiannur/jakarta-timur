@@ -1,3 +1,4 @@
+import { AccountStudent } from "./AccountStudent";
 import { ArrowRight } from "./ArrowRight";
 import { ArticleLine } from "./ArticleLine";
 import { ArtTrack } from "./ArtTrack";
@@ -75,6 +76,8 @@ import { QuillWrite } from "./QuillWrite";
 import { ScheduleColored } from "./ScheduleColored";
 import { School } from "./School";
 import { SchoolColored } from "./SchoolColored";
+import { SchoolOne } from "./SchoolOne";
+import { SchoolTwo } from "./SchoolTwo";
 import { Search } from "./Search";
 import { ServiceLine } from "./ServiceLine";
 import { SmartCity } from "./SmartCity";
@@ -84,6 +87,7 @@ import { StatisticUp } from "./StatisticUp";
 import { StatisticUpSolid } from "./StatisticUpSolid";
 import { Tags } from "./Tags";
 import { Tax } from "./Tax";
+import { Teacher } from "./Teacher";
 import { Trophy } from "./Trophy";
 import { User } from "./User";
 import { UserFolderColored } from "./UserFolderColored";
@@ -192,6 +196,10 @@ const icons = {
   PeopleCommunity,
   GenderMale,
   GenderFemale,
+  AccountStudent,
+  Teacher,
+  SchoolOne,
+  SchoolTwo,
 };
 
 export type IconKeys = keyof typeof icons;

@@ -11,9 +11,7 @@ export default function Page() {
       title="Pendidikan"
       description="Sumber : Sudin Pendidikan Jakarta Timur"
     >
-      <Suspense fallback={"Loading..."}>
-        <CounterSection />
-      </Suspense>
+      <CounterSection />
 
       <Suspense fallback={"Loading..."}>
         <RatioSchoolChartSection />
