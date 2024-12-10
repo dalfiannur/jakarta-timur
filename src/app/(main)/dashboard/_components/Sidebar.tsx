@@ -3,7 +3,7 @@ import { SidebarItem } from "./SidebarItem";
 export const Sidebar = () => {
   return (
     <div className="max-w-max flex-1 px-4 lg:max-w-72 lg:px-0">
-      <div className="hide-scroll flex flex-row overflow-x-scroll lg:flex-col">
+      <div className="flex flex-row overflow-x-scroll scrollbar-hidden lg:flex-col">
         <SidebarItem label="Overview" href="/dashboard" icon="Grid2Line" />
         <SidebarItem
           label="Kependudukan"
