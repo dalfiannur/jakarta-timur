@@ -28,6 +28,8 @@ import { FacebookFill } from "./FacebookFill";
 import { FloodWarningColored } from "./FloodWarningColored";
 import { FolderVideo } from "./FolderVideo";
 import { GalleryWideBold } from "./GalleryWideBold";
+import { GenderFemale } from "./GenderFemale";
+import { GenderMale } from "./GenderMale";
 import { GlobalIncreaseColored } from "./GlobalIncreaseColored";
 import { GoalsFill } from "./GoalsFill";
 import { GoogleMapColored } from "./GoogleMapColored";
@@ -65,6 +67,7 @@ import { ParkMultiColored } from "./ParkMultiColored";
 import { PcCovidColored } from "./PcCovidColored";
 import { Pdf } from "./Pdf";
 import { Pendidikan } from "./Pendidikan";
+import { PeopleCommunity } from "./PeopleCommunity";
 import { Phone } from "./Phone";
 import { Popup } from "./Popup";
 import { Profile } from "./Profile";
@@ -186,6 +189,9 @@ const icons = {
   Link,
   FacebookFill,
   Menu,
+  PeopleCommunity,
+  GenderMale,
+  GenderFemale,
 };
 
 export type IconKeys = keyof typeof icons;

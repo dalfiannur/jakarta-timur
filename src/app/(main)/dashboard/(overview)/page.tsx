@@ -13,9 +13,7 @@ export default function Page() {
       title="Overview"
       description="Ringkasan Data Penting untuk Pemahaman Cepat tentang Jakarta Timur"
     >
-      <Suspense fallback={"Loading..."}>
-        <CounterSection />
-      </Suspense>
+      <CounterSection />
 
       <div>
         <div className="flex gap-10">
