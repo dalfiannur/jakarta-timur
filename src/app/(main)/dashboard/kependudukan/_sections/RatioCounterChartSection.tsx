@@ -10,7 +10,7 @@ export const RatioCounterChartSection = () => {
   const foreigner = useQuery("total-foreigner");
 
   return (
-    <div className="grid grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
       <RatioCounterChartCard
         title="Jumlah Kepala Keluarga"
         total={householder.data?.male + householder.data?.female}

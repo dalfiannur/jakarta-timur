@@ -15,10 +15,7 @@ export default function Page() {
       description="Sumber : Dinas Kependudukan dan Pencatatan Sipil Provinsi DKI Jakarta"
     >
       <CounterSection />
-
-      <Suspense fallback={"Loading..."}>
-        <RatioCounterChartSection />
-      </Suspense>
+      <RatioCounterChartSection />
 
       <div className="flex gap-16">
         <Suspense fallback={"Loading..."}>
