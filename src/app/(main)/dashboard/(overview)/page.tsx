@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import { CounterSection } from "../kependudukan/_sections/CounterSection";
 import { SebaranKepadatanPendudukSection } from "./_sections/SebaranKepadatanPendudukSection";
 import { ProfilPendudukSection } from "./_sections/ProfilPendudukSection";
@@ -16,18 +15,12 @@ export default function Page() {
       <CounterSection />
 
       <div>
-        <div className="flex gap-10">
-          <Suspense fallback={"Loading..."}>
-            <SebaranKepadatanPendudukSection />
-          </Suspense>
-          <Suspense fallback={"Loading..."}>
-            <ProfilPendudukSection />
-          </Suspense>
+        <div className="flex flex-col gap-10 lg:flex-row">
+          <SebaranKepadatanPendudukSection />
+          <ProfilPendudukSection />
         </div>
         <div className="mt-10">
-          <Suspense fallback={"Loading..."}>
-            <TableSection />
-          </Suspense>
+          <TableSection />
         </div>
       </div>
     </PageWrapper>

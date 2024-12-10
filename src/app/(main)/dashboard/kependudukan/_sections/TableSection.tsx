@@ -1,38 +1,48 @@
-const getData = async (): Promise<
-  {
-    [key: string]: number | string;
-  }[]
-> => {
-  "use server";
-  return [
-    {
-      id: 1,
-      district: "Pasar Rebo",
-      citizen: 220583,
-      rw: 1.49,
-      rt: 7.26,
-      lmk: 16994,
-    },
-    {
-      id: 1,
-      district: "Pasar Rebo",
-      citizen: 220583,
-      rw: 1.49,
-      rt: 7.26,
-      lmk: 16994,
-    },
-    {
-      id: 1,
-      district: "Pasar Rebo",
-      citizen: 220583,
-      rw: 1.49,
-      rt: 7.26,
-      lmk: 16994,
-    },
-  ];
+"use client";
+
+type Data = {
+  id: number;
+  district: string;
+  citizen: number;
+  rw: number;
+  rt: number;
+  lmk: number;
 };
 
-const columns = [
+const data: Data[] = [
+  {
+    id: 1,
+    district: "Pasar Rebo",
+    citizen: 220583,
+    rw: 1.49,
+    rt: 7.26,
+    lmk: 16994,
+  },
+  {
+    id: 1,
+    district: "Pasar Rebo",
+    citizen: 220583,
+    rw: 1.49,
+    rt: 7.26,
+    lmk: 16994,
+  },
+  {
+    id: 1,
+    district: "Pasar Rebo",
+    citizen: 220583,
+    rw: 1.49,
+    rt: 7.26,
+    lmk: 16994,
+  },
+];
+
+type Column = {
+  key: keyof Data;
+  header: string;
+  footer: string;
+};
+
+const columns: Column[] = [
   {
     key: "district",
     header: "Kecamatan",
@@ -60,54 +70,51 @@ const columns = [
   },
 ];
 
-export const TableSection = async () => {
-  const data = await getData();
-
+export const TableSection = () => {
   return (
-    <table className="w-full rounded-2xl overflow-hidden">
-      <thead>
-        <tr className="font-plus-jakarta-sans font-medium text-sm">
-          {columns.map((column) => (
-            <th
-              key={column.key}
-              className="bg-[#FFF3EF] px-3 py-3 text-gray-700"
-            >
-              {column.header}
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((item, index) => (
-          <tr key={index} className="py-2">
-            {columns.map((column) => (
-              <td
-                key={column.key}
-                className="py-1 text-center font-inter text-lg text-gray-500"
-              >
-                <div
-                  data-stripped={index % 2 > 0}
-                  className="py-2 data-[stripped=true]:bg-blue-700/5"
-                >
-                  {item[column.key]}
-                </div>
-              </td>
+    <div className="no-scroll overflow-x-scroll">
+      <table className="w-full overflow-hidden rounded-xl">
+        <thead>
+          <tr className="font-plus-jakarta-sans text-sm font-medium">
+            {columns.map((column, index) => (
+              <th key={index} className="bg-[#FFF3EF] px-3 py-3 text-gray-700">
+                {column.header}
+              </th>
             ))}
           </tr>
-        ))}
-      </tbody>
-      <tfoot>
-        <tr className="bg-orange-500 text-white">
-          {columns.map((column) => (
-            <th
-              key={column.key}
-              className="py-2 font-roboto font-medium text-sm"
-            >
-              {column.footer}
-            </th>
+        </thead>
+        <tbody>
+          {data.map((item, index) => (
+            <tr key={index} className="py-2">
+              {columns.map((column, colIndex) => (
+                <td
+                  key={colIndex}
+                  className="py-1 text-center font-inter text-lg text-gray-500"
+                >
+                  <div
+                    data-stripped={index % 2 > 0}
+                    className="whitespace-nowrap p-2 data-[stripped=true]:bg-blue-700/5"
+                  >
+                    {item[column.key]}
+                  </div>
+                </td>
+              ))}
+            </tr>
           ))}
-        </tr>
-      </tfoot>
-    </table>
+        </tbody>
+        <tfoot>
+          <tr className="bg-orange-500 text-white">
+            {columns.map((column, index) => (
+              <th
+                key={index}
+                className="whitespace-nowrap p-2 font-roboto text-sm font-medium"
+              >
+                {column.footer}
+              </th>
+            ))}
+          </tr>
+        </tfoot>
+      </table>
+    </div>
   );
 };
