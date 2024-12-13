@@ -14,6 +14,7 @@ import { School } from "@/types/school";
 import { Provost } from "@/types/provost";
 import { GovEmployer } from "@/types/gov-employer";
 import { JakWifi } from "@/types/jakwifi";
+import { UKPD } from "@/types/ukpd";
 
 const BASE_URL_API = "https://timur.jakarta.go.id/API_Timur/api";
 
@@ -257,14 +258,17 @@ export const externalApi = router({
     }),
 
   getGovSubDistrictEmployers: procedure
-    .input(z.object({ limit: z.number().optional().default(9) }))
+    .input(
+      z.object({
+        page: z.number().optional().default(1),
+        limit: z.number().optional().default(9),
+      }),
+    )
     .query(async ({ input }) => {
-      const { data } = await fetchApi<PaginationResponse<GovEmployer>>(
-        "/kelurahan",
-        {
-          limit: input.limit,
-        },
-      );
+      const { data } = await fetchApi<PaginationResponse<UKPD>>("/ukpd", {
+        limit: input.limit,
+        page: input.page,
+      });
       return data;
     }),
 
