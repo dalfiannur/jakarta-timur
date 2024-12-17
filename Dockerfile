@@ -1,24 +1,29 @@
+# Gunakan image Node.js
 FROM node:20.16.0-alpine3.19
 
 # Set working directory
 WORKDIR /app
 
-# Copy package files and install dependencies
+# Salin package.json dan package-lock.json terlebih dahulu untuk caching
 COPY package*.json ./
+
+# Salin file Prisma schema terlebih dahulu sebelum npm install
+COPY prisma/schema.prisma ./prisma/schema.prisma
+
+# Instal dependencies
 RUN npm install
 
-# Copy the Prisma schema and environment file
-COPY prisma/schema.prisma ./prisma/schema.prisma
+# Salin file environment
 COPY .env .env
 
-# Copy the rest of the application code
+# Salin seluruh source code proyek
 COPY . .
 
-# Build the application
+# Build aplikasi
 RUN npm run build
 
-# Expose the application port
+# Ekspos port aplikasi
 EXPOSE 3000
 
-# Start the production server
+# Jalankan server produksi
 CMD ["npm", "start"]
