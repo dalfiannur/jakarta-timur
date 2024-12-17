@@ -1,11 +1,14 @@
-import { Bulletin } from "@/types/bulletin";
+"use client";
+import { trpc } from "@/utils/trpc";
 import Image from "next/image";
 
-type BulletinWidgetProps = {
-  data?: Bulletin[];
-};
+export const BulletinWidget = () => {
+  const res = trpc.externalApi.buletin.useQuery({
+    page: 1,
+    limit: 4,
+  });
+  const data = res.data?.data ?? [];
 
-export const BulletinWidget = ({ data = [] }: BulletinWidgetProps) => {
   return (
     <div>
       <h3 className="font-plus-jakarta-sans text-lg font-semibold lg:text-2xl">
