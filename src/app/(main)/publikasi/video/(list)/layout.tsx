@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { NewsList } from "../../_features/NewsList";
-import { BulletinList } from "../../_features/BulletinList";
+import { BulletinWidget } from "@/app/widgets/BulletinWidget";
 
 type LayoutProps = {
   children: ReactNode;
@@ -22,7 +22,7 @@ export default function Layout({ children }: LayoutProps) {
         <div className="flex-1">{children}</div>
         <div className="flex w-auto flex-col gap-12 lg:w-[437px]">
           <NewsList />
-          <BulletinList />
+          <BulletinWidget />
         </div>
       </div>
     </div>
