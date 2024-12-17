@@ -1,23 +1,23 @@
-# Use an official Node.js runtime as a parent image
 FROM node:20.16.0-alpine3.19
 
-# Set the working directory in the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json to install dependencies
+# Salin package.json dan .env
 COPY package*.json ./
+COPY .env .env
 
-# Install required dependencies
+# Salin Prisma schema dan file database
+COPY prisma/schema.prisma ./prisma/schema.prisma
+COPY dev.db ./dev.db
+
+# Install dependencies
 RUN npm install
 
-# Copy the rest of the application code
+# Salin seluruh kode aplikasi
 COPY . .
 
-# Build the Next.js application for production
-RUN npm run build
+# Jalankan Prisma generate (opsional jika tidak dilakukan di preinstall)
+RUN npx prisma generate
 
-# Expose the app's port
-EXPOSE 3000
-
-# Run the application server
-CMD ["npm", "run", "start"]
+# Jalankan aplikasi
+CMD ["npm", "start"]
