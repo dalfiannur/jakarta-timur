@@ -13,9 +13,6 @@ RUN npm install
 # Copy the rest of the application code
 COPY . .
 
-# Push the database schema
-RUN npm run db:push
-
 # Build the Next.js application for production
 RUN npm run build
 
