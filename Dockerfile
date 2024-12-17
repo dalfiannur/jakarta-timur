@@ -1,27 +1,24 @@
-# Gunakan Node.js versi yang stabil dengan Alpine sebagai base image
 FROM node:20.16.0-alpine3.19
 
-# Set working directory di dalam container
+# Set working directory
 WORKDIR /app
 
-# Salin file package.json dan package-lock.json
+# Copy package files and install dependencies
 COPY package*.json ./
-
-# Salin file konfigurasi lingkungan
-COPY .env .env
-
-# Buat folder untuk Prisma di dalam container
-RUN mkdir -p prisma
-
-# Salin schema Prisma dan file database ke dalam folder prisma
-COPY prisma/schema.prisma ./prisma/schema.prisma
-COPY prisma/dev.db ./prisma/dev.db
-
-# Install dependencies
 RUN npm install
 
-# Salin semua file aplikasi ke dalam container
+# Copy the Prisma schema and environment file
+COPY prisma/schema.prisma ./prisma/schema.prisma
+COPY .env .env
+
+# Copy the rest of the application code
 COPY . .
 
-# Perintah default untuk menjalankan aplikasi
-CMD ["npm", "run", "start"]
+# Build the application
+RUN npm run build
+
+# Expose the application port
+EXPOSE 3000
+
+# Start the production server
+CMD ["npm", "start"]
