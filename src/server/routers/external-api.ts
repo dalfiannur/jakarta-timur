@@ -174,7 +174,6 @@ export const externalApi = router({
       }),
     )
     .query(async ({ input }) => {
-      console.log({ input });
       const { data } = await fetchApi<PaginationResponse<Achievement>>(
         "/prestasi",
         {

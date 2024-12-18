@@ -1,25 +1,30 @@
 "use client";
 import { SelectCSR } from "@/app/components/SelectCSR";
-import * as store from "../store";
-import { useSetAtom } from "jotai";
+import { useContext, useMemo } from "react";
+import { Context } from "../context";
 
 const sort = [
   {
     label: "Terbaru",
     value: "desc",
   },
-];
-
-const years = [
   {
-    label: "2020",
-    value: "2020",
+    label: "Terlama",
+    value: "asc",
   },
 ];
 
 export const Filter = () => {
-  const setSort = useSetAtom(store.sort);
-  const setYear = useSetAtom(store.year);
+  const { setSort, setYear } = useContext(Context);
+
+  const years = useMemo(
+    () =>
+      Array.from(new Array(new Date().getFullYear() + 1 - 2022).keys()).map(
+        (key) => ({ value: String(2022 + key), label: String(2022 + key) }),
+      ),
+    [],
+  );
+
   return (
     <div className="flex items-center gap-2 lg:gap-6">
       <div className="whitespace-nowrap font-plus-jakarta-sans text-xs font-bold lg:text-base">
@@ -30,7 +35,7 @@ export const Filter = () => {
           placeholder="Pilih"
           data={sort}
           defaultSelected={sort[0]}
-          onChange={(option) => setSort(option?.value ?? undefined)}
+          onChange={(option) => option && setSort(option.value)}
         />
         <SelectCSR
           placeholder="Pilih Tahun"

@@ -1,10 +1,11 @@
+"use client";
 import { useDebounceEvent } from "@/app/hooks/useDebounceEvent";
 import { Icon } from "@/app/icons";
-import * as store from "../store";
-import { useSetAtom } from "jotai";
+import { useContext } from "react";
+import { Context } from "../context";
 
 export const SearchInput = () => {
-  const setSearch = useSetAtom(store.search);
+  const { setSearch } = useContext(Context);
   const set = useDebounceEvent<string>({
     timer: 1000,
     onChange: (value) => {

@@ -1,10 +1,10 @@
 "use client";
-import * as store from "../store";
 import { Button } from "../_components/Button";
-import { useAtom } from "jotai";
+import { useContext } from "react";
+import { Context } from "../context";
 
 export const ViewButton = () => {
-  const [view, setView] = useAtom(store.view);
+  const { setView, view } = useContext(Context);
   return (
     <div className="flex gap-4">
       <Button

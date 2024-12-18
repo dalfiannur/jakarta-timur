@@ -1,13 +1,11 @@
-import * as store from "../store";
 import { trpc } from "@/utils/trpc";
 import { PrestasiItem } from "../_components/PrestasiItem";
-import { useAtomValue } from "jotai";
+
+import { useContext } from "react";
+import { Context } from "../context";
 
 export const ListAchievement = () => {
-  const search = useAtomValue(store.search);
-  const sort = useAtomValue(store.sort);
-  const year = useAtomValue(store.year);
-  const view = useAtomValue(store.view);
+  const { search, sort, year, view } = useContext(Context);
 
   const res = trpc.externalApi.getAchievements.useQuery({
     search,
