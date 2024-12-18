@@ -4,13 +4,15 @@ import { Calender } from "@/app/components/Calender";
 import { Event } from "@/app/components/Event";
 import { SectionBox } from "@/app/components/SectionBox";
 import { trpc } from "@/utils/trpc";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
+import * as dateFns from "date-fns";
 
 export const EventSection = () => {
+  const [selected, setSelected] = useState<any[]>([]);
   const { data } = trpc.externalApi.agenda.useQuery(
     {
       page: 1,
-      limit: 4,
+      date: "12-2024",
     },
     {
       refetchOnWindowFocus: false,
@@ -34,6 +36,15 @@ export const EventSection = () => {
     return [];
   }, [data]);
 
+  useEffect(() => {
+    if (eventList.length > 0) {
+      const l = eventList.filter((f) =>
+        dateFns.isSameDay(dateFns.addDays(f.tanggal, 1), new Date()),
+      );
+      setSelected(l);
+    }
+  }, [eventList]);
+
   return (
     <SectionBox
       align="center"
@@ -42,18 +53,13 @@ export const EventSection = () => {
     >
       <div className="container mx-auto">
         <div className="flex flex-col gap-8 rounded-xl bg-white p-6 drop-shadow lg:flex-row">
-          <Calender
-            listAgenda={eventList}
-            // onItemClick={() => {
-            //   console.log("");
-            // }}
-          />
+          <Calender listAgenda={eventList} onItemClick={setSelected} />
 
-          <div className="grid flex-1 gap-1">
+          <div className="flex flex-1 flex-col gap-1">
             <h4 className="font-plus-jakarta-sans text-xl font-semibold md:text-2xl">
               Agenda Pimpinan
             </h4>
-            <Agenda data={eventList} />
+            <Agenda data={selected} />
           </div>
           <Event
             items={[

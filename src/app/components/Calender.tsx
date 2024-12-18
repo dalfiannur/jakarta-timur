@@ -1,5 +1,5 @@
 "use client";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Icon } from "../icons";
 import {
   addDays,
@@ -54,11 +54,12 @@ const legends: {
 
 interface CalenderProps {
   listAgenda?: (Activity & { type: number })[];
-  onItemClick?: (date: Date) => void;
+  onItemClick?: (agenda: (Activity & { type: number })[]) => void;
 }
 
 export const Calender = ({ listAgenda = [], onItemClick }: CalenderProps) => {
   const [active, setActive] = useState(new Date());
+  const [selected, setSelected] = useState<Date | undefined>();
 
   const renderDays = useMemo(() => {
     const startDate = startOfWeek(startOfMonth(active), { weekStartsOn: 1 });
@@ -73,20 +74,26 @@ export const Calender = ({ listAgenda = [], onItemClick }: CalenderProps) => {
     }
 
     return calender.map((date, index) => {
-      const agenda = listAgenda.filter((item) => isSameDay(item.tanggal, date));
+      const agenda = listAgenda.filter((item) =>
+        isSameDay(addDays(item.tanggal, 1), date),
+      );
       return (
         <Day
           currentDate={active}
           key={index}
           date={date}
           agenda={agenda}
+          selected={selected ? isSameDay(selected, date) : false}
           onClick={() => {
-            onItemClick?.(date);
+            onItemClick?.(agenda);
+            setSelected(
+              selected ? (isSameDay(selected, date) ? undefined : date) : date,
+            );
           }}
         />
       );
     });
-  }, [active, listAgenda, onItemClick]);
+  }, [active, listAgenda, onItemClick, selected]);
 
   const handlePrevMonth = useCallback(() => {
     setActive((prev) => subMonths(prev, 1));
@@ -97,16 +104,16 @@ export const Calender = ({ listAgenda = [], onItemClick }: CalenderProps) => {
 
   return (
     <div>
-      <div className="border rounded-xl w-full lg:max-w-[460px] p-5">
-        <div className="flex justify-between items-center py-2">
+      <div className="w-full rounded-xl border p-5 lg:max-w-[460px]">
+        <div className="flex items-center justify-between py-2">
           <button className="text-pink-500" onClick={handlePrevMonth}>
-            <Icon name="ChevronLeft" className="w-6 h-6" />
+            <Icon name="ChevronLeft" className="h-6 w-6" />
           </button>
-          <div className="font-semibold text-2xl">
+          <div className="text-2xl font-semibold">
             {monthLabels[active.getMonth()]} {active.getFullYear()}
           </div>
           <button className="text-pink-500" onClick={handleNextMonth}>
-            <Icon name="ChevronRight" className="w-6 h-6" />
+            <Icon name="ChevronRight" className="h-6 w-6" />
           </button>
         </div>
         <div className="mt-8 grid grid-cols-7 gap-4 md:gap-6">
@@ -116,10 +123,12 @@ export const Calender = ({ listAgenda = [], onItemClick }: CalenderProps) => {
             </div>
           ))}
         </div>
-        <div className="mt-12 grid grid-cols-7 gap-4 md:gap-8">{renderDays}</div>
+        <div className="mt-12 grid grid-cols-7 gap-4 md:gap-8">
+          {renderDays}
+        </div>
       </div>
 
-      <div className="mt-6 flex flex-col md:flex-row gap-2 md:gap-8">
+      <div className="mt-6 flex flex-col gap-2 md:flex-row md:gap-8">
         {legends.map((legend) => (
           <CalenderLegend
             key={legend.type}
@@ -136,26 +145,29 @@ interface DayProps {
   date: Date;
   currentDate: Date;
   agenda: (Activity & { type: number })[];
+  selected?: boolean;
   onClick: () => void;
 }
 
-const Day = ({ currentDate, date, agenda, onClick }: DayProps) => {
+const Day = ({ currentDate, selected, date, agenda, onClick }: DayProps) => {
   const groups = _.countBy(agenda, "type");
   const keys = Object.keys(groups);
+
   return (
     <button
       onClick={onClick}
       data-active={isToday(date) ? true : undefined}
+      data-selected={selected ? true : undefined}
       data-bias={isSameMonth(currentDate, date) ? undefined : true}
-      className="relative text-center data-[active]:bg-pink-500 h-10 w-10 flex flex-col justify-center items-center data-[active]:text-white data-[bias]:text-gray-400/60 rounded-xl font-semibold"
+      className="relative  flex h-10 w-10 flex-col items-center justify-center rounded-xl border border-transparent text-center font-semibold data-[selected]:border-pink-500 data-[active]:bg-pink-500 data-[active]:text-white data-[bias]:text-gray-400/60"
     >
       <div>{date.getDate()}</div>
-      <div className="flex gap-1 absolute bottom-1 text-xs">
+      <div className="absolute bottom-1 flex gap-1 text-xs">
         {keys.map((key) => (
           <div
             key={key}
             data-type={key}
-            className="rounded-full w-1 h-1 data-[type=0]:bg-green-800 data-[type=1]:bg-orange-500 data-[type=3]:bg-red-700"
+            className="h-1 w-1 rounded-full data-[type=0]:bg-green-800 data-[type=1]:bg-orange-500 data-[type=3]:bg-red-700"
           />
         ))}
       </div>

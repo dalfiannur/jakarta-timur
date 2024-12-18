@@ -55,8 +55,15 @@ const paginationRequest = {
 
 export const externalApi = router({
   agenda: procedure
-    .input(z.object(paginationRequest))
+    .input(
+      z.object({
+        page: z.number().optional().default(1),
+        limit: z.number().optional(),
+        date: z.string().optional(),
+      }),
+    )
     .query(async ({ input }) => {
+      console.log(input)
       const { data } = await fetchApi<PaginationResponse<Activity>>(
         "/agenda",
         input,
@@ -245,7 +252,7 @@ export const externalApi = router({
         filters[d.by] = d.value;
       });
 
-      console.log(filters)
+      console.log(filters);
 
       const { data } = await fetchApi<PaginationResponse<GovEmployer>>(
         "/" + input.area,
