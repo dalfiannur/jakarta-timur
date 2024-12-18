@@ -1,15 +1,14 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Icon } from "@/app/icons";
 import { DetailModal } from "./DetailModal";
 import { trpc } from "@/utils/trpc";
 import { GovEmployer } from "@/types/gov-employer";
-import * as store from "../store";
 import { Pagination } from "@/app/components/Pagination";
-import { useAtom, useAtomValue } from "jotai";
+import { Context } from "../context";
 
 type ListProps = {
   area: string;
@@ -18,18 +17,20 @@ type ListProps = {
 const PAGE_LIMIT = 10;
 
 export const List = ({ area }: ListProps) => {
-  const search = useAtomValue(store.search);
-  const kecamatanId = useAtomValue(store.kecamatanId);
-  const [page, setPage] = useAtom(store.page);
+  const { search, kecamatanId } = useContext(Context);
+  const [page, setPage] = useState(1);
+  const [total, setTotal] = useState(0);
 
   const options: {
     search: string;
     area: string;
+    page: number;
     limit: number;
     filters: { by: string; value: string }[];
   } = {
     search,
     area,
+    page,
     limit: PAGE_LIMIT,
     filters: [],
   };
@@ -44,16 +45,21 @@ export const List = ({ area }: ListProps) => {
   const [selected, setSelected] = useState<null | GovEmployer>(null);
   const res = trpc.externalApi.getGovAreaEmployers.useQuery(options);
   const data = res.data?.data ?? [];
-  const total = res.data?.total ?? 0;
   const pages = Math.ceil(total / PAGE_LIMIT);
 
   const skeletons = useMemo(
     () =>
-      Array.from(new Array(4).keys()).map((_, index) => (
+      Array.from(new Array(10).keys()).map((_, index) => (
         <Skeleton key={index} />
       )),
     [],
   );
+
+  useEffect(() => {
+    if (res.isSuccess) {
+      setTotal(Math.ceil(res.data.total / PAGE_LIMIT));
+    }
+  }, [res]);
 
   return (
     <>
@@ -103,15 +109,13 @@ export const List = ({ area }: ListProps) => {
             ))}
       </div>
 
-      {pages > 1 && (
-        <div className="flex justify-center">
-          <Pagination
-            page={page}
-            total={pages}
-            onPageChange={(v) => setPage(v)}
-          />
-        </div>
-      )}
+      <div className="flex justify-center">
+        <Pagination
+          page={page}
+          total={pages}
+          onPageChange={(v) => setPage(v)}
+        />
+      </div>
 
       {selected && (
         <DetailModal data={selected} onClose={() => setSelected(null)} />

@@ -245,6 +245,8 @@ export const externalApi = router({
         filters[d.by] = d.value;
       });
 
+      console.log(filters)
+
       const { data } = await fetchApi<PaginationResponse<GovEmployer>>(
         "/" + input.area,
         {
