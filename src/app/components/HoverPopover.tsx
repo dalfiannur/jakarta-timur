@@ -63,7 +63,7 @@ export const HoverPopover = ({ children, label, index }: HoverPopoverProps) => {
             anchor={{
               to: "bottom",
             }}
-            className="pt-10"
+            className="pt-10 z-[9999]"
             onMouseLeave={() => handleLeave(open)}
           >
             <div className={x.container()}>{children}</div>
