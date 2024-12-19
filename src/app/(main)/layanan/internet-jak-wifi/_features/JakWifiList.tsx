@@ -1,32 +1,30 @@
 "use client";
-import { trpc } from "@/utils/trpc";
 import {
   JakWifiListItem,
   JakWifiListItemSkeleton,
 } from "../_components/JakWifiListItem";
 import { Pagination } from "@/app/components/Pagination";
-import { useState } from "react";
-import * as store from "../store";
-import { useAtomValue, useSetAtom } from "jotai";
+import { JakWifi } from "@/types/jakwifi";
+import { LatLngExpression } from "leaflet";
 
-const LIMIT = 4;
-
-export const JakWifiList = () => {
-  const search = useAtomValue(store.search);
-  const setMap = useSetAtom(store.map);
-  const [page, setPage] = useState(1);
-  const res = trpc.externalApi.getJakWifi.useQuery({
-    page,
-    limit: LIMIT,
-    search,
-  });
-  const data = res.data?.data ?? [];
-  const total = res.data?.total ?? 0;
-  const pages = Math.ceil(total / LIMIT);
-
+export const JakWifiList = ({
+  isLoading,
+  data = [],
+  page = 1,
+  pages = 0,
+  setMap,
+  setPage,
+}: {
+  isLoading?: boolean;
+  data: JakWifi[];
+  page?: number;
+  pages?: number;
+  setMap?: (view: LatLngExpression) => void;
+  setPage?: (page: number) => void;
+}) => {
   return (
     <div className="flex flex-col gap-4">
-      {res.isLoading
+      {isLoading
         ? [1, 2, 3, 4].map((_, index) => (
             <JakWifiListItemSkeleton key={index} />
           ))
@@ -38,10 +36,10 @@ export const JakWifiList = () => {
               rw={item.RW}
               address={item.Alamat}
               onClick={() => {
-                setMap({
-                  longitude: parseFloat(item.Longitude),
-                  latitude: parseFloat(item.Latitude),
-                });
+                setMap?.([
+                  parseFloat(item.Longitude),
+                  parseFloat(item.Latitude),
+                ]);
               }}
             />
           ))}

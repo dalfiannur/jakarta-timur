@@ -4,45 +4,35 @@ import { useEffect, useRef } from "react";
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import * as store from "../store";
 import { useAtomValue } from "jotai";
+import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
 const center = [-6.225014, 106.900447] as LatLngExpression;
 
-export default function MapArea() {
+export default function MapArea({ data }: { data: LatLngExpression[] }) {
   const mapRef = useRef<Map>(null);
   const map = useAtomValue(store.map);
 
   useEffect(() => {
-    const lat = map.latitude;
-    const lng = map.longitude;
-    if (lat && lng) {
-      mapRef.current?.setView({
-        lat,
-        lng,
-      });
+    const mapContainer = L.DomUtil.get("map");
+    if (mapContainer) {
+      //@ts-ignore
+      mapContainer._leaflet_id = null; // Reset instance
     }
-  }, [map]);
 
-  return (
-    <MapContainer
-      className="aspect-square w-full lg:aspect-auto"
-      ref={mapRef}
-      center={center}
-      zoom={13}
-      scrollWheelZoom={false}
-    >
-      <TileLayer url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      {map.latitude && map.longitude && (
-        <Marker
-          position={{ lat: map.latitude, lng: map.longitude }}
-          icon={
-            new Icon({
-              iconUrl: "/img/smart-city.svg",
-              iconSize: [32, 32],
-            })
-          }
-        />
-      )}
-    </MapContainer>
-  );
+    const map = L.map("map").setView(center, 13);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(
+      map,
+    );
+
+    data.forEach((item) => {
+      const marker = L.marker(item).addTo(map);
+      marker.setIcon(L.icon({
+        iconUrl: '/img/smart-city.svg',
+        iconSize: [32,32]
+      }))
+    });
+  }, [data]);
+
+  return <div id="map" className="aspect-square w-full lg:aspect-auto" />;
 }
