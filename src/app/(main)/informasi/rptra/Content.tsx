@@ -2,232 +2,33 @@
 
 import { ListNumberAccordion } from "@/app/components/ListNumberAccordion";
 import { Icon } from "@/app/icons";
+import { Rptra } from "@/types/rptra";
+import { trpc } from "@/utils/trpc";
 import Link from "next/link";
+import { useMemo } from "react";
 
-const items = [
-  {
-    label: "Kecamatan Matraman",
-    numberLabel: 1,
-    items: [
-      {
-        name: "Utakase Berseri",
-        address: "Jl. Galur Sari II Kelurahan Utan Kayu Selatan",
-        link: "#",
-      },
-      {
-        name: "Puspa Hati",
-        address: "Jl. Pandan RW 009 Kelurahan Utan Kayu Selatan",
-        link: "#",
-      },
-      {
-        name: "Utakara Beriman",
-        address: "Jl. Balai Rakyat RT.014/06, Belakang SMPN 7",
-        link: "#",
-      },
-    ],
-  },
-  {
-    label: "Kecamatan Pulo Gadung",
-    numberLabel: 2,
-    items: [
-      {
-        name: "Utakase Berseri",
-        address: "Jl. Galur Sari II Kelurahan Utan Kayu Selatan",
-        link: "#",
-      },
-      {
-        name: "Puspa Hati",
-        address: "Jl. Pandan RW 009 Kelurahan Utan Kayu Selatan",
-        link: "#",
-      },
-      {
-        name: "Utakara Beriman",
-        address: "Jl. Balai Rakyat RT.014/06, Belakang SMPN 7",
-        link: "#",
-      },
-    ],
-  },
-  {
-    label: "Kecamatan Jatinegara",
-    numberLabel: 3,
-    items: [
-      {
-        name: "Utakase Berseri",
-        address: "Jl. Galur Sari II Kelurahan Utan Kayu Selatan",
-        link: "#",
-      },
-      {
-        name: "Puspa Hati",
-        address: "Jl. Pandan RW 009 Kelurahan Utan Kayu Selatan",
-        link: "#",
-      },
-      {
-        name: "Utakara Beriman",
-        address: "Jl. Balai Rakyat RT.014/06, Belakang SMPN 7",
-        link: "#",
-      },
-    ],
-  },
-  {
-    label: "Kecamatan Kramat Jati",
-    numberLabel: 4,
-    items: [
-      {
-        name: "Utakase Berseri",
-        address: "Jl. Galur Sari II Kelurahan Utan Kayu Selatan",
-        link: "#",
-      },
-      {
-        name: "Puspa Hati",
-        address: "Jl. Pandan RW 009 Kelurahan Utan Kayu Selatan",
-        link: "#",
-      },
-      {
-        name: "Utakara Beriman",
-        address: "Jl. Balai Rakyat RT.014/06, Belakang SMPN 7",
-        link: "#",
-      },
-    ],
-  },
-  {
-    label: "Kecamatan Pasar Rebo",
-    numberLabel: 5,
-    items: [
-      {
-        name: "Utakase Berseri",
-        address: "Jl. Galur Sari II Kelurahan Utan Kayu Selatan",
-        link: "#",
-      },
-      {
-        name: "Puspa Hati",
-        address: "Jl. Pandan RW 009 Kelurahan Utan Kayu Selatan",
-        link: "#",
-      },
-      {
-        name: "Utakara Beriman",
-        address: "Jl. Balai Rakyat RT.014/06, Belakang SMPN 7",
-        link: "#",
-      },
-    ],
-  },
-  {
-    label: "Kecamatan Cakung",
-    numberLabel: 6,
-    items: [
-      {
-        name: "Utakase Berseri",
-        address: "Jl. Galur Sari II Kelurahan Utan Kayu Selatan",
-        link: "#",
-      },
-      {
-        name: "Puspa Hati",
-        address: "Jl. Pandan RW 009 Kelurahan Utan Kayu Selatan",
-        link: "#",
-      },
-      {
-        name: "Utakara Beriman",
-        address: "Jl. Balai Rakyat RT.014/06, Belakang SMPN 7",
-        link: "#",
-      },
-    ],
-  },
-  {
-    label: "Kecamatan Duren Sawit",
-    numberLabel: 7,
-    items: [
-      {
-        name: "Utakase Berseri",
-        address: "Jl. Galur Sari II Kelurahan Utan Kayu Selatan",
-        link: "#",
-      },
-      {
-        name: "Puspa Hati",
-        address: "Jl. Pandan RW 009 Kelurahan Utan Kayu Selatan",
-        link: "#",
-      },
-      {
-        name: "Utakara Beriman",
-        address: "Jl. Balai Rakyat RT.014/06, Belakang SMPN 7",
-        link: "#",
-      },
-    ],
-  },
-  {
-    label: "Kecamatan Makasar",
-    numberLabel: 8,
-    items: [
-      {
-        name: "Utakase Berseri",
-        address: "Jl. Galur Sari II Kelurahan Utan Kayu Selatan",
-        link: "#",
-      },
-      {
-        name: "Puspa Hati",
-        address: "Jl. Pandan RW 009 Kelurahan Utan Kayu Selatan",
-        link: "#",
-      },
-      {
-        name: "Utakara Beriman",
-        address: "Jl. Balai Rakyat RT.014/06, Belakang SMPN 7",
-        link: "#",
-      },
-    ],
-  },
-  {
-    label: "Kecamatan Ciracas",
-    numberLabel: 9,
-    items: [
-      {
-        name: "Utakase Berseri",
-        address: "Jl. Galur Sari II Kelurahan Utan Kayu Selatan",
-        link: "#",
-      },
-      {
-        name: "Puspa Hati",
-        address: "Jl. Pandan RW 009 Kelurahan Utan Kayu Selatan",
-        link: "#",
-      },
-      {
-        name: "Utakara Beriman",
-        address: "Jl. Balai Rakyat RT.014/06, Belakang SMPN 7",
-        link: "#",
-      },
-    ],
-  },
-  {
-    label: "Kecamatan Cipayung",
-    numberLabel: 10,
-    items: [
-      {
-        name: "Utakase Berseri",
-        address: "Jl. Galur Sari II Kelurahan Utan Kayu Selatan",
-        link: "#",
-      },
-      {
-        name: "Puspa Hati",
-        address: "Jl. Pandan RW 009 Kelurahan Utan Kayu Selatan",
-        link: "#",
-      },
-      {
-        name: "Utakara Beriman",
-        address: "Jl. Balai Rakyat RT.014/06, Belakang SMPN 7",
-        link: "#",
-      },
-    ],
-  },
-];
-
+type DataItem = { [key: string]: Rptra[] };
 export const Content = () => {
+  const res = trpc.externalApi.getRptra.useQuery(undefined, {
+    refetchOnWindowFocus: false,
+  });
+
+  const data = useMemo(() => {
+    if (!res.data) return {} as DataItem;
+    const result: DataItem = {};
+    res.data.data.forEach((d) => {
+      result[d.kecamatan.nama] = [...(result[d.kecamatan.nama] ?? []), d];
+    });
+    return result;
+  }, [res]);
+
+  console.log(data);
   return (
     <div className="flex flex-col gap-4">
-      {items.map((item) => (
-        <ListNumberAccordion
-          key={item.numberLabel}
-          numberLabel={item.numberLabel}
-          label={item.label}
-        >
+      {Object.keys(data).map((key, xIndex) => (
+        <ListNumberAccordion key={xIndex} numberLabel={xIndex + 1} label={key}>
           <div className="grid grid-cols-1 gap-0 p-0 lg:grid-cols-3 lg:gap-8 lg:p-8">
-            {item.items.map((row, index) => (
+            {data[key].map((row, index) => (
               <div
                 key={index}
                 className="rounded-none border p-4 lg:rounded-xl lg:p-8"
@@ -239,12 +40,12 @@ export const Content = () => {
                   />
                 </div>
                 <div className="mt-4 grid gap-2">
-                  <h4 className="text-base font-bold lg:text-lg">{row.name}</h4>
+                  <h4 className="text-base font-bold lg:text-lg">{row.nama}</h4>
                   <p className="text-sm text-gray-600 lg:text-base">
-                    {row.address}
+                    {row.alamat}
                   </p>
                   <Link
-                    href={row.link}
+                    href={"#"}
                     className="mt-2 inline-flex w-fit gap-2 rounded-lg border border-pink-500 px-2 py-[6px] text-[10px] text-pink-500"
                   >
                     <Icon

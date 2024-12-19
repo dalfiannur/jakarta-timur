@@ -1,3 +1,4 @@
+"use client";
 import { PageTitle } from "@/app/components/PageTitle";
 import { SectionBox } from "@/app/components/SectionBox";
 import { Content } from "./Content";

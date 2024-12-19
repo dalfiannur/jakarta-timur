@@ -15,6 +15,7 @@ import { Provost } from "@/types/provost";
 import { GovEmployer } from "@/types/gov-employer";
 import { JakWifi } from "@/types/jakwifi";
 import { UKPD } from "@/types/ukpd";
+import { Rptra } from "@/types/rptra";
 
 const BASE_URL_API = "https://timur.jakarta.go.id/API_Timur/api";
 
@@ -42,17 +43,6 @@ const fetchApi = async <TResponse>(
   return data;
 };
 
-const paginationRequest = {
-  page: z
-    .number()
-    .default(1)
-    .transform((page) => page.toString()),
-  limit: z
-    .number()
-    .default(4)
-    .transform((limit) => limit.toString()),
-};
-
 export const externalApi = router({
   agenda: procedure
     .input(
@@ -63,7 +53,7 @@ export const externalApi = router({
       }),
     )
     .query(async ({ input }) => {
-      console.log(input)
+      console.log(input);
       const { data } = await fetchApi<PaginationResponse<Activity>>(
         "/agenda",
         input,
@@ -73,7 +63,18 @@ export const externalApi = router({
     }),
 
   buletin: procedure
-    .input(z.object(paginationRequest))
+    .input(
+      z.object({
+        page: z
+          .number()
+          .default(1)
+          .transform((page) => page.toString()),
+        limit: z
+          .number()
+          .default(4)
+          .transform((limit) => limit.toString()),
+      }),
+    )
     .query(async ({ input }) => {
       const { data } = await fetchApi<PaginationResponse<Bulletin>>(
         "/buletin",
@@ -92,7 +93,18 @@ export const externalApi = router({
   }),
 
   news: procedure
-    .input(z.object(paginationRequest))
+    .input(
+      z.object({
+        page: z
+          .number()
+          .default(1)
+          .transform((page) => page.toString()),
+        limit: z
+          .number()
+          .default(4)
+          .transform((limit) => limit.toString()),
+      }),
+    )
     .query(async ({ input }) => {
       const { data } = await fetchApi<PaginationResponse<News>>("/news", input);
       return data;
@@ -106,7 +118,18 @@ export const externalApi = router({
   }),
 
   galleries: procedure
-    .input(z.object(paginationRequest))
+    .input(
+      z.object({
+        page: z
+          .number()
+          .default(1)
+          .transform((page) => page.toString()),
+        limit: z
+          .number()
+          .default(4)
+          .transform((limit) => limit.toString()),
+      }),
+    )
     .query(async ({ input }) => {
       const { data } = await fetchApi<PaginationResponse<NewsPhoto>>(
         "/newsphoto",
@@ -125,7 +148,18 @@ export const externalApi = router({
   }),
 
   videos: procedure
-    .input(z.object(paginationRequest))
+    .input(
+      z.object({
+        page: z
+          .number()
+          .default(1)
+          .transform((page) => page.toString()),
+        limit: z
+          .number()
+          .default(4)
+          .transform((limit) => limit.toString()),
+      }),
+    )
     .query(async ({ input }) => {
       const { data } = await fetchApi<PaginationResponse<Video>>(
         "/video",
@@ -302,4 +336,11 @@ export const externalApi = router({
       });
       return data;
     }),
+
+  getRptra: procedure.query(async () => {
+    const { data } = await fetchApi<PaginationResponse<Rptra>>("/rptra", {
+      limit: 1000,
+    });
+    return data;
+  }),
 });
