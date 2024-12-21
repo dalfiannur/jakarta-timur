@@ -12,4 +12,6 @@ export type School = {
   alamat: string;
   created_at: string;
   updated_at: string;
+  latitude: string | null;
+  longitude: string | null;
 };

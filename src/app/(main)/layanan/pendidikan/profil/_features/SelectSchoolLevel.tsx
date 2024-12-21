@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { SelectCSR } from "@/app/components/SelectCSR";
 
 const data = [
@@ -18,14 +18,17 @@ const data = [
 
 export const SelectSchoolLevel = ({
   classNames,
+  onChange,
 }: {
   classNames?: { root?: string; button?: string };
+  onChange?: (value: string | undefined) => void;
 }) => {
   return (
     <SelectCSR
       data={data}
       placeholder="Pilih Jenjang"
       classNames={classNames}
+      onChange={(val) => onChange?.(val ? val.value : undefined)}
     />
   );
 };

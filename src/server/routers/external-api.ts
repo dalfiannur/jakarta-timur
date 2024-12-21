@@ -234,10 +234,26 @@ export const externalApi = router({
     return data;
   }),
 
-  getSchools: procedure.query(async () => {
-    const { data } = await fetchApi<PaginationResponse<School>>("/sekolah", {});
-    return data;
-  }),
+  getSchools: procedure
+    .input(
+      z.object({
+        limit: z.number().optional().default(10),
+        page: z.number().optional().default(1),
+        district: z.string().optional(),
+        grade: z.string().optional(),
+        search: z.string().optional(),
+      }),
+    )
+    .query(async ({ input }) => {
+      const { data } = await fetchApi<PaginationResponse<School>>("/sekolah", {
+        page: input.page,
+        limit: input.limit,
+        kecamatan: input.district,
+        search: input.search,
+        jenjang: input.grade,
+      });
+      return data;
+    }),
 
   getProvost: procedure.query(async () => {
     const { data } = await fetchApi<{ data: Provost[] }>("/walikota", {});

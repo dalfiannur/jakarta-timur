@@ -1,4 +1,5 @@
 "use client";
+import { Icon } from "@/app/icons";
 import { useMemo } from "react";
 
 type SchoolListItemProps = {
@@ -10,6 +11,7 @@ type SchoolListItemProps = {
   totalClass: number;
   totalLibrary: number;
   totalLab: number;
+  onClick?: () => void;
 };
 
 export const SchoolListItem = ({
@@ -21,6 +23,7 @@ export const SchoolListItem = ({
   totalLibrary,
   totalTeacher,
   totalTendik,
+  onClick,
 }: SchoolListItemProps) => {
   const details = useMemo(
     () => [
@@ -49,37 +52,64 @@ export const SchoolListItem = ({
         value: totalLab,
       },
     ],
-    [npsn, totalClass, totalLab, totalLibrary, totalTeacher, totalTendik]
+    [npsn, totalClass, totalLab, totalLibrary, totalTeacher, totalTendik],
   );
 
   return (
-    <div className="flex gap-4 p-2 border rounded-xl lg:p-4 lg:gap-10">
-      <div className="w-8 h-8 bg-blue-100 rounded-full lg:w-16 lg:h-16" />
+    <button
+      onClick={onClick}
+      className="flex gap-4 rounded-xl border p-2 text-left lg:gap-10 lg:p-4"
+    >
+      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 lg:h-16 lg:w-16">
+        <Icon name="SchoolColored" className="h-8 w-8" />
+      </div>
       <div className="flex-1">
         <div className="flex justify-between gap-6">
           <div className="flex-1 font-plus-jakarta-sans">
             <h2 className="text-base font-bold lg:text-xl">{name}</h2>
-            <p className="mt-0 lg:mt-[2px] font-medium text-sm lg:text-lg text-gray-500/80">
+            <p className="mt-0 text-sm font-medium text-gray-500/80 lg:mt-[2px] lg:text-lg">
               {address}
             </p>
           </div>
-          <div className="flex items-center justify-center w-6 h-6 text-xs text-white bg-blue-500 rounded-full lg:w-8 lg:h-8 lg:text-base">
+          <div className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-500 text-xs text-white lg:h-8 lg:w-8 lg:text-base">
             A
           </div>
         </div>
-        <div className="flex gap-6 pt-4 mt-4 border-t">
+        <div className="mt-4 flex gap-6 border-t pt-4">
           {details.map(({ label, value }, index) => (
-            <div key={index} className="font-medium font-plus-jakarta-sans">
-              <div className="text-[8px] lg:text-sm text-gray-500/80">
+            <div key={index} className="font-plus-jakarta-sans font-medium">
+              <div className="text-[8px] text-gray-500/80 lg:text-sm">
                 {label}
               </div>
-              <div className="text-xs lg:text-base mt-[2px] text-gray-950">
+              <div className="mt-[2px] text-xs text-gray-950 lg:text-base">
                 {value}
               </div>
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </button>
   );
 };
+
+export const SchoolItemSkeleton = () => (
+  <button className="flex animate-pulse gap-4 rounded-xl bg-gray-100 p-2 lg:gap-10 lg:p-4">
+    <div className="h-8 w-8 rounded-full bg-gray-200 lg:h-16 lg:w-16" />
+    <div className="flex-1">
+      <div className="flex justify-between gap-6">
+        {[1, 2, 3].map((_, index) => (
+          <div key={index} className="flex-1 font-plus-jakarta-sans">
+            <h2 className="h-3 w-24 rounded-full bg-gray-200" />
+            <p className="mt-1 h-4 w-32 rounded-full bg-gray-200" />
+          </div>
+        ))}
+      </div>
+      <div className="mt-2 border-t pt-2">
+        <div>
+          <div className="h-3 w-24 rounded-full bg-gray-200" />
+          <div className="mt-1 h-4 w-full rounded-full bg-gray-200" />
+        </div>
+      </div>
+    </div>
+  </button>
+);
