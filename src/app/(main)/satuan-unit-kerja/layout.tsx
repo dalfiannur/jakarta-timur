@@ -13,8 +13,12 @@ type LayoutProps = {
 export default function Layout({ children }: LayoutProps) {
   const pathname = usePathname();
 
-  return pathname.includes("/satuan-unit-kerja/wilayah/kecamatan/") ||
-    pathname.includes("/satuan-unit-kerja/wilayah/kelurahan/") ? (
+  return [
+    "/satuan-unit-kerja/wilayah/kecamatan/",
+    "/satuan-unit-kerja/wilayah/kelurahan/",
+    "/satuan-unit-kerja/walikota/1",
+    "/satuan-unit-kerja/walikota/2",
+  ].includes(pathname) ? (
     children
   ) : (
     <div className="pb-16">
@@ -24,11 +28,11 @@ export default function Layout({ children }: LayoutProps) {
         subtitle="Menghadirkan Inovasi dan Solusi untuk Kemajuan Kota yang Berkelanjutan"
       />
 
-      <div className="relative z-10 mt-0 lg:-mt-28 container mx-auto bg-soft-white rounded-4xl p-0 lg:p-8 shadow-none lg:shadow-light">
+      <div className="container relative z-10 mx-auto mt-0 rounded-4xl bg-soft-white p-0 shadow-none lg:-mt-28 lg:p-8 lg:shadow-light">
         <Suspense fallback={"Loading..."}>
           <PageBreadcrumbs />
         </Suspense>
-        <div className="mt-8 flex flex-col lg:flex-row gap-8 px-4 lg-px-0">
+        <div className="lg-px-0 mt-8 flex flex-col gap-8 px-4 lg:flex-row">
           <Sidebar items={sidebarItems} />
           {children}
         </div>
