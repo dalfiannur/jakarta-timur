@@ -1,16 +1,12 @@
 "use client";
-import {
-  SelectCSR,
-  SelectCSRProps,
-  SelectOption,
-} from "@/app/components/SelectCSR";
+import { SelectCSR, SelectCSRProps } from "@/app/components/SelectCSR";
 import { trpc } from "@/utils/trpc";
 import { useMemo } from "react";
 
-type SelectDistrictProps = Omit<SelectCSRProps, "data"> & {
+type SelectDistrictProps = Omit<SelectCSRProps, "data" | "onChange"> & {
   hasLabel?: boolean;
   fullWidth?: boolean;
-  onChange?: (selected: SelectOption | null) => void;
+  onChange?: (selected: { id: number; slug: string } | null) => void;
 };
 
 export const SelectDistrict = ({
@@ -19,10 +15,16 @@ export const SelectDistrict = ({
   classNames,
   ...props
 }: SelectDistrictProps) => {
-  const { data } = trpc.externalApi.getDistricts.useQuery();
+  const { data } = trpc.externalApi.getDistricts.useQuery(undefined, {
+    refetchOnWindowFocus: false,
+  });
 
   const options = useMemo(
-    () => data?.data?.map((d) => ({ value: d.slug, label: d.nama })) ?? [],
+    () =>
+      data?.data?.map((d) => ({
+        value: JSON.stringify({ id: d.id, slug: d.slug }),
+        label: d.nama,
+      })) ?? [],
     [data],
   );
 
@@ -34,7 +36,7 @@ export const SelectDistrict = ({
         data={options}
         defaultSelected={options[0]}
         placeholder="Pilih Kecamatan"
-        onChange={onChange}
+        onChange={(value) => onChange?.(value ? JSON.parse(value.value) : null)}
         classNames={classNames}
       />
     </div>

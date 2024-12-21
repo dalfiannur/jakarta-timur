@@ -7,7 +7,7 @@ const styles = tv(
     slots: {
       root: "group relative border overflow-hidden flex items-center",
       icon: "absolute aspect-square",
-      input: "peer pr-4 focus:outline-none",
+      input: "peer pr-4 focus:outline-none flex-1",
     },
     variants: {
       size: {

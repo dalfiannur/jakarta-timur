@@ -24,6 +24,7 @@ import { EcoFactoryColored } from "./EcoFactoryColored";
 import { Ekonomi } from "./Ekonomi";
 import { Employee } from "./Employee";
 import { Employees } from "./Employees";
+import { Empty } from "./Empty";
 import { FacebookColored } from "./FacebookColored";
 import { FacebookFill } from "./FacebookFill";
 import { FloodWarningColored } from "./FloodWarningColored";
@@ -200,6 +201,7 @@ const icons = {
   Teacher,
   SchoolOne,
   SchoolTwo,
+  Empty,
 };
 
 export type IconKeys = keyof typeof icons;

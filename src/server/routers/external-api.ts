@@ -193,14 +193,14 @@ export const externalApi = router({
   getSubDistricts: procedure
     .input(
       z.object({
-        districtSlug: z.string().optional(),
+        districtId: z.number().optional(),
       }),
     )
     .query(async ({ input }) => {
       const { data } = await fetchApi<PaginationResponse<District>>(
         "/kelurahan",
         {
-          slug: input.districtSlug,
+          kecamatan_id: input.districtId,
         },
       );
       return data;
@@ -242,6 +242,13 @@ export const externalApi = router({
   getProvost: procedure.query(async () => {
     const { data } = await fetchApi<{ data: Provost[] }>("/walikota", {});
     return data.sort((a, b) => (a.id < b.id ? -1 : 1));
+  }),
+
+  getProvostById: procedure.input(z.number()).query(async ({ input }) => {
+    const { data } = await fetchApi<{ data: Provost }>("/walikota", {
+      id: input,
+    });
+    return data;
   }),
 
   getExProvost: procedure.query(async () => {
@@ -329,8 +336,8 @@ export const externalApi = router({
       const { data } = await fetchApi<PaginationResponse<JakWifi>>("/jakwifi", {
         limit: input.limit,
         page: input.page,
-        kecamatan_id: input.district,
-        kelurahan_id: input.subDistrict,
+        kecamatan: input.district,
+        kelurahan: input.subDistrict,
         search: input.search,
         rw: input.rw,
       });

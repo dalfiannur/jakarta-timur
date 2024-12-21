@@ -7,7 +7,7 @@ import {
   Label,
   Field,
 } from "@headlessui/react";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Icon } from "../icons";
 import { tv, VariantProps } from "tailwind-variants";
 
@@ -84,6 +84,7 @@ export type SelectOption = {
 
 export type SelectCSRProps = Omit<Variant, "size"> & {
   label?: string;
+  loading?: boolean;
   placeholder?: string;
   data: SelectOption[];
   defaultSelected?: SelectOption;
@@ -96,6 +97,7 @@ export type SelectCSRProps = Omit<Variant, "size"> & {
 
 export const SelectCSR = ({
   label,
+  loading,
   placeholder,
   data,
   defaultSelected,
@@ -128,6 +130,12 @@ export const SelectCSR = ({
     },
     [onChange, selected],
   );
+
+  useEffect(() => {
+    if (loading) {
+      setSelected(null);
+    }
+  }, [loading]);
 
   return (
     <Field className={x.root({ className: classNames?.root })}>

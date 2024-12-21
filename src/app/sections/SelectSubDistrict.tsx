@@ -1,32 +1,37 @@
 "use client";
-import {
-  SelectCSR,
-  SelectCSRProps,
-  SelectOption,
-} from "@/app/components/SelectCSR";
+import { SelectCSR, SelectCSRProps } from "@/app/components/SelectCSR";
 import { trpc } from "@/utils/trpc";
 import { useMemo } from "react";
 
-type SelectSubDistrictProps = Omit<SelectCSRProps, "data"> & {
+type SelectSubDistrictProps = Omit<SelectCSRProps, "data" | "onChange"> & {
   hasLabel?: boolean;
-  district?: string;
-  onChange?: (selected: SelectOption | null) => void;
+  districtId?: number;
+  onChange?: (selected: { id: number; slug: string } | null) => void;
 };
 
 export const SelectSubDistrict = ({
   hasLabel,
   onChange,
-  district,
+  districtId,
   classNames,
   ...props
 }: SelectSubDistrictProps) => {
-  const { data } = trpc.externalApi.getSubDistricts.useQuery({
-    districtSlug: district,
-  });
+  const res = trpc.externalApi.getSubDistricts.useQuery(
+    {
+      districtId,
+    },
+    {
+      refetchOnWindowFocus: false,
+    },
+  );
 
   const options = useMemo(
-    () => data?.data?.map((d) => ({ value: d.slug, label: d.nama })) ?? [],
-    [data],
+    () =>
+      res.data?.data?.map((d) => ({
+        value: JSON.stringify({ id: d.id, slug: d.slug }),
+        label: d.nama,
+      })) ?? [],
+    [res],
   );
 
   return (
@@ -34,10 +39,10 @@ export const SelectSubDistrict = ({
       {hasLabel && <label>Pilih Kelurahan :</label>}
       <SelectCSR
         {...props}
+        loading={res.fetchStatus === "fetching"}
         data={options}
-        defaultSelected={options[0]}
         placeholder="Pilih Kelurahan"
-        onChange={onChange}
+        onChange={(val) => onChange?.(val ? JSON.parse(val.value) : undefined)}
         classNames={classNames}
       />
     </div>

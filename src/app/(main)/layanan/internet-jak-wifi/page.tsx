@@ -2,20 +2,26 @@
 import { trpc } from "@/utils/trpc";
 import { FilterSection } from "./_features/FilterSection";
 import { JakWifiList } from "./_features/JakWifiList";
-import { MapAreaNoSSR } from "./_features/MapAreaNoSSR";
 import { useState } from "react";
 import { LatLngExpression } from "leaflet";
+import MapArea from "./_features/MapArea";
 
 const LIMIT = 4;
 
 export default function Page() {
-  const [search, setSearch] = useState("");
+  const [district, setDistrict] = useState<string | undefined>();
+  const [subDistrict, setSubDistrict] = useState<string | undefined>();
+  const [rw, setRw] = useState<string | undefined>();
+  const [search, setSearch] = useState<string | undefined>();
   const [page, setPage] = useState(1);
   const [map, setMap] = useState<LatLngExpression | undefined>();
   const res = trpc.externalApi.getJakWifi.useQuery({
     page,
     limit: LIMIT,
     search,
+    district,
+    subDistrict,
+    rw,
   });
   const data = res.data?.data ?? [];
   const total = res.data?.total ?? 0;
@@ -31,10 +37,15 @@ export default function Page() {
       <div className="container mx-auto">
         <div className="p-4">
           <div className="mt-10">
-            <FilterSection />
+            <FilterSection
+              onSearch={setSearch}
+              onDistrictChange={setDistrict}
+              onSubDistrictChange={setSubDistrict}
+              onRwChange={setRw}
+            />
 
             <div className="mt-10 grid grid-cols-1 gap-4 lg:grid-cols-2">
-              <MapAreaNoSSR data={marks} />
+              <MapArea data={marks} />
               <JakWifiList
                 isLoading={res.isLoading}
                 data={data}
