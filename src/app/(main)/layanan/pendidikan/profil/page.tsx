@@ -15,7 +15,7 @@ export default function Page() {
   const [grade, setGrade] = useState<string | undefined>();
   const [search, setSearch] = useState<string | undefined>();
   const [page, setPage] = useState(1);
-  const [map, setMap] = useState<LatLngExpression | undefined>();
+  const [, setMap] = useState<LatLngExpression | undefined>();
   const res = trpc.externalApi.getSchools.useQuery({
     page,
     limit: LIMIT,

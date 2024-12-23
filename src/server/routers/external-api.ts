@@ -95,6 +95,7 @@ export const externalApi = router({
   news: procedure
     .input(
       z.object({
+        search: z.string().optional(),
         page: z
           .number()
           .default(1)

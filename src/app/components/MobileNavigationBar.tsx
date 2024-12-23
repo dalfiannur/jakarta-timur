@@ -4,12 +4,10 @@ import Image from "next/image";
 import { motion } from "motion/react";
 import { MobileNavigationList } from "./MobileNavigationList";
 import { SearchInput } from "./SearchInput";
-import { atom, useAtom } from "jotai";
-
-export const open = atom(false)
+import { useState } from "react";
 
 export const MobileNavigationBar = () => {
-  const [opened, setOpen] = useAtom(open);
+  const [opened, setOpen] = useState(false);
   return (
     <div className="fixed left-0 right-0 top-0 z-20">
       <div className="flex items-center justify-between bg-white p-4 shadow lg:hidden">

@@ -10,7 +10,7 @@ export default function MapArea({ data = [] }: { data: LatLngExpression[] }) {
   useEffect(() => {
     let mapContainer = L.DomUtil.get("map");
     if (mapContainer) {
-      //@ts-ignore
+      //@ts-expect-error not found
       mapContainer._leaflet_id = null; // Reset instance
     }
 

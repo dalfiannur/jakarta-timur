@@ -1,11 +1,13 @@
 "use client";
 import { MouseEventHandler, ReactNode, useState } from "react";
 import { motion } from "motion/react";
-import { Link, navigationBarConfig } from "../configs/navigation-bar.config";
+import {
+  Link as LinkType,
+  navigationBarConfig,
+} from "../configs/navigation-bar.config";
 import { Tab } from "./MenuTabs";
-import { open } from "./MobileNavigationBar";
 import { useRouter } from "next/navigation";
-import { useSetAtom } from "jotai";
+import Link from "next/link";
 
 const links = navigationBarConfig.links;
 
@@ -26,8 +28,8 @@ export const MobileNavigationList = () => {
         {links.informasi.map((link, index) => (
           <Item
             key={index}
-            label={(link as Link).title}
-            href={(link as Link).link}
+            label={(link as LinkType).title}
+            href={(link as LinkType).link}
           />
         ))}
       </DropdownItem>
@@ -35,8 +37,8 @@ export const MobileNavigationList = () => {
         {links.layanan.map((link, index) => (
           <Item
             key={index}
-            label={(link as Link).title}
-            href={(link as Link).link}
+            label={(link as LinkType).title}
+            href={(link as LinkType).link}
           />
         ))}
       </DropdownItem>
@@ -44,8 +46,8 @@ export const MobileNavigationList = () => {
         {links.publikasi.map((link, index) => (
           <Item
             key={index}
-            label={(link as Link).title}
-            href={(link as Link).link}
+            label={(link as LinkType).title}
+            href={(link as LinkType).link}
           />
         ))}
       </DropdownItem>
@@ -56,22 +58,9 @@ export const MobileNavigationList = () => {
 
 const Item = ({ label, href }: { label: string; href?: string }) => {
   const router = useRouter();
-  const setOpen = useSetAtom(open);
   return (
     <li>
-      <a
-        href="#"
-        onClick={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          if (href) {
-            router.push(href);
-            setOpen(false);
-          }
-        }}
-      >
-        {label}
-      </a>
+      <Link href={href ?? "#"}>{label}</Link>
     </li>
   );
 };

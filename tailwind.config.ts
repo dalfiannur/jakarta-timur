@@ -37,6 +37,22 @@ const config: Config = {
             display: "none",
           },
         },
+        ".scrollbar-custom": {
+          "&::-webkit-scrollbar": {
+            width: "10px",
+          },
+          "&::-webkit-scrollbar-track": {
+            background: "#fefefe",
+            borderRadius: "5px",
+          },
+          "&::-webkit-scrollbar-thumb": {
+            background: "#dedede",
+            borderRadius: "5px",
+          },
+          "&::-webkit-scrollbar-thumb:hover": {
+            background: "#555",
+          },
+        },
       });
     }),
   ],

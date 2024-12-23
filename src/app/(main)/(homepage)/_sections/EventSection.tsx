@@ -6,9 +6,10 @@ import { SectionBox } from "@/app/components/SectionBox";
 import { trpc } from "@/utils/trpc";
 import { useEffect, useMemo, useState } from "react";
 import * as dateFns from "date-fns";
+import { Activity } from "@/types/activity";
 
 export const EventSection = () => {
-  const [selected, setSelected] = useState<any[]>([]);
+  const [selected, setSelected] = useState<(Activity & { type: number })[]>([]);
   const { data } = trpc.externalApi.agenda.useQuery(
     {
       page: 1,
