@@ -7,6 +7,11 @@ import { TitleText } from "./_features/TitleText";
 import { DateText } from "./_features/DateText";
 import { DescriptionText } from "./_features/DescriptionText";
 import { VideoPlayer } from "./_features/VideoPlayer";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Video Informasi dan Edukasi",
+};
 
 export default function Page() {
   return (
