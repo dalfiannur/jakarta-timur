@@ -4,9 +4,12 @@ import { FilterSection } from "./_features/FilterSection";
 import { JakWifiList } from "./_features/JakWifiList";
 import { useState } from "react";
 import { LatLngExpression } from "leaflet";
-import MapArea from "./_features/MapArea";
+// import MapArea from "./_features/MapArea";
+import dynamic from "next/dynamic";
 
 const LIMIT = 4;
+
+const MapArea = dynamic(() => import('./_features/MapArea'), { ssr: false })
 
 export default function Page() {
   const [district, setDistrict] = useState<string | undefined>();

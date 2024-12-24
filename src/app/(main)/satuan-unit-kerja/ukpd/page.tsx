@@ -22,8 +22,6 @@ export default function Page() {
     [res],
   );
 
-  console.log(pages);
-
   const skeleton = useMemo(
     () => Array.from(new Array(9).keys()).map((i) => <CardSkeleton key={i} />),
     [],

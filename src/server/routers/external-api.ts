@@ -53,7 +53,6 @@ export const externalApi = router({
       }),
     )
     .query(async ({ input }) => {
-      console.log(input);
       const { data } = await fetchApi<PaginationResponse<Activity>>(
         "/agenda",
         input,
@@ -309,8 +308,6 @@ export const externalApi = router({
       input.filters.forEach((d) => {
         filters[d.by] = d.value;
       });
-
-      console.log(filters);
 
       const { data } = await fetchApi<PaginationResponse<GovEmployer>>(
         "/" + input.area,

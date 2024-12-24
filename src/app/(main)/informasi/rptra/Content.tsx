@@ -22,7 +22,6 @@ export const Content = () => {
     return result;
   }, [res]);
 
-  console.log(data);
   return (
     <div className="flex flex-col gap-4">
       {Object.keys(data).map((key, xIndex) => (

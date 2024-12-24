@@ -10,18 +10,20 @@ export default function MapArea({ data = [] }: { data: LatLngExpression[] }) {
   const [map, setMap] = useState<L.Map>();
 
   useEffect(() => {
-    let mapContainer = L.DomUtil.get("map");
-    if (mapContainer) {
-      //@ts-expect-error not found
-      mapContainer._leaflet_id = null; // Reset instance
+    if (window) {
+      const mapContainer = L.DomUtil.get("map");
+      if (mapContainer) {
+        //@ts-expect-error not found
+        mapContainer._leaflet_id = null; // Reset instance
+      }
+
+      const map = L.map("map").setView(center, 13);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(
+        map,
+      );
+
+      setMap(map);
     }
-
-    const map = L.map("map").setView(center, 13);
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(
-      map,
-    );
-
-    setMap(map);
   }, []);
 
   useEffect(() => {

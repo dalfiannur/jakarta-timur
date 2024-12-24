@@ -6,7 +6,6 @@ import {
   navigationBarConfig,
 } from "../configs/navigation-bar.config";
 import { Tab } from "./MenuTabs";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const links = navigationBarConfig.links;
@@ -57,7 +56,6 @@ export const MobileNavigationList = () => {
 };
 
 const Item = ({ label, href }: { label: string; href?: string }) => {
-  const router = useRouter();
   return (
     <li>
       <Link href={href ?? "#"}>{label}</Link>

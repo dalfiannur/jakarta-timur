@@ -1,8 +1,8 @@
 "use client";
 import { Breadcrumbs } from "@/app/components/Breadcrumbs";
-import { FilterSection } from "./_features/FilterSection";
+// import { FilterSection } from "./_features/FilterSection";
 import { SchoolList } from "./_features/SchoolList";
-import MapArea from "./_features/MapArea";
+// import MapArea from "./_features/MapArea";
 import { useState } from "react";
 import { LatLngExpression } from "leaflet";
 import { trpc } from "@/utils/trpc";
@@ -10,10 +10,13 @@ import { trpc } from "@/utils/trpc";
 const LIMIT = 4;
 
 export default function Page() {
-  const [district, setDistrict] = useState<string | undefined>();
+  // const [district, setDistrict] = useState<string | undefined>();
+  const [district] = useState<string | undefined>();
 
-  const [grade, setGrade] = useState<string | undefined>();
-  const [search, setSearch] = useState<string | undefined>();
+  // const [grade, setGrade] = useState<string | undefined>();
+  const [grade] = useState<string | undefined>();
+  // const [search, setSearch] = useState<string | undefined>();
+  const [search] = useState<string | undefined>();
   const [page, setPage] = useState(1);
   const [, setMap] = useState<LatLngExpression | undefined>();
   const res = trpc.externalApi.getSchools.useQuery({
@@ -27,12 +30,12 @@ export default function Page() {
   const total = res.data?.total ?? 0;
   const pages = Math.ceil(total / LIMIT);
 
-  const marks: LatLngExpression[] = data
-    .filter((d) => d.latitude !== null || d.longitude !== null)
-    .map((item) => ({
-      lat: parseFloat(item.latitude!),
-      lng: parseFloat(item.longitude!),
-    }));
+  // const marks: LatLngExpression[] = data
+  //   .filter((d) => d.latitude !== null || d.longitude !== null)
+  //   .map((item) => ({
+  //     lat: parseFloat(item.latitude!),
+  //     lng: parseFloat(item.longitude!),
+  //   }));
 
   return (
     <div className="mt-20 lg:mt-32">
@@ -69,13 +72,13 @@ export default function Page() {
           </div>
 
           <div className="mt-10">
-            <FilterSection
+            {/* <FilterSection
               onDistrictChange={setDistrict}
               onSearch={setSearch}
               onGradeChange={setGrade}
-            />
+            /> */}
             <div className="mt-10 grid grid-cols-1 gap-4 lg:grid-cols-2">
-              <MapArea data={marks} />
+              {/* <MapArea data={marks} /> */}
               <SchoolList
                 isLoading={res.isLoading}
                 data={data}
