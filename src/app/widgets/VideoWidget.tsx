@@ -14,8 +14,8 @@ export const VideoWidget = ({ data }: VideoWidgetProps) => {
       </h3>
       <div className="mt-4 flex flex-col gap-6 lg:mt-10">
         {data.map((item, index) => (
-          <Link href={`/publikasi/video/${item.slug}`}>
-            <div key={index} className="flex items-center gap-4">
+          <Link key={index} href={`/publikasi/video/${item.slug}`}>
+            <div className="flex items-center gap-4">
               <div className="relative aspect-square w-20">
                 <Image
                   src={`https://img.youtube.com/vi/${item.source}/0.jpg`}
