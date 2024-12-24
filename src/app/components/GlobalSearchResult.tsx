@@ -39,40 +39,46 @@ export const GlobalSearchResult = forwardRef<
       className="scrollbar-custom flex max-h-96 flex-col gap-6 overflow-y-scroll lg:mt-10"
       onMouseLeave={focusOut}
     >
-      {data.map((data, index) => (
-        <Link
-          href={`/publikasi/berita/${data.id}`}
-          key={index}
-          className="inline-flex items-center gap-4"
-        >
-          <div className="relative aspect-square w-24">
-            <Image
-              src={data.img_url}
-              alt={data.title}
-              fill
-              className="rounded-xl object-cover"
-            />
-          </div>
-          <div className="flex flex-1 flex-col gap-2">
-            <h4 className="line-clamp-2 text-sm font-semibold lg:text-base">
-              {data.title}
-            </h4>
-            <div
-              className="line-clamp-1 text-xs text-gray-600 lg:text-sm"
-              dangerouslySetInnerHTML={{ __html: data.content }}
-            />
-            <div className="flex items-center gap-2">
-              <Icon
-                name="Calendar"
-                className="aspect-square h-4 text-pink-500"
+      {data.length > 0 ? (
+        data.map((data, index) => (
+          <Link
+            href={`/publikasi/berita/${data.id}`}
+            key={index}
+            className="inline-flex items-center gap-4"
+          >
+            <div className="relative aspect-square w-24">
+              <Image
+                src={data.img_url}
+                alt={data.title}
+                fill
+                className="rounded-xl object-cover"
               />
-              <div className="text-[10px] text-gray-600 lg:text-sm">
-                {dateFormatter(data.time)}
+            </div>
+            <div className="flex flex-1 flex-col gap-2">
+              <h4 className="line-clamp-2 text-sm font-semibold lg:text-base">
+                {data.title}
+              </h4>
+              <div
+                className="line-clamp-1 text-xs text-gray-600 lg:text-sm"
+                dangerouslySetInnerHTML={{ __html: data.content }}
+              />
+              <div className="flex items-center gap-2">
+                <Icon
+                  name="Calendar"
+                  className="aspect-square h-4 text-pink-500"
+                />
+                <div className="text-[10px] text-gray-600 lg:text-sm">
+                  {dateFormatter(data.time)}
+                </div>
               </div>
             </div>
-          </div>
-        </Link>
-      ))}
+          </Link>
+        ))
+      ) : (
+        <div className="flex min-h-80 items-center justify-center">
+          Berita yang dicari tidak tersedia.
+        </div>
+      )}
     </div>
   );
 });
