@@ -18,7 +18,7 @@ export const PageTitle = ({
   return (
     <div className="relative mt-[75px] overflow-hidden lg:mt-0">
       <div
-        data-rounded={rounded}
+        data-rounded={rounded ?? "undefined"}
         className="group relative aspect-[4/2] lg:aspect-[4/1]"
       >
         <Image
