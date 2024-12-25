@@ -2,7 +2,7 @@
 import { PageTitle } from "@/app/components/PageTitle";
 import { PageBreadcrumbs } from "./_components/PageBreadcrumbs";
 import { Sidebar } from "./_components/Sidebar";
-import { ReactNode, Suspense } from "react";
+import { ReactNode } from "react";
 import { sidebarItems } from "./constants";
 import { usePathname } from "next/navigation";
 
@@ -10,15 +10,23 @@ type LayoutProps = {
   children: ReactNode;
 };
 
+const walikotaRegex = /^\/satuan-unit-kerja\/walikota\/\d+$/;
+const wilayahRegex = /^\/satuan-unit-kerja\/wilayah\/[a-zA-Z0-9_-]+$/;
+const wilayahDetailRegex =
+  /^\/satuan-unit-kerja\/wilayah\/[a-zA-Z0-9_-]+$\/[a-zA-Z0-9_-]+$/;
+
+const checkRoute = (pathname: string) => {
+  return (
+    walikotaRegex.test(pathname) ||
+    wilayahRegex.test(pathname) ||
+    wilayahDetailRegex.test(pathname)
+  );
+};
+
 export default function Layout({ children }: LayoutProps) {
   const pathname = usePathname();
-
-  return [
-    "/satuan-unit-kerja/wilayah/kecamatan/",
-    "/satuan-unit-kerja/wilayah/kelurahan/",
-    "/satuan-unit-kerja/walikota/1",
-    "/satuan-unit-kerja/walikota/2",
-  ].includes(pathname) ? (
+  const routeMatch = checkRoute(pathname);
+  return !routeMatch ? (
     children
   ) : (
     <div className="pb-16">
@@ -29,9 +37,8 @@ export default function Layout({ children }: LayoutProps) {
       />
 
       <div className="container relative z-10 mx-auto mt-0 rounded-4xl bg-soft-white p-0 shadow-none lg:-mt-28 lg:p-8 lg:shadow-light">
-        <Suspense fallback={"Loading..."}>
-          <PageBreadcrumbs />
-        </Suspense>
+        <PageBreadcrumbs />
+
         <div className="lg-px-0 mt-8 flex flex-col gap-8 px-4 lg:flex-row">
           <Sidebar items={sidebarItems} />
           {children}

@@ -1,50 +1,55 @@
 "use client";
 
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Icon } from "@/app/icons";
 import { DetailModal } from "./DetailModal";
-import { trpc } from "@/utils/trpc";
 import { GovEmployer } from "@/types/gov-employer";
 import { Pagination } from "@/app/components/Pagination";
 import { Context } from "../context";
+import { useGetAreaQuery } from "@/services/api/area";
 
 type ListProps = {
   area: string;
 };
 
+type Option = {
+  nama: string;
+  area: string;
+  page: number;
+  limit: number;
+  filters: { by: string; value: string }[];
+};
+
 const PAGE_LIMIT = 10;
 
 export const List = ({ area }: ListProps) => {
-  const { search, kecamatanId } = useContext(Context);
+  const { nama, kecamatanId } = useContext(Context);
   const [page, setPage] = useState(1);
-  const [total, setTotal] = useState(0);
-
-  const options: {
-    search: string;
-    area: string;
-    page: number;
-    limit: number;
-    filters: { by: string; value: string }[];
-  } = {
-    search,
-    area,
-    page,
-    limit: PAGE_LIMIT,
-    filters: [],
-  };
-
-  if (kecamatanId) {
-    options.filters.push({
-      by: "kecamatan_id",
-      value: kecamatanId,
-    });
-  }
-
   const [selected, setSelected] = useState<null | GovEmployer>(null);
-  const res = trpc.externalApi.getGovAreaEmployers.useQuery(options);
+
+  const options = useMemo<Option>(() => {
+    const filters: { by: string; value: string }[] = [];
+
+    if (kecamatanId) {
+      filters.push({
+        by: "kecamatan_id",
+        value: kecamatanId,
+      });
+    }
+    return {
+      nama,
+      area,
+      page,
+      limit: area === "kecamatan" ? 1000 : PAGE_LIMIT,
+      filters,
+    };
+  }, [nama, area, page, kecamatanId]);
+
+  const res = useGetAreaQuery(options);
   const data = res.data?.data ?? [];
+  const total = res.data?.total ?? 0;
   const pages = Math.ceil(total / PAGE_LIMIT);
 
   const skeletons = useMemo(
@@ -54,12 +59,6 @@ export const List = ({ area }: ListProps) => {
       )),
     [],
   );
-
-  useEffect(() => {
-    if (res.isSuccess) {
-      setTotal(Math.ceil(res.data.total / PAGE_LIMIT));
-    }
-  }, [res]);
 
   return (
     <>
@@ -109,13 +108,15 @@ export const List = ({ area }: ListProps) => {
             ))}
       </div>
 
-      <div className="flex justify-center">
-        <Pagination
-          page={page}
-          total={pages}
-          onPageChange={(v) => setPage(v)}
-        />
-      </div>
+      {area === "kelurahan" && (
+        <div className="flex justify-center">
+          <Pagination
+            page={page}
+            total={pages}
+            onPageChange={(v) => setPage(v)}
+          />
+        </div>
+      )}
 
       {selected && (
         <DetailModal data={selected} onClose={() => setSelected(null)} />

@@ -1,14 +1,14 @@
 "use client";
 import { SelectCSR } from "@/app/components/SelectCSR";
-import { trpc } from "@/utils/trpc";
+import { useGetAreaQuery } from "@/services/api/area";
 
 export const SelectKecamatan = ({
   onChange,
 }: {
   onChange: (value: string | undefined) => void;
 }) => {
-  const res = trpc.externalApi.getGovAreaEmployers.useQuery({
-    limit: 10,
+  const res = useGetAreaQuery({
+    limit: 100,
     area: "kecamatan",
   });
 

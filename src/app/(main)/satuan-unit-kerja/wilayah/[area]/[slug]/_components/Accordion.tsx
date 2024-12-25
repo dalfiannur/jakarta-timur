@@ -2,7 +2,7 @@ import {Disclosure, DisclosureButton, DisclosurePanel} from '@headlessui/react';
 import {ReactNode} from "react";
 import {Icon} from "@/app/icons";
 
-export const Accordion = ({children, label}: { children: ReactNode, label: string }) => {
+export const Accordion = ({children, label}: { children?: ReactNode, label: string }) => {
     return (
         <div>
             <Disclosure>

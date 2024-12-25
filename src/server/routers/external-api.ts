@@ -239,35 +239,6 @@ export const externalApi = router({
     return data;
   }),
 
-  getGovAreaEmployers: procedure
-    .input(
-      z.object({
-        search: z.string().optional(),
-        area: z.string(),
-        limit: z.number().optional().default(9),
-        filters: z
-          .array(z.object({ by: z.string(), value: z.string() }))
-          .default([]),
-      }),
-    )
-    .query(async ({ input }) => {
-      const filters: { [key: string]: string } = {};
-
-      input.filters.forEach((d) => {
-        filters[d.by] = d.value;
-      });
-
-      const { data } = await fetchApi<PaginationResponse<GovEmployer>>(
-        "/" + input.area,
-        {
-          nama: input.search,
-          limit: input.limit,
-          ...filters,
-        },
-      );
-      return data;
-    }),
-
   getGovSubDistrictEmployers: procedure
     .input(
       z.object({
