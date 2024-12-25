@@ -15,7 +15,7 @@ const sort = [
 ];
 
 export const Filter = () => {
-  const { setSort, setYear } = useContext(Context);
+  const { setSort, setTahun: setYear } = useContext(Context);
 
   const years = useMemo(
     () =>

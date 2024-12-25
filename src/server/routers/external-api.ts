@@ -8,7 +8,6 @@ import { News } from "@/types/news";
 import { NewsPhoto } from "@/types/news-photo";
 import { Video } from "@/types/video";
 import { District } from "@/types/district";
-import { Achievement } from "@/types/achievement";
 import { HealthCare } from "@/types/health-care";
 import { School } from "@/types/school";
 import { Provost } from "@/types/provost";
@@ -201,26 +200,6 @@ export const externalApi = router({
         "/kelurahan",
         {
           kecamatan_id: input.districtId,
-        },
-      );
-      return data;
-    }),
-
-  getAchievements: procedure
-    .input(
-      z.object({
-        search: z.string().optional(),
-        year: z.string().optional(),
-        sort: z.string().optional().default("desc"),
-      }),
-    )
-    .query(async ({ input }) => {
-      const { data } = await fetchApi<PaginationResponse<Achievement>>(
-        "/prestasi",
-        {
-          search: input.search,
-          tahun: input.year,
-          sort: input.sort,
         },
       );
       return data;

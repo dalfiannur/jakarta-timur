@@ -12,8 +12,8 @@ type IContext = {
   sort: string;
   setSort: (value: string) => void;
 
-  year?: string;
-  setYear: (value: string | undefined) => void;
+  tahun?: string;
+  setTahun: (value: string | undefined) => void;
 };
 
 export const Context = createContext<IContext>({
@@ -26,5 +26,5 @@ export const Context = createContext<IContext>({
   sort: "desc",
   setSort() {},
 
-  setYear() {},
+  setTahun() {},
 });

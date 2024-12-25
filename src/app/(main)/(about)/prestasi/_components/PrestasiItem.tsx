@@ -1,6 +1,6 @@
 "use client";
 import { Icon } from "@/app/icons";
-import { Achievement } from "@/types/achievement";
+import { Achievement } from "@/services/api/achievement";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 
@@ -30,8 +30,8 @@ export const PrestasiItem = ({
               transition: { duration: 0.5 },
             }}
           >
-            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-blue-200 lg:h-14 lg:w-14">
-              <Icon name="MageTrophyColored" />
+            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-blue-100 lg:h-14 lg:w-14">
+              <Icon name="MageTrophyColored" className="w-8 h-8" />
             </div>
           </motion.div>
 

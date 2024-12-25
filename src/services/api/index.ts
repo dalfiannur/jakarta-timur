@@ -1,13 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { statisticApi } from "./statistic";
+import { achievementApi } from "./achievement";
 
 export const makeStore = () =>
   configureStore({
     reducer: {
       [statisticApi.reducerPath]: statisticApi.reducer,
+      [achievementApi.reducerPath]: achievementApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat([statisticApi.middleware]),
+      getDefaultMiddleware().concat([
+        statisticApi.middleware,
+        achievementApi.middleware,
+      ]),
   });
 
 export type AppStore = ReturnType<typeof makeStore>;

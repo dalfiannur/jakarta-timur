@@ -9,7 +9,7 @@ export const Provider = ({ children }: { children?: ReactNode }) => {
 
   return (
     <Context.Provider
-      value={{ search, setSearch, sort, setSort, year, setYear, view, setView }}
+      value={{ search, setSearch, sort, setSort, tahun: year, setTahun: setYear, view, setView }}
     >
       {children}
     </Context.Provider>
