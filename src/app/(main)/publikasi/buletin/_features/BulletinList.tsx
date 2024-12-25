@@ -1,13 +1,13 @@
 "use client";
 import { Pagination } from "@/app/components/Pagination";
 import { PhotoItem } from "../_components/PhotoItem";
-import { trpc } from "@/utils/trpc";
 import { useState } from "react";
+import { useGetBulletinsQuery } from "@/services/api/bulletin";
 
 export const BulletinList = () => {
   const [limit] = useState(10);
   const [page, setPage] = useState(1);
-  const res = trpc.externalApi.buletin.useQuery({
+  const res = useGetBulletinsQuery({
     limit,
     page,
   });

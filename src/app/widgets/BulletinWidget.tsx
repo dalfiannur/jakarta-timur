@@ -1,10 +1,10 @@
 "use client";
-import { trpc } from "@/utils/trpc";
+import { useGetBulletinsQuery } from "@/services/api/bulletin";
 import Image from "next/image";
 import Link from "next/link";
 
 export const BulletinWidget = () => {
-  const res = trpc.externalApi.buletin.useQuery({
+  const res = useGetBulletinsQuery({
     page: 1,
     limit: 4,
   });

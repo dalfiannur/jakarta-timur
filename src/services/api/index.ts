@@ -1,17 +1,20 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { statisticApi } from "./statistic";
 import { achievementApi } from "./achievement";
+import { bulletinApi } from "./bulletin";
 
 export const makeStore = () =>
   configureStore({
     reducer: {
       [statisticApi.reducerPath]: statisticApi.reducer,
       [achievementApi.reducerPath]: achievementApi.reducer,
+      [bulletinApi.reducerPath]: bulletinApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat([
         statisticApi.middleware,
         achievementApi.middleware,
+        bulletinApi.middleware,
       ]),
   });
 

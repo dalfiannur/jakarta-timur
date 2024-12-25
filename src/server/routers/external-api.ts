@@ -2,7 +2,6 @@ import { z } from "zod";
 import { procedure, router } from "../trpc";
 import { Activity } from "@/types/activity";
 import { PaginationResponse } from "@/types/pagination";
-import { Bulletin } from "@/types/bulletin";
 import { EntityResponse } from "@/types/entity";
 import { News } from "@/types/news";
 import { NewsPhoto } from "@/types/news-photo";
@@ -59,36 +58,6 @@ export const externalApi = router({
 
       return data;
     }),
-
-  buletin: procedure
-    .input(
-      z.object({
-        page: z
-          .number()
-          .default(1)
-          .transform((page) => page.toString()),
-        limit: z
-          .number()
-          .default(4)
-          .transform((limit) => limit.toString()),
-      }),
-    )
-    .query(async ({ input }) => {
-      const { data } = await fetchApi<PaginationResponse<Bulletin>>(
-        "/buletin",
-        input,
-      );
-
-      return data;
-    }),
-
-  findBulletinById: procedure.input(z.string()).query(async ({ input }) => {
-    const { data } = await fetchApi<EntityResponse<Bulletin>>("/buletin", {
-      id: input,
-    });
-
-    return data;
-  }),
 
   news: procedure
     .input(

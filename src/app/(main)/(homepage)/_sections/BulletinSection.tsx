@@ -2,17 +2,12 @@ import { SectionBox } from "@/app/components/SectionBox";
 import { Icon } from "@/app/icons";
 import Link from "next/link";
 import { BulletinSlider } from "../_components/BulletinSlider";
-import { trpc } from "@/utils/trpc";
+import { useGetBulletinsQuery } from "@/services/api/bulletin";
 
 export const BulletinSection = () => {
-  const { data } = trpc.externalApi.buletin.useQuery(
-    {
-      limit: 12,
-    },
-    {
-      refetchOnWindowFocus: false,
-    },
-  );
+  const { data } = useGetBulletinsQuery({
+    limit: 12,
+  });
 
   return (
     <SectionBox

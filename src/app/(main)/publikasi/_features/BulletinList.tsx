@@ -1,18 +1,18 @@
 "use client";
 import { Pagination } from "@/app/components/Pagination";
-import { trpc } from "@/utils/trpc";
+import { useGetBulletinsQuery } from "@/services/api/bulletin";
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 
 export const BulletinList = () => {
   const [page, setPage] = useState(1);
-  const res = trpc.externalApi.buletin.useQuery({
+  const { data, isLoading } = useGetBulletinsQuery({
     limit: 8,
     page,
   });
-  const data = res.data?.data ?? [];
-  const total = res.data?.total ?? 0;
+
+  const total = data?.total ?? 0;
   const pages = Math.ceil(total / 8);
 
   const skeleton = useMemo(
@@ -29,9 +29,9 @@ export const BulletinList = () => {
   return (
     <>
       <div className="mt-4 grid grid-cols-2 gap-x-4 gap-y-8 lg:mt-10 lg:grid-cols-4">
-        {res.isLoading
+        {isLoading
           ? skeleton
-          : data.map((item, index) => (
+          : data?.data.map((item, index) => (
               <Link key={index} href={`/publikasi/buletin/${item.id}`}>
                 <div className="flex flex-col gap-2 lg:gap-4">
                   <div className="relative aspect-[3/4] w-full">

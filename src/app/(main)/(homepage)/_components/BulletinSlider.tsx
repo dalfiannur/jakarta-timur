@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { Bulletin } from "@/types/bulletin";
 import Slider from "react-slick";
 import _ from "lodash";
+import { Bulletin } from "@/services/api/bulletin";
 
 export const BulletinSlider = ({ data }: { data: Bulletin[] }) => {
   const chunks = _.chunk(data, 4);
@@ -17,15 +17,15 @@ export const BulletinSlider = ({ data }: { data: Bulletin[] }) => {
               {items.map((item, index) => (
                 <div key={index}>
                   <Link href={`/publikasi/buletin/${item.id}`}>
-                    <div className="aspect-[7/9] relative">
+                    <div className="relative aspect-[7/9]">
                       <Image
                         src={item.img_url}
                         alt={item.title}
                         fill
-                        className="object-cover rounded-xl"
+                        className="rounded-xl object-cover"
                       />
                     </div>
-                    <h6 className="mt-2 text-base font-semibold lg:mt-6 font-plus-jakarta-sans lg:text-xl">
+                    <h6 className="mt-2 font-plus-jakarta-sans text-base font-semibold lg:mt-6 lg:text-xl">
                       {item.title}
                     </h6>
                   </Link>
