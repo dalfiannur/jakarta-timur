@@ -38,6 +38,7 @@ import { GoogleMapColored } from "./GoogleMapColored";
 import { GreenEnergy } from "./GreenEnergy";
 import { GreenEnergyColored } from "./GreenEnergyColored";
 import { Grid2Line } from "./Grid2Line";
+import { Growth } from "./Growth";
 import { GrowthColored } from "./GrowthColored";
 import { Hospital } from "./Hospital";
 import { HospitalColored } from "./HospitalColored";
@@ -144,6 +145,7 @@ const icons = {
   Park,
   GreenEnergy,
   ImproveRelevance,
+  Growth,
   News,
   GalleryWideBold,
   FolderVideo,

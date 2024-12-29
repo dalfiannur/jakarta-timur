@@ -127,6 +127,12 @@ export const navigationBarConfig: NavigationBarConfig = {
         description:
           "Sampaikan Aduan dan Keluhan Anda untuk Mendapatkan Respon Cepat dan Efektif",
       },
+      {
+        icon: "Growth",
+        title: "Kesejahteraan",
+        link: "/layanan/kesejahteraan",
+        description: "Komitmen kami untuk mendukung kesejahteraan masyarakat",
+      },
     ],
     tentangJakartaTimur: [
       {
