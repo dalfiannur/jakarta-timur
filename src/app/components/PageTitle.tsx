@@ -25,13 +25,13 @@ export const PageTitle = ({
           src={image}
           fill
           alt={title}
-          className="-z-10 object-cover object-top lg:group-data-[rounded=true]:rounded-b-4xl"
+          className="z-10 object-cover object-top lg:group-data-[rounded=true]:rounded-b-4xl"
         />
         <div className="absolute inset-0 bg-black/50 lg:group-data-[rounded=true]:rounded-b-4xl" />
       </div>
       <div
         data-spacer={topSpacer}
-        className="absolute inset-0 z-0 flex flex-col items-center justify-center gap-4 text-center text-white data-[spacer=true]:top-0 lg:data-[spacer=true]:top-20"
+        className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-4 text-center text-white data-[spacer=true]:top-0 lg:data-[spacer=true]:top-20"
       >
         <h2 className="font-plus-jakarta-sans text-2xl font-bold uppercase lg:text-6xl">
           {title}

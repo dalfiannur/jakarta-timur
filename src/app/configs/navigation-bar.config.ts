@@ -123,7 +123,7 @@ export const navigationBarConfig: NavigationBarConfig = {
       {
         icon: "CustomerService",
         title: "Kanal Aduan",
-        link: "https://jaki.jakarta.go.id/id/",
+        link: "/layanan/kanal-aduan",
         description:
           "Sampaikan Aduan dan Keluhan Anda untuk Mendapatkan Respon Cepat dan Efektif",
       },
