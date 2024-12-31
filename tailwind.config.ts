@@ -53,6 +53,9 @@ const config: Config = {
             background: "#555",
           },
         },
+        ".list-lower-alpha": {
+          listStyleType: "lower-alpha",
+        },
       });
     }),
   ],
