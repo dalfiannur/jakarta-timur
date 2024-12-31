@@ -15,7 +15,7 @@ const ITEMS: CardLinkProps[] = [
     title: "Perizinan",
     description:
       "Penjabaran informasi terkait pelayanan dan perizinan Provinsi DKI Jakarta",
-    href: "/layanan/perizinan",
+    href: "/layanan/perizinan-terpadu",
   },
   {
     icon: <Icon name="BusSignColored" className="w-12 h-12" />,
