@@ -17,6 +17,9 @@ const wilayahDetailRegex =
 
 const checkRoute = (pathname: string) => {
   return (
+    /^\/satuan-unit-kerja\/(ukpd|bagian-kota|sekretariat-kota|walikota|struktur-organisasi)/.test(
+      pathname,
+    ) ||
     walikotaRegex.test(pathname) ||
     wilayahRegex.test(pathname) ||
     wilayahDetailRegex.test(pathname)

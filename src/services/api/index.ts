@@ -3,6 +3,7 @@ import { statisticApi } from "./statistic";
 import { achievementApi } from "./achievement";
 import { bulletinApi } from "./bulletin";
 import { areaApi } from "./area";
+import { ukpdApi } from "./ukpd";
 
 export const makeStore = () =>
   configureStore({
@@ -11,6 +12,7 @@ export const makeStore = () =>
       [achievementApi.reducerPath]: achievementApi.reducer,
       [bulletinApi.reducerPath]: bulletinApi.reducer,
       [areaApi.reducerPath]: areaApi.reducer,
+      [ukpdApi.reducerPath]: ukpdApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat([
@@ -18,6 +20,7 @@ export const makeStore = () =>
         achievementApi.middleware,
         bulletinApi.middleware,
         areaApi.middleware,
+        ukpdApi.middleware,
       ]),
   });
 

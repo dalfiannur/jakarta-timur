@@ -12,6 +12,7 @@ import { useGetAreaQuery } from "@/services/api/area";
 
 type ListProps = {
   area: string;
+  search: string;
 };
 
 type Option = {
@@ -24,8 +25,8 @@ type Option = {
 
 const PAGE_LIMIT = 10;
 
-export const List = ({ area }: ListProps) => {
-  const { nama, kecamatanId } = useContext(Context);
+export const List = ({ area, search }: ListProps) => {
+  const { kecamatanId } = useContext(Context);
   const [page, setPage] = useState(1);
   const [selected, setSelected] = useState<null | GovEmployer>(null);
 
@@ -39,13 +40,13 @@ export const List = ({ area }: ListProps) => {
       });
     }
     return {
-      nama,
+      nama: search,
       area,
       page,
       limit: area === "kecamatan" ? 1000 : PAGE_LIMIT,
       filters,
     };
-  }, [nama, area, page, kecamatanId]);
+  }, [search, area, page, kecamatanId]);
 
   const res = useGetAreaQuery(options);
   const data = res.data?.data ?? [];

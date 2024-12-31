@@ -1,16 +1,16 @@
 "use client";
 import { useDebounceEvent } from "@/app/hooks/useDebounceEvent";
 import { Icon } from "@/app/icons";
-import { useContext } from "react";
-import { Context } from "../context";
 
-export const SearchInput = () => {
-  const { setNama } = useContext(Context);
-
+export const SearchInput = ({
+  onChange,
+}: {
+  onChange: (value: string) => void;
+}) => {
   const set = useDebounceEvent<string>({
     timer: 1000,
     onChange: (value) => {
-      setNama(value);
+      onChange(value);
     },
   });
   return (

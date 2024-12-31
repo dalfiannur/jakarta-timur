@@ -2,16 +2,19 @@
 import { Icon } from "@/app/icons";
 import { SectionTitle } from "../_components/SectionTitle";
 import { Pagination } from "@/app/components/Pagination";
-import { trpc } from "@/utils/trpc";
 import { useMemo, useState } from "react";
 import { CardSkeleton } from "./_components/CardSkeleton";
 import { AnimatePresence, motion } from "motion/react";
+import { SearchInput } from "../_components/SearchInput";
+import { useGetUkpdQuery } from "@/services/api/ukpd";
 
 export default function Page() {
   const [page, setPage] = useState(1);
-  const res = trpc.externalApi.getGovSubDistrictEmployers.useQuery({
+  const [search, setSearch] = useState("");
+  const res = useGetUkpdQuery({
     page,
     limit: 9,
+    search,
   });
   const { pages, total, data } = useMemo(
     () => ({
@@ -30,6 +33,9 @@ export default function Page() {
   return (
     <div className="flex-1">
       <SectionTitle>Unit Kerja Perangkat Daerah</SectionTitle>
+      <div className="mt-4">
+        <SearchInput onChange={setSearch} />
+      </div>
       <p className="mt-6 text-xs font-semibold lg:text-base">
         Menampilkan 1-9 dari {total} Data
       </p>
