@@ -52,7 +52,7 @@ const governmentInformation = [
   {
     icon: <Icon name="GreenEnergyColored" className="h-12 w-12" />,
     title: "Urban Farming",
-    href: "/layanan/urban-farming",
+    href: "https://timur.jakarta.go.id/barcode-tanaman/kategori",
     description: "Informasi Tanaman di perkotaan serta manfaatnya",
   },
 ];
