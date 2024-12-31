@@ -6,7 +6,7 @@ const governmentInformation = [
   {
     icon: <Icon name="BriefcaseColored" className="h-12 w-12" />,
     title: "Karir",
-    href: "/layanan/karir",
+    href: "https://jaknaker.id",
     description:
       "Sumber Daya dan Informasi untuk Karir yang Sukses dan Berkelanjutan",
   },
