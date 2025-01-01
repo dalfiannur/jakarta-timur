@@ -44,9 +44,6 @@ importers:
       '@trpc/server':
         specifier: 11.0.0-rc.638
         version: 11.0.0-rc.638(@babel/core@7.26.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@types/leaflet':
-        specifier: ^1.9.14
-        version: 1.9.15
       date-fns:
         specifier: ^4.1.0
         version: 4.1.0
@@ -99,6 +96,9 @@ importers:
         specifier: ^3.23.8
         version: 3.24.1
     devDependencies:
+      '@types/leaflet':
+        specifier: ^1.9.15
+        version: 1.9.15
       '@types/lodash':
         specifier: ^4.17.9
         version: 4.17.13

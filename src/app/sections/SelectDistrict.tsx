@@ -1,6 +1,6 @@
 "use client";
 import { SelectCSR, SelectCSRProps } from "@/app/components/SelectCSR";
-import { trpc } from "@/utils/trpc";
+import { useGetAreaQuery } from "@/services/api/area";
 import { useMemo } from "react";
 
 type SelectDistrictProps = Omit<SelectCSRProps, "data" | "onChange"> & {
@@ -15,8 +15,8 @@ export const SelectDistrict = ({
   classNames,
   ...props
 }: SelectDistrictProps) => {
-  const { data } = trpc.externalApi.getDistricts.useQuery(undefined, {
-    refetchOnWindowFocus: false,
+  const { data } = useGetAreaQuery({
+    area: "kecamatan",
   });
 
   const options = useMemo(

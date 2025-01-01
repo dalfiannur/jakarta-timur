@@ -1,6 +1,6 @@
 "use client";
 import { SelectCSR, SelectCSRProps } from "@/app/components/SelectCSR";
-import { trpc } from "@/utils/trpc";
+import { useGetAreaQuery } from "@/services/api/area";
 import { useMemo } from "react";
 
 type SelectSubDistrictProps = Omit<SelectCSRProps, "data" | "onChange"> & {
@@ -16,14 +16,15 @@ export const SelectSubDistrict = ({
   classNames,
   ...props
 }: SelectSubDistrictProps) => {
-  const res = trpc.externalApi.getSubDistricts.useQuery(
-    {
-      districtId,
-    },
-    {
-      refetchOnWindowFocus: false,
-    },
-  );
+  const res = useGetAreaQuery({
+    area: "kelurahan",
+    filters: [
+      {
+        by: "kecamatanId",
+        value: districtId?.toString() || "",
+      },
+    ],
+  });
 
   const options = useMemo(
     () =>
@@ -39,7 +40,7 @@ export const SelectSubDistrict = ({
       {hasLabel && <label>Pilih Kelurahan :</label>}
       <SelectCSR
         {...props}
-        loading={res.fetchStatus === "fetching"}
+        loading={res.isLoading}
         data={options}
         placeholder="Pilih Kelurahan"
         onChange={(val) => onChange?.(val ? JSON.parse(val.value) : undefined)}

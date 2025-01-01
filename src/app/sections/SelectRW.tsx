@@ -1,6 +1,6 @@
 "use client";
 import { SelectCSR, SelectOption } from "@/app/components/SelectCSR";
-import { trpc } from "@/utils/trpc";
+import { useGetJakWifiQuery } from "@/services/api/jakwifi";
 import { useMemo } from "react";
 
 export const SelectRW = ({
@@ -17,8 +17,8 @@ export const SelectRW = ({
     button?: string;
   };
 }) => {
-  const { data, fetchStatus } = trpc.externalApi.getJakWifi.useQuery({
-    subDistrict,
+  const { data, isLoading } = useGetJakWifiQuery({
+    kelurahan: subDistrict,
     limit: 1000,
   });
 
@@ -35,7 +35,7 @@ export const SelectRW = ({
     <div className="flex items-center gap-4">
       {hasLabel && <label>Pilih RW :</label>}
       <SelectCSR
-        loading={fetchStatus === "fetching"}
+        loading={isLoading}
         data={options}
         defaultSelected={options[0]}
         placeholder="Pilih RW"

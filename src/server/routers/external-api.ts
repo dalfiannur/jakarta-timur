@@ -11,7 +11,6 @@ import { HealthCare } from "@/types/health-care";
 import { School } from "@/types/school";
 import { Provost } from "@/types/provost";
 import { GovEmployer } from "@/types/gov-employer";
-import { JakWifi } from "@/types/jakwifi";
 import { Rptra } from "@/types/rptra";
 
 const BASE_URL_API = "https://timur.jakarta.go.id/API_Timur/api";
@@ -237,29 +236,6 @@ export const externalApi = router({
     );
     return data;
   }),
-
-  getJakWifi: procedure
-    .input(
-      z.object({
-        limit: z.number().optional().default(10),
-        page: z.number().optional().default(1),
-        district: z.string().optional(),
-        subDistrict: z.string().optional(),
-        rw: z.string().optional(),
-        search: z.string().optional(),
-      }),
-    )
-    .query(async ({ input }) => {
-      const { data } = await fetchApi<PaginationResponse<JakWifi>>("/jakwifi", {
-        limit: input.limit,
-        page: input.page,
-        kecamatan: input.district,
-        kelurahan: input.subDistrict,
-        search: input.search,
-        rw: input.rw,
-      });
-      return data;
-    }),
 
   getRptra: procedure.query(async () => {
     const { data } = await fetchApi<PaginationResponse<Rptra>>("/rptra", {

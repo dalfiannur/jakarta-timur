@@ -4,6 +4,7 @@ import { achievementApi } from "./achievement";
 import { bulletinApi } from "./bulletin";
 import { areaApi } from "./area";
 import { ukpdApi } from "./ukpd";
+import { jakWifiApi } from "./jakwifi";
 
 export const makeStore = () =>
   configureStore({
@@ -13,6 +14,7 @@ export const makeStore = () =>
       [bulletinApi.reducerPath]: bulletinApi.reducer,
       [areaApi.reducerPath]: areaApi.reducer,
       [ukpdApi.reducerPath]: ukpdApi.reducer,
+      [jakWifiApi.reducerPath]: jakWifiApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat([
@@ -21,6 +23,7 @@ export const makeStore = () =>
         bulletinApi.middleware,
         areaApi.middleware,
         ukpdApi.middleware,
+        jakWifiApi.middleware,
       ]),
   });
 

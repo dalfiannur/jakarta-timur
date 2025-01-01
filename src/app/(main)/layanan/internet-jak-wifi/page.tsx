@@ -1,39 +1,36 @@
 "use client";
-import { trpc } from "@/utils/trpc";
 import { FilterSection } from "./_features/FilterSection";
 import { JakWifiList } from "./_features/JakWifiList";
 import { useState } from "react";
-import { LatLngExpression } from "leaflet";
-// import MapArea from "./_features/MapArea";
+import { Map } from "leaflet";
+
+import { useGetJakWifiQuery } from "@/services/api/jakwifi";
 import dynamic from "next/dynamic";
+
+const MapArea = dynamic(() => import("./_features/MapArea"), {
+  ssr: false,
+});
 
 const LIMIT = 4;
 
-const MapArea = dynamic(() => import('./_features/MapArea'), { ssr: false })
-
 export default function Page() {
-  const [district, setDistrict] = useState<string | undefined>();
-  const [subDistrict, setSubDistrict] = useState<string | undefined>();
+  const [map, setMap] = useState<Map>();
+  const [kecamatan, setKecamatan] = useState<string | undefined>();
+  const [kelurahan, setKelurahan] = useState<string | undefined>();
   const [rw, setRw] = useState<string | undefined>();
   const [search, setSearch] = useState<string | undefined>();
   const [page, setPage] = useState(1);
-  const [, setMap] = useState<LatLngExpression | undefined>();
-  const res = trpc.externalApi.getJakWifi.useQuery({
+  const { data, isLoading } = useGetJakWifiQuery({
     page,
     limit: LIMIT,
     search,
-    district,
-    subDistrict,
+    kecamatan,
+    kelurahan,
     rw,
   });
-  const data = res.data?.data ?? [];
-  const total = res.data?.total ?? 0;
-  const pages = Math.ceil(total / LIMIT);
 
-  const marks: LatLngExpression[] = data.map((item) => ({
-    lat: parseFloat(item.Latitude),
-    lng: parseFloat(item.Longitude),
-  }));
+  const total = data?.total ?? 0;
+  const pages = Math.ceil(total / LIMIT);
 
   return (
     <div className="mt-20 lg:mt-32">
@@ -42,21 +39,23 @@ export default function Page() {
           <div className="mt-10">
             <FilterSection
               onSearch={setSearch}
-              onDistrictChange={setDistrict}
-              onSubDistrictChange={setSubDistrict}
+              onDistrictChange={setKecamatan}
+              onSubDistrictChange={setKelurahan}
               onRwChange={setRw}
             />
 
             <div className="mt-10 grid grid-cols-1 gap-4 lg:grid-cols-2">
-              <MapArea data={marks} />
-              <JakWifiList
-                isLoading={res.isLoading}
-                data={data}
-                page={page}
-                pages={pages}
-                setPage={setPage}
-                setMap={setMap}
-              />
+              <MapArea data={data?.data ?? []} setMap={setMap} />
+              {map && (
+                <JakWifiList
+                  map={map}
+                  isLoading={isLoading}
+                  data={data?.data ?? []}
+                  page={page}
+                  pages={pages}
+                  setPage={setPage}
+                />
+              )}
             </div>
           </div>
         </div>

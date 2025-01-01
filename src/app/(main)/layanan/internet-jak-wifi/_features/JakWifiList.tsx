@@ -4,23 +4,23 @@ import {
   JakWifiListItemSkeleton,
 } from "../_components/JakWifiListItem";
 import { Pagination } from "@/app/components/Pagination";
-import { JakWifi } from "@/types/jakwifi";
-import { LatLngExpression } from "leaflet";
+import { Map } from "leaflet";
 import { Icon } from "@/app/icons";
+import { JakWifi } from "@/services/api/jakwifi";
 
 export const JakWifiList = ({
   isLoading,
   data = [],
   page = 1,
   pages = 0,
-  setMap,
+  map,
   setPage,
 }: {
   isLoading?: boolean;
   data: JakWifi[];
   page?: number;
   pages?: number;
-  setMap?: (view: LatLngExpression) => void;
+  map: Map;
   setPage?: (page: number) => void;
 }) => {
   return (
@@ -36,7 +36,10 @@ export const JakWifiList = ({
             rw={item.RW}
             address={item.Alamat}
             onClick={() => {
-              setMap?.([parseFloat(item.Longitude), parseFloat(item.Latitude)]);
+              map.setView({
+                lat: parseFloat(item.Latitude),
+                lng: parseFloat(item.Longitude),
+              });
             }}
           />
         ))

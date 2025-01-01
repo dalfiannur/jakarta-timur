@@ -1,44 +1,61 @@
 "use client";
-import { LatLngExpression } from "leaflet";
-import { useEffect, useState } from "react";
-import L from "leaflet";
+import { JakWifi } from "@/services/api/jakwifi";
+import { LatLngExpression, icon, Map } from "leaflet";
+import { memo, useMemo, useState } from "react";
+import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
-const center = [-6.225014, 106.900447] as LatLngExpression;
+const customIcon = icon({
+  iconUrl: "/img/smart-city.svg",
+  iconSize: [38, 38],
+});
 
-export default function MapArea({ data = [] }: { data: LatLngExpression[] }) {
-  const [map, setMap] = useState<L.Map>();
+const MapArea = ({
+  data = [],
+  setMap,
+}: {
+  data: JakWifi[];
+  setMap: (map: Map) => void;
+}) => {
+  const [m, setM] = useState<Map>();
+  const [center] = useState<LatLngExpression>({
+    lat: -6.225014,
+    lng: 106.900447,
+  });
+  const markers = useMemo(() => {
+    const result = data.map((item) => ({
+      lat: parseFloat(item.Latitude),
+      lng: parseFloat(item.Longitude),
+    }));
 
-  useEffect(() => {
-    if (window) {
-      const mapContainer = L.DomUtil.get("map");
-      if (mapContainer) {
-        //@ts-expect-error not found
-        mapContainer._leaflet_id = null; // Reset instance
-      }
-
-      const map = L.map("map").setView(center, 13);
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(
-        map,
-      );
-
-      setMap(map);
+    if (result.length > 1) {
+      m?.setView(result[0]);
     }
-  }, []);
 
-  useEffect(() => {
-    if (map) {
-      data.forEach((item) => {
-        const marker = L.marker(item).addTo(map);
-        marker.setIcon(
-          L.icon({
-            iconUrl: "/img/smart-city.svg",
-            iconSize: [32, 32],
-          }),
-        );
-      });
-    }
-  }, [map, data]);
+    return result;
+  }, [data, m]);
 
-  return <div id="map" className="aspect-square w-full lg:aspect-auto" />;
-}
+  return (
+    <div className="aspect-square w-full">
+      <MapContainer
+        center={center}
+        zoom={13}
+        scrollWheelZoom={false}
+        style={{ width: "100%", aspectRatio: 1 }}
+        ref={(ref) => {
+          if (ref) {
+            setMap(ref);
+            setM(ref);
+          }
+        }}
+      >
+        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        {markers.map((marker, index) => (
+          <Marker key={index} position={marker} icon={customIcon} />
+        ))}
+      </MapContainer>
+    </div>
+  );
+};
+
+export default memo(MapArea);
