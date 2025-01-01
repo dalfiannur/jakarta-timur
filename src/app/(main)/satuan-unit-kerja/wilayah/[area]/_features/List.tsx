@@ -1,18 +1,18 @@
 "use client";
 
-import { useContext, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Icon } from "@/app/icons";
 import { DetailModal } from "./DetailModal";
 import { GovEmployer } from "@/types/gov-employer";
 import { Pagination } from "@/app/components/Pagination";
-import { Context } from "../context";
 import { useGetAreaQuery } from "@/services/api/area";
 
 type ListProps = {
   area: string;
   search: string;
+  kecamatanId?: string | null;
 };
 
 type Option = {
@@ -25,8 +25,7 @@ type Option = {
 
 const PAGE_LIMIT = 10;
 
-export const List = ({ area, search }: ListProps) => {
-  const { kecamatanId } = useContext(Context);
+export const List = ({ area, search, kecamatanId }: ListProps) => {
   const [page, setPage] = useState(1);
   const [selected, setSelected] = useState<null | GovEmployer>(null);
 
